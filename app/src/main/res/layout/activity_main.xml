@@ -43,7 +43,9 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="400dp" />
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="63dp"
+        android:text="hej peter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/button" />
 </android.support.constraint.ConstraintLayout>
