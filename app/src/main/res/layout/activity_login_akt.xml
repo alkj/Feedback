@@ -5,12 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#353535"
-    tools:context=".MainActivity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:context=".Login_akt">
 
     <Button
-        android:id="@+id/GivFeedbackBtn"
+        android:id="@+id/button4"
         android:layout_width="205dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:autofillHints="DBDBDB"
+        android:background="#828282"
+        android:fontFamily="sans-serif"
+        android:text="Ny bruger"
+        android:textColor="#FBF7FF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.951" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="242dp"
         android:layout_height="54dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -19,7 +40,7 @@
         android:autofillHints="DBDBDB"
         android:background="#8CC63F"
         android:fontFamily="sans-serif"
-        android:text="giv feedback"
+        android:text="Login"
         android:textColor="#FBF7FF"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -31,7 +52,7 @@
         app:layout_constraintVertical_bias="0.742" />
 
     <EditText
-        android:id="@+id/IndtastMødeIDStartscreen"
+        android:id="@+id/editText3"
         android:layout_width="244dp"
         android:layout_height="51dp"
         android:layout_marginStart="8dp"
@@ -41,56 +62,46 @@
         android:autofillHints="DBDBDB"
         android:background="#DBDBDB"
         android:ems="10"
-        android:hint="Indtast møde-ID her..."
+        android:hint="Password"
         android:inputType="textPersonName"
-        android:paddingStart="8dp"
+        android:textAlignment="center"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.59" />
+        app:layout_constraintVertical_bias="0.572" />
 
-    <Button
-        android:id="@+id/LoginButtonStartscreen"
-        android:layout_width="103dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="8dp"
-        android:background="#828282"
-        android:text="Login"
-        android:textColor="#FBF7FF"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="188dp"
-        android:layout_height="92dp"
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="244dp"
+        android:layout_height="51dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:contentDescription="Spinoff Logo"
+        android:autofillHints="DBDBDB"
+        android:background="#DBDBDB"
+        android:ems="10"
+        android:hint="Brugernavn"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.305"
-        app:srcCompat="@drawable/logo_1" />
+        app:layout_constraintVertical_bias="0.43" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Feedback til møder"
+        android:text="Er du mødeleder?"
         android:textAllCaps="true"
         android:textColor="@android:color/background_light"
         android:textSize="30sp"
@@ -102,4 +113,37 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.141" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Login"
+        android:textAllCaps="true"
+        android:textColor="@android:color/background_light"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.307" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="103dp"
+        android:layout_height="37dp"
+        android:layout_marginEnd="8dp"
+        android:background="#828282"
+        android:text="Tilbage"
+        android:textColor="#FBF7FF"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
