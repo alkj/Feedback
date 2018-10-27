@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#353535"
-    tools:context=".MainActivity"
+    tools:context=".StartScreenActivity"
     tools:layout_editor_absoluteY="81dp">
 
     <Button
@@ -17,7 +17,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:autofillHints="DBDBDB"
-        android:background="#8CC63F"
+        android:background="@drawable/roundedbuttongreen"
         android:fontFamily="sans-serif"
         android:text="giv feedback"
         android:textColor="#FBF7FF"
@@ -38,6 +38,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:allowUndo="true"
+        android:autoText="false"
         android:autofillHints="DBDBDB"
         android:background="#DBDBDB"
         android:ems="10"
