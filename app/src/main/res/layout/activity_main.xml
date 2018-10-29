@@ -10,9 +10,11 @@
 
     <Button
         android:id="@+id/GivFeedbackBtn"
-        android:layout_width="205dp"
-        android:layout_height="54dp"
+        android:layout_width="210dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:autofillHints="DBDBDB"
         android:background="@drawable/knap_groen"
@@ -22,15 +24,16 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IndtastMødeIDStartscreen"
-        app:layout_constraintVertical_bias="0.218"
-        tools:layout_editor_absoluteX="98dp" />
+        app:layout_constraintVertical_bias="0.218" />
 
     <EditText
         android:id="@+id/IndtastMødeIDStartscreen"
-        android:layout_width="244dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="64dp"
+        android:layout_width="210dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="52dp"
         android:allowUndo="true"
         android:autofillHints="DBDBDB"
         android:background="#DBDBDB"
@@ -76,7 +79,7 @@
         android:text="Feedback til Møder"
         android:textAllCaps="false"
         android:textColor="@color/colorMEGETLysGrå"
-        android:textSize="30sp"
+        android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
