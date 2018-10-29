@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".uddyb_bedommelse"
+    tools:context=".uddyb_feedback"
     tools:layout_editor_absoluteY="25dp">
 
     <TextView
@@ -64,7 +64,6 @@
         android:id="@+id/button7"
         android:layout_width="100dp"
         android:layout_height="61dp"
-        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/knap_groen"
@@ -75,7 +74,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/editText"
         app:layout_constraintTop_toBottomOf="@+id/editText"
-        app:layout_constraintVertical_bias="0.325" />
+        app:layout_constraintVertical_bias="0.329" />
 
     <Button
         android:id="@+id/button8"
@@ -84,7 +83,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="52dp"
         android:background="@drawable/knap_lysegraa"
         android:fontFamily="@font/open_sans_semibold"
         android:text="Spring over"
@@ -94,6 +93,6 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/button7"
         app:layout_constraintTop_toBottomOf="@+id/editText"
-        app:layout_constraintVertical_bias="0.325" />
+        app:layout_constraintVertical_bias="0.682" />
 
 </android.support.constraint.ConstraintLayout>
