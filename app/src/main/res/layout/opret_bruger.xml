@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#353535"
-    tools:context=".OpretBruger_akt">
+    tools:context=".opret_bruger">
 
     <Button
         android:id="@+id/button2"
@@ -16,7 +16,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:autofillHints="DBDBDB"
-        android:background="@drawable/roundedbuttongreen"
+        android:background="@drawable/knap_groen"
         android:fontFamily="sans-serif"
         android:text="Oret bruger"
         android:textColor="#FBF7FF"

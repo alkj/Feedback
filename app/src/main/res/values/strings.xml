@@ -1,7 +1,14 @@
 <resources>
     <string name="app_name">Feedback_app</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- Strings til fragmentet 'opret møde' -->
+    <string name="mode_navn">Møde navn</string>
+    <string name="mode_formal">Møde formål</string>
+    <string name="dato">dato</string>
+    <string name="tid">tid</string>
+    <string name="sted">sted</string>
+    <string name="dagsorden">dagsorden</string>
+    <string name="tilbage">Tilbage</string>
+    <string name="opretMode">Opret møde</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="moedeoversigt">Møder</string>
 </resources>

@@ -17,8 +17,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".Login_akt" />
-        <activity android:name=".OpretBruger_akt" />
+        <activity android:name=".opret_bruger" />
         <activity android:name=".Metting_overview_akt"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
