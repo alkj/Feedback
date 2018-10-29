@@ -3,7 +3,7 @@ package com.example.admin.feedback_app;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class uddyb_bedommelse extends AppCompatActivity {
+public class giv_feedback extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
