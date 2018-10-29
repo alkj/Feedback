@@ -39,8 +39,8 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="207dp"
-        android:layout_height="63dp"
+        android:layout_width="250dp"
+        android:layout_height="86dp"
         android:layout_marginTop="12dp"
         android:background="@color/colorHvid"
         android:ems="10"
@@ -86,7 +86,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="52dp"
         android:background="@drawable/knap_lysegraa"
-        android:fontFamily="@font/open_sans_semibold"
+        android:fontFamily="@font/open_sans_bold"
         android:text="Spring over"
         android:textColor="@color/colorMEGETLysGrå"
         app:layout_constraintBottom_toBottomOf="parent"
