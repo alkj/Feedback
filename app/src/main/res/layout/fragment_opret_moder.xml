@@ -11,43 +11,51 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    
+
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="154dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="55dp" />
+        android:text="d"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <EditText
         android:id="@+id/editText6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="2dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        tools:layout_editor_absoluteX="83dp"
-        tools:layout_editor_absoluteY="123dp" />
+        app:layout_constraintEnd_toEndOf="@+id/editText5"
+        app:layout_constraintTop_toBottomOf="@+id/editText5" />
 
     <EditText
         android:id="@+id/editText13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="9dp"
         android:ems="10"
         android:inputType="date"
-        tools:layout_editor_absoluteX="83dp"
-        tools:layout_editor_absoluteY="204dp" />
+        app:layout_constraintBottom_toTopOf="@+id/editText14"
+        app:layout_constraintStart_toStartOf="@+id/editText14" />
 
     <EditText
         android:id="@+id/editText14"
@@ -55,27 +63,33 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="time"
-        tools:layout_editor_absoluteX="81dp"
-        tools:layout_editor_absoluteY="259dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="26dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="331dp" />
+        app:layout_constraintStart_toStartOf="@+id/editText14"
+        app:layout_constraintTop_toBottomOf="@+id/editText14" />
 
     <EditText
         android:id="@+id/editText16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="1dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="384dp" />
+        app:layout_constraintEnd_toEndOf="@+id/editText15"
+        app:layout_constraintTop_toBottomOf="@+id/editText15" />
 
 </android.support.constraint.ConstraintLayout>
