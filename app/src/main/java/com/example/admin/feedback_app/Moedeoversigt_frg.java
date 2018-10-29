@@ -12,12 +12,12 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Moedeoversigt.OnFragmentInteractionListener} interface
+ * {@link Moedeoversigt_frg.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Moedeoversigt#newInstance} factory method to
+ * Use the {@link Moedeoversigt_frg#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Moedeoversigt extends Fragment {
+public class Moedeoversigt_frg extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,7 +29,7 @@ public class Moedeoversigt extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public Moedeoversigt() {
+    public Moedeoversigt_frg() {
         // Required empty public constructor
     }
 
@@ -39,11 +39,11 @@ public class Moedeoversigt extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Moedeoversigt.
+     * @return A new instance of fragment Moedeoversigt_frg.
      */
     // TODO: Rename and change types and number of parameters
-    public static Moedeoversigt newInstance(String param1, String param2) {
-        Moedeoversigt fragment = new Moedeoversigt();
+    public static Moedeoversigt_frg newInstance(String param1, String param2) {
+        Moedeoversigt_frg fragment = new Moedeoversigt_frg();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

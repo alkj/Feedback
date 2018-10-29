@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorMørkegrå"
-    tools:context=".Moedeoversigt">
+    tools:context=".Moedeoversigt_frg">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -30,8 +30,8 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
                 android:layout_weight="2.5"
+                android:gravity="center"
                 android:text="@string/moedeoversigt"
                 android:textAlignment="center"
                 android:textColor="@color/colorMørkegrå"
@@ -57,7 +57,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginRight="-1dp"
                 android:layout_weight="1"
+                android:background="@drawable/moeder_tab_selected_bg"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -74,14 +76,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
+                    android:gravity="center"
                     android:text="TextView"
+                    android:textColor="@color/colorHvid"
                     android:textSize="24sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="-1dp"
                 android:layout_weight="1"
+                android:background="@drawable/moeder_tab_unselected_bg"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -98,13 +104,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
+                    android:gravity="center"
                     android:text="TextView"
+                    android:textColor="@color/colorHvid"
                     android:textSize="24sp" />
             </LinearLayout>
 
         </LinearLayout>
 
         <android.support.v4.view.ViewPager
+            android:id="@+id/moedeViewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2" />
