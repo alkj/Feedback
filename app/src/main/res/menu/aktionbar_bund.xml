@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/aktionbar_hjem"
+        android:icon="@drawable/hjem_ikon_24dp"
+        android:title="@string/hjem" />
+    <item
+        android:id="@+id/aktionbar_oversigt"
+        android:icon="@drawable/modeoversigt_ikon_24dp"
+        android:title="@string/moder" />
+    <item
+        android:id="@+id/aktionbar_profil"
+        android:icon="@drawable/profil_ikon_24dp"
+        android:title="@string/profil" />
+
+</menu>

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent"
+    android:background="@color/colorMørkegrå"
     tools:context=".OpretModer"
     tools:layout_editor_absoluteY="25dp">
 
@@ -15,7 +15,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/mode_navn"
+        android:fontFamily="@font/open_sans_semibold"
+        android:text="@string/oplysninger"
+        android:textColor="#FBF7FF"
+        android:textSize="22"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,56 +27,75 @@
         android:id="@+id/editTextOpretModerModenavn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/knap_lysegraa"
         android:ems="10"
+        android:fontFamily="@font/open_sans_semibold"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:text="@string/mode_navn"
-        app:layout_constraintBottom_toTopOf="@+id/editTextOpretModerModeformal"
-        app:layout_constraintStart_toStartOf="@+id/editTextOpretModerModeformal" />
+        android:textColor="#FBF7FF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewOpretModerOverskrift" />
 
     <EditText
         android:id="@+id/editTextOpretModerModeformal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/knap_lysegraa"
         android:ems="10"
+        android:fontFamily="@font/open_sans_semibold"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:text="@string/mode_formal"
-        app:layout_constraintBottom_toTopOf="@+id/editTextOpretModerDato"
-        app:layout_constraintEnd_toEndOf="@+id/editTextOpretModerDato" />
+        android:textColor="#FBF7FF"
+        app:layout_constraintStart_toStartOf="@+id/editTextOpretModerModenavn"
+        app:layout_constraintTop_toBottomOf="@+id/editTextOpretModerModenavn" />
 
     <EditText
         android:id="@+id/editTextOpretModerDato"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="207dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/knap_lysegraa"
         android:ems="10"
+        android:fontFamily="@font/open_sans_semibold"
+        android:importantForAutofill="no"
         android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/dato"
+        android:textColor="#FBF7FF"
+        app:layout_constraintStart_toStartOf="@+id/editTextOpretModerModeformal"
+        app:layout_constraintTop_toBottomOf="@+id/editTextOpretModerModeformal" />
 
     <EditText
         android:id="@+id/editTextOpretModerTidspunkt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="2dp"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/knap_lysegraa"
         android:ems="10"
+        android:fontFamily="@font/open_sans_semibold"
+        android:importantForAutofill="no"
         android:inputType="time"
-        app:layout_constraintEnd_toEndOf="@+id/editTextOpretModerDato"
+        android:text="@string/tid"
+        android:textColor="#FBF7FF"
+        app:layout_constraintStart_toStartOf="@+id/editTextOpretModerDato"
         app:layout_constraintTop_toBottomOf="@+id/editTextOpretModerDato" />
 
     <EditText
         android:id="@+id/editTextOpretModerSted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/knap_lysegraa"
         android:ems="10"
+        android:fontFamily="@font/open_sans_semibold"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:text="@string/sted"
+        android:textColor="#FBF7FF"
         app:layout_constraintStart_toStartOf="@+id/editTextOpretModerTidspunkt"
         app:layout_constraintTop_toBottomOf="@+id/editTextOpretModerTidspunkt" />
 
@@ -81,12 +103,15 @@
         android:id="@+id/editTextOpretModerDagsorden"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/knap_lysegraa"
         android:ems="10"
+        android:fontFamily="@font/open_sans_semibold"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:text="@string/dagsorden"
-        app:layout_constraintEnd_toEndOf="@+id/editTextOpretModerSted"
+        android:textColor="#FBF7FF"
+        app:layout_constraintStart_toStartOf="@+id/editTextOpretModerSted"
         app:layout_constraintTop_toBottomOf="@+id/editTextOpretModerSted" />
 
 
@@ -94,14 +119,14 @@
         android:id="@+id/buttonOpretModerOpretmode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
+        android:layout_marginStart="75dp"
         android:layout_marginBottom="51dp"
         android:background="@drawable/knap_groen"
         android:ems="10"
         android:fontFamily="@font/open_sans_semibold"
-        android:text="@string/opretMode"
+        android:text="@string/opret_Mode"
         android:textColor="#FBF7FF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/editTextOpretModerDagsorden" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
