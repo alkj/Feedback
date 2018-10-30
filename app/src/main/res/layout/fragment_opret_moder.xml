@@ -18,7 +18,7 @@
         android:fontFamily="@font/open_sans_semibold"
         android:text="@string/oplysninger"
         android:textColor="#FBF7FF"
-        android:textSize="22"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
