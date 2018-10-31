@@ -18,7 +18,6 @@ public class Moedeoversigt_frg extends Fragment implements View.OnClickListener 
 
     LinearLayout afholdte_btn, ikkeAfholdte_btn;
     Drawable selected_bg, unselected_bg;
-    FragmentManager fragmentManager;
 
 
     @Override
@@ -30,11 +29,7 @@ public class Moedeoversigt_frg extends Fragment implements View.OnClickListener 
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-        fragmentManager = getChildFragmentManager();
-
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.moedeFragHolder, new IkkeAfholdt_frg());
-        fragmentTransaction.commit();
+        indlæsFragment(new IkkeAfholdt_frg());
 
         afholdte_btn = (LinearLayout)view.findViewById(R.id.moede_afholdt_btn);
         ikkeAfholdte_btn = (LinearLayout)view.findViewById(R.id.moede_ikkeAfholdt_btn);
@@ -47,26 +42,30 @@ public class Moedeoversigt_frg extends Fragment implements View.OnClickListener 
         unselected_bg = res.getDrawable(R.drawable.moeder_tab_unselected_bg, null);
     }
 
+    private void indlæsFragment(Fragment fragment){
+        if (fragment != null){
+
+            getChildFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.moede_fragHolder, fragment)
+                    .commit();
+        }
+    }
+
     @Override
     public void onClick(View view) {
 
-        //Checker før jeg begynder at lave en fragmentTransaction.
-        if (view instanceof LinearLayout){
+        if (view == ikkeAfholdte_btn) {
+            afholdte_btn.setBackground(unselected_bg);
+            ikkeAfholdte_btn.setBackground(selected_bg);
+            indlæsFragment(new IkkeAfholdt_frg());
 
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-            if (view == ikkeAfholdte_btn) {
-                afholdte_btn.setBackground(unselected_bg);
-                ikkeAfholdte_btn.setBackground(selected_bg);
-                fragmentTransaction.replace(R.id.moedeFragHolder, new IkkeAfholdt_frg());
-
-            }
-            else if (view == afholdte_btn) {
-                afholdte_btn.setBackground(selected_bg);
-                ikkeAfholdte_btn.setBackground(unselected_bg);
-                fragmentTransaction.replace(R.id.moedeFragHolder, new Afholdt_frg());
-            }
-            fragmentTransaction.commit();
         }
+        else if (view == afholdte_btn) {
+            afholdte_btn.setBackground(selected_bg);
+            ikkeAfholdte_btn.setBackground(unselected_bg);
+            indlæsFragment(new Afholdt_frg());
+        }
+
     }
 }

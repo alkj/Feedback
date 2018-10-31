@@ -4,10 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorMørkegrå"
     tools:context=".Moedeoversigt_frg">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -117,7 +115,7 @@
         </LinearLayout>
 
         <FrameLayout
-            android:id="@+id/moedeFragHolder"
+            android:id="@+id/moede_fragHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2">

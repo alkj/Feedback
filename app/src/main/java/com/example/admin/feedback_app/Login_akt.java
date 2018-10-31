@@ -36,6 +36,8 @@ public class Login_akt extends AppCompatActivity implements View.OnClickListener
     public void onClick(View view) {
         if (view == login_btn){
             //TODO: håndtere login
+            Intent intent = new Intent(this, Navigation_akt.class);
+            startActivity(intent);
         }
         else if (view == nyBruger_btn){
             //Åbner opret bruger aktiviteten

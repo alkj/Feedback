@@ -18,4 +18,5 @@
     <string name="moder">Møder</string>
     <string name="hjem">Hjem</string>
     <string name="profil">Profil</string>
+    <string name="title_activity_navigation_akt">Navigation_akt</string>
 </resources>
