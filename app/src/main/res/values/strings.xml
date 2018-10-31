@@ -19,4 +19,6 @@
     <string name="hjem">Hjem</string>
     <string name="profil">Profil</string>
     <string name="title_activity_navigation_akt">Navigation_akt</string>
+    <string name="ikke_afholdt">ikke Afholdt</string>
+    <string name="afholdt">Afholdt</string>
 </resources>
