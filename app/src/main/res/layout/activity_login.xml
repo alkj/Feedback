@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#353535"
-    tools:context=".Login_akt">
+    tools:context=".aktiviteter.Login_akt">
 
     <Button
         android:id="@+id/login_nyBruger_btn"

@@ -9,7 +9,7 @@
     android:background="@drawable/blur_baggrund">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/opretbruger_txtView1"
         android:layout_width="318dp"
         android:layout_height="71dp"
         android:layout_marginTop="68dp"
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/opretbruger_txtView2"
         android:layout_width="202dp"
         android:layout_height="71dp"
         android:fontFamily="@font/open_sans_bold"
@@ -49,7 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/opretbruger_txtView2" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -58,7 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/opretbruger_txtView1"
         app:srcCompat="@drawable/meget_sur" />
 
     <Button
