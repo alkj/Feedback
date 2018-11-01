@@ -8,7 +8,7 @@
     tools:context=".Login_akt">
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/login_nyBruger_btn"
         android:layout_width="171dp"
         android:layout_height="54dp"
         android:layout_marginStart="8dp"
@@ -30,7 +30,7 @@
         app:layout_constraintVertical_bias="0.951" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/login_login_btn"
         android:layout_width="173dp"
         android:layout_height="54dp"
         android:layout_marginStart="8dp"
@@ -53,7 +53,7 @@
         app:layout_constraintVertical_bias="0.742" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/login_password_editTxt"
         android:layout_width="244dp"
         android:layout_height="51dp"
         android:layout_marginStart="8dp"
@@ -76,7 +76,7 @@
         app:layout_constraintVertical_bias="0.572" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/login_brugernavn_editTxt"
         android:layout_width="244dp"
         android:layout_height="51dp"
         android:layout_marginStart="8dp"
@@ -101,7 +101,7 @@
         app:layout_constraintVertical_bias="0.43" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/login_txtView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -122,7 +122,7 @@
         app:layout_constraintVertical_bias="0.141" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/login_txtView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -141,7 +141,7 @@
         app:layout_constraintVertical_bias="0.307" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/login_tilbage_btn"
         android:layout_width="103dp"
         android:layout_height="37dp"
         android:layout_marginEnd="8dp"

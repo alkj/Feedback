@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#353535"
-    tools:context=".StartScreenActivity"
+    tools:context=".StartSkaerm_akt"
     tools:layout_editor_absoluteY="25dp">
 
     <Button
-        android:id="@+id/GivFeedbackBtn"
+        android:id="@+id/startskaerm_feedback_btn"
         android:layout_width="210dp"
         android:layout_height="60dp"
         android:layout_marginStart="8dp"
@@ -26,11 +26,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IndtastMødeIDStartscreen"
+        app:layout_constraintTop_toBottomOf="@+id/startskærm_editTxt"
         app:layout_constraintVertical_bias="0.218" />
 
     <EditText
-        android:id="@+id/IndtastMødeIDStartscreen"
+        android:id="@+id/startskærm_editTxt"
         android:layout_width="210dp"
         android:layout_height="60dp"
         android:layout_marginTop="52dp"
@@ -45,10 +45,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/startskaerm_imgView" />
 
     <Button
-        android:id="@+id/LoginButtonStartscreen"
+        android:id="@+id/startskaerm_login_btn"
         android:layout_width="103dp"
         android:layout_height="37dp"
         android:background="@drawable/knap_lysegraa"
@@ -60,18 +60,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/startskaerm_imgView"
         android:layout_width="188dp"
         android:layout_height="92dp"
         android:layout_marginTop="32dp"
         android:contentDescription="Spinoff Logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/startskaerm_txtView"
         app:srcCompat="@drawable/spinoff_logo" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/startskaerm_txtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="116dp"

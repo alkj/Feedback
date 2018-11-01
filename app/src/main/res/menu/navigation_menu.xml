@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_hjem"
+        android:icon="@drawable/ic_hjem_black_24dp"
+        android:title="@string/hjem" />
+
+    <item
+        android:id="@+id/navigation_moedeoversigt"
+        android:icon="@drawable/ic_moedeoversigt_black_24dp"
+        android:title="@string/moder" />
+
+    <item
+        android:id="@+id/navigation_profil"
+        android:icon="@drawable/ic_profil_black_24dp"
+        android:title="@string/profil" />
+
+</menu>

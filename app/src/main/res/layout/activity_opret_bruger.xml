@@ -5,54 +5,85 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#353535"
-    tools:context=".opret_bruger"
-    tools:layout_editor_absoluteY="25dp">
+    tools:context=".OpretBruger_akt">
+
 
     <Button
         android:id="@+id/button"
         android:layout_width="103dp"
         android:layout_height="37dp"
+        android:layout_marginEnd="8dp"
         android:background="#828282"
         android:text="Tilbage"
         android:textColor="#FBF7FF"
         android:textSize="18dp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Opret  bruger"
-        android:textAllCaps="true"
-        android:textColor="@android:color/background_light"
-        android:textSize="30sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="78dp"
-        tools:layout_editor_absoluteY="56dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text="Indtast dine oplysninger"
         android:textAllCaps="true"
         android:textColor="@android:color/background_light"
         android:textSize="17sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="78dp"
-        tools:layout_editor_absoluteY="109dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.191" />
 
     <ScrollView
         android:layout_width="322dp"
         android:layout_height="307dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:scrollbarStyle="insideOverlay"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="150dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.581">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Opret  bruger"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.486"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.094" />
+
 
             <EditText
                 android:id="@+id/editText7"
@@ -103,30 +134,6 @@
                 app:layout_constraintVertical_bias="0.43" />
 
             <EditText
-                android:id="@+id/editText11"
-                android:layout_width="match_parent"
-                android:layout_height="51dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:allowUndo="true"
-                android:autofillHints="DBDBDB"
-                android:background="#DBDBDB"
-                android:clickable="false"
-                android:ems="10"
-                android:fadingEdge="horizontal|vertical"
-                android:hint="Telefon nr."
-                android:inputType="textPersonName"
-                android:textAlignment="center"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.43" />
-
-            <EditText
                 android:id="@+id/editText9"
                 android:layout_width="match_parent"
                 android:layout_height="51dp"
@@ -151,8 +158,32 @@
                 app:layout_constraintVertical_bias="0.43" />
 
             <EditText
+                android:id="@+id/editText11"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:allowUndo="true"
+                android:autofillHints="DBDBDB"
+                android:background="#DBDBDB"
+                android:clickable="false"
+                android:ems="10"
+                android:fadingEdge="horizontal|vertical"
+                android:hint="Telefon nr."
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.43" />
+
+            <EditText
                 android:id="@+id/editText10"
-                android:layout_width="308dp"
+                android:layout_width="match_parent"
                 android:layout_height="51dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
@@ -173,6 +204,53 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.43" />
+
+            <EditText
+                android:id="@+id/editText12"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:allowUndo="true"
+                android:autofillHints="DBDBDB"
+                android:background="#DBDBDB"
+                android:clickable="false"
+                android:ems="10"
+                android:fadingEdge="horizontal|vertical"
+                android:hint="Password igen"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.43" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="301dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:autofillHints="DBDBDB"
+                android:background="@drawable/knap_groen"
+                android:fontFamily="sans-serif"
+                android:text="Opret bruger"
+                android:textColor="#FBF7FF"
+                android:textSize="24sp"
+                android:textStyle="bold"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.963" />
 
         </LinearLayout>
     </ScrollView>

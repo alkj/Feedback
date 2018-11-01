@@ -4,10 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorMørkegrå"
     tools:context=".Moedeoversigt_frg">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,8 +33,7 @@
                 android:text="@string/moedeoversigt"
                 android:textAlignment="center"
                 android:textColor="@color/colorMørkegrå"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textSize="28sp" />
 
             <ImageView
                 android:id="@+id/imageView6"
@@ -77,11 +74,14 @@
                     android:id="@+id/textView10"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="2dp"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="TextView"
+                    android:paddingLeft="8dp"
+                    android:text="@string/ikke_afholdt"
+                    android:textAlignment="viewStart"
                     android:textColor="@color/colorHvid"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -107,17 +107,20 @@
                     android:id="@+id/textView11"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="2dp"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="TextView"
+                    android:paddingLeft="8dp"
+                    android:text="@string/afholdt"
+                    android:textAlignment="viewStart"
                     android:textColor="@color/colorHvid"
-                    android:textSize="24sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
         </LinearLayout>
 
         <FrameLayout
-            android:id="@+id/moedeFragHolder"
+            android:id="@+id/moede_fragHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2">
