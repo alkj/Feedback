@@ -8,7 +8,7 @@
     tools:context=".aktiviteter.OpretBruger_akt">
 
     <Button
-        android:id="@+id/opretbruger_opret_btn"
+        android:id="@+id/opretmoede_opret_btn"
         android:layout_width="173dp"
         android:layout_height="54dp"
         android:layout_marginStart="8dp"
@@ -18,7 +18,7 @@
         android:autofillHints="DBDBDB"
         android:background="@drawable/knap_groen"
         android:fontFamily="sans-serif"
-        android:text="Oret bruger"
+        android:text="@string/opret_Mode"
         android:textColor="#FBF7FF"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -31,12 +31,12 @@
         app:layout_constraintVertical_bias="0.963" />
 
     <Button
-        android:id="@+id/opretbruger_tilbage_btn"
+        android:id="@+id/opretmoede_anuller_btn"
         android:layout_width="103dp"
         android:layout_height="37dp"
         android:layout_marginEnd="8dp"
         android:background="#828282"
-        android:text="Tilbage"
+        android:text="@string/annuller"
         android:textColor="#FBF7FF"
         android:textSize="18dp"
         android:textStyle="bold"
@@ -46,14 +46,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/opretbruger_txtView1"
+        android:id="@+id/opretmoede_txtView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Opret  bruger"
+        android:text="@string/opret_Mode"
         android:textAllCaps="true"
         android:textColor="@android:color/background_light"
         android:textSize="30sp"
@@ -66,14 +66,14 @@
         app:layout_constraintVertical_bias="0.094" />
 
     <TextView
-        android:id="@+id/opretbruger_txtView2"
+        android:id="@+id/opretmoede_txtView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Indtast dine oplysninger"
+        android:text="Indtast møde oplysninger"
         android:textAllCaps="true"
         android:textColor="@android:color/background_light"
         android:textSize="17sp"
@@ -105,7 +105,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/opretbruger_fornavn_editTxt"
+                android:id="@+id/opretmoede_navn_editTxt"
                 android:layout_width="303dp"
                 android:layout_height="51dp"
                 android:layout_marginStart="8dp"
@@ -118,7 +118,7 @@
                 android:clickable="false"
                 android:ems="10"
                 android:fadingEdge="horizontal|vertical"
-                android:hint="Fornavn"
+                android:hint="@string/mode_navn"
                 android:inputType="textPersonName"
                 android:textAlignment="center"
                 android:textStyle="bold"
@@ -129,7 +129,7 @@
                 app:layout_constraintVertical_bias="0.43" />
 
             <EditText
-                android:id="@+id/opretbruger_efternavn_editTxt"
+                android:id="@+id/opretmoede_formaal_editTxt"
                 android:layout_width="match_parent"
                 android:layout_height="51dp"
                 android:layout_marginStart="8dp"
@@ -142,7 +142,7 @@
                 android:clickable="false"
                 android:ems="10"
                 android:fadingEdge="horizontal|vertical"
-                android:hint="Efternavn"
+                android:hint="@string/mode_formal"
                 android:inputType="textPersonName"
                 android:textAlignment="center"
                 android:textStyle="bold"
@@ -153,7 +153,7 @@
                 app:layout_constraintVertical_bias="0.43" />
 
             <EditText
-                android:id="@+id/opretbruger_mail_editTxt"
+                android:id="@+id/opretmoeder_dato_editTxt"
                 android:layout_width="match_parent"
                 android:layout_height="51dp"
                 android:layout_marginStart="8dp"
@@ -166,8 +166,8 @@
                 android:clickable="false"
                 android:ems="10"
                 android:fadingEdge="horizontal|vertical"
-                android:hint="E-mail"
-                android:inputType="textPersonName"
+                android:hint="@string/dato"
+                android:inputType="date"
                 android:textAlignment="center"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -177,7 +177,7 @@
                 app:layout_constraintVertical_bias="0.43" />
 
             <EditText
-                android:id="@+id/oprebruger_tlf_editTxt"
+                android:id="@+id/opretmoeder_tid_editTxt"
                 android:layout_width="match_parent"
                 android:layout_height="51dp"
                 android:layout_marginStart="8dp"
@@ -190,8 +190,8 @@
                 android:clickable="false"
                 android:ems="10"
                 android:fadingEdge="horizontal|vertical"
-                android:hint="Telefon nr."
-                android:inputType="textPersonName"
+                android:hint="@string/tid"
+                android:inputType="time"
                 android:textAlignment="center"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -201,7 +201,7 @@
                 app:layout_constraintVertical_bias="0.43" />
 
             <EditText
-                android:id="@+id/opretbruger_password_editTxt"
+                android:id="@+id/opretmoeder_sted_editTxt"
                 android:layout_width="match_parent"
                 android:layout_height="51dp"
                 android:layout_marginStart="8dp"
@@ -214,7 +214,7 @@
                 android:clickable="false"
                 android:ems="10"
                 android:fadingEdge="horizontal|vertical"
-                android:hint="Password"
+                android:hint="@string/sted"
                 android:inputType="textPersonName"
                 android:textAlignment="center"
                 android:textStyle="bold"
@@ -225,7 +225,7 @@
                 app:layout_constraintVertical_bias="0.43" />
 
             <EditText
-                android:id="@+id/opretbruger_password2_editTxt"
+                android:id="@+id/opretmoeder_dagsorden_editTxt"
                 android:layout_width="match_parent"
                 android:layout_height="51dp"
                 android:layout_marginStart="8dp"
@@ -238,7 +238,7 @@
                 android:clickable="false"
                 android:ems="10"
                 android:fadingEdge="horizontal|vertical"
-                android:hint="Password igen"
+                android:hint="@string/dagsorden"
                 android:inputType="textPersonName"
                 android:textAlignment="center"
                 android:textStyle="bold"

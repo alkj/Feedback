@@ -21,4 +21,6 @@
     <string name="title_activity_navigation_akt">Navigation_akt</string>
     <string name="ikke_afholdt">ikke Afholdt</string>
     <string name="afholdt">Afholdt</string>
+    <string name="anuller">Anuller</string>
+    <string name="annuller">Annuller</string>
 </resources>

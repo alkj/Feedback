@@ -9,24 +9,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StartSkaerm_akt">
+        <activity android:name=".aktiviteter.StartSkaerm_akt"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login_akt" />
-        <activity android:name=".OpretBruger_akt" />
-        <activity android:name=".GivFeedback_akt" />
+        <activity android:name=".aktiviteter.Login_akt"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".aktiviteter.OpretBruger_akt"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".aktiviteter.GivFeedback_akt"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".aktiviteter.Navigation_akt"
+            android:windowSoftInputMode="adjustPan"/>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity
-            android:name=".Navigation_akt"
-            android:label="@string/title_activity_navigation_akt"></activity>
+
     </application>
 
 </manifest>

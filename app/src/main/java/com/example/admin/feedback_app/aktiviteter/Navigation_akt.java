@@ -1,4 +1,4 @@
-package com.example.admin.feedback_app;
+package com.example.admin.feedback_app.aktiviteter;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -6,7 +6,11 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
+
+import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.fragmenter.Hjem_frg;
+import com.example.admin.feedback_app.fragmenter.Moedeoversigt_frg;
+import com.example.admin.feedback_app.fragmenter.Profil_frg;
 
 public class Navigation_akt extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorMørkegrå"
-    tools:context=".Navigation_akt">
+    tools:context=".aktiviteter.Navigation_akt">
 
     <FrameLayout
         android:id="@+id/navigation_fragment_container"
