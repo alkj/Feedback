@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Feedback_app</string>
+    <string name="app_name">Gruppe 76Z</string>
     <!-- Strings til fragmentet 'opret møde' -->
     <string name="oplysninger">Oplysninger</string>
     <string name="mode_navn">Møde navn</string>
