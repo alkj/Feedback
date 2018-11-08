@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragmenter.Moedeoversigt_frg">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="10.5"
+            android:background="@color/colorHvid"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="8.6" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2.5"
+                android:gravity="center"
+                android:text="@string/moedeoversigt"
+                android:textAlignment="center"
+                android:textColor="@color/colorMørkegrå"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/moede_opret_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="16dp"
+                android:layout_weight="8.6"
+                android:clickable="true"
+                android:src="@drawable/ic_nyt_moede_black_24dp"
+                android:tint="@color/colorGrøn" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="11"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/moede_ikkeAfholdt_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="-1dp"
+                android:layout_weight="1"
+                android:background="@drawable/moeder_tab_selected_bg"
+                android:clickable="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dp"
+                    android:layout_weight="8"
+                    android:src="@drawable/ic_ikke_afholdt_black_24dp"
+                    android:tint="#c6b53f" />
+
+                <TextView
+                    android:id="@+id/moede_ikkeafholdt_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:paddingLeft="8dp"
+                    android:text="@string/ikke_afholdt"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorHvid"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/moede_afholdt_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="-1dp"
+                android:layout_weight="1"
+                android:background="@drawable/moeder_tab_unselected_bg"
+                android:clickable="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dp"
+                    android:layout_weight="8"
+                    android:src="@drawable/ic_afholdt_black_24dp"
+                    android:tint="@color/colorGrøn" />
+
+                <TextView
+                    android:id="@+id/moede_afholdt_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:paddingLeft="8dp"
+                    android:text="@string/afholdt"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorHvid"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/moede_fragHolder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
