@@ -11,6 +11,7 @@
     <string name="tilbage">Tilbage</string>
     <string name="opret_Mode">Opret møde</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="indtast_moede_oplysninger">Indtast Møde Oplysninger</string>
 
 
     <!-- Strings til menuen 'aktionbar_bund' -->
