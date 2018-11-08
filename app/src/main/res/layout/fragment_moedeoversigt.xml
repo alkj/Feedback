@@ -15,41 +15,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="10.5"
-            android:background="@color/colorHvid"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="8.6" />
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2.5"
-                android:gravity="center"
-                android:text="@string/moedeoversigt"
-                android:textAlignment="center"
-                android:textColor="@color/colorMørkegrå"
-                android:textSize="28sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/moede_opret_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="16dp"
-                android:layout_weight="8.6"
-                android:clickable="true"
-                android:src="@drawable/ic_nyt_moede_black_24dp"
-                android:tint="@color/colorGrøn" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:layout_weight="11"
             android:orientation="horizontal">
 
@@ -125,7 +90,7 @@
             android:id="@+id/moede_fragHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2">
+            android:layout_weight="1">
 
         </FrameLayout>
 
