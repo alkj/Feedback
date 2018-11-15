@@ -16,7 +16,7 @@ import com.example.admin.feedback_app.R;
 
 import java.util.Calendar;
 
-public class DatePickerDialog_frg extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+public class DatoPickerDialog_frg extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
     @NonNull
     @Override
