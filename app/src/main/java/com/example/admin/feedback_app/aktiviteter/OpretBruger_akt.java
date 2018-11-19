@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.regex.Pattern;
 
 public class OpretBruger_akt extends BaseActivity implements View.OnClickListener {
 
@@ -48,15 +51,16 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         //Input felter
         fornavn_editTxt = findViewById(R.id.opretbruger_fornavn_editTxt);
         efternavn_editTxt = findViewById(R.id.opretbruger_efternavn_editTxt);
-        email_editTxt = findViewById(R.id.opretbruger_mail_editTxt);
         tlfnr_editTxt = findViewById(R.id.oprebruger_tlf_editTxt);
+        virk_id_editTxt = findViewById(R.id.virk_id_editTxt);
+        email_editTxt = findViewById(R.id.opretbruger_mail_editTxt);
         password_editTxt = findViewById(R.id.opretbruger_password_editTxt);
         password2_editTxt = findViewById(R.id.opretbruger_password2_editTxt);
-        virk_id_editTxt = findViewById(R.id.virk_id_editTxt);
+
 
     }
 
-    private void createAccount(String email, String password) {
+    private void createAccount(final String email, String password) {
         Log.d(TAG, "createAccount:" + email);
         if (!validering()) {
             return;
@@ -77,11 +81,18 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                             updateUI(user);
                         } else {
 
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(OpretBruger_akt.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            updateUI(null);
+
+
+                            //TODO lav check om emailen allerede er i firebase og giv korrekt fejlmeddl.
+
+
+
+                                // If sign in fails, display a message to the user.
+                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                                Toast.makeText(OpretBruger_akt.this, "Fejl.",
+                                        Toast.LENGTH_SHORT).show();
+                                updateUI(null);
+
                         }
 
                         // [START_EXCLUDE]
@@ -90,6 +101,9 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                     }
                 });
         // [END create_user_with_email]
+
+
+
     }
 
     public boolean validering(){
@@ -100,6 +114,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         String fornavn = this.fornavn_editTxt.getText().toString();
         String efterNavn = this.efternavn_editTxt.getText().toString();
         String tlf = this.tlfnr_editTxt.getText().toString();
+        String email = this.email_editTxt.getText().toString();
         String password = this.password_editTxt.getText().toString();
         String password2 = this.password2_editTxt.getText().toString();
         String virkId = this.virk_id_editTxt.getText().toString();
@@ -118,6 +133,18 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
             this.tlfnr_editTxt.setError("Indtast tlf nummer");
             valid = false;
         }
+        if (TextUtils.isEmpty(virkId)) {
+            this.virk_id_editTxt.setError("Indtast virksomheds ID");
+            valid = false;
+        }
+        if (!isValidEmailAddress(email)) {
+            this.email_editTxt.setError("Indtast en valid email");
+            valid = false;
+        }
+        if (TextUtils.isEmpty(email)) {
+            this.email_editTxt.setError("Indtast Email");
+            valid = false;
+        }
         if (TextUtils.isEmpty(tlf)) {
             this.password_editTxt.setError("Indtast password");
             valid = false;
@@ -126,14 +153,14 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
             this.password2_editTxt.setError("Indtast password");
             valid = false;
         }
-        if (!password.equals(password2)) {
-            valid = false;
-        }
-
-
-
-        Log.d(TAG, "valideringEmail: validering returneres");
         return valid;
+    }
+
+    public boolean isValidEmailAddress(String email) {
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
     }
 
     public void updateUI(FirebaseUser user){
@@ -185,4 +212,6 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
             //TODO lav toast der giver besked hvis emailen allerede er oprettet
         }
     }
+
+
 }
