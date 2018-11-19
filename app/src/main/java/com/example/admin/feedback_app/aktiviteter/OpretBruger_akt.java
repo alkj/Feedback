@@ -20,11 +20,15 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class OpretBruger_akt extends BaseActivity implements View.OnClickListener {
 
+    /**
+     * Inspiration fået fra firebase's egen hjemmeside: https://firebase.google.com/docs/auth/android/password-auth
+     */
+
     private static final String TAG = "opretBruger";
 
     private Button tilbage_btn, opret_btn;
     private EditText fornavn_editTxt, efternavn_editTxt, email_editTxt,
-            tlfnr_editTxt, password_editTxt, password2_editTxt;
+            tlfnr_editTxt, password_editTxt, password2_editTxt, virk_id_editTxt;
     private FirebaseAuth mAuth;
 
     @Override
@@ -48,6 +52,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         tlfnr_editTxt = findViewById(R.id.oprebruger_tlf_editTxt);
         password_editTxt = findViewById(R.id.opretbruger_password_editTxt);
         password2_editTxt = findViewById(R.id.opretbruger_password2_editTxt);
+        virk_id_editTxt = findViewById(R.id.virk_id_editTxt);
 
     }
 
@@ -68,8 +73,10 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            sendEmailVerification();
                             updateUI(user);
                         } else {
+
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(OpretBruger_akt.this, "Authentication failed.",
@@ -95,6 +102,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         String tlf = this.tlfnr_editTxt.getText().toString();
         String password = this.password_editTxt.getText().toString();
         String password2 = this.password2_editTxt.getText().toString();
+        String virkId = this.virk_id_editTxt.getText().toString();
 
         //TODO evt lav check om emailen er valid og er af formen xxx@xxx.com
 
@@ -119,9 +127,12 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
             valid = false;
         }
         if (!password.equals(password2)) {
-            Toast.makeText(OpretBruger_akt.this, "Dine passwords er ikke ens", Toast.LENGTH_SHORT).show();
             valid = false;
         }
+        if(virkId!="virkID"){
+            valid = false;
+        }
+
 
         Log.d(TAG, "valideringEmail: validering returneres");
         return valid;
@@ -135,6 +146,34 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
 
     }
 
+    private void sendEmailVerification() {
+        // Disable button
+
+        // Send verification email
+        // [START send_email_verification]
+        final FirebaseUser user = mAuth.getCurrentUser();
+        user.sendEmailVerification()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // [START_EXCLUDE]
+
+                        if (task.isSuccessful()) {
+                            Toast.makeText(OpretBruger_akt.this,
+                                    "Verification email sent to " + user.getEmail(),
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            Log.e(TAG, "sendEmailVerification", task.getException());
+                            Toast.makeText(OpretBruger_akt.this,
+                                    "Failed to send verification email.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                        // [END_EXCLUDE]
+                    }
+                });
+        // [END send_email_verification]
+    }
+
     @Override
     public void onClick(View view) {
         if (view == tilbage_btn){
@@ -142,8 +181,10 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
             finish();
         }
         else if (view == opret_btn){
+
             createAccount(email_editTxt.getText().toString(),password_editTxt.getText().toString());
-            //TODO: håndtere opret bruger
+
+            //TODO lav toast der giver besked hvis emailen allerede er oprettet
         }
     }
 }

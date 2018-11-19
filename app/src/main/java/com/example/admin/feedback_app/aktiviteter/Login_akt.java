@@ -20,6 +20,10 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Login_akt extends BaseActivity implements View.OnClickListener {
 
+    /**
+     * Inspiration fået fra firebase's egen hjemmeside: https://firebase.google.com/docs/auth/android/password-auth
+     */
+
     private static final String TAG = "login";
 
     private Button login_btn, nyBruger_btn, tilbage_btn;
