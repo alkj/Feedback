@@ -26,6 +26,7 @@ public class Login_akt extends AppCompatActivity implements View.OnClickListener
     private EditText email_editTxt, password_editTxt;
     private FirebaseAuth mAuth;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
