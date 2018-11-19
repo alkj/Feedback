@@ -129,9 +129,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         if (!password.equals(password2)) {
             valid = false;
         }
-        if(virkId!="virkID"){
-            valid = false;
-        }
+
 
 
         Log.d(TAG, "valideringEmail: validering returneres");
