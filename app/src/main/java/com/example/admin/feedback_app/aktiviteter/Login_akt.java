@@ -52,11 +52,10 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
+        // Checker om user er logget ind (not null) og opdaterer gui derefter
         FirebaseUser currentUser = mAuth.getCurrentUser();
         guiLogind(currentUser);
     }
-    // [END on_start_check_user]
 
     @Override
     public void onClick(View view) {
@@ -75,19 +74,20 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         }
         else if (view == tilbage_btn){
             //Lukker aktiviteten og går derfor tilbage til den forrige
+            finish();
         }
     }
 
     private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
 
-        if (!valideringEmail()) {
+        if (!validering()) {
             return;
         }
 
+        //Vis loading hvis valideringen er okay, og check herefter om email/password er korrekt
         showProgressDialog();
 
-        // [START sign_in_with_email]
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -103,13 +103,13 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                             Toast.makeText(Login_akt.this, "Forkert email og/eller password.", Toast.LENGTH_SHORT).show();
                             guiLogind(null);
                         }
+                        //Stop loading efter firebase er færdig med at give svar
                         hideProgressDialog();
                     }
                 });
-        // [END sign_in_with_email]
     }
 
-    public boolean valideringEmail(){
+    public boolean validering(){
 
         Log.d(TAG, "valideringEmail: startes");
         boolean valid = true;
@@ -117,17 +117,19 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         String email = this.email_editTxt.getText().toString();
         String password = this.password_editTxt.getText().toString();
 
+        //TODO evt lav check om emailen er valid og er af formen xxx@xxx.com
+
         if(TextUtils.isEmpty(email) && TextUtils.isEmpty(password)){
-            this.password_editTxt.setError("Der skal indtastes et password");
-            this.email_editTxt.setError("Der skal indtastes en E-mail.");
+            this.password_editTxt.setError("Indtast password");
+            this.email_editTxt.setError("Indtast E-mail.");
             valid = false;
         }
         if (TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
-            this.email_editTxt.setError("Der skal indtastes en E-mail.");
+            this.email_editTxt.setError("Indtast E-mail.");
             valid = false;
         }
         if (TextUtils.isEmpty(password)&& !TextUtils.isEmpty(email)) {
-            this.password_editTxt.setError("Der skal indtastes et password");
+            this.password_editTxt.setError("Indtast password");
             valid = false;
         }
 
@@ -138,7 +140,6 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
     }
 
     public void guiLogind(FirebaseUser user){
-        hideProgressDialog();
         if(user != null){
             Intent myIntent = new Intent(Login_akt.this,Navigation_akt.class);
             Login_akt.this.startActivity(myIntent);
