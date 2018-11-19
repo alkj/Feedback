@@ -18,7 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class Login_akt extends AppCompatActivity implements View.OnClickListener {
+public class Login_akt extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = "login";
 
@@ -50,6 +50,15 @@ public class Login_akt extends AppCompatActivity implements View.OnClickListener
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        guiLogind(currentUser);
+    }
+    // [END on_start_check_user]
+
+    @Override
     public void onClick(View view) {
         if (view == login_btn){
             signIn(email_editTxt.getText().toString(),password_editTxt.getText().toString());
@@ -66,7 +75,6 @@ public class Login_akt extends AppCompatActivity implements View.OnClickListener
         }
         else if (view == tilbage_btn){
             //Lukker aktiviteten og går derfor tilbage til den forrige
-            finish();
         }
     }
 
@@ -77,7 +85,7 @@ public class Login_akt extends AppCompatActivity implements View.OnClickListener
             return;
         }
 
-        //TODO lav loading her showProgressDialog();
+        showProgressDialog();
 
         // [START sign_in_with_email]
         mAuth.signInWithEmailAndPassword(email, password)
@@ -88,14 +96,14 @@ public class Login_akt extends AppCompatActivity implements View.OnClickListener
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            guiLogind();
+                            guiLogind(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(Login_akt.this, "Forkert email og/eller password.",
-                                    Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login_akt.this, "Forkert email og/eller password.", Toast.LENGTH_SHORT).show();
+                            guiLogind(null);
                         }
-                        //TODO fjern loading her hideProgressDialog();
+                        hideProgressDialog();
                     }
                 });
         // [END sign_in_with_email]
@@ -129,12 +137,12 @@ public class Login_akt extends AppCompatActivity implements View.OnClickListener
 
     }
 
-    public void guiLogind(){
-        if(mAuth.getCurrentUser() != null){
+    public void guiLogind(FirebaseUser user){
+        hideProgressDialog();
+        if(user != null){
             Intent myIntent = new Intent(Login_akt.this,Navigation_akt.class);
             Login_akt.this.startActivity(myIntent);
         }
-
 
     }
 
