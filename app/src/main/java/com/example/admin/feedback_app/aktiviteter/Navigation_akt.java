@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -14,10 +15,26 @@ import com.example.admin.feedback_app.R;
 import com.example.admin.feedback_app.fragmenter.Hjem_frg;
 import com.example.admin.feedback_app.fragmenter.Moedeoversigt_frg;
 import com.example.admin.feedback_app.fragmenter.Profil_frg;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Navigation_akt extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
+
+    private static final String TAG = "loginSide";
+
     TextView overskrift_txt, tilføj_btn;
+    private FirebaseFirestore mFirestore;
+    private FirebaseAuth mAuth;
 
     //TODO: ved tryk af tilbage knappe, spørg brugeren om han vil logge ud.
 
@@ -36,6 +53,33 @@ public class Navigation_akt extends AppCompatActivity implements BottomNavigatio
 
         indlæsFragment(new Hjem_frg());
         overskrift_txt.setText(getString(R.string.hjem));
+
+        mAuth = FirebaseAuth.getInstance();
+        mFirestore = FirebaseFirestore.getInstance();
+
+
+
+
+        mFirestore.collection("mødeholder")
+                .whereEqualTo("id", mAuth.getCurrentUser().getUid())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                List liste = new ArrayList();
+                                liste.add(document.getData());
+                                Log.d(TAG,"print elemtnet i listen: "+liste.indexOf(1));
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
+
     }
 
     private boolean indlæsFragment(Fragment fragment) {
