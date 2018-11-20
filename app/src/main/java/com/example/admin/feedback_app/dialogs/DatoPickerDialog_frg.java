@@ -1,4 +1,4 @@
-package com.example.admin.feedback_app.fragmenter;
+package com.example.admin.feedback_app.dialogs;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
