@@ -13,6 +13,7 @@ import android.widget.TimePicker;
 import com.example.admin.feedback_app.R;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 public class TidPickerDialog_frg extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
@@ -34,6 +35,6 @@ public class TidPickerDialog_frg extends DialogFragment implements TimePickerDia
     public void onTimeSet(TimePicker timePicker, int timer, int minutter) {
         String s = String.format(getString(R.string.tid_format), timer, minutter);
 
-        ((TextView) getActivity().findViewById(R.id.opretmoeder_tid_txt)).setText(s);
+        ((TextView) Objects.requireNonNull(getActivity()).findViewById(R.id.opretmoeder_tid_txt)).setText(s);
     }
 }
