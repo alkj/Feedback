@@ -27,13 +27,15 @@ public class DatoPickerDialog_frg extends DialogFragment implements DatePickerDi
         int år = kalender.get(Calendar.YEAR);
         int måned = kalender.get(Calendar.MONTH);
         int dag = kalender.get(Calendar.DAY_OF_MONTH);
+        int theme = R.style.DialogThemeGray;
 
-        return new DatePickerDialog(getActivity(), this, år, måned, dag);
+
+        return new DatePickerDialog(getActivity(),theme, this, år, måned, dag);
     }
 
     @Override
     public void onDateSet(DatePicker datePicker, int år, int måned, int dag) {
-        String s = String.format(("%d-%d-%d"), dag, måned, år);
+        String s = String.format(getString(R.string.dato_format), dag, måned, år);
 
         ((TextView) getActivity().findViewById(R.id.opretmoeder_dato_txt)).setText(s);
     }

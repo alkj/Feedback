@@ -24,9 +24,10 @@ public class TidPickerDialog_frg extends DialogFragment implements TimePickerDia
 
         int timer = kalender.get(Calendar.HOUR_OF_DAY);
         int minutter = kalender.get(Calendar.MINUTE);
+        int theme = R.style.DialogThemeGray;
 
 
-        return new TimePickerDialog(getActivity(), this, timer, minutter, DateFormat.is24HourFormat(getActivity()));
+        return new TimePickerDialog(getActivity(), theme, this, timer, minutter, DateFormat.is24HourFormat(getActivity()));
     }
 
     @Override
