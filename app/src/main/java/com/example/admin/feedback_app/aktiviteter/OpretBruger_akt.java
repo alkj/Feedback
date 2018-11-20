@@ -14,11 +14,17 @@ import android.widget.Toast;
 
 import com.example.admin.feedback_app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class OpretBruger_akt extends BaseActivity implements View.OnClickListener {
@@ -33,6 +39,8 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
     private EditText fornavn_editTxt, efternavn_editTxt, email_editTxt,
             tlfnr_editTxt, password_editTxt, password2_editTxt, virk_id_editTxt;
     private FirebaseAuth mAuth;
+    private FirebaseFirestore mFirestore;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +48,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         setContentView(R.layout.activity_opret_bruger);
 
         mAuth = FirebaseAuth.getInstance();
+        mFirestore = FirebaseFirestore.getInstance();
 
         //Knapper
         tilbage_btn = findViewById(R.id.opretbruger_tilbage_btn);
@@ -60,7 +69,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
 
     }
 
-    private void createAccount(final String email, String password) {
+    private void createAccount(final String email, final String password) {
         Log.d(TAG, "createAccount:" + email);
         if (!validering()) {
             return;
@@ -77,6 +86,36 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+
+                            //indsætter data i firestore
+                            try{
+                                Map<String, Object> muser = new HashMap<>();
+                                muser.put("id",mAuth.getCurrentUser().getUid());
+                                muser.put("fornavn", "Alex");
+                                muser.put("efternavn", "hansen");
+                                muser.put("tlf","88888888");
+                                muser.put("email",email);
+                                muser.put("password",password);
+
+                                mFirestore.collection("mødeholder").add(muser).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        Log.d(TAG, "onSuccess: id på firestore "+documentReference.getId());
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.d(TAG, "onFalure: feeeejl ");
+                                    }
+                                });
+
+                            }
+                            catch (Exception e){
+                                e.printStackTrace();
+                            }
+
+
+
                             sendEmailVerification();
                             updateUI(user);
                         } else {
