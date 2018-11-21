@@ -54,7 +54,7 @@ public class IkkeAfholdt_frg extends Fragment {
 
         mFirestore.collection("møder")
                 .whereEqualTo("mødeholderID", mAuth.getCurrentUser().getUid())
-                //.whereEqualTo("afholdt",false)
+                .whereEqualTo("afholdt",false)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
