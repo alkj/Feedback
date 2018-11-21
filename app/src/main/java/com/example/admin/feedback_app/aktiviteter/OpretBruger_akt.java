@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.mødeholder;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -31,7 +32,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
             tlfnr_editTxt, password_editTxt, password2_editTxt, virk_id_editTxt;
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFirestore;
-    private mødeholder mødeholder;
+    private com.example.admin.feedback_app.mødeholder mødeholder;
 
 
     @Override

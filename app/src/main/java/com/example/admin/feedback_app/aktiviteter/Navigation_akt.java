@@ -36,9 +36,7 @@ public class Navigation_akt extends AppCompatActivity implements BottomNavigatio
     private static final String TAG = "loginSide";
 
     TextView overskrift_txt, tilføj_btn;
-    private FirebaseFirestore mFirestore;
-    private FirebaseAuth mAuth;
-    public static mødeholder mødeholder;
+
 
     //TODO: ved tryk af tilbage knappe, spørg brugeren om han vil logge ud.
 
@@ -58,69 +56,6 @@ public class Navigation_akt extends AppCompatActivity implements BottomNavigatio
         indlæsFragment(new Hjem_frg());
         overskrift_txt.setText(getString(R.string.hjem));
 
-        mAuth = FirebaseAuth.getInstance();
-        mFirestore = FirebaseFirestore.getInstance();
-
-        mødeholder = new mødeholder(null,null,null,null,null,null);
-
-
-        final DocumentReference docRef = mFirestore.collection("mødeholder").document(mAuth.getUid());
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        mødeholder.setFornavn(document.get("fornavn").toString());
-                        mødeholder.setEfternavn(document.get("efternavn").toString());
-                        mødeholder.setEmail(document.get("email").toString());
-                        mødeholder.setPassword(document.get("password").toString());
-                        mødeholder.setTlf(document.get("tlf").toString());
-                        mødeholder.setVirk_id(document.get("virk_id").toString());
-
-
-
-                        Log.d(TAG, "onComplete: møder holder navn: "+mødeholder.getFornavn());
-                    } else {
-                        Log.d(TAG, "No such document");
-                    }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
-
-
-
-        /**
-        mFirestore.collection("mødeholder")
-                .whereEqualTo("id", mAuth.getCurrentUser().getUid())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-
-                                password =  document.get("password").toString();
-                                email =  document.get("email").toString();
-                                fornavn =  document.get("fornavn").toString();
-                                efternavn =  document.get("efternavn").toString();
-                                tlf =  document.get("tlf").toString();
-
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                Log.d(TAG, document.getId() + " => " + password);
-                                Log.d(TAG, document.getId() + " => " + email);
-                                Log.d(TAG, document.getId() + " => " + fornavn);
-                                Log.d(TAG, document.getId() + " => " + efternavn);
-
-                            }
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
-        */
 
     }
 

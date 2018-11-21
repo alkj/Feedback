@@ -1,9 +1,9 @@
 package com.example.admin.feedback_app.fragmenter;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +11,13 @@ import android.widget.TextView;
 
 import com.example.admin.feedback_app.R;
 import com.example.admin.feedback_app.aktiviteter.Navigation_akt;
-import com.example.admin.feedback_app.aktiviteter.mødeholder;
+import com.example.admin.feedback_app.mødeholder;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class Hjem_frg extends Fragment {
@@ -19,6 +25,9 @@ public class Hjem_frg extends Fragment {
 
 
     private TextView fraFire, fraFire2;
+    public static mødeholder mødeholder;
+    private FirebaseFirestore mFirestore;
+    private FirebaseAuth mAuth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,8 +37,47 @@ public class Hjem_frg extends Fragment {
         fraFire = v.findViewById(R.id.textViewFire);
         fraFire2 = v.findViewById(R.id.textViewfraFire2);
 
-        fraFire.setText("Dit navn er "+Navigation_akt.mødeholder.getFornavn());
-        fraFire2.setText("Din mail er "+Navigation_akt.mødeholder.getEmail());
+        mAuth = FirebaseAuth.getInstance();
+        mFirestore = FirebaseFirestore.getInstance();
+
+        mødeholder = new mødeholder(null,null,null,null,null,null);
+
+
+
+        DocumentReference docRef = mFirestore.collection("mødeholder").document(mAuth.getUid());
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        mødeholder.setFornavn(document.get("fornavn").toString());
+                        mødeholder.setEfternavn(document.get("efternavn").toString());
+                        mødeholder.setEmail(document.get("email").toString());
+                        mødeholder.setPassword(document.get("password").toString());
+                        mødeholder.setTlf(document.get("tlf").toString());
+                        mødeholder.setVirk_id(document.get("virk_id").toString());
+
+
+
+                       // Log.d(TAG, "onComplete: møder holder navn: "+mødeholder.getFornavn());
+                    } else {
+                       // Log.d(TAG, "No such document");
+                    }
+                } else {
+                   //Log.d(TAG, "get failed with ", task.getException());
+                }
+
+                fraFire.setText("Dit navn er "+mødeholder.getFornavn());
+                fraFire2.setText("Din mail er "+mødeholder.getEmail());
+            }
+        });
+
+
+
+
+
+
 
         // Inflate the layout for this fragment
         return v;

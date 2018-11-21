@@ -34,6 +34,7 @@ public class IkkeAfholdt_frg extends Fragment {
     private FirebaseAuth mAuth;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,6 +47,8 @@ public class IkkeAfholdt_frg extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         mFirestore = FirebaseFirestore.getInstance();
+
+
 
 
 

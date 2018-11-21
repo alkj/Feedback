@@ -1,6 +1,5 @@
 package com.example.admin.feedback_app.aktiviteter;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
@@ -28,7 +27,7 @@ public class OpretMoede_akt extends FragmentActivity implements View.OnClickList
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFirestore;
-    private mødeholder mødeholder;
+    private com.example.admin.feedback_app.mødeholder mødeholder;
 
 
     @Override
