@@ -10,8 +10,7 @@ public class Møde {
     private boolean afholdt = false;
     private String mødeholderID;
 
-    public Møde() {
-    }
+
 
     public Møde(String navn, String formål, String dato, String tid, String sted, String mødeholderID) {
         this.navn = navn;
