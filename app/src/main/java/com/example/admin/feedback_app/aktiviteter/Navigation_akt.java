@@ -25,7 +25,9 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Navigation_akt extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
@@ -35,6 +37,8 @@ public class Navigation_akt extends AppCompatActivity implements BottomNavigatio
     TextView overskrift_txt, tilføj_btn;
     private FirebaseFirestore mFirestore;
     private FirebaseAuth mAuth;
+
+    public static String fornavn, efternavn, email, tlf, password;
 
     //TODO: ved tryk af tilbage knappe, spørg brugeren om han vil logge ud.
 
@@ -68,10 +72,19 @@ public class Navigation_akt extends AppCompatActivity implements BottomNavigatio
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                password =  document.get("password").toString();
+                                email =  document.get("email").toString();
+                                fornavn =  document.get("fornavn").toString();
+                                efternavn =  document.get("efternavn").toString();
+                                tlf =  document.get("tlf").toString();
+
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                List liste = new ArrayList();
-                                liste.add(document.getData());
-                                Log.d(TAG,"print elemtnet i listen: "+liste.indexOf(1));
+                                Log.d(TAG, document.getId() + " => " + password);
+                                Log.d(TAG, document.getId() + " => " + email);
+                                Log.d(TAG, document.getId() + " => " + fornavn);
+                                Log.d(TAG, document.getId() + " => " + efternavn);
+
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());

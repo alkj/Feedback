@@ -91,9 +91,9 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                             try{
                                 Map<String, Object> muser = new HashMap<>();
                                 muser.put("id",mAuth.getCurrentUser().getUid());
-                                muser.put("fornavn", "Alex");
-                                muser.put("efternavn", "hansen");
-                                muser.put("tlf","88888888");
+                                muser.put("fornavn", fornavn_editTxt.getText().toString());
+                                muser.put("efternavn", efternavn_editTxt.getText().toString());
+                                muser.put("tlf",tlfnr_editTxt.getText().toString());
                                 muser.put("email",email);
                                 muser.put("password",password);
 
