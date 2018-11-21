@@ -100,6 +100,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                             mFirestore.collection("mødeholder").document(mAuth.getUid()).set(mødeholder);
 
 
+
                             //indsætter data i firestore
                             /**
                             try{
