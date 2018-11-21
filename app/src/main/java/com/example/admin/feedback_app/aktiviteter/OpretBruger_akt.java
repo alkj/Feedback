@@ -2,11 +2,9 @@ package com.example.admin.feedback_app.aktiviteter;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,18 +12,11 @@ import android.widget.Toast;
 
 import com.example.admin.feedback_app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Pattern;
 
 public class OpretBruger_akt extends BaseActivity implements View.OnClickListener {
 
@@ -97,71 +88,32 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                                     tlfnr_editTxt.getText().toString()
                             );
 
-                            mFirestore.collection("mødeholder").document(mAuth.getUid()).set(mødeholder);
-
-
-
                             //indsætter data i firestore
-                            /**
-                            try{
-                                Map<String, Object> muser = new HashMap<>();
-                                muser.put("id",mAuth.getCurrentUser().getUid());
-                                muser.put("fornavn", fornavn_editTxt.getText().toString());
-                                muser.put("efternavn", efternavn_editTxt.getText().toString());
-                                muser.put("tlf",tlfnr_editTxt.getText().toString());
-                                muser.put("email",email);
-                                muser.put("password",password);
-
-                                mFirestore.collection("mødeholder").add(muser).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                    @Override
-                                    public void onSuccess(DocumentReference documentReference) {
-                                        Log.d(TAG, "onSuccess: id på firestore "+documentReference.getId());
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.d(TAG, "onFalure: feeeejl ");
-                                    }
-                                });
-
-                            }
-                            catch (Exception e){
+                            try {
+                                mFirestore.collection("mødeholder").document(mAuth.getUid()).set(mødeholder);
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
-                             */
-
-
 
                             sendEmailVerification();
                             updateUI(user);
                         } else {
-
-
-
                             //TODO lav check om emailen allerede er i firebase og giv korrekt fejlmeddl.
 
-
-
-                                // If sign in fails, display a message to the user.
-                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(OpretBruger_akt.this, "Fejl.",
-                                        Toast.LENGTH_SHORT).show();
-                                updateUI(null);
-
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(OpretBruger_akt.this, "Fejl.",Toast.LENGTH_SHORT).show();
+                            updateUI(null);
                         }
-
-                        // [START_EXCLUDE]
                         hideProgressDialog();
-                        // [END_EXCLUDE]
                     }
                 });
-        // [END create_user_with_email]
-
 
 
     }
 
-    public boolean validering(){
+
+    public boolean validering() {
 
         Log.d(TAG, "valideringEmail: startes");
         boolean valid = true;
@@ -174,9 +126,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         String password2 = this.password2_editTxt.getText().toString();
         String virkId = this.virk_id_editTxt.getText().toString();
 
-        //TODO evt lav check om emailen er valid og er af formen xxx@xxx.com
-
-        if(TextUtils.isEmpty(fornavn)){
+        if (TextUtils.isEmpty(fornavn)) {
             this.fornavn_editTxt.setError("Indtast fornavn");
             valid = false;
         }
@@ -184,28 +134,28 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
             this.efternavn_editTxt.setError("Indtast efternavn");
             valid = false;
         }
-        if (TextUtils.isEmpty(tlf)) {
-            this.tlfnr_editTxt.setError("Indtast tlf nummer");
+        if (!isValidTlf(tlf) || TextUtils.isEmpty(tlf)) {
+            this.tlfnr_editTxt.setError("Indtast et 8 cifret tlf. nummer");
             valid = false;
         }
         if (TextUtils.isEmpty(virkId)) {
             this.virk_id_editTxt.setError("Indtast virksomheds ID");
             valid = false;
         }
-        if (!isValidEmailAddress(email)) {
+        if (!isValidEmailAddress(email) || TextUtils.isEmpty(email)) {
             this.email_editTxt.setError("Indtast en valid email");
             valid = false;
         }
-        if (TextUtils.isEmpty(email)) {
-            this.email_editTxt.setError("Indtast Email");
-            valid = false;
-        }
-        if (TextUtils.isEmpty(tlf)) {
+        if (TextUtils.isEmpty(password)) {
             this.password_editTxt.setError("Indtast password");
             valid = false;
         }
-        if (TextUtils.isEmpty(tlf)) {
+        if (TextUtils.isEmpty(password2)) {
             this.password2_editTxt.setError("Indtast password");
+            valid = false;
+        }
+        if (!(password_editTxt.getText().toString().equals(password2_editTxt.getText().toString()))) {
+            Toast.makeText(OpretBruger_akt.this, "Dine passwords er ikke ens",Toast.LENGTH_SHORT).show();
             valid = false;
         }
         return valid;
@@ -218,9 +168,18 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         return m.matches();
     }
 
-    public void updateUI(FirebaseUser user){
-        if(user!=null){
-            Intent myIntent = new Intent(OpretBruger_akt.this,Navigation_akt.class);
+    public boolean isValidTlf(String tlf) {
+        boolean valid = false;
+        int længde = tlf.length();
+        if (længde == 8) {
+            valid = true;
+        }
+        return valid;
+    }
+
+    public void updateUI(FirebaseUser user) {
+        if (user != null) {
+            Intent myIntent = new Intent(OpretBruger_akt.this, Navigation_akt.class);
             OpretBruger_akt.this.startActivity(myIntent);
         }
 
@@ -256,13 +215,12 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        if (view == tilbage_btn){
+        if (view == tilbage_btn) {
             //Luk og gå tilbage til login aktiviteten
             finish();
-        }
-        else if (view == opret_btn){
+        } else if (view == opret_btn) {
 
-            createAccount(email_editTxt.getText().toString(),password_editTxt.getText().toString());
+            createAccount(email_editTxt.getText().toString(), password_editTxt.getText().toString());
 
             //TODO lav toast der giver besked hvis emailen allerede er oprettet
         }
