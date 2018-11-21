@@ -16,6 +16,7 @@ import com.example.admin.feedback_app.fragmenter.Hjem_frg;
 import com.example.admin.feedback_app.fragmenter.Moedeoversigt_frg;
 import com.example.admin.feedback_app.fragmenter.Profil_frg;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -37,6 +38,7 @@ public class Navigation_akt extends AppCompatActivity implements BottomNavigatio
     TextView overskrift_txt, tilføj_btn;
     private FirebaseFirestore mFirestore;
     private FirebaseAuth mAuth;
+    public static mødeholder mødeholder;
 
     public static String fornavn, efternavn, email, tlf, password;
 
@@ -61,9 +63,38 @@ public class Navigation_akt extends AppCompatActivity implements BottomNavigatio
         mAuth = FirebaseAuth.getInstance();
         mFirestore = FirebaseFirestore.getInstance();
 
+        mødeholder = new mødeholder(null,null,null,null,null,null);
+
+
+        final DocumentReference docRef = mFirestore.collection("mødeholder").document(mAuth.getUid());
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        mødeholder.setFornavn(document.get("fornavn").toString());
+                        mødeholder.setEfternavn(document.get("efternavn").toString());
+                        mødeholder.setEmail(document.get("email").toString());
+                        mødeholder.setPassword(document.get("password").toString());
+                        mødeholder.setTlf(document.get("tlf").toString());
+                        mødeholder.setVirk_id(document.get("virk_id").toString());
 
 
 
+                        Log.d(TAG, "onComplete: møder holder navn: "+mødeholder.getFornavn());
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
+
+
+
+        /**
         mFirestore.collection("mødeholder")
                 .whereEqualTo("id", mAuth.getCurrentUser().getUid())
                 .get()
@@ -91,7 +122,7 @@ public class Navigation_akt extends AppCompatActivity implements BottomNavigatio
                         }
                     }
                 });
-
+        */
 
     }
 

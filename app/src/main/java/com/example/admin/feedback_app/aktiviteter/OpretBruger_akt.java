@@ -40,6 +40,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
             tlfnr_editTxt, password_editTxt, password2_editTxt, virk_id_editTxt;
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFirestore;
+    private mødeholder mødeholder;
 
 
     @Override
@@ -87,7 +88,21 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
 
+                            mødeholder = new mødeholder(
+                                    fornavn_editTxt.getText().toString(),
+                                    efternavn_editTxt.getText().toString(),
+                                    email,
+                                    password,
+                                    virk_id_editTxt.getText().toString(),
+                                    tlfnr_editTxt.getText().toString()
+                            );
+
+                            mFirestore.collection("mødeholder").document(mAuth.getUid()).set(mødeholder);
+
+
+
                             //indsætter data i firestore
+                            /**
                             try{
                                 Map<String, Object> muser = new HashMap<>();
                                 muser.put("id",mAuth.getCurrentUser().getUid());
@@ -113,6 +128,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                             catch (Exception e){
                                 e.printStackTrace();
                             }
+                             */
 
 
 

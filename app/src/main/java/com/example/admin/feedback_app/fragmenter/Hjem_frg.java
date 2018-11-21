@@ -11,9 +11,12 @@ import android.widget.TextView;
 
 import com.example.admin.feedback_app.R;
 import com.example.admin.feedback_app.aktiviteter.Navigation_akt;
+import com.example.admin.feedback_app.aktiviteter.mødeholder;
 
 
 public class Hjem_frg extends Fragment {
+
+
 
     private TextView fraFire, fraFire2;
 
@@ -25,8 +28,8 @@ public class Hjem_frg extends Fragment {
         fraFire = v.findViewById(R.id.textViewFire);
         fraFire2 = v.findViewById(R.id.textViewfraFire2);
 
-        fraFire.setText("Dit navn er"+Navigation_akt.fornavn+" "+Navigation_akt.efternavn);
-        fraFire2.setText("Din mail er"+Navigation_akt.email);
+        fraFire.setText("Dit navn er "+Navigation_akt.mødeholder.getFornavn());
+        fraFire2.setText("Din mail er "+Navigation_akt.mødeholder.getEmail());
 
         // Inflate the layout for this fragment
         return v;
