@@ -87,16 +87,14 @@ public class IkkeAfholdt_frg extends Fragment {
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
+                        
+                        if(!møder.isEmpty()) {
+                            Log.d(TAG, "onCreateView: navn"+møder.get(0).getNavn());
+                            møde1.setText(møder.get(0).getNavn());
+                            //møde1.setText(møder.get(2).getNavn());
+                        }
                     }
                 });
-
-
-
-            if(!møder.isEmpty()) {
-                Log.d(TAG, "onCreateView: navn"+møder.get(0).getNavn());
-                møde1.setText(møder.get(0).getNavn());
-                //møde1.setText(møder.get(2).getNavn());
-            }
 
 
         return v;
