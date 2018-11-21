@@ -22,17 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link IkkeAfholdt_frg.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link IkkeAfholdt_frg#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class IkkeAfholdt_frg extends Fragment {
 
-    List<Møde> møder;
+    ArrayList<Møde> møder = new ArrayList<>();
 
     private static final String TAG = "ikkeAfholdt";
 
@@ -68,12 +60,12 @@ public class IkkeAfholdt_frg extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            int index=0;
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                int index=0;
 
                                 Møde mødeObj = new Møde("navn","hej","hej","hej","hej","hej");
 
-                                List<Møde> møder = new ArrayList<>();
+                                møder.add(mødeObj);
 
                                 /**
                                 mødeObj.setNavn(document.get("navn").toString());
@@ -85,15 +77,17 @@ public class IkkeAfholdt_frg extends Fragment {
                                 mødeObj.setAfholdt((Boolean) document.get("afholdt"));
                                  */
 
-                                møder.set(index,mødeObj);
+                               // møder.set(index,mødeObj);
 
-                                index++;
+
 
                                 Log.d(TAG, "navn fra firebase: " + document.get("navn").toString());
 
                                 Log.d(TAG, "mødelistens navn: " + møder.get(index).getNavn());
 
                                 Log.d(TAG, document.getId() + " => " + document.getData());
+
+                                index++;
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());

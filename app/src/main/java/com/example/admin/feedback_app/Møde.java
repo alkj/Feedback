@@ -12,6 +12,9 @@ public class Møde {
 
 
 
+    public Møde(){
+
+    }
     public Møde(String navn, String formål, String dato, String tid, String sted, String mødeholderID) {
         this.navn = navn;
         this.formål = formål;
