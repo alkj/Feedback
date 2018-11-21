@@ -40,8 +40,6 @@ public class Navigation_akt extends AppCompatActivity implements BottomNavigatio
     private FirebaseAuth mAuth;
     public static mødeholder mødeholder;
 
-    public static String fornavn, efternavn, email, tlf, password;
-
     //TODO: ved tryk af tilbage knappe, spørg brugeren om han vil logge ud.
 
     @Override
