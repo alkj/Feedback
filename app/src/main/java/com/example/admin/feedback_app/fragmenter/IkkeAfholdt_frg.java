@@ -24,7 +24,7 @@ import java.util.List;
 
 public class IkkeAfholdt_frg extends Fragment {
 
-    ArrayList<Møde> møder = new ArrayList<>();
+    ArrayList<Møde> møder;
 
     private static final String TAG = "ikkeAfholdt";
 
@@ -49,7 +49,7 @@ public class IkkeAfholdt_frg extends Fragment {
 
 
 
-
+        møder = new ArrayList<>();
 
 
         mFirestore.collection("møder")
@@ -63,27 +63,22 @@ public class IkkeAfholdt_frg extends Fragment {
                             int index=0;
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
-                                Møde mødeObj = new Møde("navn","hej","hej","hej","hej","hej");
-
-                                møder.add(mødeObj);
-
-                                /**
-                                mødeObj.setNavn(document.get("navn").toString());
-                                mødeObj.setTid(document.get("tid").toString());
-                                mødeObj.setSted(document.get("sted").toString());
-                                mødeObj.setDato(document.get("dato").toString());
-                                mødeObj.setFormål(document.get("formål").toString());
-                                mødeObj.setMødeholderID(document.get("mødeholderID").toString());
-                                mødeObj.setAfholdt((Boolean) document.get("afholdt"));
-                                 */
-
-                               // møder.set(index,mødeObj);
+                                Møde mødeObj = new Møde(
+                                        document.get("navn").toString(),
+                                        document.get("tid").toString(),
+                                        document.get("sted").toString(),
+                                        document.get("dato").toString(),
+                                        document.get("formål").toString(),
+                                        document.get("mødeholderID").toString());
 
 
+                               møder.add(index,mødeObj);
 
                                 Log.d(TAG, "navn fra firebase: " + document.get("navn").toString());
 
                                 Log.d(TAG, "mødelistens navn: " + møder.get(index).getNavn());
+
+                                Log.d(TAG, "mødelistens navn ved index 0: " + møder.get(0).getNavn());
 
                                 Log.d(TAG, document.getId() + " => " + document.getData());
 
@@ -95,11 +90,14 @@ public class IkkeAfholdt_frg extends Fragment {
                     }
                 });
 
-        if(!møder.isEmpty()) {
 
-            møde1.setText(møder.get(0).getNavn());
-            //møde1.setText(møder.get(2).getNavn());
-        }
+
+            if(!møder.isEmpty()) {
+                Log.d(TAG, "onCreateView: navn"+møder.get(0).getNavn());
+                møde1.setText(møder.get(0).getNavn());
+                //møde1.setText(møder.get(2).getNavn());
+            }
+
 
         return v;
     }
