@@ -1,4 +1,4 @@
-package com.example.admin.feedback_app.fragmenter;
+package com.example.admin.feedback_app.dialogs;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -13,6 +13,7 @@ import android.widget.TimePicker;
 import com.example.admin.feedback_app.R;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 public class TidPickerDialog_frg extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
@@ -24,15 +25,16 @@ public class TidPickerDialog_frg extends DialogFragment implements TimePickerDia
 
         int timer = kalender.get(Calendar.HOUR_OF_DAY);
         int minutter = kalender.get(Calendar.MINUTE);
+        int theme = R.style.DialogThemeGray;
 
 
-        return new TimePickerDialog(getActivity(), this, timer, minutter, DateFormat.is24HourFormat(getActivity()));
+        return new TimePickerDialog(getActivity(), theme, this, timer, minutter, DateFormat.is24HourFormat(getActivity()));
     }
 
     @Override
     public void onTimeSet(TimePicker timePicker, int timer, int minutter) {
         String s = String.format(getString(R.string.tid_format), timer, minutter);
 
-        ((TextView) getActivity().findViewById(R.id.opretmoeder_tid_txt)).setText(s);
+        ((TextView) Objects.requireNonNull(getActivity()).findViewById(R.id.opretmoeder_tid_txt)).setText(s);
     }
 }
