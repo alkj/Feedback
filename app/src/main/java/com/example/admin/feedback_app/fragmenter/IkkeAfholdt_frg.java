@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.admin.feedback_app.Møde;
@@ -39,22 +41,20 @@ public class IkkeAfholdt_frg extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        final View v = inflater.inflate(R.layout.fragment_ikke_afholdt, container, false);
+        //String[] stringværdier = {"1",
+        //"2",
+        //"3",
+        //"4"};
 
-        View v = inflater.inflate(R.layout.fragment_ikke_afholdt, container, false);
 
-        møde1 = v.findViewById(R.id.møde1);
-        møde2 = v.findViewById(R.id.møde2);
+        //møde1 = v.findViewById(R.id.møde1);
+        //møde2 = v.findViewById(R.id.møde2);
 
         mAuth = FirebaseAuth.getInstance();
         mFirestore = FirebaseFirestore.getInstance();
 
-
-
-
-
         møder = new ArrayList<>();
-
-
         mFirestore.collection("møder")
                 .whereEqualTo("mødeholderID", mAuth.getCurrentUser().getUid())
                 .whereEqualTo("afholdt",false)
@@ -93,11 +93,25 @@ public class IkkeAfholdt_frg extends Fragment {
                         
                         if(!møder.isEmpty()) {
                             Log.d(TAG, "onCreateView: navn"+møder.get(0).getNavn());
-                            møde1.setText(møder.get(0).getNavn());
+                           // møde1.setText(møder.get(0).getNavn());
                             //møde1.setText(møder.get(2).getNavn());
                         }
+
+                        //Få mødenavne vist i et listview
+                        Log.d(TAG, "Antallet af elementer i møde arrayet: " + møder.size());
+                        String[] mødenavne = new String[møder.size()];
+                        for (int i = 0 ; i<møder.size(); i++){
+                            mødenavne[i] = møder.get(i).getNavn();
+                        }
+                        ListView listView = (ListView) v.findViewById(R.id.listview1);
+                        ArrayAdapter<String> listviewAdapter = new ArrayAdapter<String>(getActivity(),
+                                android.R.layout.simple_list_item_1,
+                                mødenavne);
+                        listView.setAdapter(listviewAdapter);
+
                     }
                 });
+
 
 
         return v;
