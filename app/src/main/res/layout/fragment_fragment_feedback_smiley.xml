@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment_feedback_smiley"
+    tools:layout_editor_absoluteY="25dp"
+    android:background="@color/colorGrøn">
+
+
+    <TextView
+        android:id="@+id/textViewFeedbackBeskrivelse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:layout_marginBottom="45dp"
+        android:text="hvad syns du om powerpoint?"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageButton
+            android:id="@+id/imageBMegetSur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/meget_sur"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="137dp" />
+
+
+        <ImageButton
+            android:id="@+id/imageBSur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_alignTop="@+id/imageViewMegetSur"
+            android:layout_toEndOf="@+id/imageViewTilfreds"
+            android:src="@drawable/sur"
+            tools:layout_editor_absoluteX="77dp"
+            tools:layout_editor_absoluteY="137dp" />
+
+        <ImageButton
+            android:id="@+id/imageBTilfreds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="2"
+            android:layout_alignEnd="@+id/buttonFeedbackOK"
+            android:layout_alignBottom="@+id/imageViewMegetSur"
+            android:src="@drawable/tilfreds"
+            tools:layout_editor_absoluteX="147dp"
+            tools:layout_editor_absoluteY="137dp" />
+
+
+        <ImageButton
+            android:id="@+id/imageBMegetTilfreds"
+            android:layout_width="85dp"
+            android:layout_height="match_parent"
+            android:layout_row="1"
+            android:layout_column="3"
+            android:layout_alignBottom="@+id/imageViewMegetSur"
+            android:layout_toEndOf="@+id/imageViewSur"
+            android:src="@drawable/meget_tilfreds"
+            tools:layout_editor_absoluteX="217dp"
+            tools:layout_editor_absoluteY="136dp" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonFeedbackOKOK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:layout_marginBottom="89dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="OK" />
+
+</android.support.constraint.ConstraintLayout>

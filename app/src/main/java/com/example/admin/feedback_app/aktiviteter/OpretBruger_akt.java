@@ -86,8 +86,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                                     email,
                                     password,
                                     virk_id_editTxt.getText().toString(),
-                                    tlfnr_editTxt.getText().toString()
-                            );
+                                    tlfnr_editTxt.getText().toString());
 
                             //indsætter data i firestore
                             try {
