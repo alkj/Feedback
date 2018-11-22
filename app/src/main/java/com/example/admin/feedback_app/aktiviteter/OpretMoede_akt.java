@@ -11,8 +11,10 @@ import android.widget.TextView;
 
 import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.R;
-import com.example.admin.feedback_app.fragmenter.DatoPickerDialog_frg;
-import com.example.admin.feedback_app.fragmenter.TidPickerDialog_frg;
+import com.example.admin.feedback_app.dialogs.DatoPickerDialog_frg;
+import com.example.admin.feedback_app.dialogs.TidPickerDialog_frg;
+//import com.example.admin.feedback_app.fragmenter.DatoPickerDialog_frg;
+//import com.example.admin.feedback_app.fragmenter.TidPickerDialog_frg;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
