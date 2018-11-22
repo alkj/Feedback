@@ -20,6 +20,7 @@ public class firebaseLogik {
     private FirebaseFirestore mFirestore;
 
     public FirebaseUser getCurrent(){
+        mAuth = FirebaseAuth.getInstance();
         return mAuth.getCurrentUser();
     }
 

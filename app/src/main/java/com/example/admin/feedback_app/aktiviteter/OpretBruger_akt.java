@@ -31,7 +31,6 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
     private Button tilbage_btn, opret_btn;
     private EditText fornavn_editTxt, efternavn_editTxt, email_editTxt,
             tlfnr_editTxt, password_editTxt, password2_editTxt, virk_id_editTxt;
-    private FirebaseAuth mAuth;
 
     private com.example.admin.feedback_app.mødeholder mødeholder;
     private firebaseLogik fire;
@@ -43,7 +42,6 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         setContentView(R.layout.activity_opret_bruger);
 
         fire = new firebaseLogik();
-        mAuth = FirebaseAuth.getInstance();
 
 
         //Knapper
@@ -166,7 +164,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         } else if (view == opret_btn) {
             createAccount(email_editTxt.getText().toString(), password_editTxt.getText().toString());
 
-            updateUI(mAuth.getCurrentUser());
+            updateUI(fire.getCurrent());
 
             //TODO lav toast der giver besked hvis emailen allerede er oprettet
         }
