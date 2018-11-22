@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Gruppe 76Z</string>
+    <string name="app_name">76Z Feedback til Møder</string>
     <!-- Strings til fragmentet 'opret møde' -->
     <string name="oplysninger">Oplysninger</string>
     <string name="mode_navn">Møde navn</string>
@@ -11,7 +11,7 @@
     <string name="tilbage">Tilbage</string>
     <string name="opret_Mode">Opret møde</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="moedeoversigt">Møder</string>
+    <string name="indtast_moede_oplysninger">Indtast Møde Oplysninger</string>
 
 
     <!-- Strings til menuen 'aktionbar_bund' -->
@@ -19,8 +19,10 @@
     <string name="hjem">Hjem</string>
     <string name="profil">Profil</string>
     <string name="title_activity_navigation_akt">Navigation_akt</string>
-    <string name="ikke_afholdt">ikke Afholdt</string>
-    <string name="afholdt">Afholdt</string>
+    <string name="ikke_afholdt">Ikke Afholdte</string>
+    <string name="afholdt">Afholdte</string>
     <string name="anuller">Anuller</string>
     <string name="annuller">Annuller</string>
+    <string name="tid_format">%d:%d</string>
+    <string name="dato_format">%d-%d-%d</string>
 </resources>

@@ -16,7 +16,7 @@ import com.example.admin.feedback_app.R;
 
 public class Moedeoversigt_frg extends Fragment implements View.OnClickListener {
 
-    View afholdte_btn, ikkeAfholdte_btn, opretmoede_btn;
+    View afholdte_btn, ikkeAfholdte_btn;
     TextView afholdte_txt, ikkeAfholdte_txt;
     Drawable selected_bg, unselected_bg;
 
@@ -35,11 +35,9 @@ public class Moedeoversigt_frg extends Fragment implements View.OnClickListener 
         //View/Knapper
         afholdte_btn = view.findViewById(R.id.moede_afholdt_btn);
         ikkeAfholdte_btn = view.findViewById(R.id.moede_ikkeAfholdt_btn);
-        opretmoede_btn = view.findViewById(R.id.moede_opret_btn);
 
         afholdte_btn.setOnClickListener(this);
         ikkeAfholdte_btn.setOnClickListener(this);
-        opretmoede_btn.setOnClickListener(this);
 
         //Tekst
         afholdte_txt = view.findViewById(R.id.moede_afholdt_txt);
@@ -86,12 +84,6 @@ public class Moedeoversigt_frg extends Fragment implements View.OnClickListener 
             ikkeAfholdte_txt.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
 
             indlæsFragment(new Afholdt_frg());
-        }
-        else if ( view == opretmoede_btn){
-            getFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.navigation_fragment_container, new OpretMoede_frg())
-                    .commit();
         }
 
     }
