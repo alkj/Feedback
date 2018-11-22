@@ -41,7 +41,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-
+        <activity android:name=".aktiviteter.GiveFeedback2_akt"></activity>
     </application>
 
 </manifest>
