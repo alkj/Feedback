@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.aktiviteter.firebaseLogik;
 import com.example.admin.feedback_app.mødeholder;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,8 +32,9 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
     private EditText fornavn_editTxt, efternavn_editTxt, email_editTxt,
             tlfnr_editTxt, password_editTxt, password2_editTxt, virk_id_editTxt;
     private FirebaseAuth mAuth;
-    private FirebaseFirestore mFirestore;
+
     private com.example.admin.feedback_app.mødeholder mødeholder;
+    private firebaseLogik fire;
 
 
     @Override
@@ -40,8 +42,9 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opret_bruger);
 
+        fire = new firebaseLogik();
         mAuth = FirebaseAuth.getInstance();
-        mFirestore = FirebaseFirestore.getInstance();
+
 
         //Knapper
         tilbage_btn = findViewById(R.id.opretbruger_tilbage_btn);
@@ -68,47 +71,17 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
             return;
         }
 
+        mødeholder = new mødeholder(
+                fornavn_editTxt.getText().toString(),
+                efternavn_editTxt.getText().toString(),
+                email_editTxt.getText().toString(),
+                password_editTxt.getText().toString(),
+                virk_id_editTxt.getText().toString(),
+                tlfnr_editTxt.getText().toString());
+
         showProgressDialog();
-
-        // [START create_user_with_email]
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-
-                            mødeholder = new mødeholder(
-                                    fornavn_editTxt.getText().toString(),
-                                    efternavn_editTxt.getText().toString(),
-                                    email,
-                                    password,
-                                    virk_id_editTxt.getText().toString(),
-                                    tlfnr_editTxt.getText().toString());
-
-                            //indsætter data i firestore
-                            try {
-                                mFirestore.collection("mødeholder").document(mAuth.getUid()).set(mødeholder);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-
-                            sendEmailVerification();
-                            updateUI(user);
-                        } else {
-                            //TODO lav check om emailen allerede er i firebase og giv korrekt fejlmeddl.
-
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(OpretBruger_akt.this, "Fejl.",Toast.LENGTH_SHORT).show();
-                            updateUI(null);
-                        }
-                        hideProgressDialog();
-                    }
-                });
-
+        fire.insætMødeholderData(mødeholder,OpretBruger_akt.this);
+        hideProgressDialog();
 
     }
 
@@ -185,42 +158,15 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
 
     }
 
-    private void sendEmailVerification() {
-        // Disable button
-
-        // Send verification email
-        // [START send_email_verification]
-        final FirebaseUser user = mAuth.getCurrentUser();
-        user.sendEmailVerification()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        // [START_EXCLUDE]
-
-                        if (task.isSuccessful()) {
-                            Toast.makeText(OpretBruger_akt.this,
-                                    "Verification email sent to " + user.getEmail(),
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            Log.e(TAG, "sendEmailVerification", task.getException());
-                            Toast.makeText(OpretBruger_akt.this,
-                                    "Failed to send verification email.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                        // [END_EXCLUDE]
-                    }
-                });
-        // [END send_email_verification]
-    }
-
     @Override
     public void onClick(View view) {
         if (view == tilbage_btn) {
             //Luk og gå tilbage til login aktiviteten
             finish();
         } else if (view == opret_btn) {
-
             createAccount(email_editTxt.getText().toString(), password_editTxt.getText().toString());
+
+            updateUI(mAuth.getCurrentUser());
 
             //TODO lav toast der giver besked hvis emailen allerede er oprettet
         }
