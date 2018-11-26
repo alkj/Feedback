@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.admin.feedback_app.FBListener;
 import com.example.admin.feedback_app.R;
 import com.example.admin.feedback_app.aktiviteter.firebaseLogik;
 import com.example.admin.feedback_app.mødeholder;
@@ -20,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class OpretBruger_akt extends BaseActivity implements View.OnClickListener {
+public class OpretBruger_akt extends BaseActivity implements View.OnClickListener, FBListener {
 
     /**
      * Inspiration fået fra firebase's egen hjemmeside: https://firebase.google.com/docs/auth/android/password-auth
@@ -78,8 +79,10 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                 tlfnr_editTxt.getText().toString());
 
         showProgressDialog();
-        fire.insætMødeholderData(mødeholder,OpretBruger_akt.this);
+        fire.insætMødeholderData(mødeholder,OpretBruger_akt.this, this);
         hideProgressDialog();
+
+
 
     }
 
@@ -148,11 +151,8 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         return valid;
     }
 
-    public void updateUI(FirebaseUser user) {
-        if (user != null) {
-            Intent myIntent = new Intent(OpretBruger_akt.this, Navigation_akt.class);
-            OpretBruger_akt.this.startActivity(myIntent);
-        }
+    public void fbSucces(FirebaseUser user) {
+
 
     }
 
@@ -164,11 +164,23 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         } else if (view == opret_btn) {
             createAccount(email_editTxt.getText().toString(), password_editTxt.getText().toString());
 
-            updateUI(fire.getCurrent());
+            //fbSucces(fire.getCurrent());
 
             //TODO lav toast der giver besked hvis emailen allerede er oprettet
         }
     }
 
 
+    @Override
+    public void videre() {
+        if (fire.getCurrent() != null) {
+            Intent myIntent = new Intent(OpretBruger_akt.this, Navigation_akt.class);
+            OpretBruger_akt.this.startActivity(myIntent);
+        }
+    }
+
+    @Override
+    public void fejl() {
+
+    }
 }

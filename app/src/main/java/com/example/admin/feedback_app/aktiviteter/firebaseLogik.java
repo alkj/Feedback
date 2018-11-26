@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.admin.feedback_app.FBListener;
 import com.example.admin.feedback_app.mødeholder;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -24,7 +25,7 @@ public class firebaseLogik {
         return mAuth.getCurrentUser();
     }
 
-    public void insætMødeholderData(final mødeholder mødeholder, final Activity akt) {
+    public void insætMødeholderData(final mødeholder mødeholder, final Activity akt, final FBListener listener) {
 
         mAuth = FirebaseAuth.getInstance();
         mFirestore = FirebaseFirestore.getInstance();
@@ -41,6 +42,8 @@ public class firebaseLogik {
 
                     //sender verificering mail
                     sendEmailVeri(akt);
+
+                    listener.videre();
 
                 }
                 else{
