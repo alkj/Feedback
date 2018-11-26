@@ -57,7 +57,7 @@ public class uddyb_feedback extends Fragment implements View.OnClickListener {
 
     public void updater(int humoer) {
         if (humoer == 1) {
-            imageButton.setImageDrawable(getContext().getDrawable(R.drawable.meget_tilfreds));
+            imageButton.setImageDrawable(getContext().getDrawable(R.drawable.meget_glad));
         } else if (humoer == 2) {
             imageButton.setImageDrawable(getContext().getDrawable(R.drawable.tilfreds));
         } else if (humoer == 3) {
