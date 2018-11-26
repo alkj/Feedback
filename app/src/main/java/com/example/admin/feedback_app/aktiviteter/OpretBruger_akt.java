@@ -1,7 +1,6 @@
 package com.example.admin.feedback_app.aktiviteter;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -10,18 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.admin.feedback_app.FBListener;
+import com.example.admin.feedback_app.FireBase.FBOnUserCreatedListener;
 import com.example.admin.feedback_app.R;
-import com.example.admin.feedback_app.aktiviteter.firebaseLogik;
+import com.example.admin.feedback_app.FireBase.FirebaseLogik;
 import com.example.admin.feedback_app.mødeholder;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-public class OpretBruger_akt extends BaseActivity implements View.OnClickListener, FBListener {
+public class OpretBruger_akt extends BaseActivity implements View.OnClickListener, FBOnUserCreatedListener {
 
     /**
      * Inspiration fået fra firebase's egen hjemmeside: https://firebase.google.com/docs/auth/android/password-auth
@@ -34,7 +28,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
             tlfnr_editTxt, password_editTxt, password2_editTxt, virk_id_editTxt;
 
     private com.example.admin.feedback_app.mødeholder mødeholder;
-    private firebaseLogik fire;
+    private FirebaseLogik fire;
 
 
     @Override
@@ -42,7 +36,8 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_opret_bruger);
 
-        fire = new firebaseLogik();
+        fire = new FirebaseLogik();
+        fire.setOnUserCreatedListener(this);
 
 
         //Knapper
@@ -79,11 +74,8 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                 tlfnr_editTxt.getText().toString());
 
         showProgressDialog();
-        fire.insætMødeholderData(mødeholder,OpretBruger_akt.this, this);
+        fire.indsætMødeholderData(mødeholder,this);
         hideProgressDialog();
-
-
-
     }
 
 
@@ -151,11 +143,6 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         return valid;
     }
 
-    public void fbSucces(FirebaseUser user) {
-
-
-    }
-
     @Override
     public void onClick(View view) {
         if (view == tilbage_btn) {
@@ -164,23 +151,16 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         } else if (view == opret_btn) {
             createAccount(email_editTxt.getText().toString(), password_editTxt.getText().toString());
 
-            //fbSucces(fire.getCurrent());
-
             //TODO lav toast der giver besked hvis emailen allerede er oprettet
         }
     }
 
 
     @Override
-    public void videre() {
-        if (fire.getCurrent() != null) {
+    public void onUserCreated(FirebaseUser user) {
+        if (user != null) {
             Intent myIntent = new Intent(OpretBruger_akt.this, Navigation_akt.class);
             OpretBruger_akt.this.startActivity(myIntent);
         }
-    }
-
-    @Override
-    public void fejl() {
-
     }
 }

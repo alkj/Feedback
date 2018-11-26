@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.admin.feedback_app.FireBase.FBOnLoginListener;
+import com.example.admin.feedback_app.FireBase.FirebaseLogik;
 import com.example.admin.feedback_app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -18,7 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class Login_akt extends BaseActivity implements View.OnClickListener {
+public class Login_akt extends BaseActivity implements View.OnClickListener, FBOnLoginListener {
 
     /**
      * Inspiration fået fra firebase's egen hjemmeside: https://firebase.google.com/docs/auth/android/password-auth
@@ -29,14 +31,13 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
     private Button login_btn, nyBruger_btn, tilbage_btn;
     private EditText email_editTxt, password_editTxt;
     private FirebaseAuth mAuth;
+    private FirebaseLogik firebase;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        mAuth = FirebaseAuth.getInstance();
 
         //Knapper
         login_btn = (Button)findViewById(R.id.login_login_btn);
@@ -56,20 +57,19 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
     @Override
     public void onStart() {
         super.onStart();
-        // Checker om user er logget ind (not null) og opdaterer gui derefter
+
+        firebase = new FirebaseLogik();
+        firebase.setOnLoginListener(this);
+        firebase.login(this, null, null);
+        /* Checker om user er logget ind (not null) og opdaterer gui derefter
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        guiLogind(currentUser);
+        guiLogind(currentUser);*/
     }
 
     @Override
     public void onClick(View view) {
         if (view == login_btn){
             signIn(email_editTxt.getText().toString(),password_editTxt.getText().toString());
-
-            if(mAuth.getCurrentUser()!=null) {
-                Intent intent = new Intent(this, Navigation_akt.class);
-                startActivity(intent);
-            }
         }
         else if (view == nyBruger_btn){
             //Åbner opret bruger aktiviteten
@@ -92,25 +92,10 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         //Vis loading hvis valideringen er okay, og check herefter om email/password er korrekt
         showProgressDialog();
 
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            guiLogind(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(Login_akt.this, "Forkert email og/eller password.", Toast.LENGTH_SHORT).show();
-                            guiLogind(null);
-                        }
-                        //Stop loading efter firebase er færdig med at give svar
-                        hideProgressDialog();
-                    }
-                });
+        firebase.login(this,email, password);
+
+        //Stop loading efter firebase er færdig med at give svar
+        hideProgressDialog();
     }
 
     public boolean validering(){
@@ -143,14 +128,11 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
 
     }
 
-    public void guiLogind(FirebaseUser user){
+    @Override
+    public void onLogin(FirebaseUser user) {
         if(user != null){
             Intent myIntent = new Intent(Login_akt.this,Navigation_akt.class);
             Login_akt.this.startActivity(myIntent);
         }
-
     }
-
-
-
 }
