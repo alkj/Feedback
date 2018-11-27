@@ -4,98 +4,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorMEGETLysGrå"
     tools:context=".fragment_feedback_smiley"
-    tools:layout_editor_absoluteY="25dp"
-    android:background="@color/colorGrøn">
+    tools:layout_editor_absoluteY="25dp">
+
+    <TextView
+        android:id="@+id/feedback_nummer_txtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="2 af 5"
+        android:textAlignment="center"
+        android:textColor="@color/colorGrøn"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
         android:id="@+id/textViewFeedbackBeskrivelse"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_row="0"
-        android:layout_column="0"
-        android:layout_marginBottom="45dp"
-        android:text="hvad syns du om powerpoint?"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="58dp"
+        android:text="Hvad syntes du om PowerPoint præsentationen?"
+        android:textAlignment="center"
+
+        android:textColor="@color/colorMørkegrå"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/feedback_nummer_txtView" />
 
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingLeft="30dp"
+        android:paddingTop="200dp"
+        android:paddingRight="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textViewFeedbackBeskrivelse">
 
 
-        <ImageButton
+        <ImageView
             android:id="@+id/imageBMegetSur"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_row="1"
-            android:layout_column="0"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:src="@drawable/meget_sur"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="137dp" />
+            android:layout_weight="1"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            android:src="@drawable/meget_sur" />
 
 
-        <ImageButton
+        <ImageView
             android:id="@+id/imageBSur"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_row="1"
-            android:layout_column="1"
-            android:layout_alignTop="@+id/imageViewMegetSur"
-            android:layout_toEndOf="@+id/imageViewTilfreds"
-            android:src="@drawable/sur"
-            tools:layout_editor_absoluteX="77dp"
-            tools:layout_editor_absoluteY="137dp" />
+            android:layout_weight="1"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            android:src="@drawable/sur" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/imageBTilfreds"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_row="1"
-            android:layout_column="2"
-            android:layout_alignEnd="@+id/buttonFeedbackOK"
-            android:layout_alignBottom="@+id/imageViewMegetSur"
-            android:src="@drawable/tilfreds"
-            tools:layout_editor_absoluteX="147dp"
-            tools:layout_editor_absoluteY="137dp" />
+            android:layout_weight="1"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            android:src="@drawable/glad" />
 
 
-        <ImageButton
+        <ImageView
             android:id="@+id/imageBMegetTilfreds"
-            android:layout_width="85dp"
-            android:layout_height="match_parent"
-            android:layout_row="1"
-            android:layout_column="3"
-            android:layout_alignBottom="@+id/imageViewMegetSur"
-            android:layout_toEndOf="@+id/imageViewSur"
-            android:src="@drawable/meget_tilfreds"
-            tools:layout_editor_absoluteX="217dp"
-            tools:layout_editor_absoluteY="136dp" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            android:src="@drawable/meget_glad" />
 
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/buttonFeedbackOKOK"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-
-        android:layout_marginBottom="89dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="OK" />
 
 </android.support.constraint.ConstraintLayout>

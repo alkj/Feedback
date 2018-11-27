@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import java.util.zip.Inflater;
 
@@ -23,7 +24,7 @@ public class uddyb_feedback extends Fragment implements View.OnClickListener {
 
     private static final String IMAGE = "image";
 
-    ImageButton imageButton;
+    ImageView imageButton;
     int humoer;
     Drawable drawable;
     public int nummer;
@@ -57,7 +58,7 @@ public class uddyb_feedback extends Fragment implements View.OnClickListener {
 
     public void updater(int humoer) {
         if (humoer == 1) {
-            imageButton.setImageDrawable(getContext().getDrawable(R.drawable.meget_tilfreds));
+            imageButton.setImageDrawable(getContext().getDrawable(R.drawable.meget_glad));
         } else if (humoer == 2) {
             imageButton.setImageDrawable(getContext().getDrawable(R.drawable.tilfreds));
         } else if (humoer == 3) {

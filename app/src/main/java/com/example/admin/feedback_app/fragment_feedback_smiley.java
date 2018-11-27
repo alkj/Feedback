@@ -26,10 +26,10 @@ public class fragment_feedback_smiley extends Fragment implements View.OnClickLi
 
 
     private OnButtonClickedFeedbackSmiley onButtonClickedFeedbackSmiley;
-    public ImageButton imageViewMegetTilfreds;
-    public ImageButton imageViewTilfreds;
-    public ImageButton imageViewSur;
-    public ImageButton imageViewMegetSur;
+    public ImageView imageViewMegetTilfreds;
+    public ImageView imageViewTilfreds;
+    public ImageView imageViewSur;
+    public ImageView imageViewMegetSur;
     public TextView textViewFeedback;
 
     private static final String PIC = "feedback";
