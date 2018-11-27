@@ -20,7 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class Login_akt extends BaseActivity implements View.OnClickListener, FBOnLoginListener {
+public class Login_akt extends BaseActivity implements View.OnClickListener {
 
     /**
      * Inspiration fået fra firebase's egen hjemmeside: https://firebase.google.com/docs/auth/android/password-auth
@@ -30,8 +30,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener, FBO
 
     private Button login_btn, nyBruger_btn, tilbage_btn;
     private EditText email_editTxt, password_editTxt;
-    private FirebaseAuth mAuth;
-    private FirebaseLogik firebase;
+    private FirebaseAuth firebaseAuth;
 
 
     @Override
@@ -40,17 +39,17 @@ public class Login_akt extends BaseActivity implements View.OnClickListener, FBO
         setContentView(R.layout.activity_login);
 
         //Knapper
-        login_btn = (Button)findViewById(R.id.login_login_btn);
-        nyBruger_btn = (Button)findViewById(R.id.login_nyBruger_btn);
-        tilbage_btn = (Button)findViewById(R.id.login_tilbage_btn);
+        login_btn = findViewById(R.id.login_login_btn);
+        nyBruger_btn = findViewById(R.id.login_nyBruger_btn);
+        tilbage_btn = findViewById(R.id.login_tilbage_btn);
 
         login_btn.setOnClickListener(this);
         nyBruger_btn.setOnClickListener(this);
         tilbage_btn.setOnClickListener(this);
 
         //Input felter
-        email_editTxt = (EditText)findViewById(R.id.login_brugernavn_editTxt);
-        password_editTxt = (EditText)findViewById(R.id.login_password_editTxt);
+        email_editTxt = findViewById(R.id.login_brugernavn_editTxt);
+        password_editTxt = findViewById(R.id.login_password_editTxt);
 
     }
 
@@ -58,18 +57,16 @@ public class Login_akt extends BaseActivity implements View.OnClickListener, FBO
     public void onStart() {
         super.onStart();
 
-        firebase = new FirebaseLogik();
-        firebase.setOnLoginListener(this);
-        firebase.login(this, null, null);
-        /* Checker om user er logget ind (not null) og opdaterer gui derefter
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        guiLogind(currentUser);*/
+        firebaseAuth = FirebaseAuth.getInstance();
+        //Hvis brugeren har tidligere været logget ind, går vi direkte videre.
+        if (firebaseAuth.getCurrentUser() != null) næsteSide();
     }
 
     @Override
     public void onClick(View view) {
         if (view == login_btn){
-            signIn(email_editTxt.getText().toString(),password_editTxt.getText().toString());
+            //Login
+            login(email_editTxt.getText().toString(),password_editTxt.getText().toString());
         }
         else if (view == nyBruger_btn){
             //Åbner opret bruger aktiviteten
@@ -82,29 +79,24 @@ public class Login_akt extends BaseActivity implements View.OnClickListener, FBO
         }
     }
 
-    private void signIn(String email, String password) {
+    private void login(String email, String password) {
         Log.d(TAG, "signIn:" + email);
 
-        if (!validering()) {
+        if (!validering(email, password)) {
             return;
         }
 
-        //Vis loading hvis valideringen er okay, og check herefter om email/password er korrekt
+        //Vis loading hvis valideringen er okay, og forsøg at login
         showProgressDialog();
 
-        firebase.login(this,email, password);
-
-        //Stop loading efter firebase er færdig med at give svar
-        hideProgressDialog();
+        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new LoginListener());
     }
 
-    public boolean validering(){
+    public boolean validering(String email, String password){
+        //TODO: lav en valideringsklasse til email da det bruges flere steder
 
         Log.d(TAG, "valideringEmail: startes");
         boolean valid = true;
-
-        String email = this.email_editTxt.getText().toString();
-        String password = this.password_editTxt.getText().toString();
 
         //TODO evt lav check om emailen er valid og er af formen xxx@xxx.com
 
@@ -113,26 +105,52 @@ public class Login_akt extends BaseActivity implements View.OnClickListener, FBO
             this.email_editTxt.setError("Indtast E-mail.");
             valid = false;
         }
-        if (TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+        else if (TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
             this.email_editTxt.setError("Indtast E-mail.");
             valid = false;
         }
-        if (TextUtils.isEmpty(password)&& !TextUtils.isEmpty(email)) {
+        else if (TextUtils.isEmpty(password)&& !TextUtils.isEmpty(email)) {
             this.password_editTxt.setError("Indtast password");
             valid = false;
         }
 
         Log.d(TAG, "valideringEmail: validering returneres");
         return valid;
-
-
     }
 
-    @Override
-    public void onLogin(FirebaseUser user) {
-        if(user != null){
-            Intent myIntent = new Intent(Login_akt.this,Navigation_akt.class);
-            Login_akt.this.startActivity(myIntent);
+    public void næsteSide(){
+        //Giver lige en besked
+        Toast.makeText(this,
+                "Logget ind med: " + firebaseAuth.getCurrentUser().getEmail(),
+                Toast.LENGTH_SHORT).show();
+
+        //Skifter til næste aktivitet
+        Intent myIntent = new Intent(Login_akt.this,Navigation_akt.class);
+        Login_akt.this.startActivity(myIntent);
+    }
+
+    class LoginListener implements OnCompleteListener<AuthResult>{
+
+        @Override
+        public void onComplete(@NonNull Task<AuthResult> task) {
+            //Stop loading efter firebase er færdig med at give svar
+            hideProgressDialog();
+
+            if (task.isSuccessful()){
+                //Login
+                Log.d(TAG, "signInWithEmail:success");
+                næsteSide();
+            }
+            else {
+                //Login fejlede!!
+                Log.w(TAG, "signInWithEmail:failure", task.getException());
+
+                //TODO: giv en bedre beskrivelse af årsagen til fejlen
+                //TODO: custom Toast feks. rød til fejl
+                Toast.makeText(getApplicationContext(),
+                        "Login fejlede!",
+                        Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

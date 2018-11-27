@@ -21,21 +21,21 @@ public class FirebaseLogik {
     private FBOnUserCreatedListener userCreatedListener;
     private FBOnLoginListener loginListener;
 
-    public FirebaseLogik(){
+    public FirebaseLogik() {
         mAuth = FirebaseAuth.getInstance();
         mFirestore = FirebaseFirestore.getInstance();
     }
 
-    public FirebaseUser getCurrentUser(){
+    public FirebaseUser getCurrentUser() {
         return mAuth.getCurrentUser();
     }
 
     public void indsætMødeholderData(final mødeholder mødeholder, final Activity akt) {
 
-        mAuth.createUserWithEmailAndPassword(mødeholder.getEmail(),mødeholder.getPassword()).addOnCompleteListener(akt, new OnCompleteListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(mødeholder.getEmail(), mødeholder.getPassword()).addOnCompleteListener(akt, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
 
                     //sætter data over på firebase
                     mFirestore.collection("mødeholder").document(mAuth.getUid()).set(mødeholder);
@@ -44,19 +44,20 @@ public class FirebaseLogik {
                     sendEmailVeri(akt);
 
                     // Kalder onUserCreated hvis der er en listener
-                    if(userCreatedListener != null) userCreatedListener.onUserCreated(mAuth.getCurrentUser());
+                    if (userCreatedListener != null)
+                        userCreatedListener.onUserCreated(mAuth.getCurrentUser());
 
-                }
-                else{
-                    Toast.makeText(akt, "Fejl",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(akt, "Fejl", Toast.LENGTH_SHORT).show();
 
                 }
 
             }
         });
     }
+
     private void sendEmailVeri(final Activity akt) {
-        final FirebaseUser user = mAuth.getCurrentUser();
+        final FirebaseUser user = getCurrentUser();
         user.sendEmailVerification()
                 .addOnCompleteListener(akt, new OnCompleteListener<Void>() {
                     @Override
@@ -74,41 +75,37 @@ public class FirebaseLogik {
                 });
     }
 
-    public void login(final Activity akt, String email, String password){
-        //TODO: skal lige gennemgås
-        if (getCurrentUser() == null){
-            mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(akt, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                Log.d(TAG, "signInWithEmail:success");
-
-                                if (loginListener != null) loginListener.onLogin(getCurrentUser());
-
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                Toast.makeText(akt, "Forkert email og/eller password.", Toast.LENGTH_SHORT).show();
-
-                            }
-                        }
-                    });
-        }
-        else
+    public void login() {
         if (loginListener != null) loginListener.onLogin(getCurrentUser());
+    }
 
+    public void login(final Activity akt, String email, String password) {
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(akt, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithEmail:success");
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+
+                        }
+
+                        if (loginListener != null) loginListener.onLogin(getCurrentUser());
+                    }
+                });
 
     }
 
 
-
-    public void setOnUserCreatedListener(FBOnUserCreatedListener userCreatedListener){
+    public void setOnUserCreatedListener(FBOnUserCreatedListener userCreatedListener) {
         this.userCreatedListener = userCreatedListener;
     }
 
-    public void setOnLoginListener(FBOnLoginListener loginListener){
+    public void setOnLoginListener(FBOnLoginListener loginListener) {
         this.loginListener = loginListener;
     }
 
