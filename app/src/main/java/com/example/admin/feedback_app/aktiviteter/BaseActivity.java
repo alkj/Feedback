@@ -9,6 +9,10 @@ import android.view.inputmethod.InputMethodManager;
 
 public class BaseActivity extends AppCompatActivity {
 
+    /**
+     * Taget fra https://github.com/firebase/quickstart-android/tree/master/auth/app/src/main/java/com/google/firebase/quickstart/auth/java
+     */
+
     @VisibleForTesting
     public ProgressDialog mProgressDialog;
 
