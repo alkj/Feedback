@@ -16,8 +16,6 @@ import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
 import com.example.admin.feedback_app.dialogs.DatoPickerDialog_frg;
 import com.example.admin.feedback_app.dialogs.TidPickerDialog_frg;
-//import com.example.admin.feedback_app.fragmenter.DatoPickerDialog_frg;
-//import com.example.admin.feedback_app.fragmenter.TidPickerDialog_frg;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -93,7 +91,7 @@ public class OpretMoede_akt extends FragmentActivity implements View.OnClickList
                 møde.setMødeholderID(mAuth.getUid());
 
 
-                mFirestore.collection("møder").document().set(møde).addOnCompleteListener(new OprettetListener(møde));
+                mFirestore.collection("Møder").document().set(møde).addOnCompleteListener(new OprettetListener(møde));
                 break;
 
         }

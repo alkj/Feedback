@@ -120,7 +120,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
 
     private void hentMøderFraFire() {
         showProgressDialog();
-        FirebaseFirestore.getInstance().collection("møder")
+        FirebaseFirestore.getInstance().collection("Møder")
                 .whereEqualTo("mødeholderID", firebaseAuth.getCurrentUser().getUid())
                 .whereEqualTo("afholdt", false)
                 .get()
@@ -131,7 +131,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         showProgressDialog();
         Log.d(TAG, "Gået ind i metoden som henter bruger fra Firestore");
         DocumentReference docRef = FirebaseFirestore.getInstance()
-                .collection("mødeholder").document(firebaseAuth.getUid());
+                .collection("Mødeholder").document(firebaseAuth.getUid());
         docRef.get().addOnCompleteListener(new HentBrugerListener());
     }
 
