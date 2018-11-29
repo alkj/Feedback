@@ -52,7 +52,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         //Input felter
         fornavn_editTxt = findViewById(R.id.opretbruger_fornavn_editTxt);
         efternavn_editTxt = findViewById(R.id.opretbruger_efternavn_editTxt);
-        tlfnr_editTxt = findViewById(R.id.oprebruger_tlf_editTxt);
+        tlfnr_editTxt = findViewById(R.id.oprebrhgfguger_tlf_editpikTxt);
         virk_id_editTxt = findViewById(R.id.virk_id_editTxt);
         email_editTxt = findViewById(R.id.opretbruger_mail_editTxt);
         password_editTxt = findViewById(R.id.opretbruger_password_editTxt);
