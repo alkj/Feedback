@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.admin.feedback_app.Mødeholder;
+import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,36 +24,38 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
     private TextView virksomhedsID;
 
     private FirebaseAuth mAuth;
+    private Mødeholder mødeholder;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rod = inflater.inflate(R.layout.fragment_profil, container, false);
+        View v = inflater.inflate(R.layout.fragment_profil, container, false);
 
         mAuth = FirebaseAuth.getInstance();
+        mødeholder = PersonData.getInstance().getMødeholder();
 
 
-        logUd = rod.findViewById(R.id.profil_logUd_button);
-        skiftPassword = rod.findViewById(R.id.profil_skiftPassword_button);
-        gem = rod.findViewById(R.id.profil_gem_button);
+        logUd = v.findViewById(R.id.profil_logUd_button);
+        skiftPassword = v.findViewById(R.id.profil_skiftPassword_button);
+        gem = v.findViewById(R.id.profil_gem_button);
 
-        fornavn = rod.findViewById(R.id.profil_fornavn_editTxt);
-        efternavn = rod.findViewById(R.id.profil_efternavn_editTxt);
-        telefonnummer = rod.findViewById(R.id.profil_tlf_editTxt);
+        fornavn = v.findViewById(R.id.profil_fornavn_editTxt);
+        efternavn = v.findViewById(R.id.profil_efternavn_editTxt);
+        telefonnummer = v.findViewById(R.id.profil_tlf_editTxt);
 
-        virksomhedsID = rod.findViewById(R.id.profil_virksomhedsid_textView);
+        virksomhedsID = v.findViewById(R.id.profil_virksomhedsid_textView);
 
 
         logUd.setOnClickListener(this);
         skiftPassword.setOnClickListener(this);
 
-        fornavn.setText("peter"); //TODO
-        efternavn.setText("Jensen"); //TODO
-        telefonnummer.setText("99999999"); //TODO hent info fra mødelederobjekt
-        virksomhedsID.setText("DTU");
+        fornavn.setText(mødeholder.getFornavn());
+        efternavn.setText(mødeholder.getEfternavn());
+        telefonnummer.setText(mødeholder.getTlf());
+        virksomhedsID.setText(mødeholder.getVirk_id());
 
-        return rod;
+        return v;
     }
 
     @Override

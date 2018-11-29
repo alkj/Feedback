@@ -181,8 +181,8 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                     personData.setMødeholder(document.get("fornavn").toString(), document.get("efternavn").toString(),
                             document.get("email").toString(),
                             document.get("password").toString(),
-                            document.get("tlf").toString(),
-                            document.get("virk_id").toString()
+                            document.get("virk_id").toString(),
+                            document.get("tlf").toString()
                     );
 
 

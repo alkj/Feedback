@@ -116,7 +116,7 @@ public class Navigation_akt extends AppCompatActivity implements BottomNavigatio
 
             case R.id.navigation_profil:
                 fragment = new Profil_frg();
-                overskrift_txt.setText(getString(R.string.hjem));
+                overskrift_txt.setText(getString(R.string.profil));
                 break;
         }
 
