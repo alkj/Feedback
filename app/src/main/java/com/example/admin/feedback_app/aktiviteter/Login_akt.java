@@ -36,6 +36,9 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
     private FirebaseAuth firebaseAuth;
     private PersonData personData;
 
+    private final boolean DEBUG = true;
+    private final String TEST_EMAIL = "test@bruger.dk", TEST_PASSWORD = "123456";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +58,14 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         email_editTxt = findViewById(R.id.login_brugernavn_editTxt);
         password_editTxt = findViewById(R.id.login_password_editTxt);
 
-    }
+        if (DEBUG) {
+            email_editTxt.setText(TEST_EMAIL);
+            email_editTxt.setInputType(0);
+            password_editTxt.setText(TEST_PASSWORD);
+            password_editTxt.setInputType(0);
+        }
+
+        }
 
     @Override
     public void onStart() {
@@ -63,7 +73,11 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
 
         personData = PersonData.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
-        if (firebaseAuth.getCurrentUser() != null) hentBrugerFraFire();
+
+        if (firebaseAuth.getCurrentUser() != null) {
+            showProgressDialog();
+            hentBrugerFraFire();
+        }
     }
 
     @Override
@@ -90,7 +104,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
 
         //Vis loading hvis valideringen er okay, og forsøg at login
         showProgressDialog();
-
+        updateProgressDialog("Logger ind");
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new LoginListener());
     }
 
@@ -119,6 +133,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
     }
 
     private void hentMøderFraFire() {
+        updateProgressDialog("Henter møderne");
         FirebaseFirestore.getInstance().collection("Møder")
                 .whereEqualTo("mødeholderID", firebaseAuth.getCurrentUser().getUid())
                 .get()
@@ -126,7 +141,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
     }
 
     private void hentBrugerFraFire() {
-        showProgressDialog();
+        updateProgressDialog("Henter bruger oplysninger");
         Log.d(TAG, "Gået ind i metoden som henter bruger fra Firestore");
         DocumentReference docRef = FirebaseFirestore.getInstance()
                 .collection("Mødeholder").document(firebaseAuth.getUid());
