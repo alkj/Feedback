@@ -119,7 +119,6 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
     }
 
     private void hentMøderFraFire() {
-        showProgressDialog();
         FirebaseFirestore.getInstance().collection("Møder")
                 .whereEqualTo("mødeholderID", firebaseAuth.getCurrentUser().getUid())
                 .whereEqualTo("afholdt", false)
@@ -153,7 +152,6 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
 
         @Override
         public void onComplete(@NonNull Task<AuthResult> task) {
-            hideProgressDialog();
             if (task.isSuccessful()) {
                 //Login
                 Log.d(TAG, "signInWithEmail:success");
@@ -177,7 +175,6 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
 
         @Override
         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-            hideProgressDialog();
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
@@ -191,19 +188,10 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
 
 
                     Log.d(TAG, "Værdier fra logik : " + personData.getMødeholder().getFornavn());
-                    //mødeholder.setFornavn(document.get("fornavn").toString());
-                    //mødeholder.setEfternavn(document.get("efternavn").toString());
-                    //mødeholder.setEmail(document.get("email").toString());
-                    //mødeholder.setPassword(document.get("password").toString());
-                    // mødeholder.setTlf(document.get("tlf").toString());
-                    //  mødeholder.setVirk_id(document.get("virk_id").toString());
 
-
-                    // Log.d(TAG, "onComplete: møder holder navn: "+Mødeholder.getFornavn());
                 }
 
                 Log.d(TAG, "FÆRDIG med hentBrugerFraFire");
-                //Log.d(TAG, "Værdier fra logik : "+ logik.getMødeholder().getFornavn());
 
                 hentMøderFraFire();
             }
@@ -214,7 +202,6 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
 
         @Override
         public void onComplete(@NonNull Task<QuerySnapshot> task) {
-            hideProgressDialog();
             if (task.isSuccessful()) {
                 for (QueryDocumentSnapshot document : task.getResult()) {
                     Møde mødeObj = new Møde(
