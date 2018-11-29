@@ -66,13 +66,13 @@ public class Navigation_akt extends AppCompatActivity implements BottomNavigatio
         final AlertDialog.Builder builder = new AlertDialog.Builder(Navigation_akt.this);
         builder.setMessage("Er du sikker på du vil logge ud?");
         builder.setCancelable(true);
-        builder.setNegativeButton("Nej", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Anuller", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
             }
         });
-        builder.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Log ud", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 FirebaseAuth mAuth;
