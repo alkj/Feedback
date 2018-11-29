@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.admin.feedback_app.Mødeholder;
 import com.example.admin.feedback_app.R;
-import com.example.admin.feedback_app.mødeholder;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -30,7 +30,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
     private EditText fornavn_editTxt, efternavn_editTxt, email_editTxt,
             tlfnr_editTxt, password_editTxt, password2_editTxt, virk_id_editTxt;
 
-    private com.example.admin.feedback_app.mødeholder mødeholder;
+    private Mødeholder mødeholder;
     private FirebaseAuth firebaseAuth;
 
 
@@ -67,7 +67,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
             return;
         }
 
-        mødeholder = new mødeholder(
+        mødeholder = new Mødeholder(
                 fornavn_editTxt.getText().toString(),
                 efternavn_editTxt.getText().toString(),
                 email_editTxt.getText().toString(),
@@ -177,7 +177,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
 
                 //sætter data over på firebase
                 FirebaseFirestore.getInstance()
-                        .collection("mødeholder")
+                        .collection("Mødeholder")
                         .document(firebaseAuth.getUid()).set(mødeholder);
 
                 //sender verificering mail

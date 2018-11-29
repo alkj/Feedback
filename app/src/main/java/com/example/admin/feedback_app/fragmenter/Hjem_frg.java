@@ -3,15 +3,13 @@ package com.example.admin.feedback_app.fragmenter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.admin.feedback_app.Mødeholder;
 import com.example.admin.feedback_app.R;
-import com.example.admin.feedback_app.aktiviteter.Navigation_akt;
-import com.example.admin.feedback_app.mødeholder;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,7 +23,7 @@ public class Hjem_frg extends Fragment {
 
 
     private TextView fraFire, fraFire2;
-    public static mødeholder mødeholder;
+    public static Mødeholder mødeholder;
     private FirebaseFirestore mFirestore;
     private FirebaseAuth mAuth;
 
@@ -40,11 +38,11 @@ public class Hjem_frg extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         mFirestore = FirebaseFirestore.getInstance();
 
-        mødeholder = new mødeholder(null,null,null,null,null,null);
+        mødeholder = new Mødeholder(null,null,null,null,null,null);
 
 
 
-        DocumentReference docRef = mFirestore.collection("mødeholder").document(mAuth.getUid());
+        DocumentReference docRef = mFirestore.collection("Mødeholder").document(mAuth.getUid());
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -60,7 +58,7 @@ public class Hjem_frg extends Fragment {
 
 
 
-                       // Log.d(TAG, "onComplete: møder holder navn: "+mødeholder.getFornavn());
+                       // Log.d(TAG, "onComplete: møder holder navn: "+Mødeholder.getFornavn());
                     } else {
                        // Log.d(TAG, "No such document");
                     }

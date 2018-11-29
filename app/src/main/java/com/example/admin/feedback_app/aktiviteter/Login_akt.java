@@ -10,11 +10,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.admin.feedback_app.Møde;
+import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class Login_akt extends BaseActivity implements View.OnClickListener {
 
@@ -27,6 +34,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
     private Button login_btn, nyBruger_btn, tilbage_btn;
     private EditText email_editTxt, password_editTxt;
     private FirebaseAuth firebaseAuth;
+    private PersonData personData;
 
 
     @Override
@@ -53,23 +61,21 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
     public void onStart() {
         super.onStart();
 
+        personData = PersonData.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
-        //Hvis brugeren har tidligere været logget ind, går vi direkte videre.
-        if (firebaseAuth.getCurrentUser() != null) næsteSide();
+        if (firebaseAuth.getCurrentUser() != null) hentBrugerFraFire();
     }
 
     @Override
     public void onClick(View view) {
-        if (view == login_btn){
+        if (view == login_btn) {
             //Login
-            login(email_editTxt.getText().toString(),password_editTxt.getText().toString());
-        }
-        else if (view == nyBruger_btn){
+            login(email_editTxt.getText().toString(), password_editTxt.getText().toString());
+        } else if (view == nyBruger_btn) {
             //Åbner opret bruger aktiviteten
             Intent intent = new Intent(this, OpretBruger_akt.class);
             startActivity(intent);
-        }
-        else if (view == tilbage_btn){
+        } else if (view == tilbage_btn) {
             //Lukker aktiviteten og går derfor tilbage til den forrige
             finish();
         }
@@ -88,7 +94,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new LoginListener());
     }
 
-    public boolean validering(String email, String password){
+    public boolean validering(String email, String password) {
         //TODO: lav en valideringsklasse til email da det bruges flere steder
 
         Log.d(TAG, "valideringEmail: startes");
@@ -96,16 +102,14 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
 
         //TODO evt lav check om emailen er valid og er af formen xxx@xxx.com
 
-        if(TextUtils.isEmpty(email) && TextUtils.isEmpty(password)){
+        if (TextUtils.isEmpty(email) && TextUtils.isEmpty(password)) {
             this.password_editTxt.setError("Indtast password");
             this.email_editTxt.setError("Indtast E-mail.");
             valid = false;
-        }
-        else if (TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+        } else if (TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
             this.email_editTxt.setError("Indtast E-mail.");
             valid = false;
-        }
-        else if (TextUtils.isEmpty(password)&& !TextUtils.isEmpty(email)) {
+        } else if (TextUtils.isEmpty(password) && !TextUtils.isEmpty(email)) {
             this.password_editTxt.setError("Indtast password");
             valid = false;
         }
@@ -114,30 +118,48 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         return valid;
     }
 
-    public void næsteSide(){
+    private void hentMøderFraFire() {
+        showProgressDialog();
+        FirebaseFirestore.getInstance().collection("møder")
+                .whereEqualTo("mødeholderID", firebaseAuth.getCurrentUser().getUid())
+                .whereEqualTo("afholdt", false)
+                .get()
+                .addOnCompleteListener(new HentMøderListener());
+    }
+
+    private void hentBrugerFraFire() {
+        showProgressDialog();
+        Log.d(TAG, "Gået ind i metoden som henter bruger fra Firestore");
+        DocumentReference docRef = FirebaseFirestore.getInstance()
+                .collection("mødeholder").document(firebaseAuth.getUid());
+        docRef.get().addOnCompleteListener(new HentBrugerListener());
+    }
+
+    public void næsteSide() {
+        //Stop loading efter firebase er færdig med at give svar
+        hideProgressDialog();
+
         //Giver lige en besked
         Toast.makeText(this,
                 "Logget ind med: " + firebaseAuth.getCurrentUser().getEmail(),
                 Toast.LENGTH_SHORT).show();
 
         //Skifter til næste aktivitet
-        Intent myIntent = new Intent(Login_akt.this,Navigation_akt.class);
-        Login_akt.this.startActivity(myIntent);
+        Intent myIntent = new Intent(this, Navigation_akt.class);
+        startActivity(myIntent);
     }
 
-    class LoginListener implements OnCompleteListener<AuthResult>{
+    class LoginListener implements OnCompleteListener<AuthResult> {
 
         @Override
         public void onComplete(@NonNull Task<AuthResult> task) {
-            //Stop loading efter firebase er færdig med at give svar
             hideProgressDialog();
-
-            if (task.isSuccessful()){
+            if (task.isSuccessful()) {
                 //Login
                 Log.d(TAG, "signInWithEmail:success");
-                næsteSide();
-            }
-            else {
+                hentBrugerFraFire();
+
+            } else {
                 //Login fejlede!!
                 Log.w(TAG, "signInWithEmail:failure", task.getException());
 
@@ -146,7 +168,75 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                 Toast.makeText(getApplicationContext(),
                         "Login fejlede!",
                         Toast.LENGTH_SHORT).show();
+
             }
         }
     }
+
+    class HentBrugerListener implements OnCompleteListener<DocumentSnapshot> {
+
+        @Override
+        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+            hideProgressDialog();
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    Log.d(TAG, "dokumentet eksitetrer, og tingene smides til logikken");
+                    personData.setMødeholder(document.get("fornavn").toString(), document.get("efternavn").toString(),
+                            document.get("email").toString(),
+                            document.get("password").toString(),
+                            document.get("tlf").toString(),
+                            document.get("virk_id").toString()
+                    );
+
+
+                    Log.d(TAG, "Værdier fra logik : " + personData.getMødeholder().getFornavn());
+                    //mødeholder.setFornavn(document.get("fornavn").toString());
+                    //mødeholder.setEfternavn(document.get("efternavn").toString());
+                    //mødeholder.setEmail(document.get("email").toString());
+                    //mødeholder.setPassword(document.get("password").toString());
+                    // mødeholder.setTlf(document.get("tlf").toString());
+                    //  mødeholder.setVirk_id(document.get("virk_id").toString());
+
+
+                    // Log.d(TAG, "onComplete: møder holder navn: "+Mødeholder.getFornavn());
+                }
+
+                Log.d(TAG, "FÆRDIG med hentBrugerFraFire");
+                //Log.d(TAG, "Værdier fra logik : "+ logik.getMødeholder().getFornavn());
+
+                hentMøderFraFire();
+            }
+        }
+    }
+
+    class HentMøderListener implements OnCompleteListener<QuerySnapshot> {
+
+        @Override
+        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+            hideProgressDialog();
+            if (task.isSuccessful()) {
+                for (QueryDocumentSnapshot document : task.getResult()) {
+                    Møde mødeObj = new Møde(
+                            document.get("navn").toString(),
+                            document.get("tid").toString(),
+                            document.get("sted").toString(),
+                            document.get("dato").toString(),
+                            document.get("formål").toString(),
+                            document.get("mødeholderID").toString());
+                    personData.tilføjMøde(mødeObj);
+
+                    Log.d(TAG, "navn fra firebase: " + document.get("navn").toString());
+                    Log.d(TAG, "mødelistens navn: " + mødeObj.getNavn());
+                    Log.d(TAG, document.getId() + " => " + document.getData());
+                }
+
+                næsteSide();
+            } else {
+                Log.d(TAG, "Error getting documents: ", task.getException());
+            }
+
+        }
+    }
+
 }

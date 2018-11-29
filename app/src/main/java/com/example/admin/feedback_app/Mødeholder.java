@@ -1,6 +1,6 @@
 package com.example.admin.feedback_app;
 
-public class mødeholder {
+public class Mødeholder {
 
     private String fornavn, efternavn, email, password, virk_id, tlf;
 
@@ -53,7 +53,7 @@ public class mødeholder {
         return tlf;
     }
 
-    public mødeholder(String fornavn, String efternavn, String email, String password, String virk_id, String tlf) {
+    public Mødeholder(String fornavn, String efternavn, String email, String password, String virk_id, String tlf) {
 
         this.fornavn = fornavn;
         this.efternavn = efternavn;

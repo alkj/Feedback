@@ -1,6 +1,7 @@
 package com.example.admin.feedback_app.aktiviteter;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -10,11 +11,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.admin.feedback_app.Møde;
+import com.example.admin.feedback_app.Mødeholder;
+import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
 import com.example.admin.feedback_app.dialogs.DatoPickerDialog_frg;
 import com.example.admin.feedback_app.dialogs.TidPickerDialog_frg;
 //import com.example.admin.feedback_app.fragmenter.DatoPickerDialog_frg;
 //import com.example.admin.feedback_app.fragmenter.TidPickerDialog_frg;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -29,7 +34,7 @@ public class OpretMoede_akt extends FragmentActivity implements View.OnClickList
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFirestore;
-    private com.example.admin.feedback_app.mødeholder mødeholder;
+    private Mødeholder mødeholder;
 
 
     @Override
@@ -88,11 +93,31 @@ public class OpretMoede_akt extends FragmentActivity implements View.OnClickList
                 møde.setMødeholderID(mAuth.getUid());
 
 
-                mFirestore.collection("møder").document().set(møde);
-                Log.d(TAG, "Mødet er oprettet og aktiviteten lukkes");
-                finish();
+                mFirestore.collection("møder").document().set(møde).addOnCompleteListener(new OprettetListener(møde));
                 break;
 
+        }
+    }
+
+
+    class OprettetListener implements OnCompleteListener<Void>{
+
+        private final Møde møde;
+
+        private OprettetListener(Møde møde){
+            this.møde = møde;
+        }
+
+        @Override
+        public void onComplete(@NonNull Task<Void> task) {
+            if(task.isSuccessful()){
+                Log.d(TAG, "Mødet er oprettet og aktiviteten lukkes");
+                PersonData.getInstance().tilføjMøde(møde);
+                finish();
+            }
+            else {
+                Log.w(TAG, "Mødet blev ikke oprettet!", task.getException());
+            }
         }
     }
 }
