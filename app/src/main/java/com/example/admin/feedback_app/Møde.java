@@ -7,7 +7,7 @@ public class Møde {
     private String dato;
     private String tid;
     private String sted;
-    private boolean afholdt = false;
+    private boolean afholdt;
     private String mødeholderID;
 
 
@@ -15,13 +15,14 @@ public class Møde {
     public Møde(){
 
     }
-    public Møde(String navn, String formål, String dato, String tid, String sted, String mødeholderID) {
+    public Møde(String navn, String formål, String dato, String tid, String sted, String mødeholderID, boolean afholdt) {
         this.navn = navn;
         this.formål = formål;
         this.dato = dato;
         this.tid = tid;
         this.sted = sted;
         this.mødeholderID = mødeholderID;
+        this.afholdt = afholdt;
     }
 
     public String getNavn() {

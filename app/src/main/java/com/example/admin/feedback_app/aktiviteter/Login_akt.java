@@ -121,7 +121,6 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
     private void hentMøderFraFire() {
         FirebaseFirestore.getInstance().collection("Møder")
                 .whereEqualTo("mødeholderID", firebaseAuth.getCurrentUser().getUid())
-                .whereEqualTo("afholdt", false)
                 .get()
                 .addOnCompleteListener(new HentMøderListener());
     }
@@ -210,7 +209,8 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                             document.get("sted").toString(),
                             document.get("dato").toString(),
                             document.get("formål").toString(),
-                            document.get("mødeholderID").toString());
+                            document.get("mødeholderID").toString(),
+                            document.getBoolean("afholdt"));
                     personData.tilføjMøde(mødeObj);
 
                     Log.d(TAG, "navn fra firebase: " + document.get("navn").toString());

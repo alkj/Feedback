@@ -22,8 +22,8 @@ public class IkkeAfholdt_frg extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_ikke_afholdt, container, false);
-        listView = v.findViewById(R.id.listview1);
+        View v = inflater.inflate(R.layout.fragment_moedeliste, container, false);
+        listView = v.findViewById(R.id.moedeliste_listView);
 
         return v;
     }
@@ -38,7 +38,7 @@ public class IkkeAfholdt_frg extends Fragment {
     private void indlæsListView(){
         //Få mødenavne vist i et listview
         ArrayAdapter<String> listviewAdapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1,
+                R.layout.list_row_item,
                 PersonData.getInstance().getIkkeAfholdteMøderAsStringArray());
         listView.setAdapter(listviewAdapter);
     }
