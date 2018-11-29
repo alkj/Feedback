@@ -1,10 +1,12 @@
 package com.example.admin.feedback_app.aktiviteter;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -57,6 +59,31 @@ public class Navigation_akt extends AppCompatActivity implements BottomNavigatio
         overskrift_txt.setText(getString(R.string.hjem));
 
 
+    }
+
+    @Override
+    public void onBackPressed(){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(Navigation_akt.this);
+        builder.setMessage("Er du sikker på du vil logge ud?");
+        builder.setCancelable(true);
+        builder.setNegativeButton("Nej", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                FirebaseAuth mAuth;
+                mAuth = FirebaseAuth.getInstance();
+                mAuth.signOut();
+                finish();
+
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private boolean indlæsFragment(Fragment fragment) {

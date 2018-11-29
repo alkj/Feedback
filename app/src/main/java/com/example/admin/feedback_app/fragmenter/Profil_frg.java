@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Profil_frg extends Fragment implements View.OnClickListener {
     private Button logUd;
-    FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
