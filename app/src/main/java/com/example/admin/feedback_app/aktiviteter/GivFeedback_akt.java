@@ -5,9 +5,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.admin.feedback_app.FeedbackTilFirebase;
 import com.example.admin.feedback_app.R;
 import com.example.admin.feedback_app.fragment_feedback_smiley;
 import com.example.admin.feedback_app.uddyb_feedback;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class GivFeedback_akt extends AppCompatActivity implements fragment_feedback_smiley.OnButtonClickedFeedbackSmiley, uddyb_feedback.uddyb_feed {
 
@@ -15,6 +18,8 @@ public class GivFeedback_akt extends AppCompatActivity implements fragment_feedb
     private Fragment uddyb;
     int humoer;
     int nummer = 0;
+    private FeedbackTilFirebase feedbackTilFirebase;
+    int antalSpørgsmål;
 
 
     @Override
@@ -26,6 +31,8 @@ public class GivFeedback_akt extends AppCompatActivity implements fragment_feedb
         uddyb = new uddyb_feedback();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentGivFeedback, smiley).commit();
+
+        antalSpørgsmål = feedbackTilFirebase.getAntalspørgsmål();
 
     }
 
@@ -42,7 +49,8 @@ public class GivFeedback_akt extends AppCompatActivity implements fragment_feedb
 
     @Override
     public int feedbackSendt(int i) {
-        if(i>=4){
+        if(i>=antalSpørgsmål){
+//            feedbackTilFirebase.sendFeedback("");
             finish();
         }
         this.nummer = ++i;
