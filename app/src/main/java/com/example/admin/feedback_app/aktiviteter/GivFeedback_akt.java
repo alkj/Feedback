@@ -27,6 +27,8 @@ public class GivFeedback_akt extends AppCompatActivity implements fragment_feedb
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_giv_feedback);
 
+        //TODO find ud af om brugeren allerede har givet feedback
+
         smiley = new fragment_feedback_smiley();
         uddyb = new uddyb_feedback();
 
