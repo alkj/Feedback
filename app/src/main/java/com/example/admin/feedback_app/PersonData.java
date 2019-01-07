@@ -1,6 +1,7 @@
 package com.example.admin.feedback_app;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PersonData {
     private static final PersonData ourInstance = new PersonData();
@@ -35,6 +36,8 @@ public class PersonData {
         møderne.clear();
     }
 
+    //Skal nok ikke bruges længere
+    @Deprecated
     public String[] getIkkeAfholdteMøderAsStringArray() {
         ArrayList<String> strings = new ArrayList<>();
 
@@ -45,6 +48,8 @@ public class PersonData {
         return strings.toArray(new String[0]);
     }
 
+    //Skal nok ikke bruges længere
+    @Deprecated
     public String[] getAfholdteMøderAsStringArray() {
         ArrayList<String> strings = new ArrayList<>();
 
@@ -53,5 +58,30 @@ public class PersonData {
                 strings.add(møde.getNavn());
 
         return strings.toArray(new String[0]);
+    }
+
+    public List<Møde> getIkkeAfholdteMøder() {
+        List<Møde> møder = new ArrayList<>();
+
+        for (Møde møde : møderne)
+            if (!møde.isAfholdt())
+                møder.add(møde);
+
+        return møder;
+    }
+
+    public List<Møde> getAfholdteMøder() {
+        List<Møde> møder = new ArrayList<>();
+
+        for (Møde møde : møderne)
+            if (møde.isAfholdt())
+                møder.add(møde);
+
+        return møder;
+    }
+
+    public void ryd(){
+        mødeholder = null;
+        møderne = null;
     }
 }

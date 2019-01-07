@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
 import com.example.admin.feedback_app.fragmenter.Hjem_frg;
 import com.example.admin.feedback_app.fragmenter.Moedeoversigt_frg;
@@ -75,9 +76,8 @@ public class Navigation_akt extends AppCompatActivity implements BottomNavigatio
         builder.setPositiveButton("Log ud", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                FirebaseAuth mAuth;
-                mAuth = FirebaseAuth.getInstance();
-                mAuth.signOut();
+                FirebaseAuth.getInstance().signOut();
+                PersonData.getInstance().ryd();
                 finish();
 
             }

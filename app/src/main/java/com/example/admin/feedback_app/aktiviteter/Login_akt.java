@@ -220,10 +220,10 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                 for (QueryDocumentSnapshot document : task.getResult()) {
                     Møde mødeObj = new Møde(
                             document.get("navn").toString(),
+                            document.get("formål").toString(),
+                            document.get("dato").toString(),
                             document.get("tid").toString(),
                             document.get("sted").toString(),
-                            document.get("dato").toString(),
-                            document.get("formål").toString(),
                             document.get("mødeholderID").toString(),
                             document.getBoolean("afholdt"));
                     personData.tilføjMøde(mødeObj);

@@ -5,11 +5,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.adaptere.MødeAdapter;
 
 
 public class IkkeAfholdt_frg extends Fragment {
@@ -37,9 +37,9 @@ public class IkkeAfholdt_frg extends Fragment {
 
     private void indlæsListView(){
         //Få mødenavne vist i et listview
-        ArrayAdapter<String> listviewAdapter = new ArrayAdapter<String>(getActivity(),
-                R.layout.list_row_item,
-                PersonData.getInstance().getIkkeAfholdteMøderAsStringArray());
+        MødeAdapter listviewAdapter = new MødeAdapter(getActivity(),
+                R.layout.moede_liste_item,
+                PersonData.getInstance().getIkkeAfholdteMøder());
         listView.setAdapter(listviewAdapter);
     }
 
