@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -25,14 +27,16 @@ public class uddyb_feedback extends Fragment implements View.OnClickListener {
     private static final String IMAGE = "image";
 
     ImageView imageButton;
+    Button buttonSendFeedback;
     int humoer;
     Drawable drawable;
     public int nummer;
     public uddyb_feed uddyb_feed;
+    private EditText editTextSvar;
 
 
     public interface uddyb_feed{
-        int feedbackSendt(int i);
+        int feedbackSendt(int i, String s);
     }
 
 
@@ -46,7 +50,10 @@ public class uddyb_feedback extends Fragment implements View.OnClickListener {
         }
 
         imageButton = r.findViewById(R.id.imageButton);
+        buttonSendFeedback = r.findViewById(R.id.buttonIndsendFeedback);
+        editTextSvar = r.findViewById(R.id.editTextUddybSvar);
         imageButton.setOnClickListener(this);
+        buttonSendFeedback.setOnClickListener(this);
 
         updater(humoer);
 
@@ -73,7 +80,9 @@ public class uddyb_feedback extends Fragment implements View.OnClickListener {
 
         //send editText til firebase her også.
 
-        nummer = uddyb_feed.feedbackSendt(nummer);
+        //nummer =
+        String s = editTextSvar.getText().toString();
+        uddyb_feed.feedbackSendt(humoer, s);
     }
 
 

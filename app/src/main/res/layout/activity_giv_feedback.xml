@@ -7,9 +7,8 @@
     tools:context=".aktiviteter.GivFeedback_akt"
     tools:layout_editor_absoluteY="25dp">
 
-    <fragment
+    <FrameLayout
         android:id="@+id/fragmentGivFeedback"
-        android:name="com.example.admin.feedback_app.fragment_feedback_smiley"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

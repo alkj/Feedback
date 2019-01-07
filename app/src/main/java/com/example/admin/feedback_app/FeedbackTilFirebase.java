@@ -5,112 +5,122 @@ import com.google.type.TimeOfDayOrBuilder;
 
 public class FeedbackTilFirebase {
 
-    private String mødeid;
+    private String mødeId;
 
-    private int antalspørgsmål = 4;
+    private int antalSpørgsmål = 4;
 
-    private int intspørgs1;
-    private String stringspørgs1;
+    private int intSpørgsmål1;
+    private String stringSpørgsmål1;
 
-    private int intspørgs2;
-    private String stringspørgs2;
+    private int intSpørgsmål2;
+    private String stringSpørgsmål2;
 
-    private int intspørgs3;
-    private String stringspørgs3;
+    private int intSpørgsmål3;
+    private String stringSpørgsmål3;
 
-    private int intspørgs4;
-    private String stringspørgs4;
+    private int intSpørgsmål4;
+    private String stringSpørgsmål4;
 
 
 
 
     public FeedbackTilFirebase(String mødeid) {
-        this.mødeid = mødeid;
+        this.mødeId = mødeid;
     }
 
     public void sendFeedback(FirebaseAuth firebaseAuth){
-
         //TODO
+    }
+
+    public String toString(){
+        return "humør til spørgs 1 = " + intSpørgsmål1 + "\n" +
+                "kommentar til spørgs 1 = " + stringSpørgsmål1 + "\n" +
+                "humør til spørgs 2 = " + intSpørgsmål2 + "\n" +
+                "kommentar til spørgs 2 = " + stringSpørgsmål2 + "\n" +
+                "humør til spørgs 3 = " + intSpørgsmål3 + "\n" +
+                "kommentar til spørgs 3 = " + stringSpørgsmål3 + "\n" +
+                "humør til spørgs 4 = " + intSpørgsmål4 + "\n" +
+                "kommentar til spørgs 4 = " + stringSpørgsmål4 + "\n";
 
     }
 
-    public String getMødeid() {
-        return mødeid;
+    public String getMødeId() {
+        return mødeId;
     }
 
-    public void setMødeid(String mødeid) {
-        this.mødeid = mødeid;
+    public void setMødeId(String mødeId) {
+        this.mødeId = mødeId;
     }
 
-    public int getAntalspørgsmål() {
-        return antalspørgsmål;
+    public int getAntalSpørgsmål() {
+        return antalSpørgsmål;
     }
 
-    public void setAntalspørgsmål(int antalspørgsmål) {
-        this.antalspørgsmål = antalspørgsmål;
+    public void setAntalSpørgsmål(int antalSpørgsmål) {
+        this.antalSpørgsmål = antalSpørgsmål;
     }
 
-    public int getIntspørgs1() {
-        return intspørgs1;
+    public int getIntSpørgsmål1() {
+        return intSpørgsmål1;
     }
 
-    public void setIntspørgs1(int intspørgs1) {
-        this.intspørgs1 = intspørgs1;
+    public void setIntSpørgsmål1(int intSpørgsmål1) {
+        this.intSpørgsmål1 = intSpørgsmål1;
     }
 
-    public String getStringspørgs1() {
-        return stringspørgs1;
+    public String getStringSpørgsmål1() {
+        return stringSpørgsmål1;
     }
 
-    public void setStringspørgs1(String stringspørgs1) {
-        this.stringspørgs1 = stringspørgs1;
+    public void setStringSpørgsmål1(String stringSpørgsmål1) {
+        this.stringSpørgsmål1 = stringSpørgsmål1;
     }
 
-    public int getIntspørgs2() {
-        return intspørgs2;
+    public int getIntSpørgsmål2() {
+        return intSpørgsmål2;
     }
 
-    public void setIntspørgs2(int intspørgs2) {
-        this.intspørgs2 = intspørgs2;
+    public void setIntSpørgsmål2(int intSpørgsmål2) {
+        this.intSpørgsmål2 = intSpørgsmål2;
     }
 
-    public String getStringspørgs2() {
-        return stringspørgs2;
+    public String getStringSpørgsmål2() {
+        return stringSpørgsmål2;
     }
 
-    public void setStringspørgs2(String stringspørgs2) {
-        this.stringspørgs2 = stringspørgs2;
+    public void setStringSpørgsmål2(String stringSpørgsmål2) {
+        this.stringSpørgsmål2 = stringSpørgsmål2;
     }
 
-    public int getIntspørgs3() {
-        return intspørgs3;
+    public int getIntSpørgsmål3() {
+        return intSpørgsmål3;
     }
 
-    public void setIntspørgs3(int intspørgs3) {
-        this.intspørgs3 = intspørgs3;
+    public void setIntSpørgsmål3(int intSpørgsmål3) {
+        this.intSpørgsmål3 = intSpørgsmål3;
     }
 
-    public String getStringspørgs3() {
-        return stringspørgs3;
+    public String getStringSpørgsmål3() {
+        return stringSpørgsmål3;
     }
 
-    public void setStringspørgs3(String stringspørgs3) {
-        this.stringspørgs3 = stringspørgs3;
+    public void setStringSpørgsmål3(String stringSpørgsmål3) {
+        this.stringSpørgsmål3 = stringSpørgsmål3;
     }
 
-    public int getIntspørgs4() {
-        return intspørgs4;
+    public int getIntSpørgsmål4() {
+        return intSpørgsmål4;
     }
 
-    public void setIntspørgs4(int intspørgs4) {
-        this.intspørgs4 = intspørgs4;
+    public void setIntSpørgsmål4(int intSpørgsmål4) {
+        this.intSpørgsmål4 = intSpørgsmål4;
     }
 
-    public String getStringspørgs4() {
-        return stringspørgs4;
+    public String getStringSpørgsmål4() {
+        return stringSpørgsmål4;
     }
 
-    public void setStringspørgs4(String stringspørgs4) {
-        this.stringspørgs4 = stringspørgs4;
+    public void setStringSpørgsmål4(String stringSpørgsmål4) {
+        this.stringSpørgsmål4 = stringSpørgsmål4;
     }
 }

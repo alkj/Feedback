@@ -32,16 +32,28 @@ public class fragment_feedback_smiley extends Fragment implements View.OnClickLi
     public ImageView imageViewMegetSur;
     public TextView textViewFeedback;
 
+    private TextView textViewSideNummer;
+
     private static final String PIC = "feedback";
 
-    public fragment_feedback_smiley() {
-
-
-    }
+    private int nummer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rod = inflater.inflate(R.layout.fragment_fragment_feedback_smiley, container, false);
+        Log.d("debug", "fragment_feedback_smiley: OnCreate" + nummer);
+
+
+        textViewSideNummer = rod.findViewById(R.id.feedback_nummer_txtView);
+
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            this.nummer = bundle.getInt("nummer");
+        }
+
+        Log.d("TAG", "onCreateView: " + nummer);
+
+        textViewSideNummer.setText("side " + nummer + " ud af 4"); //TODO nummer
 
         imageViewMegetTilfreds = rod.findViewById(R.id.imageBMegetTilfreds);
         imageViewTilfreds = rod.findViewById(R.id.imageBTilfreds);

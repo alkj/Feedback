@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.admin.feedback_app.FeedbackTilFirebase;
 import com.example.admin.feedback_app.R;
@@ -17,7 +18,7 @@ public class GivFeedback_akt extends AppCompatActivity implements fragment_feedb
     private Fragment smiley;
     private Fragment uddyb;
     int humoer;
-    int nummer = 0;
+    int nummer;
     private FeedbackTilFirebase feedbackTilFirebase;
     int antalSpørgsmål;
 
@@ -30,34 +31,87 @@ public class GivFeedback_akt extends AppCompatActivity implements fragment_feedb
         //TODO find ud af om brugeren allerede har givet feedback
 
         smiley = new fragment_feedback_smiley();
+
+        nummer = 1;
+
+        Bundle bundle = new Bundle();
+        Log.d("debug feedback akt", "onCreateView: " + nummer);
+        bundle.putInt("nummer", nummer);
+        smiley.setArguments(bundle);
+
         uddyb = new uddyb_feedback();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentGivFeedback, smiley).commit();
 
-        antalSpørgsmål = feedbackTilFirebase.getAntalspørgsmål();
+        antalSpørgsmål = 4;
 
     }
 
     @Override
     public void submit(int i) {
         this.humoer = i;
+
         Bundle bundle = new Bundle();
         bundle.putInt("humoer", humoer);
         uddyb.setArguments(bundle);
+
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentGivFeedback, uddyb).commit();
 
     }
 
 
     @Override
-    public int feedbackSendt(int i) {
-        if(i>=antalSpørgsmål){
+    public int feedbackSendt(int i, String s) {
+        bygFeedbackObjekt(i, s);
+        if(nummer>=antalSpørgsmål){
+            Log.d("debug feedback akt", "feedbackSendt: \n" + feedbackTilFirebase.toString());
 //            feedbackTilFirebase.sendFeedback("");
             finish();
         }
-        this.nummer = ++i;
+
+        Log.d("debug feedback akt", "feedbackSendt: " + i + s);
+
+
+
+        nummer++;
+
+
+
+        Bundle bundle = new Bundle();
+        Log.d("debug feedback akt", "onCreateView: " + nummer);
+        bundle.putInt("nummer", nummer);
+        smiley.setArguments(bundle);
+
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentGivFeedback, smiley).commit();
         return nummer;
+    }
+
+    private void bygFeedbackObjekt(int i, String s){
+        if(feedbackTilFirebase==null) {
+            feedbackTilFirebase = new FeedbackTilFirebase("123");
+        }
+
+        switch (nummer) {
+            case 1:
+                feedbackTilFirebase.setIntSpørgsmål1(i);
+                feedbackTilFirebase.setStringSpørgsmål1(s);
+                break;
+            case 2:
+                feedbackTilFirebase.setIntSpørgsmål2(i);
+                feedbackTilFirebase.setStringSpørgsmål2(s);
+                break;
+            case 3:
+                feedbackTilFirebase.setIntSpørgsmål3(i);
+                feedbackTilFirebase.setStringSpørgsmål3(s);
+                break;
+            case 4:
+                feedbackTilFirebase.setIntSpørgsmål4(i);
+                feedbackTilFirebase.setStringSpørgsmål4(s);
+                break;
+        }
+
+
+
     }
 
 }
