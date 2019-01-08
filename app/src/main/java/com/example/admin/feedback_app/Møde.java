@@ -9,6 +9,7 @@ public class Møde {
     private String sted;
     private boolean afholdt;
     private String mødeholderID;
+    private String mødeID;
     private String mødeIDtildeltager;
 
 
@@ -16,7 +17,7 @@ public class Møde {
     public Møde(){
 
     }
-    public Møde(String navn, String formål, String dato, String tid, String sted, String mødeholderID, boolean afholdt) {
+    public Møde(String navn, String formål, String dato, String tid, String sted, String mødeholderID, boolean afholdt, String mødeID, String mødeIDtildeltager) {
         this.navn = navn;
         this.formål = formål;
         this.dato = dato;
@@ -24,6 +25,8 @@ public class Møde {
         this.sted = sted;
         this.mødeholderID = mødeholderID;
         this.afholdt = afholdt;
+        this.mødeID = mødeID;
+        this.mødeIDtildeltager = mødeIDtildeltager;
     }
 
     public String getNavn() {
@@ -88,5 +91,13 @@ public class Møde {
 
     public void setMødeIDtildeltager(String mødeIDtildeltager) {
         this.mødeIDtildeltager = mødeIDtildeltager;
+    }
+
+    public String getMødeID() {
+        return mødeID;
+    }
+
+    public void setMødeID(String mødeID) {
+        this.mødeID = mødeID;
     }
 }

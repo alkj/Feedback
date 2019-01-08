@@ -180,7 +180,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                         .collection("Mødeholder")
                         .document(firebaseAuth.getUid()).set(mødeholder);
 
-                //sender verificering mailTEST
+                //sender verificering mail
                 firebaseAuth.getCurrentUser()
                         .sendEmailVerification()
                         .addOnCompleteListener(new OnCompleteListener<Void>() {

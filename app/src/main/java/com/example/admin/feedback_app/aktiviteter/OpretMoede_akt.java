@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Random;
+import java.util.UUID;
 
 
 public class OpretMoede_akt extends FragmentActivity implements View.OnClickListener {
@@ -83,6 +84,8 @@ public class OpretMoede_akt extends FragmentActivity implements View.OnClickList
                                     break;
             case R.id.opretmoede_opret_btn:
                 Log.d(TAG, "Opret møde knappen er trykket");
+                String uniqueID = UUID.randomUUID().toString();
+                Log.d(TAG, "ID er: " + uniqueID);
                 Møde møde = new Møde();
                 møde.setNavn(mødeNavn.getText().toString());
                 Log.d(TAG,møde.getNavn() );
@@ -92,15 +95,18 @@ public class OpretMoede_akt extends FragmentActivity implements View.OnClickList
                 møde.setSted(sted.getText().toString());
                 møde.setMødeholderID(mAuth.getUid());
                 møde.setMødeIDtildeltager(tilfældigtmødeIDdeltager());
+                møde.setMødeID(uniqueID);
 
+                mFirestore.collection("Møder").document(uniqueID).set(møde).addOnCompleteListener(new OprettetListener(møde));
 
-
-                mFirestore.collection("Møder").document().set(møde).addOnCompleteListener(new OprettetListener(møde));
                 break;
 
         }
     }
-
+    /*
+    Metode der lige nu lavet et tilfældigt tal mellem 1-1000 som er det ID der skal logges ind med til feedback
+    SKAL ændres
+     */
     private String tilfældigtmødeIDdeltager(){
         Random r = new Random();
         int low = 1;

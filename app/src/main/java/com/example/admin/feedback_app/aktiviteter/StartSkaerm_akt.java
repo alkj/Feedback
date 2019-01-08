@@ -40,6 +40,7 @@ public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickLi
         }
         else if ( view == feedback_btn){
             //TODO: indlæs inputet fra editText'en og finde det tilhørende møde
+            String mødeID = mødeId_editTxt.getText().toString();
 
             //Starter feedback aktiviteten
             Intent intent = new Intent(this, GivFeedback_akt.class);
