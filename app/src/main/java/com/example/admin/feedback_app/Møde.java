@@ -9,6 +9,7 @@ public class Møde {
     private String sted;
     private boolean afholdt;
     private String mødeholderID;
+    private String mødeIDtildeltager;
 
 
 
@@ -79,5 +80,13 @@ public class Møde {
 
     public void setMødeholderID(String mødeholderID) {
         this.mødeholderID = mødeholderID;
+    }
+
+    public String getMødeIDtildeltager() {
+        return mødeIDtildeltager;
+    }
+
+    public void setMødeIDtildeltager(String mødeIDtildeltager) {
+        this.mødeIDtildeltager = mødeIDtildeltager;
     }
 }

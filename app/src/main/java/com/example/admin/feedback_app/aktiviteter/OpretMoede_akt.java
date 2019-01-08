@@ -21,6 +21,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Random;
+
 
 public class OpretMoede_akt extends FragmentActivity implements View.OnClickListener {
     private static final String TAG = "opretMøde";
@@ -89,12 +91,22 @@ public class OpretMoede_akt extends FragmentActivity implements View.OnClickList
                 møde.setTid(tid_txt.getText().toString());
                 møde.setSted(sted.getText().toString());
                 møde.setMødeholderID(mAuth.getUid());
+                møde.setMødeIDtildeltager(tilfældigtmødeIDdeltager());
+
 
 
                 mFirestore.collection("Møder").document().set(møde).addOnCompleteListener(new OprettetListener(møde));
                 break;
 
         }
+    }
+
+    private String tilfældigtmødeIDdeltager(){
+        Random r = new Random();
+        int low = 1;
+        int high = 1000;
+        int result = r.nextInt(high-low) + low;
+        return ""+result;
     }
 
 
