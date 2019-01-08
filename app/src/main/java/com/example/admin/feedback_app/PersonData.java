@@ -11,6 +11,7 @@ public class PersonData {
 
     Mødeholder mødeholder;
     ArrayList<Møde> møderne = new ArrayList<Møde>();
+    Møde feedbackTilDetteMøde;
 
     private PersonData() {
     }
@@ -54,4 +55,18 @@ public class PersonData {
 
         return strings.toArray(new String[0]);
     }
+
+    public Møde getFeedbackTilDetteMøde() {
+        return feedbackTilDetteMøde;
+    }
+
+    public void setFeedbackTilDetteMøde(Møde feedbackTilDetteMøde) {
+        this.feedbackTilDetteMøde = feedbackTilDetteMøde;
+    }
+
+    public void afslutFeedback(){
+        feedbackTilDetteMøde = null;
+    }
+
+
 }

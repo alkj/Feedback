@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.admin.feedback_app.FeedbackTilFirebase;
+import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
 import com.example.admin.feedback_app.fragment_feedback_smiley;
 import com.example.admin.feedback_app.uddyb_feedback;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class GivFeedback_akt extends AppCompatActivity implements fragment_feedback_smiley.OnButtonClickedFeedbackSmiley, uddyb_feedback.uddyb_feed {
 
@@ -21,13 +23,16 @@ public class GivFeedback_akt extends AppCompatActivity implements fragment_feedb
     int nummer;
     private FeedbackTilFirebase feedbackTilFirebase;
     int antalSpørgsmål;
+    private FirebaseFirestore mFirestore;
+    private PersonData personData;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_giv_feedback);
-
+        mFirestore = FirebaseFirestore.getInstance();
+        personData = PersonData.getInstance();
         //TODO find ud af om brugeren allerede har givet feedback
 
         smiley = new fragment_feedback_smiley();
@@ -65,7 +70,10 @@ public class GivFeedback_akt extends AppCompatActivity implements fragment_feedb
         bygFeedbackObjekt(i, s);
         if(nummer>=antalSpørgsmål){
             Log.d("debug feedback akt", "feedbackSendt: \n" + feedbackTilFirebase.toString());
+            feedbackTilFirebase.setMødeId(personData.getFeedbackTilDetteMøde().getMødeID());
 //            feedbackTilFirebase.sendFeedback("");
+            mFirestore.collection("Feedback").document().set(feedbackTilFirebase);
+            personData.afslutFeedback();
             finish();
         }
 
