@@ -82,6 +82,7 @@ public class uddyb_feedback extends Fragment implements View.OnClickListener {
 
         //nummer =
         String s = editTextSvar.getText().toString();
+        editTextSvar.setText("");
         uddyb_feed.feedbackSendt(humoer, s);
     }
 

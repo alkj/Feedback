@@ -68,6 +68,7 @@ public class GivFeedback_akt extends AppCompatActivity implements fragment_feedb
     @Override
     public int feedbackSendt(int i, String s) {
         bygFeedbackObjekt(i, s);
+
         if(nummer>=antalSpørgsmål){
             Log.d("debug feedback akt", "feedbackSendt: \n" + feedbackTilFirebase.toString());
             feedbackTilFirebase.setMødeId(personData.getFeedbackTilDetteMøde().getMødeID());
