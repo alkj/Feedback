@@ -226,6 +226,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                             document.get("formål").toString(),
                             document.get("mødeholderID").toString(),
                             document.getBoolean("afholdt"),
+                            document.getBoolean("igang"),
                             document.get("mødeID").toString(),
                             document.get("mødeIDtildeltager").toString()
                     );

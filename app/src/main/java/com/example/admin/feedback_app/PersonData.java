@@ -40,7 +40,7 @@ public class PersonData {
         ArrayList<String> strings = new ArrayList<>();
 
         for (Møde møde : møderne)
-            if (!møde.isAfholdt())
+            if (!møde.getAfholdt())
                 strings.add(møde.getNavn());
 
         return strings.toArray(new String[0]);
@@ -50,7 +50,7 @@ public class PersonData {
         ArrayList<String> strings = new ArrayList<>();
 
         for (Møde møde : møderne)
-            if (møde.isAfholdt())
+            if (møde.getAfholdt())
                 strings.add(møde.getNavn());
 
         return strings.toArray(new String[0]);
