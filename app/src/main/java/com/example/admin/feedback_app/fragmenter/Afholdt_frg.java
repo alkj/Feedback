@@ -29,8 +29,8 @@ public class Afholdt_frg extends Fragment {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume(){
+        super.onResume();
 
         indlæsListView();
     }
