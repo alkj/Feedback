@@ -33,7 +33,20 @@ public class TidPickerDialog_frg extends DialogFragment implements TimePickerDia
 
     @Override
     public void onTimeSet(TimePicker timePicker, int timer, int minutter) {
-        String s = String.format(getString(R.string.tid_format), timer, minutter);
+
+        String t, m;
+
+        if (timer < 10)
+            t = "0" + timer;
+        else
+            t = Integer.toString(timer);
+
+        if (minutter < 10)
+            m = "0" + minutter;
+        else
+            m = Integer.toString(minutter);
+
+        String s = String.format(getString(R.string.tid_format), t, m);
 
         ((TextView) Objects.requireNonNull(getActivity()).findViewById(R.id.opretmoeder_tid_txt)).setText(s);
     }
