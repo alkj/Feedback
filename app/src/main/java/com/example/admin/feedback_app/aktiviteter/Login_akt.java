@@ -3,10 +3,12 @@ package com.example.admin.feedback_app.aktiviteter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -31,7 +33,8 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = "login";
 
-    private Button login_btn, nyBruger_btn, tilbage_btn;
+    private Button login_btn, nyBruger_btn;
+    private CheckBox test_checkBox;
     private EditText email_editTxt, password_editTxt;
     private FirebaseAuth firebaseAuth;
     private PersonData personData;
@@ -48,21 +51,19 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         //Knapper
         login_btn = findViewById(R.id.login_login_btn);
         nyBruger_btn = findViewById(R.id.login_nyBruger_btn);
-        tilbage_btn = findViewById(R.id.login_tilbage_btn);
+        test_checkBox = findViewById(R.id.login_checkBox);
 
         login_btn.setOnClickListener(this);
         nyBruger_btn.setOnClickListener(this);
-        tilbage_btn.setOnClickListener(this);
+        test_checkBox.setOnClickListener(this);
 
         //Input felter
         email_editTxt = findViewById(R.id.login_brugernavn_editTxt);
         password_editTxt = findViewById(R.id.login_password_editTxt);
 
         if (DEBUG) {
-            email_editTxt.setText(TEST_EMAIL);
-            email_editTxt.setInputType(0);
-            password_editTxt.setText(TEST_PASSWORD);
-            password_editTxt.setInputType(0);
+            test_checkBox.setVisibility(View.VISIBLE);
+
         }
 
         }
@@ -89,9 +90,19 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
             //Åbner opret bruger aktiviteten
             Intent intent = new Intent(this, OpretBruger_akt.class);
             startActivity(intent);
-        } else if (view == tilbage_btn) {
-            //Lukker aktiviteten og går derfor tilbage til den forrige
-            finish();
+        } else if (view == test_checkBox) {
+            if (test_checkBox.isChecked()){
+                email_editTxt.setText(TEST_EMAIL);
+                email_editTxt.setInputType(InputType.TYPE_NULL);
+                password_editTxt.setText(TEST_PASSWORD);
+                password_editTxt.setInputType(InputType.TYPE_NULL);
+            }
+            else {
+                email_editTxt.setText("");
+                email_editTxt.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+                password_editTxt.setText("");
+                password_editTxt.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            }
         }
     }
 
