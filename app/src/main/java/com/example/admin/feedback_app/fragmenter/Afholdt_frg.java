@@ -40,6 +40,8 @@ public class Afholdt_frg extends Fragment {
                 R.layout.list_row_item,
                 PersonData.getInstance().getAfholdteMøderAsStringArray());
         listView.setAdapter(listviewAdapter);
+
+
     }
 
 }

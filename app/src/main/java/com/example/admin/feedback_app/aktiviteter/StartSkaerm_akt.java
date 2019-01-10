@@ -58,36 +58,26 @@ public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickLi
         }
         else if ( view == feedback_btn) {
             //TODO: indlæs inputet fra editText'en og finde det tilhørende møde
-            String mødeIDinput = mødeId_editTxt.getText().toString();
+            String mødeID = mødeId_editTxt.getText().toString();
 
             //updateProgressDialog("Henter møderne");
-            try {
-                FirebaseFirestore.getInstance().collection("Møder")
-                        .whereEqualTo("mødeIDtildeltager", mødeIDinput)
-                        .get()
-                        .addOnCompleteListener(new FindMødeListener());
+            FirebaseFirestore.getInstance().collection("Møder")
+                    .whereEqualTo("mødeIDtildeltager", mødeID)
+                    .get()
+                    .addOnCompleteListener(new FindMødeListener());
 
-                //TODO: lav check på om mødet er i gang!!!
-
-                Intent intent = new Intent(this, GivFeedback_akt.class);
-                startActivity(intent);
-            }
-            catch (Exception e){
+            //TODO: Få lavet så der kun åbnes feedback hvis der findes et møde med dette loginID (lige nu går alt igennem selvom den faktisk finder et møde og smider det ind i persondata)
+            if (personData.getFeedbackTilDetteMøde() == null) {
                 Toast.makeText(this, "Forkert møde-ID ", Toast.LENGTH_SHORT).show();
+            } else {
+
+                //Starter feedback aktiviteten
+                Intent intent = new Intent(this, GivFeedback_akt.class);
+                //intent.putExtra("MØDEID",mødeId_editTxt.getText());
+                startActivity(intent);
+                //Log.d("debug, virker det",personData.getFeedbackTilDetteMøde().getMødeID());
+
             }
-
-            ////TODO: Få lavet så der kun åbnes feedback hvis der findes et møde med dette loginID (lige nu går alt igennem selvom den faktisk finder et møde og smider det ind i persondata)
-            //if (personData.getFeedbackTilDetteMøde() == null) {
-            //    Toast.makeText(this, "Forkert møde-ID ", Toast.LENGTH_SHORT).show();
-            //} else {
-
-            //Starter feedback aktiviteten
-
-            //intent.putExtra("MØDEID",mødeId_editTxt.getText());
-
-            //Log.d("debug, virker det",personData.getFeedbackTilDetteMøde().getMødeID());
-
-        //}
         }
     }
 
@@ -103,11 +93,6 @@ public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickLi
                     personData.setFeedbackTilDetteMøde(mødet);
                     Log.d("debug, hvad bliver", "Mødeid'et bliver: " + mødeID);
 
-                    //personData.tilføjMøde(mødeObj);
-
-                    //Log.d(TAG, "navn fra firebase: " + document.get("navn").toString());
-                    //Log.d(TAG, "mødelistens navn: " + mødeObj.getNavn());
-                    //Log.d(TAG, document.getId() + " => " + document.getData());
                 }
 
 
