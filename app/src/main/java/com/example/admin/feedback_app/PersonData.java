@@ -11,7 +11,7 @@ public class PersonData {
     }
 
     Mødeholder mødeholder;
-    ArrayList<Møde> møderne = new ArrayList<Møde>();
+    ArrayList<Møde> møderne;
 
     private PersonData() {
     }
@@ -25,6 +25,9 @@ public class PersonData {
     }
 
     public void tilføjMøde(Møde møde) {
+        if(møderne == null)
+            møderne = new ArrayList<>();
+
         møderne.add(møde);
     }
 
