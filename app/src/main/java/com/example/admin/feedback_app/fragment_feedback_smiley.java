@@ -1,18 +1,12 @@
 package com.example.admin.feedback_app;
 
 import android.content.Context;
-import android.content.Intent;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -47,7 +41,7 @@ public class fragment_feedback_smiley extends Fragment implements View.OnClickLi
         imageViewTilfreds = rod.findViewById(R.id.imageBTilfreds);
         imageViewSur = rod.findViewById(R.id.imageBSur);
         imageViewMegetSur = rod.findViewById(R.id.imageBMegetSur);
-        textViewFeedback = rod.findViewById(R.id.textView);
+        textViewFeedback = rod.findViewById(R.id.opretMoedeTxtView);
 
         imageViewMegetTilfreds.setOnClickListener(this);
         imageViewTilfreds.setOnClickListener(this);
