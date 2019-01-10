@@ -1,11 +1,14 @@
 package com.example.admin.feedback_app.aktiviteter;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -21,12 +24,17 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.TreeSet;
+
 public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickListener {
 
     private Button login_btn, feedback_btn;
     private EditText mødeId_editTxt;
     private FirebaseAuth firebaseAuth;
     PersonData personData;
+    private SharedPreferences prefs;
 
 
 
@@ -34,6 +42,8 @@ public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startskaerm);
+
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         //Persondata som holder på det møde der skal gives feedback til
         personData = PersonData.getInstance();
@@ -51,6 +61,23 @@ public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
+        String mødeID = mødeId_editTxt.getText().toString();
+        Set<String> gg = prefs.getStringSet("key", null);
+
+        if(gg!=null) {
+            for (String s : gg) {
+
+
+                if (s.equals(mødeID)) {
+                    Toast.makeText(this, "Du har allerede givet feedback", Toast.LENGTH_SHORT).show();
+                    Log.i("hej", "mødeID er lig med et brygt et");
+                    return;
+                }
+            }
+        }
+
+
+
         if (view == login_btn){
             //Starter login aktiviteteten
             Intent intent = new Intent(this, Login_akt.class);
@@ -58,7 +85,7 @@ public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickLi
         }
         else if ( view == feedback_btn) {
             //TODO: indlæs inputet fra editText'en og finde det tilhørende møde
-            String mødeID = mødeId_editTxt.getText().toString();
+
 
             //updateProgressDialog("Henter møderne");
             FirebaseFirestore.getInstance().collection("Møder")
@@ -69,7 +96,10 @@ public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickLi
             //TODO: Få lavet så der kun åbnes feedback hvis der findes et møde med dette loginID (lige nu går alt igennem selvom den faktisk finder et møde og smider det ind i persondata)
             if (personData.getFeedbackTilDetteMøde() == null) {
                 Toast.makeText(this, "Forkert møde-ID ", Toast.LENGTH_SHORT).show();
-            } else {
+            }
+
+
+            else {
 
                 //Starter feedback aktiviteten
                 Intent intent = new Intent(this, GivFeedback_akt.class);
@@ -88,9 +118,13 @@ public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickLi
             if (task.isSuccessful()) {
                 for (QueryDocumentSnapshot document : task.getResult()) {
                     String mødeID = document.get("mødeID").toString();
+                    String mødeIDtildeltager = document.get("mødeIDtildeltager").toString();
                     Møde mødet = new Møde();
                     mødet.setMødeID(mødeID);
+                    mødet.setMødeIDtildeltager(mødeIDtildeltager);
                     personData.setFeedbackTilDetteMøde(mødet);
+
+
                     Log.d("debug, hvad bliver", "Mødeid'et bliver: " + mødeID);
 
                 }
@@ -99,7 +133,21 @@ public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickLi
                 //næsteSide();
             } else {
                 Log.d("debug, det er lrt", "hvorfor fejler den aldrig");
+                //hent enheder i set
+
             }
+
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        try {
+            Set<String> gg = prefs.getStringSet("key", null);
+            Log.i("hej", "udskriv brugte ids: " + gg);
+        }
+        catch (Exception e){
 
         }
     }

@@ -26,8 +26,8 @@ public class uddyb_feedback extends Fragment implements View.OnClickListener {
 
     private static final String IMAGE = "image";
 
-    ImageView imageButton;
-    Button buttonSendFeedback;
+    private ImageView imageButton;
+    private Button buttonSendFeedback, buttonSpringOver;
     int humoer;
     Drawable drawable;
     public int nummer;
@@ -51,9 +51,11 @@ public class uddyb_feedback extends Fragment implements View.OnClickListener {
 
         imageButton = r.findViewById(R.id.imageButton);
         buttonSendFeedback = r.findViewById(R.id.buttonIndsendFeedback);
+        buttonSpringOver = r.findViewById(R.id.buttonSpringOver);
         editTextSvar = r.findViewById(R.id.editTextUddybSvar);
         imageButton.setOnClickListener(this);
         buttonSendFeedback.setOnClickListener(this);
+        buttonSpringOver.setOnClickListener(this);
 
         updater(humoer);
 
@@ -78,12 +80,16 @@ public class uddyb_feedback extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
-        //send editText til firebase her også.
+        int i = v.getId();
 
-        //nummer =
-        String s = editTextSvar.getText().toString();
-        editTextSvar.setText("");
-        uddyb_feed.feedbackSendt(humoer, s);
+        if(i==R.id.buttonIndsendFeedback) {
+            String s = editTextSvar.getText().toString();
+            editTextSvar.setText("");
+            uddyb_feed.feedbackSendt(humoer, s);
+        }
+        if(i==R.id.buttonSpringOver){
+            uddyb_feed.feedbackSendt(humoer, "");
+        }
     }
 
 

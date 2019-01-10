@@ -1,5 +1,7 @@
 package com.example.admin.feedback_app.aktiviteter;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.admin.feedback_app.FeedbackTilFirebase;
+import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
 import com.example.admin.feedback_app.fragment_feedback_smiley;
@@ -14,6 +17,10 @@ import com.example.admin.feedback_app.uddyb_feedback;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class GivFeedback_akt extends AppCompatActivity implements fragment_feedback_smiley.OnButtonClickedFeedbackSmiley, uddyb_feedback.uddyb_feed {
 
@@ -25,6 +32,7 @@ public class GivFeedback_akt extends AppCompatActivity implements fragment_feedb
     int antalSpørgsmål;
     private FirebaseFirestore mFirestore;
     private PersonData personData;
+    private SharedPreferences prefs;
 
 
     @Override
@@ -33,7 +41,8 @@ public class GivFeedback_akt extends AppCompatActivity implements fragment_feedb
         setContentView(R.layout.activity_giv_feedback);
         mFirestore = FirebaseFirestore.getInstance();
         personData = PersonData.getInstance();
-        //TODO find ud af om brugeren allerede har givet feedback
+
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         smiley = new fragment_feedback_smiley();
 
@@ -74,6 +83,20 @@ public class GivFeedback_akt extends AppCompatActivity implements fragment_feedb
             feedbackTilFirebase.setMødeId(personData.getFeedbackTilDetteMøde().getMødeID());
 //            feedbackTilFirebase.sendFeedback("");
             mFirestore.collection("Feedback").document().set(feedbackTilFirebase);
+
+
+            SharedPreferences.Editor editor = prefs.edit();
+            Set<String> set = prefs.getStringSet("key", null);
+            set.add(personData.getFeedbackTilDetteMøde().getMødeIDtildeltager());
+            //Set<String> set = new HashSet<String>();
+            //set.add(personData.getFeedbackTilDetteMøde().getMødeIDtildeltager());
+            editor.putStringSet("key", set);
+
+            editor.commit();
+//Get the values
+            Log.i("hej", "feedbackSendt: "+prefs.getStringSet("key", null));
+
+
             personData.afslutFeedback();
             finish();
         }
