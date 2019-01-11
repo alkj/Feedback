@@ -160,7 +160,6 @@ public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickLi
         super.onResume();
         try {
             Set<String> gg = prefs.getStringSet("key", null);
-            Log.i("hej", "udskriv brugte ids: " + gg);
         }
         catch (Exception e){
 

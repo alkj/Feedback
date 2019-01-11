@@ -1,5 +1,6 @@
 package com.example.admin.feedback_app.aktiviteter;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -103,6 +104,11 @@ public class GivFeedback_akt extends AppCompatActivity implements fragment_feedb
 
             Log.i("hej", "feedbackSendt: "+prefs.getStringSet("key", null));
 
+
+
+
+            Intent intent = new Intent(GivFeedback_akt.this,TakForFeedback.class);
+            startActivity(intent);
             finish();
         }
 
