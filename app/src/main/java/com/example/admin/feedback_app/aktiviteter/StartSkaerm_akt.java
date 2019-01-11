@@ -36,8 +36,6 @@ public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickLi
 
     private SharedPreferences prefs;
     private Møde mødet;
-    private static String mødeIDMID;
-    private String mødeIDdeltMID;
 
 
     @Override
@@ -141,8 +139,6 @@ public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickLi
                     String mødeIDtildeltager = document.get("mødeIDtildeltager").toString();
                     mødet.setMødeID(mødeID);
                     mødet.setMødeIDtildeltager(mødeIDtildeltager);
-                    mødeIDMID = mødeID;
-                    mødeIDdeltMID = mødeIDtildeltager;
 
                     Log.d("debug, hvad bliver", "Mødeid'et bliver: " + mødeID);
 
