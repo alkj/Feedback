@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#8cc63f</color>
     <color name="colorGrøn">#8cc63f</color>
     <color name="colorMørkegrå">#303030</color>
     <color name="colorLysegrå">#898989</color>

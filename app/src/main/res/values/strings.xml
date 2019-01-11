@@ -23,6 +23,6 @@
     <string name="afholdt">Afholdte</string>
     <string name="anuller">Anuller</string>
     <string name="annuller">Annuller</string>
-    <string name="tid_format">%d:%d</string>
-    <string name="dato_format">%d-%d-%d</string>
+    <string name="tid_format">%s:%s</string>
+    <string name="dato_format">%s-%s-%d</string>
 </resources>

@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.adaptere.MødeAdapter;
 
 
 public class Afholdt_frg extends Fragment {
@@ -28,17 +29,17 @@ public class Afholdt_frg extends Fragment {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume(){
+        super.onResume();
 
         indlæsListView();
     }
 
     private void indlæsListView(){
         //Få mødenavne vist i et listview
-        ArrayAdapter<String> listviewAdapter = new ArrayAdapter<String>(getActivity(),
-                R.layout.list_row_item,
-                PersonData.getInstance().getAfholdteMøderAsStringArray());
+        MødeAdapter listviewAdapter = new MødeAdapter(getActivity(),
+                R.layout.moede_liste_item,
+                PersonData.getInstance().getAfholdteMøder());
         listView.setAdapter(listviewAdapter);
 
 

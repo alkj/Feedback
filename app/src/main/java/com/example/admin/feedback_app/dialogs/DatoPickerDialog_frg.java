@@ -35,7 +35,19 @@ public class DatoPickerDialog_frg extends DialogFragment implements DatePickerDi
 
     @Override
     public void onDateSet(DatePicker datePicker, int år, int måned, int dag) {
-        String s = String.format(getString(R.string.dato_format), dag, måned, år);
+        String d, m;
+
+        if (dag < 10)
+            d = "0" + dag;
+        else
+            d = Integer.toString(dag);
+
+        if (++måned < 10)
+            m = "0" + måned;
+        else
+            m = Integer.toString(måned);
+
+        String s = String.format(getString(R.string.dato_format), d, m, år);
 
         ((TextView) getActivity().findViewById(R.id.opretmoeder_dato_txt)).setText(s);
     }
