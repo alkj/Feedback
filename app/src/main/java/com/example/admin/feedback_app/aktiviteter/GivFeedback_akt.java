@@ -31,7 +31,6 @@ public class GivFeedback_akt extends AppCompatActivity implements fragment_feedb
     private FeedbackTilFirebase feedbackTilFirebase;
     int antalSpørgsmål;
     private FirebaseFirestore mFirestore;
-    private PersonData personData;
     private SharedPreferences prefs;
 
 
@@ -40,7 +39,6 @@ public class GivFeedback_akt extends AppCompatActivity implements fragment_feedb
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_giv_feedback);
         mFirestore = FirebaseFirestore.getInstance();
-        personData = PersonData.getInstance();
 
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -79,35 +77,38 @@ public class GivFeedback_akt extends AppCompatActivity implements fragment_feedb
         bygFeedbackObjekt(i, s);
 
         if(nummer>=antalSpørgsmål){
-            Log.d("debug feedback akt", "feedbackSendt: \n" + feedbackTilFirebase.toString());
-            feedbackTilFirebase.setMødeId(personData.getFeedbackTilDetteMøde().getMødeID());
+            String id = getIntent().getStringExtra("MØDEID");
+            String del = getIntent().getStringExtra("MØDEIDdel");
+
+            Log.i("hej","her er id: "+id+" og her er del id: "+del);
+
+            Log.i("debug feedback akt", "feedbackSendt: \n" + feedbackTilFirebase.toString());
+            feedbackTilFirebase.setMødeId(id);
 //            feedbackTilFirebase.sendFeedback("");
             mFirestore.collection("Feedback").document().set(feedbackTilFirebase);
 
-
             SharedPreferences.Editor editor = prefs.edit();
             Set<String> set = prefs.getStringSet("key", null);
-            set.add(personData.getFeedbackTilDetteMøde().getMødeIDtildeltager());
-            //Set<String> set = new HashSet<String>();
-            //set.add(personData.getFeedbackTilDetteMøde().getMødeIDtildeltager());
-            editor.putStringSet("key", set);
+            if(set==null){
+                Set<String> b = new TreeSet<String>();
+                b.add(del);
+                editor.putStringSet("key", b);
+                editor.commit();
+            }
+            else {
+                set.add(del);
+                editor.putStringSet("key", set);
+                editor.commit();
+            }
 
-            editor.commit();
-//Get the values
             Log.i("hej", "feedbackSendt: "+prefs.getStringSet("key", null));
 
-
-            personData.afslutFeedback();
             finish();
         }
 
         Log.d("debug feedback akt", "feedbackSendt: " + i + s);
 
-
-
         nummer++;
-
-
 
         Bundle bundle = new Bundle();
         Log.d("debug feedback akt", "onCreateView: " + nummer);

@@ -7,17 +7,18 @@ public class Møde {
     private String dato;
     private String tid;
     private String sted;
-    private boolean afholdt, igang;
+    private boolean afholdt;
     private String mødeholderID;
     private String mødeID;
     private String mødeIDtildeltager;
+    private boolean igang;
 
 
 
     public Møde(){
 
     }
-    public Møde(String navn, String formål, String dato, String tid, String sted, String mødeholderID, boolean afholdt, boolean igang, String mødeID, String mødeIDtildeltager) {
+    public Møde(String navn, String formål, String dato, String tid, String sted, String mødeholderID, boolean afholdt) {
         this.navn = navn;
         this.formål = formål;
         this.dato = dato;
@@ -25,9 +26,6 @@ public class Møde {
         this.sted = sted;
         this.mødeholderID = mødeholderID;
         this.afholdt = afholdt;
-        this.igang = igang;
-        this.mødeID = mødeID;
-        this.mødeIDtildeltager = mødeIDtildeltager;
     }
 
     public String getNavn() {
@@ -50,12 +48,8 @@ public class Møde {
         return sted;
     }
 
-    public boolean getAfholdt() {
+    public boolean isAfholdt() {
         return afholdt;
-    }
-
-    public boolean getIgang() {
-        return igang;
     }
 
     public String getMødeholderID() {
@@ -86,13 +80,15 @@ public class Møde {
         this.afholdt = afholdt;
     }
     public void setIgang(boolean igang) {
-        this.igang= igang;
+        this.igang = igang;
+    }
+    public boolean getIgang(){
+        return igang;
     }
 
     public void setMødeholderID(String mødeholderID) {
         this.mødeholderID = mødeholderID;
     }
-
     public String getMødeIDtildeltager() {
         return mødeIDtildeltager;
     }

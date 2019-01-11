@@ -236,11 +236,13 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                             document.get("tid").toString(),
                             document.get("sted").toString(),
                             document.get("mødeholderID").toString(),
-                            document.getBoolean("afholdt"),
-                            document.getBoolean("igang"),
-                            document.get("mødeID").toString(),
-                            document.get("mødeIDtildeltager").toString()
+                            document.getBoolean("afholdt")
+
                     );
+                    mødeObj.setIgang(document.getBoolean("igang"));
+                    mødeObj.setMødeIDtildeltager(document.get("mødeIDtildeltager").toString());
+                    mødeObj.setMødeID(document.get("mødeID").toString());
+                    
                     personData.tilføjMøde(mødeObj);
 
                     Log.d(TAG, "navn fra firebase: " + document.get("navn").toString());
