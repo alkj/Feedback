@@ -1,13 +1,14 @@
 <resources>
-    <string name="app_name">76Z Feedback til Møder</string>
+    <string name="app_name">grp 76Z Feedback til Møder</string>
     <!-- Strings til fragmentet 'opret møde' -->
     <string name="oplysninger">Oplysninger</string>
     <string name="mode_navn">Møde navn</string>
     <string name="mode_formal">Møde formål</string>
-    <string name="dato">dato</string>
-    <string name="tid">tid</string>
-    <string name="sted">sted</string>
-    <string name="dagsorden">dagsorden</string>
+    <string name="dato">Dato</string>
+    <string name="starttid">Start tid</string>
+    <string name="sluttid">Slut tid</string>
+    <string name="sted">Sted</string>
+    <string name="dagsorden">Dagsorden</string>
     <string name="tilbage">Tilbage</string>
     <string name="opret_Mode">Opret møde</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -23,6 +24,8 @@
     <string name="afholdt">Afholdte</string>
     <string name="anuller">Anuller</string>
     <string name="annuller">Annuller</string>
+
+    <!-- Strings til tid og dato picker fragmenter -->
     <string name="tid_format">%s:%s</string>
     <string name="dato_format">%s-%s-%d</string>
 </resources>

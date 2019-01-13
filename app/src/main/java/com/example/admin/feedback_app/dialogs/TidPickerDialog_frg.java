@@ -48,6 +48,8 @@ public class TidPickerDialog_frg extends DialogFragment implements TimePickerDia
 
         String s = String.format(getString(R.string.tid_format), t, m);
 
-        ((TextView) Objects.requireNonNull(getActivity()).findViewById(R.id.opretmoeder_tid_txt)).setText(s);
+        ((TextView) Objects.requireNonNull(getActivity()).findViewById(R.id.opretmoeder_starttid_txt)).setText(s);
+        ((TextView) Objects.requireNonNull(getActivity()).findViewById(R.id.opretmoeder_sluttid_txt)).setText(s);
+
     }
 }

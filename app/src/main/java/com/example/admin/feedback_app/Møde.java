@@ -16,8 +16,10 @@ public class Møde {
 
 
     public Møde(){
-
     }
+
+    // TODO: lave variabler til starttid og sluttid samt inviterede og måske fremmødte.
+
     public Møde(String navn, String formål, String dato, String tid, String sted, String mødeholderID, boolean afholdt) {
         this.navn = navn;
         this.formål = formål;

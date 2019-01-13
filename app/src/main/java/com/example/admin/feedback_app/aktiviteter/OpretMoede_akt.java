@@ -29,7 +29,7 @@ public class OpretMoede_akt extends FragmentActivity implements View.OnClickList
     private static final String TAG = "opretMøde";
 
     private Button annuler_knap, opretMoede_knap;
-    TextView tid_txt;
+    TextView starttid_txt, sluttid_txt;
     TextView dato_txt;
     EditText mødeNavn, mødeFormål, sted;
 
@@ -52,8 +52,11 @@ public class OpretMoede_akt extends FragmentActivity implements View.OnClickList
         annuler_knap = findViewById(R.id.opretmoede_anuller_btn);
         annuler_knap.setOnClickListener(this);
 
-        tid_txt = findViewById(R.id.opretmoeder_tid_txt);
-        tid_txt.setOnClickListener(this);
+        starttid_txt = findViewById(R.id.opretmoeder_starttid_txt);
+        starttid_txt.setOnClickListener(this);
+
+        sluttid_txt = findViewById(R.id.opretmoeder_sluttid_txt);
+        sluttid_txt.setOnClickListener(this);
 
         dato_txt = findViewById(R.id.opretmoeder_dato_txt);
         dato_txt.setOnClickListener(this);
@@ -68,9 +71,13 @@ public class OpretMoede_akt extends FragmentActivity implements View.OnClickList
 
 
         switch (view.getId()){
-            case R.id.opretmoeder_tid_txt:
-                DialogFragment dialog_tid = new TidPickerDialog_frg();
-                dialog_tid.show(getSupportFragmentManager(), "tidPicker");
+            case R.id.opretmoeder_starttid_txt:
+                DialogFragment dialog_starttid = new TidPickerDialog_frg();
+                dialog_starttid.show(getSupportFragmentManager(), "tidPicker");
+                break;
+            case R.id.opretmoeder_sluttid_txt:
+                DialogFragment dialog_sluttid = new TidPickerDialog_frg();
+                dialog_sluttid.show(getSupportFragmentManager(), "tidPicker");
                 break;
             case R.id.opretmoeder_dato_txt:
                 DialogFragment dialog_dato = new DatoPickerDialog_frg();
@@ -91,7 +98,7 @@ public class OpretMoede_akt extends FragmentActivity implements View.OnClickList
                 Log.d(TAG,møde.getNavn() );
                 møde.setFormål(mødeFormål.getText().toString());
                 møde.setDato(dato_txt.getText().toString());
-                møde.setTid(tid_txt.getText().toString());
+                møde.setTid(starttid_txt.getText().toString());
                 møde.setSted(sted.getText().toString());
                 møde.setMødeholderID(mAuth.getUid());
                 møde.setMødeIDtildeltager(generateRandomString());
