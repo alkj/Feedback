@@ -46,7 +46,8 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
         moedeNavn.setText(møde.getNavn());
         moedeFormaal.setText(møde.getFormål());
         moedeSted.setText(møde.getSted());
-        tidStart.setText(møde.getTid());
+        tidStart.setText(møde.getStartTid());
+        tidSlut.setText(møde.getSlutTid());
 
     }
 
