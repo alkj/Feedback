@@ -96,8 +96,18 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
             startActivity(intent);
         }
         else if ( view == feedback_btn) {
+            Set<String> gg = prefs.getStringSet("key", null);
 
-            checkBrugtID(mødeID);
+            if(gg!=null) {
+                for (String s : gg) {
+
+                    if (s.equals(mødeID)) {
+                        Toast.makeText(this, "Du har allerede givet feedback", Toast.LENGTH_SHORT).show();
+                        Log.i("hej", "mødeID er lig med et brygt et");
+                        return;
+                    }
+                }
+            }
             hentMøderFraFirebase(mødeID);
             checkOmIdPasserMedMødeID();
         }
@@ -108,13 +118,11 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
         showProgressDialog();
         updateProgressDialog("Henter møde");
 
-
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
 
             @Override
             public void run() {
-
 
                 if (mødet.getMødeIDtildeltager()==null) {
                     hideProgressDialog();
@@ -135,7 +143,7 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
                 }
 
             }
-        }, 1000);
+        }, 2000);
     }
 
     private void hentMøderFraFirebase(String mødeID) {
@@ -146,21 +154,6 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
                 .addOnCompleteListener(new FindMødeListener());
     }
 
-    private void checkBrugtID(String mødeID) {
-        Set<String> gg = prefs.getStringSet("key", null);
-
-        if(gg!=null) {
-            for (String s : gg) {
-
-                if (s.equals(mødeID)) {
-                    Toast.makeText(this, "Du har allerede givet feedback", Toast.LENGTH_SHORT).show();
-                    Log.i("hej", "mødeID er lig med et brygt et");
-                    return;
-                }
-            }
-        }
-
-    }
 
     class FindMødeListener implements OnCompleteListener<QuerySnapshot> {
 
