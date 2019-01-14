@@ -1,10 +1,12 @@
 package com.example.admin.feedback_app.aktiviteter;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -151,6 +153,27 @@ public class GivFeedback_akt extends AppCompatActivity implements fragment_feedb
 
 
 
+    }
+
+    public void onBackPressed(){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(GivFeedback_akt.this);
+        builder.setMessage("Vil du afslutte feedbacken?");
+        builder.setCancelable(true);
+        builder.setNegativeButton("Anuller", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.setPositiveButton("Ja, aflsut feedback", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
 }
