@@ -9,8 +9,10 @@ import android.widget.TextView;
 
 import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.views.HorizontalStackedBarChart;
 
 import java.util.List;
+import java.util.Random;
 
 public class MødeAdapter extends ArrayAdapter<Møde> {
     private final int layoutId;
@@ -34,6 +36,28 @@ public class MødeAdapter extends ArrayAdapter<Møde> {
         if (møde != null){
             TextView mødenavn = view.findViewById(R.id.list_moednavn);
             TextView mødedato = view.findViewById(R.id.list_moededato);
+            HorizontalStackedBarChart barChart = view.findViewById(R.id.list_chart);
+
+            if (møde.isAfholdt()){
+                int[] colors = {
+                        getContext().getColor(R.color.colorMegetSur),
+                        getContext().getColor(R.color.colorSur),
+                        getContext().getColor(R.color.colorGlad),
+                        getContext().getColor(R.color.colorMegetGlad)
+                };
+                barChart.setColors(colors);
+
+                Random random = new Random();
+                barChart.setValues(new int[] {
+                        random.nextInt(10)+1,
+                        random.nextInt(10)+1,
+                        random.nextInt(10)+1,
+                        random.nextInt(10)+1
+                });
+            }
+            else
+                barChart.setVisibility(View.GONE);
+
 
             mødenavn.setText(møde.getNavn());
             mødedato.setText(møde.getDato());
