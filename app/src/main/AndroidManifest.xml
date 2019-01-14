@@ -49,7 +49,8 @@
         <activity android:name=".aktiviteter.GiveFeedback2_akt" />
         <activity android:name=".aktiviteter.TakForFeedback" />
         <activity android:name=".aktiviteter.AfholdtMeode_akt" />
-        <activity android:name=".aktiviteter.IkkeAfholdtMoede_akt"></activity>
+        <activity android:name=".aktiviteter.IkkeAfholdtMoede_akt" />
+        <activity android:name=".aktiviteter.beforeGivFeedback_akt"></activity>
     </application>
 
 </manifest>

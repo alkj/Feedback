@@ -13,6 +13,7 @@ public class Møde {
     private String mødeID;
     private String mødeIDtildeltager;
     private boolean igang;
+    private String dagsorden;
 
 
 
@@ -21,7 +22,7 @@ public class Møde {
 
     // TODO: lave variabler til starttid og sluttid samt inviterede og måske fremmødte.
 
-    public Møde(String navn, String formål, String dato, String startTid, String slutTid, String sted, String mødeholderID, boolean afholdt) {
+    public Møde(String navn, String formål, String dato, String startTid, String slutTid, String sted, String mødeholderID, boolean afholdt, String dagsorden) {
         this.navn = navn;
         this.formål = formål;
         this.dato = dato;
@@ -30,6 +31,7 @@ public class Møde {
         this.sted = sted;
         this.mødeholderID = mødeholderID;
         this.afholdt = afholdt;
+        this.dagsorden = dagsorden;
     }
 
     public String getNavn() {
@@ -127,5 +129,13 @@ public class Møde {
 
     public void setMødeID(String mødeID) {
         this.mødeID = mødeID;
+    }
+
+    public String getDagsorden() {
+        return dagsorden;
+    }
+
+    public void setDagsorden(String dagsorden) {
+        this.dagsorden = dagsorden;
     }
 }

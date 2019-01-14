@@ -237,7 +237,8 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                             document.get("slutTid").toString(),
                             document.get("sted").toString(),
                             document.get("mødeholderID").toString(),
-                            document.getBoolean("afholdt")
+                            document.getBoolean("afholdt"),
+                            document.get("dagsorden").toString()
 
                     );
                     mødeObj.setIgang(document.getBoolean("igang"));
@@ -251,7 +252,10 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                     Log.d(TAG, document.getId() + " => " + document.getData());
                 }
 
-                personData.sorterMøderne();
+                //TODO gør så sorterMøderne() ikke crasher når der er 0 møder
+                //personData.sorterMøderne();
+
+
 
                 næsteSide();
             } else {

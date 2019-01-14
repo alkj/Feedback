@@ -83,6 +83,8 @@ public class GivFeedback_akt extends AppCompatActivity implements fragment_feedb
             String id = getIntent().getStringExtra("MØDEID");
             String del = getIntent().getStringExtra("MØDEIDdel");
 
+
+
             Log.i("hej","her er id: "+id+" og her er del id: "+del);
 
             Log.i("debug feedback akt", "feedbackSendt: \n" + feedbackTilFirebase.toString());

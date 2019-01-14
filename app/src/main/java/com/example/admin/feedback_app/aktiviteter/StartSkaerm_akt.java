@@ -142,9 +142,12 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
                     hideProgressDialog();
 
                     //Starter feedback aktiviteten
-                    Intent intent = new Intent(getApplicationContext(), GivFeedback_akt.class);
+                    Intent intent = new Intent(getApplicationContext(), beforeGivFeedback_akt.class);
                     intent.putExtra("MØDEID", mødet.getMødeID());
                     intent.putExtra("MØDEIDdel",mødet.getMødeIDtildeltager());
+                    intent.putExtra("DAGSORDEN",mødet.getDagsorden());
+                    intent.putExtra("DATO",mødet.getDato());
+                    intent.putExtra("STED",mødet.getSted());
                     startActivity(intent);
 
                 }
@@ -170,8 +173,15 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
                 for (QueryDocumentSnapshot document : task.getResult()) {
                     String mødeID = document.get("mødeID").toString();
                     String mødeIDtildeltager = document.get("mødeIDtildeltager").toString();
+                    String dagsorden = document.get("dagsorden").toString();
+                    String sted = document.get("sted").toString();
+                    String dato = document.get("dato").toString();
+
                     mødet.setMødeID(mødeID);
                     mødet.setMødeIDtildeltager(mødeIDtildeltager);
+                    mødet.setDagsorden(dagsorden);
+                    mødet.setSted(sted);
+                    mødet.setDato(dato);
 
                     Log.d("debug, hvad bliver", "Mødeid'et bliver: " + mødeID);
 

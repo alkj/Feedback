@@ -85,6 +85,8 @@ public class PersonData {
         return møder;
     }
 
+
+
     public void sorterMøderne(){
         ArrayList<Møde> nyeListe = new ArrayList<>();
 
@@ -111,6 +113,7 @@ public class PersonData {
 
         møderne = nyeListe;
     }
+
 
     public void ryd(){
         mødeholder = null;
