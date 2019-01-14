@@ -89,6 +89,7 @@ public class uddyb_feedback extends Fragment implements View.OnClickListener {
         }
         if(i==R.id.buttonSpringOver){
             uddyb_feed.feedbackSendt(humoer, "");
+            editTextSvar.setText("");
         }
     }
 
