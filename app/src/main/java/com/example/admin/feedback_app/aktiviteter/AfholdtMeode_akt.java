@@ -1,8 +1,9 @@
 package com.example.admin.feedback_app.aktiviteter;
 
+import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,7 +15,6 @@ import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
@@ -24,20 +24,28 @@ public class AfholdtMeode_akt extends AppCompatActivity implements View.OnClickL
 
     private TextView moedeNavn, moedeID;
 
-    private Button moedeInfo, overordnet_knap;
+    private Button moedeInfo_knap, overordnet_knap, dagsorden_Knap, kommentarer_knap;
 
     private PieChart pieChart;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_afholdt_meode_akt);
 
-        moedeInfo = findViewById(R.id.AfholdtMoedeInfo_knap);
-        moedeInfo.setOnClickListener(this);
+        moedeInfo_knap = findViewById(R.id.AfholdtMoedeInfo_knap);
+        moedeInfo_knap.setOnClickListener(this);
 
         overordnet_knap = findViewById(R.id.AfholdtOverordnetStatistik_knap);
         overordnet_knap.setOnClickListener(this);
+
+        dagsorden_Knap = findViewById(R.id.AfholdtDagsorden_knap);
+        dagsorden_Knap.setOnClickListener(this);
+
+        kommentarer_knap = findViewById(R.id.AfholdtKommentarer_knap);
+        kommentarer_knap.setOnClickListener(this);
+
 
         moedeNavn = findViewById(R.id.tvMødeNavn);
         moedeID = findViewById(R.id.tvMødeID);
@@ -95,6 +103,19 @@ public class AfholdtMeode_akt extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View view) {
 
+        if (view == moedeInfo_knap) {
+            Intent intent = new Intent (this, Afholdt_MoedeInformationer_akt.class);
+            startActivity(intent);
+        }
+        else if (view == overordnet_knap) {
+
+        }
+        else if (view == dagsorden_Knap) {
+
+        }
+        else if (view == kommentarer_knap) {
+
+        }
     }
 
 
