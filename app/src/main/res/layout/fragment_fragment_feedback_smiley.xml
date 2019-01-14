@@ -27,12 +27,13 @@
     <TextView
         android:id="@+id/textViewFeedbackBeskrivelse"
 
-        android:layout_width="wrap_content"
+        android:layout_width="343dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="58dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="56dp"
         android:text="Hvad syntes du om PowerPoint præsentationen?"
-        android:textAlignment="center"
 
+        android:textAlignment="center"
         android:textColor="@color/colorMørkegrå"
         android:textSize="22sp"
         android:textStyle="bold"

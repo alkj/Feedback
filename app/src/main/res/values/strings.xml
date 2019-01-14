@@ -28,4 +28,10 @@
     <!-- Strings til tid og dato picker fragmenter -->
     <string name="tid_format">%s:%s</string>
     <string name="dato_format">%s-%s-%d</string>
+
+    <!-- Strings til spørgsmålene under feedback -->
+    <string name="spørgsmål_til_feedback1">Blev tidsplanen overholdt?</string>
+    <string name="spørgsmål_til_feedback2">Hvad syntes du om PowerPoint præsentationen?</string>
+    <string name="spørgsmål_til_feedback3">Holdt i jer til emnen under hele mødet?</string>
+    <string name="spørgsmål_til_feedback4">Er du tilfreds med mødeholder?</string>
 </resources>

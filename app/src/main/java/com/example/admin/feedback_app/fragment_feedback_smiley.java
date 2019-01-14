@@ -26,6 +26,7 @@ public class fragment_feedback_smiley extends Fragment implements View.OnClickLi
     public ImageView imageViewMegetSur;
     public TextView textViewFeedback;
 
+    private TextView textViewSpørgsmål;
     private TextView textViewSideNummer;
 
     private static final String PIC = "feedback";
@@ -39,6 +40,7 @@ public class fragment_feedback_smiley extends Fragment implements View.OnClickLi
 
 
         textViewSideNummer = rod.findViewById(R.id.feedback_nummer_txtView);
+        textViewSpørgsmål = rod.findViewById(R.id.textViewFeedbackBeskrivelse);
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -47,7 +49,24 @@ public class fragment_feedback_smiley extends Fragment implements View.OnClickLi
 
         Log.d("TAG", "onCreateView: " + nummer);
 
+
         textViewSideNummer.setText("side " + nummer + " ud af 4"); //TODO nummer
+
+        switch (nummer){
+            case 1:
+                textViewSpørgsmål.setText(R.string.spørgsmål_til_feedback2);
+                break;
+            case 2:
+                textViewSpørgsmål.setText(R.string.spørgsmål_til_feedback1);
+                break;
+            case 3:
+                textViewSpørgsmål.setText(R.string.spørgsmål_til_feedback3);
+                break;
+            case 4:
+                textViewSpørgsmål.setText(R.string.spørgsmål_til_feedback4);
+                break;
+        }
+
 
         imageViewMegetTilfreds = rod.findViewById(R.id.imageBMegetTilfreds);
         imageViewTilfreds = rod.findViewById(R.id.imageBTilfreds);
