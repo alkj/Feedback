@@ -5,7 +5,8 @@ public class Møde {
     private String navn;
     private String formål;
     private String dato;
-    private String tid;
+    private String startTid;
+    private String slutTid;
     private String sted;
     private boolean afholdt;
     private String mødeholderID;
@@ -20,11 +21,12 @@ public class Møde {
 
     // TODO: lave variabler til starttid og sluttid samt inviterede og måske fremmødte.
 
-    public Møde(String navn, String formål, String dato, String tid, String sted, String mødeholderID, boolean afholdt) {
+    public Møde(String navn, String formål, String dato, String startTid, String slutTid, String sted, String mødeholderID, boolean afholdt) {
         this.navn = navn;
         this.formål = formål;
         this.dato = dato;
-        this.tid = tid;
+        this.startTid = startTid;
+        this.slutTid = slutTid;
         this.sted = sted;
         this.mødeholderID = mødeholderID;
         this.afholdt = afholdt;
@@ -46,16 +48,12 @@ public class Møde {
         return Integer.parseInt(dato.split("-")[0]);
     }
 
-    public int getDatoMåned(){
+    public int getDatoMåned() {
         return Integer.parseInt(dato.split("-")[1]);
     }
 
     public int getDatoÅr(){
         return Integer.parseInt(dato.split("-")[2]);
-    }
-
-    public String getTid() {
-        return tid;
     }
 
     public String getSted() {
@@ -82,8 +80,20 @@ public class Møde {
         this.dato = dato;
     }
 
-    public void setTid(String tid) {
-        this.tid = tid;
+    public void setStartTid(String startTid) {
+        this.startTid = startTid;
+    }
+
+    public String getStartTid() {
+        return startTid;
+    }
+
+    public void setSlutTid(String slutTid) {
+        this.slutTid = slutTid;
+    }
+
+    public String getSlutTid() {
+        return slutTid;
     }
 
     public void setSted(String sted) {

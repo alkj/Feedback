@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
@@ -31,7 +30,6 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
 
-import io.fabric.sdk.android.Fabric;
 
 public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickListener {
 
