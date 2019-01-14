@@ -250,6 +250,8 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                     Log.d(TAG, document.getId() + " => " + document.getData());
                 }
 
+                personData.sorterMøderne();
+
                 næsteSide();
             } else {
                 Log.d(TAG, "Error getting documents: ", task.getException());

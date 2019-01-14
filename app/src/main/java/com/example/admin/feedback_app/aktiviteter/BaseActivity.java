@@ -1,37 +1,31 @@
 package com.example.admin.feedback_app.aktiviteter;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.support.annotation.VisibleForTesting;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.example.admin.feedback_app.dialogs.ProgressDialog;
+
 public class BaseActivity extends AppCompatActivity {
 
-    /**
-     * Taget fra https://github.com/firebase/quickstart-android/tree/master/auth/app/src/main/java/com/google/firebase/quickstart/auth/java
-     */
-
-    @VisibleForTesting
-    public ProgressDialog mProgressDialog;
+    public ProgressDialog progressDialog;
 
     public void showProgressDialog() {
-        if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(this);
-            mProgressDialog.setIndeterminate(true);
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(this, "Loading");
         }
 
-        mProgressDialog.show();
+        progressDialog.show();
     }
 
     public void updateProgressDialog(String message){
-        if (mProgressDialog != null) mProgressDialog.setMessage(message);
+        if (progressDialog != null) progressDialog.setMessage(message);
     }
 
     public void hideProgressDialog() {
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.dismiss();
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
         }
     }
 

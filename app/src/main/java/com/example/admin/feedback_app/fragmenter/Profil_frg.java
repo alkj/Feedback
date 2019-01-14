@@ -22,7 +22,7 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
     private Button logUd, skiftPassword, gem;
     private EditText fornavn, efternavn, telefonnummer;
     private TextView virksomhedsID;
-
+    private PersonData personData;
     private FirebaseAuth mAuth;
     private Mødeholder mødeholder;
 
@@ -32,6 +32,7 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profil, container, false);
 
+        personData = PersonData.getInstance();
         mAuth = FirebaseAuth.getInstance();
         mødeholder = PersonData.getInstance().getMødeholder();
 
@@ -62,6 +63,7 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if (v == logUd) {
             mAuth.signOut();
+            personData.ryd();
             this.getActivity().finish();
         }
 

@@ -1,5 +1,7 @@
 package com.example.admin.feedback_app;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,6 +83,33 @@ public class PersonData {
                 møder.add(møde);
 
         return møder;
+    }
+
+    public void sorterMøderne(){
+        ArrayList<Møde> nyeListe = new ArrayList<>();
+
+        for(int i = 0; i < møderne.size(); i++){
+            Møde lavesteMøde = null;
+
+            for (Møde møde : møderne){
+                if (lavesteMøde == null){
+                    lavesteMøde = møde;
+                }
+                else{
+                    if (møde.getDatoDag() < lavesteMøde.getDatoDag()
+                            && møde.getDatoMåned() <= lavesteMøde.getDatoMåned()
+                            && møde.getDatoÅr() <= lavesteMøde.getDatoÅr()){
+                        lavesteMøde = møde;
+                        break;
+                    }
+                }
+            }
+
+            møderne.remove(lavesteMøde);
+            nyeListe.add(lavesteMøde);
+        }
+
+        møderne = nyeListe;
     }
 
     public void ryd(){
