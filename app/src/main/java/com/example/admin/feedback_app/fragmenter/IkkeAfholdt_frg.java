@@ -1,5 +1,6 @@
 package com.example.admin.feedback_app.fragmenter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
 import com.example.admin.feedback_app.adaptere.MødeAdapter;
+import com.example.admin.feedback_app.aktiviteter.IkkeAfholdtMoede_akt;
 
 
 public class IkkeAfholdt_frg extends Fragment implements AdapterView.OnItemClickListener {
@@ -47,6 +49,9 @@ public class IkkeAfholdt_frg extends Fragment implements AdapterView.OnItemClick
     }
 
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-        //TODO: når der trykkes på et møde skal det vises på en anden skærm.
+        Intent intent = new Intent(getContext(), IkkeAfholdtMoede_akt.class);
+        intent.putExtra("INDEKS", position);
+
+        startActivity(intent);
     }
 }
