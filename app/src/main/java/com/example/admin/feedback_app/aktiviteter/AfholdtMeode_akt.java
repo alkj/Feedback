@@ -75,7 +75,7 @@ public class AfholdtMeode_akt extends AppCompatActivity implements View.OnClickL
         PieDataSet dataset = new PieDataSet(yValues, "feedback");
         dataset.setSliceSpace(4f);
         dataset.setSelectionShift(5f);
-        
+
         int[] colors = {
                 getColor(R.color.colorMegetGlad),
                 getColor(R.color.colorGlad),
