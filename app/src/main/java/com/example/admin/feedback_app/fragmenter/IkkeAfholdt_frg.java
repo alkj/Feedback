@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
 import com.example.admin.feedback_app.adaptere.MødeAdapter;
@@ -42,7 +41,7 @@ public class IkkeAfholdt_frg extends Fragment implements AdapterView.OnItemClick
     private void indlæsListView(){
         //Få mødenavne vist i et listview
         MødeAdapter listviewAdapter = new MødeAdapter(getActivity(),
-                R.layout.moede_liste_item,
+                R.layout.list_row_item_moede,
                 PersonData.getInstance().getIkkeAfholdteMøder());
         listView.setAdapter(listviewAdapter);
         listView.setOnItemClickListener(this);

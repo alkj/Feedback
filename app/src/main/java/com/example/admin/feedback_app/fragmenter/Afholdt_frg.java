@@ -7,14 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
 import com.example.admin.feedback_app.adaptere.MødeAdapter;
 import com.example.admin.feedback_app.aktiviteter.AfholdtMeode_akt;
-import com.example.admin.feedback_app.aktiviteter.IkkeAfholdtMoede_akt;
 
 
 public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickListener {
@@ -42,7 +40,7 @@ public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickList
     private void indlæsListView(){
         //Få mødenavne vist i et listview
         MødeAdapter listviewAdapter = new MødeAdapter(getActivity(),
-                R.layout.moede_liste_item,
+                R.layout.list_row_item_moede,
                 PersonData.getInstance().getAfholdteMøder());
         listView.setAdapter(listviewAdapter);
         listView.setOnItemClickListener(this);
