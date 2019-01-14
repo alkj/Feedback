@@ -18,7 +18,6 @@ public class ProgressDialog extends AlertDialog {
     private TextView progressTxt;
     private ProgressBar progressBar;
     private CharSequence msg;
-    private int count = 0;
     private Runnable anim;
     private boolean running;
 
@@ -46,8 +45,6 @@ public class ProgressDialog extends AlertDialog {
             @Override
             public void run() {
                 while (running) {
-
-                    progressBar.setProgress(1);
 
                     progressTxt.post(new Runnable() {
                         @Override
