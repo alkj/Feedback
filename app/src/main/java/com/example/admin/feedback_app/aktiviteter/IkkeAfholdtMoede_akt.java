@@ -82,6 +82,9 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
         return strDato;
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

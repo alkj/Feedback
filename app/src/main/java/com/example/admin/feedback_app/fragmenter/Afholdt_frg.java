@@ -16,7 +16,7 @@ import com.example.admin.feedback_app.aktiviteter.AfholdtMeode_akt;
 
 
 public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickListener {
-
+    private static final String TAG = "Afholdt";
     private ListView listView;
 
 
@@ -49,10 +49,9 @@ public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickList
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        /*Intent intent = new Intent(getContext(), AfholdtMeode_akt.class);
+        Intent intent = new Intent(getContext(), AfholdtMeode_akt.class);
         intent.putExtra("INDEKS", position);
 
-        startActivity(intent);*/
-        //TODO: aktiviteten skal laves først
+        startActivity(intent);
     }
 }

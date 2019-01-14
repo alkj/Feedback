@@ -34,17 +34,32 @@ public class Møde {
         this.dagsorden = dagsorden;
     }
 
+    public void setNavn(String navn) {
+        this.navn = navn;
+    }
+
     public String getNavn() {
         return navn;
+    }
+
+
+    public void setFormål(String formål) {
+        this.formål = formål;
     }
 
     public String getFormål() {
         return formål;
     }
 
+
+    public void setDato(String dato) {
+        this.dato = dato;
+    }
+
     public String getDato() {
         return dato;
     }
+
 
     public int getDatoDag(){
         return Integer.parseInt(dato.split("-")[0]);
@@ -58,29 +73,15 @@ public class Møde {
         return Integer.parseInt(dato.split("-")[2]);
     }
 
+
+    public void setSted(String sted) {
+        this.sted = sted;
+    }
+
     public String getSted() {
         return sted;
     }
 
-    public boolean isAfholdt() {
-        return afholdt;
-    }
-
-    public String getMødeholderID() {
-        return mødeholderID;
-    }
-
-    public void setNavn(String navn) {
-        this.navn = navn;
-    }
-
-    public void setFormål(String formål) {
-        this.formål = formål;
-    }
-
-    public void setDato(String dato) {
-        this.dato = dato;
-    }
 
     public void setStartTid(String startTid) {
         this.startTid = startTid;
@@ -90,6 +91,7 @@ public class Møde {
         return startTid;
     }
 
+
     public void setSlutTid(String slutTid) {
         this.slutTid = slutTid;
     }
@@ -98,13 +100,21 @@ public class Møde {
         return slutTid;
     }
 
-    public void setSted(String sted) {
-        this.sted = sted;
-    }
 
     public void setAfholdt(boolean afholdt) {
         this.afholdt = afholdt;
     }
+
+    public boolean isAfholdt() {
+        return afholdt;
+    }
+
+
+    public String getMødeholderID() {
+        return mødeholderID;
+    }
+
+
     public void setIgang(boolean igang) {
         this.igang = igang;
     }
@@ -112,30 +122,35 @@ public class Møde {
         return igang;
     }
 
+
     public void setMødeholderID(String mødeholderID) {
         this.mødeholderID = mødeholderID;
     }
+
+
+    public void setMødeIDtildeltager(String mødeIDtildeltager) {
+        this.mødeIDtildeltager = mødeIDtildeltager;
+    }
+
     public String getMødeIDtildeltager() {
         return mødeIDtildeltager;
     }
 
-    public void setMødeIDtildeltager(String mødeIDtildeltager) {
-        this.mødeIDtildeltager = mødeIDtildeltager;
+
+    public void setMødeID(String mødeID) {
+        this.mødeID = mødeID;
     }
 
     public String getMødeID() {
         return mødeID;
     }
 
-    public void setMødeID(String mødeID) {
-        this.mødeID = mødeID;
+
+    public void setDagsorden(String dagsorden) {
+        this.dagsorden = dagsorden;
     }
 
     public String getDagsorden() {
         return dagsorden;
-    }
-
-    public void setDagsorden(String dagsorden) {
-        this.dagsorden = dagsorden;
     }
 }
