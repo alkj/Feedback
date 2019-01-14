@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickListener {
+public class StartSkaerm_akt extends BaseActivity implements View.OnClickListener {
 
     private Button login_btn, feedback_btn;
     private EditText mødeId_editTxt;
@@ -44,8 +44,6 @@ public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startskaerm);
 
-
-
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         //Knapper
@@ -57,7 +55,6 @@ public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickLi
 
         //Input felt
         mødeId_editTxt = (EditText)findViewById(R.id.startskærm_editTxt);
-
 
     }
 
@@ -86,59 +83,69 @@ public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickLi
         }
         else if ( view == feedback_btn) {
 
-            Set<String> gg = prefs.getStringSet("key", null);
+            checkBrugtID(mødeID);
+            hentMøderFraFirebase(mødeID);
+            checkOmIdPasserMedMødeID();
+        }
+    }
 
-            if(gg!=null) {
-                for (String s : gg) {
+    private void checkOmIdPasserMedMødeID() {
+
+        showProgressDialog();
+        updateProgressDialog("Henter møde");
 
 
-                    if (s.equals(mødeID)) {
-                        Toast.makeText(this, "Du har allerede givet feedback", Toast.LENGTH_SHORT).show();
-                        Log.i("hej", "mødeID er lig med et brygt et");
-                        return;
-                    }
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+
+
+                if (mødet.getMødeIDtildeltager()==null) {
+                    hideProgressDialog();
+                    Toast.makeText(getApplicationContext(), "Forkert møde-ID ", Toast.LENGTH_SHORT).show();
+                }
+
+
+                else {
+
+                    hideProgressDialog();
+
+                    //Starter feedback aktiviteten
+                    Intent intent = new Intent(getApplicationContext(), GivFeedback_akt.class);
+                    intent.putExtra("MØDEID", mødet.getMødeID());
+                    intent.putExtra("MØDEIDdel",mødet.getMødeIDtildeltager());
+                    startActivity(intent);
+
+                }
+
+            }
+        }, 1000);
+    }
+
+    private void hentMøderFraFirebase(String mødeID) {
+
+        FirebaseFirestore.getInstance().collection("Møder")
+                .whereEqualTo("mødeIDtildeltager", mødeID)
+                .get()
+                .addOnCompleteListener(new FindMødeListener());
+    }
+
+    private void checkBrugtID(String mødeID) {
+        Set<String> gg = prefs.getStringSet("key", null);
+
+        if(gg!=null) {
+            for (String s : gg) {
+
+                if (s.equals(mødeID)) {
+                    Toast.makeText(this, "Du har allerede givet feedback", Toast.LENGTH_SHORT).show();
+                    Log.i("hej", "mødeID er lig med et brygt et");
+                    return;
                 }
             }
-
-
-
-
-            //TODO: indlæs inputet fra editText'en og finde det tilhørende møde
-
-
-            //updateProgressDialog("Henter møderne");
-            FirebaseFirestore.getInstance().collection("Møder")
-                    .whereEqualTo("mødeIDtildeltager", mødeID)
-                    .get()
-                    .addOnCompleteListener(new FindMødeListener());
-
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    //Do something after 100ms
-
-                    if (mødet.getMødeIDtildeltager()==null) {
-                        Toast.makeText(getApplicationContext(), "Forkert møde-ID ", Toast.LENGTH_SHORT).show();
-                    }
-
-
-                    else {
-
-                        //Starter feedback aktiviteten
-                        Intent intent = new Intent(getApplicationContext(), GivFeedback_akt.class);
-                        intent.putExtra("MØDEID", mødet.getMødeID());
-                        intent.putExtra("MØDEIDdel",mødet.getMødeIDtildeltager());
-                        startActivity(intent);
-                        //Log.d("debug, virker det",personData.getFeedbackTilDetteMøde().getMødeID());
-
-                    }
-
-                }
-            }, 2000);
-
-
         }
+
     }
 
     class FindMødeListener implements OnCompleteListener<QuerySnapshot> {
