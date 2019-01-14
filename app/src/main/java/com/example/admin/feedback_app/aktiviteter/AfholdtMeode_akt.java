@@ -37,7 +37,7 @@ public class AfholdtMeode_akt extends AppCompatActivity implements View.OnClickL
             Bundle bundle = getIntent().getExtras();
             if(bundle != null){
                 int indeks = bundle.getInt("INDEKS");
-                møde = PersonData.getInstance().getIkkeAfholdteMøder().get(indeks);
+                møde = PersonData.getInstance().getAfholdteMøder().get(indeks);
             }
         }
 
