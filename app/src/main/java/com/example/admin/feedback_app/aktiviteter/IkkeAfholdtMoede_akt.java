@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.admin.feedback_app.Møde;
+import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
 
 import java.text.SimpleDateFormat;
@@ -45,6 +46,15 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
         tidSlut = findViewById(R.id.tvPlanlagtSluttid);
         inviterede = findViewById(R.id.tvInviterede);
         fremmoedte = findViewById(R.id.tvFremmødte);
+
+        //TODO: håndtere at mødet ikke findes
+        if (savedInstanceState == null) {
+            Bundle bundle = getIntent().getExtras();
+            if(bundle != null){
+                int indeks = bundle.getInt("INDEKS");
+                møde = PersonData.getInstance().getIkkeAfholdteMøder().get(indeks);
+            }
+        }
 
         moedeNavn.setText(møde.getNavn());
         moedeFormaal.setText(møde.getFormål());

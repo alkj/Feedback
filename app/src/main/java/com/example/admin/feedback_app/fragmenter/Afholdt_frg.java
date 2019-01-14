@@ -49,9 +49,10 @@ public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickList
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(getContext(), AfholdtMeode_akt.class);
+        /*Intent intent = new Intent(getContext(), AfholdtMeode_akt.class);
         intent.putExtra("INDEKS", position);
 
-        startActivity(intent);
+        startActivity(intent);*/
+        //TODO: aktiviteten skal laves først
     }
 }
