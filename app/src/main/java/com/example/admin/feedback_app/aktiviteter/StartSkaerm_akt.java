@@ -2,6 +2,7 @@ package com.example.admin.feedback_app.aktiviteter;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -111,21 +112,32 @@ public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickLi
                     .get()
                     .addOnCompleteListener(new FindMødeListener());
 
-            if (mødet.getMødeIDtildeltager()==null) {
-                Toast.makeText(this, "Forkert møde-ID ", Toast.LENGTH_SHORT).show();
-            }
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    //Do something after 100ms
+
+                    if (mødet.getMødeIDtildeltager()==null) {
+                        Toast.makeText(getApplicationContext(), "Forkert møde-ID ", Toast.LENGTH_SHORT).show();
+                    }
 
 
-            else {
+                    else {
 
-                //Starter feedback aktiviteten
-                Intent intent = new Intent(this, GivFeedback_akt.class);
-                intent.putExtra("MØDEID", mødet.getMødeID());
-                intent.putExtra("MØDEIDdel",mødet.getMødeIDtildeltager());
-                startActivity(intent);
-                //Log.d("debug, virker det",personData.getFeedbackTilDetteMøde().getMødeID());
+                        //Starter feedback aktiviteten
+                        Intent intent = new Intent(getApplicationContext(), GivFeedback_akt.class);
+                        intent.putExtra("MØDEID", mødet.getMødeID());
+                        intent.putExtra("MØDEIDdel",mødet.getMødeIDtildeltager());
+                        startActivity(intent);
+                        //Log.d("debug, virker det",personData.getFeedbackTilDetteMøde().getMødeID());
 
-            }
+                    }
+
+                }
+            }, 2000);
+
+
         }
     }
 
