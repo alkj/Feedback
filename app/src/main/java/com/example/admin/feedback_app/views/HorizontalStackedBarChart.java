@@ -10,6 +10,10 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+/**
+ * @author Nils David Rasamoel
+ * Horizontal Stacked Bar Chart View locked to only 4 values
+ */
 public class HorizontalStackedBarChart extends View {
     private int[] counts = {0,0,0,0};
     private int total;
