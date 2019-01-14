@@ -158,6 +158,9 @@ public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onResume() {
         super.onResume();
+
+        mødeId_editTxt.setText("");
+
         try {
             Set<String> gg = prefs.getStringSet("key", null);
         }
