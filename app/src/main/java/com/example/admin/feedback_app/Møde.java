@@ -42,6 +42,18 @@ public class Møde {
         return dato;
     }
 
+    public int getDatoDag(){
+        return Integer.parseInt(dato.split("-")[0]);
+    }
+
+    public int getDatoMåned(){
+        return Integer.parseInt(dato.split("-")[1]);
+    }
+
+    public int getDatoÅr(){
+        return Integer.parseInt(dato.split("-")[2]);
+    }
+
     public String getTid() {
         return tid;
     }
