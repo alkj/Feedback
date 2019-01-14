@@ -13,11 +13,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -28,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
 
+import io.fabric.sdk.android.Fabric;
+
 public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickListener {
 
     private Button login_btn, feedback_btn;
@@ -37,12 +41,20 @@ public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickLi
     private SharedPreferences prefs;
     private Møde mødet;
 
+    private FirebaseAnalytics firebaseAnalytics;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startskaerm);
 
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "startskærm");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "name test");
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "anden aktivitet");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
 
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -84,6 +96,7 @@ public class StartSkaerm_akt extends AppCompatActivity implements View.OnClickLi
             startActivity(intent);
         }
         else if ( view == feedback_btn) {
+
 
             Set<String> gg = prefs.getStringSet("key", null);
 
