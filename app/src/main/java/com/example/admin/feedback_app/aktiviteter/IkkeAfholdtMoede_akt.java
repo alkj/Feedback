@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.admin.feedback_app.Møde;
@@ -19,15 +18,18 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
             møde;
 
     private TextView
-            moedeNavn, moedeFormaal, moedeSted, tidStart, tidSlut, inviterede, fremmoedte;
+            moedeNavn, moedeFormaal, moedeSted, tidStart, tidSlut, inviterede, fremmoedte, moedeID;
 
     private Button
-            startMoede, rediger;
+            inviter, startMoede, rediger;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ikke_afholdt_moede_akt);
+
+        inviter = findViewById(R.id.ikkeAfholdtInviter_knap);
+        inviter.setOnClickListener(this);
 
         startMoede = findViewById(R.id.ikkeAfholdtStart_knap);
         startMoede.setOnClickListener(this);
@@ -38,6 +40,7 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
         moedeNavn = findViewById(R.id.tvMødeNavn);
         moedeFormaal = findViewById(R.id.tvMødeFormaal);
         moedeSted = findViewById(R.id.tvMødeSted);
+        moedeID = findViewById(R.id.tvMødeID);
         tidStart = findViewById(R.id.tvPlanlagtStarttid);
         tidSlut = findViewById(R.id.tvPlanlagtSluttid);
         inviterede = findViewById(R.id.tvInviterede);
@@ -46,9 +49,11 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
         moedeNavn.setText(møde.getNavn());
         moedeFormaal.setText(møde.getFormål());
         moedeSted.setText(møde.getSted());
+        moedeID.setText(møde.getMødeID());
         tidStart.setText(møde.getStartTid());
         tidSlut.setText(møde.getSlutTid());
-
+        //inviterede.setText(møde.getAntalInviterede);
+        //fremmoedte.setText(møde.getFremmoedte);
     }
 
 
