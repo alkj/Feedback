@@ -96,8 +96,15 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
             startActivity(intent);
         }
         else if ( view == feedback_btn) {
-            Set<String> gg = prefs.getStringSet("key", null);
 
+            //hvis edittext er tom
+            if(mødeId_editTxt.length()==0){
+                Toast.makeText(this, "Indtast ID", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            //Hvis man allerede har givet feedback
+            Set<String> gg = prefs.getStringSet("key", null);
             if(gg!=null) {
                 for (String s : gg) {
 
