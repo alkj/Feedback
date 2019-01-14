@@ -98,7 +98,8 @@ public class OpretMoede_akt extends FragmentActivity implements View.OnClickList
                 Log.d(TAG,møde.getNavn() );
                 møde.setFormål(mødeFormål.getText().toString());
                 møde.setDato(dato_txt.getText().toString());
-                møde.setTid(starttid_txt.getText().toString());
+                møde.setStartTid(starttid_txt.getText().toString());
+                møde.setSlutTid(sluttid_txt.getText().toString());
                 møde.setSted(sted.getText().toString());
                 møde.setMødeholderID(mAuth.getUid());
                 møde.setMødeIDtildeltager(generateRandomString());
