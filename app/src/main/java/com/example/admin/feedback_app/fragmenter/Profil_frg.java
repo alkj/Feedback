@@ -1,9 +1,9 @@
 package com.example.admin.feedback_app.fragmenter;
 
-import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,16 +11,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.admin.feedback_app.AendreOplysninger;
 import com.example.admin.feedback_app.Mødeholder;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class Profil_frg extends Fragment implements View.OnClickListener {
     private Button logUd, skiftPassword, gem;
-    private EditText fornavn, efternavn, telefonnummer;
+    private TextView fornavn, efternavn, telefonnummer;
     private TextView virksomhedsID;
     private PersonData personData;
     private FirebaseAuth mAuth;
@@ -41,14 +41,15 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
         skiftPassword = v.findViewById(R.id.profil_skiftPassword_button);
         gem = v.findViewById(R.id.profil_gem_button);
 
-        fornavn = v.findViewById(R.id.profil_fornavn_editTxt);
-        efternavn = v.findViewById(R.id.profil_efternavn_editTxt);
-        telefonnummer = v.findViewById(R.id.profil_tlf_editTxt);
+        fornavn = v.findViewById(R.id.aendre_fornavn_editTxt);
+        efternavn = v.findViewById(R.id.aendre_efternavn_editTxt);
+        telefonnummer = v.findViewById(R.id.aendre_tlf_editTxt);
 
-        virksomhedsID = v.findViewById(R.id.profil_virksomhedsid_textView);
+        virksomhedsID = v.findViewById(R.id.aendre_virksomhedsid_textView);
 
 
         logUd.setOnClickListener(this);
+        gem.setOnClickListener(this);
         skiftPassword.setOnClickListener(this);
 
         fornavn.setText(mødeholder.getFornavn());
@@ -69,6 +70,9 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
 
         if (v == gem) {
 
+            Log.d("bæ", "lige inden intent");
+            startActivity(new Intent(getContext(), AendreOplysninger.class));
+
             //TODO
         }
 
@@ -79,4 +83,6 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
 
 
     }
+
+
 }
