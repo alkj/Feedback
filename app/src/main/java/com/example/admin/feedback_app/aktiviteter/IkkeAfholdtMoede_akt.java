@@ -19,7 +19,7 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
             møde;
 
     private TextView
-            moedeNavn, moedeFormaal, moedeSted, tidStart, tidSlut, inviterede, fremmoedte, moedeID;
+            moedeNavn, moedeFormaal, moedeSted, tidStart, tidSlut, inviterede, fremmoedte, moedeID, moedeDato;
 
     private Button
             inviter, startMoede, rediger;
@@ -42,6 +42,7 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
         moedeFormaal = findViewById(R.id.tvMødeFormaal);
         moedeSted = findViewById(R.id.tvMødeSted);
         moedeID = findViewById(R.id.tvMødeID);
+        moedeDato = findViewById(R.id.tvMødeDato);
         tidStart = findViewById(R.id.tvPlanlagtStarttid);
         tidSlut = findViewById(R.id.tvPlanlagtSluttid);
         inviterede = findViewById(R.id.tvInviterede);
@@ -60,6 +61,7 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
         moedeFormaal.setText(møde.getFormål());
         moedeSted.setText(møde.getSted());
         moedeID.setText(møde.getMødeID());
+        moedeDato.setText(møde.getDato());
         tidStart.setText(møde.getStartTid());
         tidSlut.setText(møde.getSlutTid());
         //inviterede.setText(møde.getAntalInviterede);

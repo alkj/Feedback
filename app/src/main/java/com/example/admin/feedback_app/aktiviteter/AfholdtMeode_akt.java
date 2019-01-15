@@ -71,7 +71,7 @@ public class AfholdtMeode_akt extends AppCompatActivity implements View.OnClickL
         pieChart.setDragDecelerationFrictionCoef(0.95f);
 
         pieChart.setDrawHoleEnabled(true);
-        pieChart.setHoleColor(R.color.colorMørkegrå);
+        pieChart.setHoleColor(R.color.colorHvid);
         pieChart.setTransparentCircleRadius(61f);
 
         ArrayList<PieEntry> yValues = new ArrayList<PieEntry>(){};

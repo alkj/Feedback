@@ -12,19 +12,19 @@
         android:layout_width="368dp"
         android:layout_height="328dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:clipToPadding="true"
+        android:fadeScrollbars="false"
         android:fillViewport="true"
         android:padding="5dp"
         android:scrollbarAlwaysDrawHorizontalTrack="true"
-        android:scrollbarSize="8dp"
         android:scrollbarFadeDuration="0"
-        android:fadeScrollbars="false"
+        android:scrollbarSize="8dp"
         app:layout_constraintBottom_toTopOf="@+id/ikkeAfholdtStart_knap"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv1010n">
 
@@ -47,7 +47,7 @@
                 tools:layout_editor_absoluteY="306dp" />
 
             <TextView
-                android:id="@+id/tvMødeNavn"
+                android:id="@+id/tvMødeInfoMødeNavn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="3dp"
@@ -67,7 +67,7 @@
                 tools:layout_editor_absoluteY="198dp" />
 
             <TextView
-                android:id="@+id/tvMødeFormaal"
+                android:id="@+id/tvMødeInfoMødeFormaal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="3dp"
@@ -87,7 +87,7 @@
                 tools:layout_editor_absoluteY="198dp" />
 
             <TextView
-                android:id="@+id/tvMødeSted"
+                android:id="@+id/tvMødeInfoMødeSted"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="3dp"
@@ -107,7 +107,7 @@
                 tools:layout_editor_absoluteY="198dp" />
 
             <TextView
-                android:id="@+id/tvMødeID"
+                android:id="@+id/tvMødeInfoMødeID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="3dp"
@@ -151,7 +151,7 @@
                 android:paddingBottom="20dp">
 
                 <TextView
-                    android:id="@+id/tvPlanlagtStarttid"
+                    android:id="@+id/tvMødeInfoPlanlagtStarttid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -161,7 +161,7 @@
 
 
                 <TextView
-                    android:id="@+id/tvPlanlagtSluttid"
+                    android:id="@+id/tvMødeinfoPlanlagtSluttid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -207,7 +207,7 @@
                 android:paddingBottom="20dp">
 
                 <TextView
-                    android:id="@+id/tvAktuelStarttid"
+                    android:id="@+id/tvMødeInfoAktuelStarttid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -217,7 +217,7 @@
 
 
                 <TextView
-                    android:id="@+id/tvAktuelSluttid"
+                    android:id="@+id/tvMødeInfoAktuelSluttid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -262,7 +262,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tvInviterede"
+                    android:id="@+id/tvMødeInfoInviterede"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -271,7 +271,7 @@
                     android:textColor="@color/colorHvid" />
 
                 <TextView
-                    android:id="@+id/tvFremmødte"
+                    android:id="@+id/tvMødeInfoFremmødte"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
