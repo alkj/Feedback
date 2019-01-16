@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".aktiviteter.Overholdt_Giv_Feedback_akt"></activity>
         <activity
             android:name=".aktiviteter.StartSkaerm_akt"
             android:screenOrientation="portrait"
@@ -67,7 +68,7 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".aendreOplysninger" />
-        <activity android:name=".AendreOplysninger"></activity>
+        <activity android:name=".AendreOplysninger" />
     </application>
 
 </manifest>
