@@ -45,12 +45,17 @@ public class PersonData {
     @Deprecated
     public String[] getIkkeAfholdteMøderAsStringArray() {
         ArrayList<String> strings = new ArrayList<>();
+        if (møderne.isEmpty()){
 
-        for (Møde møde : møderne)
-            if (!møde.isAfholdt())
-                strings.add(møde.getNavn());
+            return strings.toArray(new String[0]);
 
-        return strings.toArray(new String[0]);
+        }else {
+            for (Møde møde : møderne)
+                if (!møde.isAfholdt())
+                    strings.add(møde.getNavn());
+
+            return strings.toArray(new String[0]);
+        }
     }
 
     //Skal nok ikke bruges længere
@@ -68,21 +73,33 @@ public class PersonData {
     public List<Møde> getIkkeAfholdteMøder() {
         List<Møde> møder = new ArrayList<>();
 
-        for (Møde møde : møderne)
-            if (!møde.isAfholdt())
-                møder.add(møde);
+        if (møderne == null){
+            return møder;
+        }
+        else {
 
-        return møder;
+            for (Møde møde : møderne)
+                if (!møde.isAfholdt())
+                    møder.add(møde);
+
+            return møder;
+        }
     }
 
     public List<Møde> getAfholdteMøder() {
         List<Møde> møder = new ArrayList<>();
 
-        for (Møde møde : møderne)
-            if (møde.isAfholdt())
-                møder.add(møde);
+        if (møderne==null){
+            return møder;
+        }
+        else {
 
-        return møder;
+            for (Møde møde : møderne)
+                if (møde.isAfholdt())
+                    møder.add(møde);
+
+            return møder;
+        }
     }
 
 
