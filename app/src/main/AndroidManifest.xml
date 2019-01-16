@@ -67,7 +67,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".AendreOplysninger"></activity>
+        <activity android:name=".AendreOplysninger" />
     </application>
 
 </manifest>

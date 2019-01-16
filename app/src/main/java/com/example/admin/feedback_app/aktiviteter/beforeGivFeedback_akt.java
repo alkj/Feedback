@@ -39,7 +39,7 @@ public class beforeGivFeedback_akt extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(), GivFeedback_akt.class);
+                Intent intent = new Intent(getApplicationContext(), Overholdt_Giv_Feedback_akt.class);
                 intent.putExtra("MØDEID", getIntent().getStringExtra("MØDEID"));
                 intent.putExtra("MØDEIDdel",getIntent().getStringExtra("MØDEIDdel"));
                 startActivity(intent);

@@ -2,17 +2,18 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/feedback_fragmentet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorMEGETLysGrå"
-    tools:context=".fragment_feedback_smiley"
+    tools:context=".aktiviteter.Overholdt_Giv_Feedback_akt"
     tools:layout_editor_absoluteY="25dp">
 
     <TextView
         android:id="@+id/feedback_nummer_txtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/open_sans_bold"
         android:text="2 af 5"
         android:textAlignment="center"
@@ -27,16 +28,18 @@
     <TextView
         android:id="@+id/textViewFeedbackBeskrivelse"
 
-        android:layout_width="343dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="56dp"
-        android:text="Hvad syntes du om PowerPoint præsentationen?"
 
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="33dp"
+        android:text="Hvad syntes du om PowerPoint præsentationen?"
         android:textAlignment="center"
         android:textColor="@color/colorMørkegrå"
         android:textSize="22sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/feedback_nummer_txtView" />
 
@@ -44,15 +47,20 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="290dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginBottom="15dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingLeft="30dp"
         android:paddingTop="200dp"
         android:paddingRight="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextUddybning"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFeedbackBeskrivelse">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.839">
 
 
         <ImageView
@@ -60,8 +68,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingRight="5dp"
             android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/meget_sur" />
 
 
@@ -70,8 +78,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingRight="5dp"
             android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/sur" />
 
         <ImageView
@@ -79,8 +87,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingRight="5dp"
             android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/glad" />
 
 
@@ -89,11 +97,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingRight="5dp"
             android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:src="@drawable/meget_glad" />
 
 
     </LinearLayout>
+
+    <EditText
+        android:id="@+id/editTextUddybning"
+        android:layout_width="0dp"
+        android:layout_height="112dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Uddyb her"
+        app:layout_constraintBottom_toTopOf="@+id/knapVidere"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <Button
+        android:id="@+id/knapVidere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="163dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUddybning" />
 
 </android.support.constraint.ConstraintLayout>
