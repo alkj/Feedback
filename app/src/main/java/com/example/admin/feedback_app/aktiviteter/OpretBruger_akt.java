@@ -233,12 +233,12 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                                 if (task.isSuccessful()) {
 
                                     Toast.makeText(context,
-                                            "Verification email sent to " + firebaseAuth.getCurrentUser().getEmail(),
+                                            "Verificering email sendt til: " + firebaseAuth.getCurrentUser().getEmail(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
 
                                     Toast.makeText(context,
-                                            "Failed to send verification email.",
+                                            "Verificering email fejlede",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }

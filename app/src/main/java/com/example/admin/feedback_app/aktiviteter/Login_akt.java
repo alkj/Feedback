@@ -40,7 +40,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
     private PersonData personData;
 
     private final boolean DEBUG = true;
-    private final String TEST_EMAIL = "test@bruger.dk", TEST_PASSWORD = "123456";
+    private final String TEST_EMAIL = "nicolaidam96@gmail.com", TEST_PASSWORD = "123456";
 
 
     @Override
@@ -75,7 +75,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         personData = PersonData.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
 
-        if (firebaseAuth.getCurrentUser() != null) {
+        if (firebaseAuth.getCurrentUser() != null && firebaseAuth.getCurrentUser().isEmailVerified()) {
             showProgressDialog();
             hentBrugerFraFire();
         }
@@ -180,17 +180,29 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
             if (task.isSuccessful()) {
                 //Login
                 Log.d(TAG, "signInWithEmail:success");
-                hentBrugerFraFire();
 
-            } else {
+
+                if(firebaseAuth.getCurrentUser().isEmailVerified()) {
+                    hentBrugerFraFire();
+                }
+                else {
+
+                    Toast.makeText(getApplicationContext(),
+                            "Email er ikke verificeret",
+                            Toast.LENGTH_SHORT).show();
+                    hideProgressDialog();
+                }
+            }
+            else {
                 //Login fejlede!!
                 Log.w(TAG, "signInWithEmail:failure", task.getException());
 
                 //TODO: giv en bedre beskrivelse af årsagen til fejlen
                 //TODO: custom Toast feks. rød til fejl
                 Toast.makeText(getApplicationContext(),
-                        "Login fejlede!",
+                        "Login fejlede",
                         Toast.LENGTH_SHORT).show();
+                hideProgressDialog();
 
             }
         }
@@ -252,7 +264,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                     Log.d(TAG, document.getId() + " => " + document.getData());
                 }
 
-                //TODO gør så sorterMøderne() ikke crasher når der er 0 møder
+
                 //personData.sorterMøderne();
 
 
