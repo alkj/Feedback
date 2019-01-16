@@ -1,24 +1,23 @@
 package com.example.admin.feedback_app;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.type.TimeOfDayOrBuilder;
 
 public class FeedbackTilFirebase {
 
     private String mødeId;
 
-    private int antalSpørgsmål = 4;
+    private float antalSpørgsmål = 4;
 
-    private int intSpørgsmål1;
+    private float intSpørgsmål1;
     private String stringSpørgsmål1;
 
-    private int intSpørgsmål2;
+    private float intSpørgsmål2;
     private String stringSpørgsmål2;
 
-    private int intSpørgsmål3;
+    private float intSpørgsmål3;
     private String stringSpørgsmål3;
 
-    private int intSpørgsmål4;
+    private float intSpørgsmål4;
     private String stringSpørgsmål4;
 
 
@@ -52,7 +51,7 @@ public class FeedbackTilFirebase {
         this.mødeId = mødeId;
     }
 
-    public int getAntalSpørgsmål() {
+    public float getAntalSpørgsmål() {
         return antalSpørgsmål;
     }
 
@@ -60,7 +59,7 @@ public class FeedbackTilFirebase {
         this.antalSpørgsmål = antalSpørgsmål;
     }
 
-    public int getIntSpørgsmål1() {
+    public float getIntSpørgsmål1() {
         return intSpørgsmål1;
     }
 
@@ -76,7 +75,7 @@ public class FeedbackTilFirebase {
         this.stringSpørgsmål1 = stringSpørgsmål1;
     }
 
-    public int getIntSpørgsmål2() {
+    public float getIntSpørgsmål2() {
         return intSpørgsmål2;
     }
 
@@ -92,7 +91,7 @@ public class FeedbackTilFirebase {
         this.stringSpørgsmål2 = stringSpørgsmål2;
     }
 
-    public int getIntSpørgsmål3() {
+    public float getIntSpørgsmål3() {
         return intSpørgsmål3;
     }
 
@@ -108,7 +107,7 @@ public class FeedbackTilFirebase {
         this.stringSpørgsmål3 = stringSpørgsmål3;
     }
 
-    public int getIntSpørgsmål4() {
+    public float getIntSpørgsmål4() {
         return intSpørgsmål4;
     }
 

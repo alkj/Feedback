@@ -93,7 +93,7 @@
         android:scrollbarAlwaysDrawVerticalTrack="true"
 
         android:scrollbarFadeDuration="50000"
-        android:scrollbarSize="5dp"
+        android:scrollbarSize="2dp"
         android:scrollbarThumbVertical="@color/colorHvid"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

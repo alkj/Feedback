@@ -38,6 +38,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.6'
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+
+    implementation 'com.diogobernardino:williamchart:2.5.0'
+
 }
 
 apply plugin: 'com.google.gms.google-services'

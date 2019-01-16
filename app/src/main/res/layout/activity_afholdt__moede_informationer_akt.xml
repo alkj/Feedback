@@ -8,7 +8,7 @@
     tools:context=".aktiviteter.Afholdt_MoedeInformationer_akt">
 
     <Button
-        android:id="@+id/afholdtMoedeInfo_knap"
+        android:id="@+id/afholdtMoedeInfoTilbage"
         android:layout_width="151dp"
         android:layout_height="44dp"
         android:layout_gravity="center"
@@ -62,9 +62,8 @@
                 android:id="@+id/tvasd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorGrøn"
                 android:text="Mødenavn"
-                android:textColor="@color/colorMørkegrå"
+                android:textColor="@color/colorHvid"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 tools:layout_editor_absoluteX="216dp"
@@ -83,9 +82,8 @@
                 android:id="@+id/tv000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorGrøn"
                 android:text="Møde formål"
-                android:textColor="@color/colorMørkegrå"
+                android:textColor="@color/colorHvid"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 tools:layout_editor_absoluteX="83dp"
@@ -104,9 +102,8 @@
                 android:id="@+id/tv0000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorGrøn"
                 android:text="Mødested"
-                android:textColor="@color/colorMørkegrå"
+                android:textColor="@color/colorHvid"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 tools:layout_editor_absoluteX="83dp"
@@ -125,9 +122,8 @@
                 android:id="@+id/tv00030"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorGrøn"
                 android:text="Møde ID"
-                android:textColor="@color/colorMørkegrå"
+                android:textColor="@color/colorHvid"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 tools:layout_editor_absoluteX="83dp"
@@ -152,10 +148,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/colorGrøn"
                     android:gravity="left"
                     android:text="Planlagt Starttid"
-                    android:textColor="@color/colorMørkegrå"
+                    android:textColor="@color/colorHvid"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -164,10 +159,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/colorGrøn"
                     android:gravity="left"
                     android:text="Planlagt Sluttid"
-                    android:textColor="@color/colorMørkegrå"
+                    android:textColor="@color/colorHvid"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -210,10 +204,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/colorGrøn"
                     android:gravity="left"
                     android:text="Aktuel Starttid"
-                    android:textColor="@color/colorMørkegrå"
+                    android:textColor="@color/colorHvid"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -222,10 +215,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/colorGrøn"
                     android:gravity="left"
                     android:text="Aktuel Sluttid"
-                    android:textColor="@color/colorMørkegrå"
+                    android:textColor="@color/colorHvid"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -268,10 +260,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/colorGrøn"
                     android:gravity="left"
                     android:text="Inviterede"
-                    android:textColor="@color/colorMørkegrå"
+                    android:textColor="@color/colorHvid"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -280,10 +271,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/colorGrøn"
                     android:gravity="left"
                     android:text="Fremmødte"
-                    android:textColor="@color/colorMørkegrå"
+                    android:textColor="@color/colorHvid"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
