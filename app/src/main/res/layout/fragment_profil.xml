@@ -137,7 +137,7 @@
 
 
     <Button
-        android:id="@+id/profil_gem_button"
+        android:id="@+id/profil_rediger_button"
         android:layout_width="272dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
