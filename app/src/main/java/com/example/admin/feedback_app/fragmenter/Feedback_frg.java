@@ -18,11 +18,12 @@ public class Feedback_frg extends Fragment {
 
     private static String TAG = "Feedback fragment";
 
-    private Button knapVidere;
+    private Button knapVidere, knapTilbage;
     private EditText editTextuddybning;
-    private TextView textViewspørgsmål;
+    private TextView textViewSpørgsmål, textViewIndeks;
 
-    private static final String SPØRGSMÅL_TIL_FRAGMENT = "Spørgsmål";
+    private static final String
+            SPØRGSMÅL_TEKST = "Spørgsmål";
 
     private String spørgsmålTilFragment;
 
@@ -42,7 +43,7 @@ public class Feedback_frg extends Fragment {
     public static Feedback_frg newInstance(String spørgsmål) {
         Feedback_frg fragment = new Feedback_frg();
         Bundle args = new Bundle();
-        args.putString(SPØRGSMÅL_TIL_FRAGMENT, spørgsmål);
+        args.putString(SPØRGSMÅL_TEKST, spørgsmål);
         fragment.setArguments(args);
         Log.d(TAG, "newInstance: nyt fragment");
         return fragment;
@@ -52,30 +53,32 @@ public class Feedback_frg extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            spørgsmålTilFragment = getArguments().getString(SPØRGSMÅL_TIL_FRAGMENT);
+            spørgsmålTilFragment = getArguments().getString(SPØRGSMÅL_TEKST);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rod = inflater.inflate(R.layout.fragment_feedback, container, false);
+        View view = inflater.inflate(R.layout.fragment_feedback, container, false);
 
-        knapVidere = rod.findViewById(R.id.knapVidere);
-        editTextuddybning = rod.findViewById(R.id.editTextUddybning);
-        textViewspørgsmål = rod.findViewById(R.id.textViewFeedbackBeskrivelse);
 
-        textViewspørgsmål.setText(spørgsmålTilFragment);
+        editTextuddybning = view.findViewById(R.id.feedback_udybning_editTxt);
+        textViewSpørgsmål = view.findViewById(R.id.feedback_spørgsmål_txtView);
 
-        knapVidere.setOnClickListener(new View.OnClickListener() {
+        textViewSpørgsmål.setText(spørgsmålTilFragment);
+
+
+        //TODO: smiley knapper
+        /*knapVidere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 onFragmentInteractionListener.onFragmentInteraction(4, editTextuddybning.getText().toString());
 
             }
-        });
+        });*/
 
-        return rod;
+        return view;
     }
 
 

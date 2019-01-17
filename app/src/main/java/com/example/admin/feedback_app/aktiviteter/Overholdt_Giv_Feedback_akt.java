@@ -8,30 +8,28 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.admin.feedback_app.R;
 import com.example.admin.feedback_app.fragmenter.Feedback_frg;
 
-public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Feedback_frg.OnFragmentInteractionListener {
+/**
+ * Noget af koden er taget direkte fra Googles egen dokumentation om ViewPager
+ * https://developer.android.com/training/animation/screen-slide#java
+ *
+ */
+public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Feedback_frg.OnFragmentInteractionListener, View.OnClickListener {
 
     private Fragment fragmentFeedback;
 
+    private Button knapVidere, knapTilbage;
+    private TextView tekstNummer;
     private String TAG = "feedbackfragmentet";
 
-    /**
-     * The number of pages (wizard steps) to show in this demo.
-     */
-    private static final int NUM_PAGES = 5;
-
-    /**
-     * The pager widget, which handles animation and allows swiping horizontally to access previous
-     * and next wizard steps.
-     */
+    private static final int NUM_PAGES = 5; //Fast indtil videre
     private ViewPager viewPager;
-
-    /**
-     * The pager adapter, which provides the pages to the view pager widget.
-     */
     private PagerAdapter pagerAdapter;
 
     @Override
@@ -46,6 +44,38 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Fee
         viewPager = findViewById(R.id.feedback_pager);
         pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int i) {
+                updateView(i);
+            }
+        });
+
+        //Knapper
+        knapVidere = findViewById(R.id.feedback_videre_btn);
+        knapTilbage = findViewById(R.id.feedback_tilbage_btn);
+        knapVidere.setOnClickListener(this);
+        knapTilbage.setOnClickListener(this);
+
+        //Tekst
+        tekstNummer = findViewById(R.id.feedback_nummer_txtView);
+        updateView(viewPager.getCurrentItem());
+    }
+
+    private void updateView(int pos){
+        tekstNummer.setText(pos + 1 + " af " + NUM_PAGES);
+
+        if (pos <= 0){
+            knapTilbage.setVisibility(View.INVISIBLE);
+        }
+        else if (pos >= NUM_PAGES - 1){
+            knapVidere.setText("Afslut");
+        }
+        else {
+            knapTilbage.setVisibility(View.VISIBLE);
+            knapVidere.setText("Videre");
+        }
     }
 
     @Override
@@ -65,6 +95,18 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Fee
         Log.d("FRAGMENT", "Int: " + smiley + " and " + tekstUddybning);
     }
 
+    @Override
+    public void onClick(View view) {
+        if (view == knapTilbage){
+            onBackPressed();
+        }
+        else if (view == knapVidere){
+            if (viewPager.getCurrentItem() + 1 < NUM_PAGES){
+                viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+            }
+        }
+    }
+
     /**
      * A simple pager adapter that represents 5 ScreenSlidePageFragment objects, in
      * sequence.
@@ -76,7 +118,7 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Fee
 
         @Override
         public Fragment getItem(int position) {
-            return Feedback_frg.newInstance("spørgsmål " + position + " hvor gammel er du?");
+            return Feedback_frg.newInstance("Spørgsmål " + position + 1);
         }
 
         @Override
