@@ -1,4 +1,4 @@
-package com.example.admin.feedback_app.aktiviteter;
+package com.example.admin.feedback_app.fragmenter;
 
 import android.content.Context;
 import android.net.Uri;

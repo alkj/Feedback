@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#353535"
-    tools:context=".aktiviteter.RedigerProfilOplysninger_frg">
+    tools:context=".fragmenter.RedigerProfilOplysninger_frg">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -124,7 +124,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/opretbruger_fornavn_editTxt"
             tools:layout_editor_absoluteX="56dp"
             tools:layout_editor_absoluteY="167dp" />
 
@@ -148,7 +147,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/oprebrhgfguger_tlf_editpikTxt"
             tools:layout_editor_absoluteX="46dp"
             tools:layout_editor_absoluteY="257dp" />
 
@@ -172,7 +170,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/opretbruger_efternavn_editTxt"
             tools:layout_editor_absoluteX="80dp"
             tools:layout_editor_absoluteY="406dp" />
     </LinearLayout>

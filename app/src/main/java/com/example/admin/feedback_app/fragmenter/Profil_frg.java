@@ -1,6 +1,5 @@
 package com.example.admin.feedback_app.fragmenter;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -8,14 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.admin.feedback_app.AendreOplysninger;
 import com.example.admin.feedback_app.Mødeholder;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
-import com.example.admin.feedback_app.aktiviteter.RedigerProfilOplysninger_frg;
 import com.google.firebase.auth.FirebaseAuth;
 
 
