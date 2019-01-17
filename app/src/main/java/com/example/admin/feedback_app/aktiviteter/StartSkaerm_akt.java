@@ -149,7 +149,7 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
                 }
 
             }
-        }, 2000);
+        }, 3000);
     }
 
     private void hentMøderFraFirebase(String mødeID) {
