@@ -58,6 +58,8 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
         login_btn = (Button)findViewById(R.id.startskaerm_login_btn);
         feedback_btn = (Button)findViewById(R.id.startskaerm_feedback_btn);
 
+        mødeId_editTxt = (EditText)findViewById(R.id.startskærm_editTxt);
+
         login_btn.setOnClickListener(this);
         feedback_btn.setOnClickListener(this);
 
@@ -81,8 +83,6 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        //Input felt
-        mødeId_editTxt = (EditText)findViewById(R.id.startskærm_editTxt);
 
         String mødeID = mødeId_editTxt.getText().toString();
 
