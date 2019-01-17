@@ -15,11 +15,15 @@ import com.example.admin.feedback_app.AendreOplysninger;
 import com.example.admin.feedback_app.Mødeholder;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.aktiviteter.RedigerProfilOplysninger_frg;
 import com.google.firebase.auth.FirebaseAuth;
 
 
 public class Profil_frg extends Fragment implements View.OnClickListener {
-    private Button logUd, skiftPassword, gem;
+
+    private static String TAG = "profil fragment i navigations aktivitet";
+
+    private Button logUd, skiftPassword, rediger;
     private TextView fornavn, efternavn, telefonnummer;
     private TextView virksomhedsID;
     private PersonData personData;
@@ -39,7 +43,7 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
 
         logUd = v.findViewById(R.id.profil_logUd_button);
         skiftPassword = v.findViewById(R.id.profil_skiftPassword_button);
-        gem = v.findViewById(R.id.profil_gem_button);
+        rediger = v.findViewById(R.id.profil_rediger_button);
 
         fornavn = v.findViewById(R.id.aendre_fornavn_editTxt);
         efternavn = v.findViewById(R.id.aendre_efternavn_editTxt);
@@ -49,7 +53,7 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
 
 
         logUd.setOnClickListener(this);
-        gem.setOnClickListener(this);
+        rediger.setOnClickListener(this);
         skiftPassword.setOnClickListener(this);
 
         fornavn.setText(mødeholder.getFornavn());
@@ -68,21 +72,37 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
             this.getActivity().finish();
         }
 
-        if (v == gem) {
+        if (v == rediger) {
 
-            Log.d("bæ", "lige inden intent");
-            startActivity(new Intent(getContext(), AendreOplysninger.class));
+            Log.d(TAG, "onClick: rediger");
 
-            //TODO
+            RedigerProfilOplysninger_frg rediger = new RedigerProfilOplysninger_frg();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.navigation_fragment_container, rediger).addToBackStack(null).commit();
+
         }
 
 
         if (v == skiftPassword) {
-            //TODO
+
+            Log.d(TAG, "onClick: skift password");
+
+            SkiftPassword_frg skiftPassword = new SkiftPassword_frg();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.navigation_fragment_container, skiftPassword).addToBackStack(null).commit();
+
         }
 
 
     }
 
+    @Override
+    public void onResume() {
 
+        fornavn.setText(mødeholder.getFornavn());
+        efternavn.setText(mødeholder.getEfternavn());
+        telefonnummer.setText(mødeholder.getTlf());
+        virksomhedsID.setText(mødeholder.getVirk_id());
+
+
+        super.onResume();
+    }
 }
