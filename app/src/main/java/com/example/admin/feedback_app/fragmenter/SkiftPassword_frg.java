@@ -64,7 +64,6 @@ public class SkiftPassword_frg extends Fragment implements View.OnClickListener 
             //hvis der er problemer med passwords. det gamle skal være korrekt. de nye skal være ens, og længere ens 6 tegn.
             if (!gammeltPassword.equals(personData.getMødeholder().getPassword())) {
                 Toast.makeText(this.getActivity(), "forkert password", Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "onClick: :" + personData.getMødeholder().getPassword() + ": :" + gammeltPassword + ": ");
             } else if (!nytPassword1.equals(nytPassword2)) {
                 Toast.makeText(this.getActivity(), "de to passwords er ikke ens", Toast.LENGTH_SHORT).show();
             } else if (nytPassword1.length() < 6) {
@@ -75,7 +74,7 @@ public class SkiftPassword_frg extends Fragment implements View.OnClickListener 
                 Log.d(TAG, "onClick: password accepted, and set in object");
                 firebaseFirestore.collection("Mødeholder").document(firebaseAuth.getUid()).set(personData.getMødeholder());
                 Log.d(TAG, "onClick: password set in firebase");
-                this.getActivity().getSupportFragmentManager().popBackStack();
+                this.getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.navigation_fragment_container, new Profil_frg()).commit();
                 Toast.makeText(this.getActivity(), "Password ændret", Toast.LENGTH_SHORT).show();
             }
         }

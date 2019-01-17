@@ -80,7 +80,7 @@ public class RedigerProfilOplysninger_frg extends Fragment implements View.OnCli
 
             } else {
                 Toast.makeText(this.getActivity(), "ingen ændringer fundet", Toast.LENGTH_SHORT).show();
-                getActivity().getSupportFragmentManager().popBackStack();
+                this.getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.navigation_fragment_container, new Profil_frg()).commit();
             }
         }
     }
