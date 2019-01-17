@@ -76,7 +76,7 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Vie
         if (pos > 0){
             if (!feedbackManager.erFeedbackUdfyldt(pos -1)){
                 viewPager.setCurrentItem(pos - 1);
-                //TODO give besked om at der mangler at vælges smiley + ryste animation
+                manglerSvar();
                 return;
             }
         }
@@ -137,7 +137,7 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Vie
                     startActivity(intent);
                 }
                 else {
-
+                    manglerSvar();
                 }
             }
         }
