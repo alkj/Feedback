@@ -83,7 +83,12 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
 
 
         if (v == skiftPassword) {
-            //TODO
+
+            Log.d(TAG, "onClick: skift password");
+
+            SkiftPassword_frg skiftPassword = new SkiftPassword_frg();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.navigation_fragment_container, skiftPassword).addToBackStack(null).commit();
+
         }
 
 

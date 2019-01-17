@@ -21,7 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RedigerProfilOplysninger_frg extends Fragment implements View.OnClickListener {
 
-    private static final String TAG = "Rediger profil oplys";
+    private static final String TAG = "RedigerProfilOplys";
 
     private PersonData personData;
     private FirebaseFirestore firebaseFirestore;
