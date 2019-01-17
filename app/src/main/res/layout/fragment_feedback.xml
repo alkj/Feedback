@@ -9,31 +9,14 @@
     tools:context=".aktiviteter.Overholdt_Giv_Feedback_akt"
     tools:layout_editor_absoluteY="25dp">
 
-    <TextView
-        android:id="@+id/feedback_nummer_txtView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/open_sans_bold"
-        android:text="2 af 5"
-        android:textAlignment="center"
-        android:textColor="@color/colorGrøn"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
-        android:id="@+id/textViewFeedbackBeskrivelse"
+        android:id="@+id/feedback_spørgsmål_txtView"
 
-        android:layout_width="0dp"
+        android:layout_width="318dp"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="33dp"
+        android:layout_marginTop="16dp"
         android:text="Hvad syntes du om PowerPoint præsentationen?"
         android:textAlignment="center"
         android:textColor="@color/colorMørkegrå"
@@ -41,26 +24,23 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/feedback_nummer_txtView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="290dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingLeft="30dp"
         android:paddingTop="200dp"
         android:paddingRight="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextUddybning"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.839">
+        app:layout_constraintTop_toBottomOf="@+id/feedback_spørgsmål_txtView">
 
 
         <ImageView
@@ -105,29 +85,15 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/editTextUddybning"
-        android:layout_width="0dp"
+        android:id="@+id/feedback_udybning_editTxt"
+        android:layout_width="248dp"
         android:layout_height="112dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Uddyb her"
-        app:layout_constraintBottom_toTopOf="@+id/knapVidere"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <Button
-        android:id="@+id/knapVidere"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="163dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUddybning" />
 
 </android.support.constraint.ConstraintLayout>
