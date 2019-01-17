@@ -65,7 +65,7 @@ public class AfholdtMeode_akt extends AppCompatActivity implements View.OnClickL
         }
 
         moedeNavn.setText(møde.getNavn());
-        moedeID.setText(møde.getMødeIDtildeltager());
+        moedeID.setText(møde.getFormål());
 
         pieChart = findViewById(R.id.pieChartStart);
 
@@ -92,7 +92,7 @@ public class AfholdtMeode_akt extends AppCompatActivity implements View.OnClickL
         pieChart.setTransparentCircleColor(Color.WHITE);
         pieChart.setTransparentCircleRadius(50f);
 
-        pieChart.setCenterText("Feedback for mødet som helhed i %");
+        pieChart.setCenterText("Feedback i %");
         pieChart.setCenterTextColor(Color.WHITE);
         pieChart.setCenterTextSize(14);
 
