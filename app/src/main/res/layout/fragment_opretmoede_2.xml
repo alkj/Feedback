@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorMørkegrå"
+    tools:context=".fragmenter.OpretMoede_2_frg">
+
+    <EditText
+        android:id="@+id/opretmoeder_dato_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
+        android:allowUndo="true"
+        android:autofillHints="DBDBDB"
+        android:clickable="false"
+
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:fadingEdge="horizontal|vertical"
+        android:fontFamily="@font/open_sans_semibold"
+        android:hint="Dato"
+        android:inputType="date"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@color/colorMEGETLysGrå"
+        android:textColorHint="@color/colorHvid"
+        app:backgroundTint="@color/colorLysegrå"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <EditText
+        android:id="@+id/opretmoeder_starttid_txt"
+        style="@android:style/Widget.AutoCompleteTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="60dp"
+        android:allowUndo="true"
+        android:autofillHints="DBDBDB"
+
+        android:clickable="false"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:fadingEdge="horizontal|vertical"
+        android:fontFamily="@font/open_sans_semibold"
+        android:hint="Start Tidspunkt"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@color/colorMEGETLysGrå"
+        android:textColorHint="@color/colorHvid"
+        app:backgroundTint="@color/colorLysegrå"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opretmoeder_dato_txt" />
+
+    <EditText
+        android:id="@+id/opretmoeder_sluttid_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="60dp"
+        android:allowUndo="true"
+        android:autofillHints="DBDBDB"
+
+        android:clickable="false"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:fadingEdge="horizontal|vertical"
+        android:fontFamily="@font/open_sans_semibold"
+        android:hint="Slut Tidspunkt"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@color/colorMEGETLysGrå"
+        android:textColorHint="@color/colorHvid"
+        app:backgroundTint="@color/colorLysegrå"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opretmoeder_starttid_txt" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="Opret Møde"
+        android:textAllCaps="false"
+        android:textColor="@color/colorHvid"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="Tidspunkt"
+        android:textColor="@color/colorHvid"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/opretmoeder_dato_txt"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:text="2 af 2"
+        android:textColor="@color/colorHvid"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <Button
+        android:id="@+id/videreBTN"
+        android:layout_width="173dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:autofillHints="DBDBDB"
+        android:background="@drawable/knap_groen"
+        android:fontFamily="sans-serif"
+        android:text="Opret Møde"
+        android:textColor="#FBF7FF"
+        android:textSize="20sp"
+
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opretmoeder_sluttid_txt" />
+
+</android.support.constraint.ConstraintLayout>
+

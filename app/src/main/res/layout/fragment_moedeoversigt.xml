@@ -43,12 +43,13 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="2dp"
                     android:layout_weight="2"
+                    android:fontFamily="@font/open_sans_semibold"
                     android:gravity="center"
                     android:paddingLeft="8dp"
                     android:text="@string/ikke_afholdt"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorHvid"
-                    android:textSize="18sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -76,12 +77,13 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="2dp"
                     android:layout_weight="2"
+                    android:fontFamily="@font/open_sans_semibold"
                     android:gravity="center"
                     android:paddingLeft="8dp"
                     android:text="@string/afholdt"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorHvid"
-                    android:textSize="18sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
         </LinearLayout>

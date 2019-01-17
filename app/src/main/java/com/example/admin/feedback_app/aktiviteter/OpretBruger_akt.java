@@ -1,7 +1,6 @@
 package com.example.admin.feedback_app.aktiviteter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -55,9 +54,9 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         opret_btn.setOnClickListener(this);
 
         //Input felter
-        fornavn_editTxt = findViewById(R.id.opretbruger_fornavn_editTxt);
-        efternavn_editTxt = findViewById(R.id.opretbruger_efternavn_editTxt);
-        tlfnr_editTxt = findViewById(R.id.oprebrhgfguger_tlf_editpikTxt);
+        fornavn_editTxt = findViewById(R.id.opretmoeder_dato_txt);
+        efternavn_editTxt = findViewById(R.id.opretmoeder_starttid_txt);
+        tlfnr_editTxt = findViewById(R.id.opretmoeder_sluttid_txt);
         virk_id_editTxt = findViewById(R.id.virk_id_editTxt);
         email_editTxt = findViewById(R.id.opretbruger_mail_editTxt);
         password_editTxt = findViewById(R.id.opretbruger_password_editTxt);
