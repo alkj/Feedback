@@ -43,7 +43,7 @@
         android:padding="5dp"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:scrollbarFadeDuration="50000"
-        android:scrollbarSize="5dp"
+        android:scrollbarSize="2dp"
         android:scrollbarThumbVertical="@color/colorHvid">
 
 <LinearLayout
