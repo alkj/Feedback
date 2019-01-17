@@ -9,7 +9,10 @@
     tools:context=".fragmenter.OpretMoede_2_frg">
 
     <EditText
-        android:id="@+id/opretmoeder_dato_txt"
+        android:textSize="15dp"
+        android:id="@+id/dato"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -17,8 +20,6 @@
         android:layout_marginEnd="60dp"
         android:allowUndo="true"
         android:autofillHints="DBDBDB"
-        android:clickable="false"
-
         android:drawablePadding="10dp"
         android:ems="10"
         android:fadingEdge="horizontal|vertical"
@@ -35,7 +36,8 @@
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <EditText
-        android:id="@+id/opretmoeder_starttid_txt"
+        android:textSize="15dp"
+        android:id="@+id/tidStart"
         style="@android:style/Widget.AutoCompleteTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -43,9 +45,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="60dp"
         android:allowUndo="true"
+        android:focusable="false"
         android:autofillHints="DBDBDB"
-
-        android:clickable="false"
         android:drawablePadding="10dp"
         android:ems="10"
         android:fadingEdge="horizontal|vertical"
@@ -59,19 +60,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/opretmoeder_dato_txt" />
+        app:layout_constraintTop_toBottomOf="@+id/dato" />
 
     <EditText
-        android:id="@+id/opretmoeder_sluttid_txt"
+        android:textSize="15dp"
+        android:id="@+id/tidSlut"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="60dp"
+        android:focusable="false"
         android:allowUndo="true"
         android:autofillHints="DBDBDB"
-
-        android:clickable="false"
         android:drawablePadding="10dp"
         android:ems="10"
         android:fadingEdge="horizontal|vertical"
@@ -85,7 +86,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/opretmoeder_starttid_txt" />
+        app:layout_constraintTop_toBottomOf="@+id/tidStart" />
 
     <TextView
         android:id="@+id/textView8"
@@ -114,7 +115,7 @@
         android:text="Tidspunkt"
         android:textColor="@color/colorHvid"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/opretmoeder_dato_txt"
+        app:layout_constraintStart_toStartOf="@+id/dato"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
@@ -149,7 +150,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/opretmoeder_sluttid_txt" />
+        app:layout_constraintTop_toBottomOf="@+id/tidSlut" />
 
 </android.support.constraint.ConstraintLayout>
 

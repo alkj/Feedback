@@ -54,9 +54,9 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         opret_btn.setOnClickListener(this);
 
         //Input felter
-        fornavn_editTxt = findViewById(R.id.opretmoeder_dato_txt);
-        efternavn_editTxt = findViewById(R.id.opretmoeder_starttid_txt);
-        tlfnr_editTxt = findViewById(R.id.opretmoeder_sluttid_txt);
+        fornavn_editTxt = findViewById(R.id.dato);
+        efternavn_editTxt = findViewById(R.id.tidStart);
+        tlfnr_editTxt = findViewById(R.id.tidSlut);
         virk_id_editTxt = findViewById(R.id.virk_id_editTxt);
         email_editTxt = findViewById(R.id.opretbruger_mail_editTxt);
         password_editTxt = findViewById(R.id.opretbruger_password_editTxt);

@@ -9,7 +9,8 @@
     tools:context=".fragmenter.OpretMoede_1_frg">
 
     <EditText
-        android:id="@+id/opretmoeder_dato_txt"
+        android:textSize="15dp"
+        android:id="@+id/dato"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -18,7 +19,6 @@
         android:allowUndo="true"
         android:autofillHints="DBDBDB"
         android:clickable="false"
-
         android:drawablePadding="10dp"
         android:ems="10"
         android:fadingEdge="horizontal|vertical"
@@ -35,22 +35,23 @@
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <EditText
-        android:id="@+id/opretmoeder_starttid_txt"
+        android:textSize="15dp"
+        android:id="@+id/tidStart"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="60dp"
         android:allowUndo="true"
+        android:maxLines="3"
         android:autofillHints="DBDBDB"
+        android:inputType="textMultiLine"
         android:clickable="false"
-
         android:drawablePadding="10dp"
         android:ems="10"
         android:fadingEdge="horizontal|vertical"
         android:fontFamily="@font/open_sans_semibold"
         android:hint="Mødets Formål"
-        android:inputType="textPersonName"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@color/colorMEGETLysGrå"
         android:textColorHint="@color/colorHvid"
@@ -58,18 +59,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/opretmoeder_dato_txt" />
+        app:layout_constraintTop_toBottomOf="@+id/tidSlut" />
 
     <EditText
-        android:id="@+id/opretmoeder_sluttid_txt"
+        android:textSize="15dp"
+        android:id="@+id/tidSlut"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="60dp"
         android:allowUndo="true"
-        android:autofillHints="DBDBDB"
 
+        android:autofillHints="DBDBDB"
         android:clickable="false"
         android:drawablePadding="10dp"
         android:ems="10"
@@ -84,7 +86,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/opretmoeder_starttid_txt" />
+        app:layout_constraintTop_toBottomOf="@+id/dato" />
 
     <TextView
         android:id="@+id/textView8"
@@ -113,7 +115,7 @@
         android:text="Mødeoplysninger"
         android:textColor="@color/colorHvid"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/opretmoeder_dato_txt"
+        app:layout_constraintStart_toStartOf="@+id/dato"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
@@ -139,16 +141,17 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:autofillHints="DBDBDB"
-        android:background="@drawable/knap_groen"
+        android:background="@drawable/knap_lysegraa"
         android:fontFamily="sans-serif"
         android:text="Videre"
         android:textColor="#FBF7FF"
-        android:textSize="20sp"
 
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/opretmoeder_sluttid_txt" />
+        app:layout_constraintTop_toBottomOf="@+id/tidStart" />
+
 
 </android.support.constraint.ConstraintLayout>
 

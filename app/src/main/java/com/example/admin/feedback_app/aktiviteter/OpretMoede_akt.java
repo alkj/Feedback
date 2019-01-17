@@ -52,13 +52,13 @@ public class OpretMoede_akt extends FragmentActivity implements View.OnClickList
         annuler_knap = findViewById(R.id.opretmoede_anuller_btn);
         annuler_knap.setOnClickListener(this);
 
-        starttid_txt = findViewById(R.id.opretmoeder_starttid_txt);
+        starttid_txt = findViewById(R.id.tidStart);
         starttid_txt.setOnClickListener(this);
 
-        sluttid_txt = findViewById(R.id.opretmoeder_sluttid_txt);
+        sluttid_txt = findViewById(R.id.tidSlut);
         sluttid_txt.setOnClickListener(this);
 
-        dato_txt = findViewById(R.id.opretmoeder_dato_txt);
+        dato_txt = findViewById(R.id.dato);
         dato_txt.setOnClickListener(this);
 
         mødeNavn = findViewById(R.id.opretmoede_navn_editTxt);
@@ -72,15 +72,15 @@ public class OpretMoede_akt extends FragmentActivity implements View.OnClickList
 
 
         switch (view.getId()){
-            case R.id.opretmoeder_starttid_txt:
+            case R.id.tidStart:
                 DialogFragment dialog_starttid = new TidPickerDialog_frg();
                 dialog_starttid.show(getSupportFragmentManager(), "tidPicker");
                 break;
-            case R.id.opretmoeder_sluttid_txt:
+            case R.id.tidSlut:
                 DialogFragment dialog_sluttid = new TidPickerDialog_frg();
                 dialog_sluttid.show(getSupportFragmentManager(), "tidPicker");
                 break;
-            case R.id.opretmoeder_dato_txt:
+            case R.id.dato:
                 DialogFragment dialog_dato = new DatoPickerDialog_frg();
                 dialog_dato.show(getSupportFragmentManager(), "datoPicker");
                 break;
