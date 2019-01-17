@@ -2,33 +2,27 @@ package com.example.admin.feedback_app.aktiviteter;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.admin.feedback_app.Møde;
-import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
 import java.util.Set;
-import java.util.TreeSet;
 
 
 
@@ -49,6 +43,7 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startskaerm);
 
+
         firebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Bundle bundle = new Bundle();
         bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "startskærm");
@@ -66,8 +61,6 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
         login_btn.setOnClickListener(this);
         feedback_btn.setOnClickListener(this);
 
-        //Input felt
-        mødeId_editTxt = (EditText)findViewById(R.id.startskærm_editTxt);
 
 
     }
@@ -88,6 +81,9 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
+        //Input felt
+        mødeId_editTxt = (EditText)findViewById(R.id.startskærm_editTxt);
+
         String mødeID = mødeId_editTxt.getText().toString();
 
         if (view == login_btn){
