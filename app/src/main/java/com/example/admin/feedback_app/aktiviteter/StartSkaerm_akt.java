@@ -168,7 +168,6 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
                 for (QueryDocumentSnapshot document : task.getResult()) {
                     String mødeID = document.get("mødeID").toString();
                     String mødeIDtildeltager = document.get("mødeIDtildeltager").toString();
-                    String dagsorden = document.get("dagsorden").toString();
                     String sted = document.get("sted").toString();
                     String dato = document.get("dato").toString();
 
