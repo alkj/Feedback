@@ -1,20 +1,31 @@
 package com.example.admin.feedback_app.fragmenter;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.admin.feedback_app.Møde;
+import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.aktiviteter.OpretMoede_akt;
 import com.example.admin.feedback_app.dialogs.DatoPickerDialog_frg;
 import com.example.admin.feedback_app.dialogs.TidPickerDialog_frg;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Random;
+import java.util.UUID;
 
 
 public class OpretMoede_2_frg extends Fragment implements View.OnClickListener {
@@ -41,8 +52,8 @@ public class OpretMoede_2_frg extends Fragment implements View.OnClickListener {
         mAuth = FirebaseAuth.getInstance();
         mFirestore = FirebaseFirestore.getInstance();
 
-        opretMoede_knap = v.findViewById(R.id.opretmoede_opret_btn);
-
+        opretMoede_knap = v.findViewById(R.id.videreBTN);
+        opretMoede_knap.setOnClickListener(this);
 
         starttid_txt = v.findViewById(R.id.tidStart);
         starttid_txt.setOnClickListener(this);
@@ -73,6 +84,79 @@ public class OpretMoede_2_frg extends Fragment implements View.OnClickListener {
                 DialogFragment dialog_dato = new DatoPickerDialog_frg();
                 dialog_dato.show(getActivity().getSupportFragmentManager(), "datoPicker");
                 break;
+            case R.id.videreBTN:
+                //Log.d(TAG, "Opret møde knappen er trykket");
+                String uniqueID = UUID.randomUUID().toString();
+                //Log.d(TAG, "ID er: " + uniqueID);
+                Møde møde = new Møde();
+                møde.setNavn(mødenavnS);
+                //Log.d(TAG,møde.getNavn() );
+                møde.setFormål(mødeformålS);
+                møde.setDato(dato_txt.getText().toString());
+                møde.setStartTid(starttid_txt.getText().toString());
+                møde.setSlutTid(sluttid_txt.getText().toString());
+                møde.setSted(stedS);
+                møde.setMødeholderID(mAuth.getUid());
+                møde.setMødeIDtildeltager(generateRandomString());
+                møde.setMødeID(uniqueID);
+                møde.setIgang(false);
+                PersonData.getInstance().tilføjMøde(møde);
+                //møde.setDagsorden(dagsorden.getText().toString());
+
+
+                mFirestore.collection("Møder").document(uniqueID).set(møde).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(getContext(),
+                                    "Møde oprettet",
+                                    Toast.LENGTH_SHORT).show();
+                            getActivity().getSupportFragmentManager().popBackStackImmediate();
+
+
+                        }
+                        else{
+                            Toast.makeText(getContext(),
+                                    "Fejl med oprettelse af møde",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
+
+                break;
         }
     }
+
+    public String generateRandomString(){
+
+        String CHAR_LIST = "abcdefghijklmnopqrstuvwxyz1234567890";
+        int RANDOM_STRING_LENGTH = 4;
+
+        StringBuffer randStr = new StringBuffer();
+        for(int i=0; i<RANDOM_STRING_LENGTH; i++){
+            int number = getRandomNumber();
+            char ch = CHAR_LIST.charAt(number);
+            randStr.append(ch);
+        }
+        return randStr.toString();
+    }
+
+    /**
+     * Laver random nummer
+     * @return int
+     */
+    private int getRandomNumber() {
+        String CHAR_LIST = "abcdefghijklmnopqrstuvwxyz1234567890";
+        int randomInt = 0;
+        Random randomGenerator = new Random();
+        randomInt = randomGenerator.nextInt(CHAR_LIST.length());
+        if (randomInt - 1 == -1) {
+            return randomInt;
+        } else {
+            return randomInt - 1;
+        }
+    }
+
 }

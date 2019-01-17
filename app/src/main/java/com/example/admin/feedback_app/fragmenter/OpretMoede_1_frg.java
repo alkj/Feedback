@@ -45,13 +45,10 @@ public class OpretMoede_1_frg extends Fragment{
                 bundle.putString("mødeformål",smødeFormål);
                 bundle.putString("sted",ssted);
                 fragment.setArguments(bundle);
-                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.addToBackStack("opretmøde_1");
                 fragmentTransaction.replace(R.id.navigation_fragment_container,fragment);
                 fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
                 fragmentTransaction.commit();
-
-
-
 
             }
         });

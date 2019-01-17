@@ -249,8 +249,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                             document.get("slutTid").toString(),
                             document.get("sted").toString(),
                             document.get("mødeholderID").toString(),
-                            document.getBoolean("afholdt"),
-                            document.get("dagsorden").toString()
+                            document.getBoolean("afholdt")
 
                     );
                     mødeObj.setIgang(document.getBoolean("igang"));

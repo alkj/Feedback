@@ -106,7 +106,6 @@ public class OpretMoede_akt extends FragmentActivity implements View.OnClickList
                 møde.setMødeIDtildeltager(generateRandomString());
                 møde.setMødeID(uniqueID);
                 møde.setIgang(false);
-                møde.setDagsorden(dagsorden.getText().toString());
 
                 mFirestore.collection("Møder").document(uniqueID).set(møde).addOnCompleteListener(new OprettetListener(møde));
 
