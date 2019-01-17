@@ -6,8 +6,8 @@
     <color name="colorGrøn">#8cc63f</color>
     <color name="colorMørkegrå">#303030</color>
     <color name="colorLysegrå">#898989</color>
-    <color name="colorHvid">#ffffff</color>
-    <color name="colorMEGETLysGrå">#e1e1e1</color>
+    <color name="colorHvid">#FFFFFF</color>
+    <color name="colorMEGETLysGrå">#E1E1E1</color>
     <color name="colorMegetSur">#ED4740</color>
     <color name="colorSur">#F68844</color>
     <color name="colorGlad">#A8C449</color>

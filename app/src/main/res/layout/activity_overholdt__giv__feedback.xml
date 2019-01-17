@@ -4,19 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".aktiviteter.Overholdt_Giv_Feedback_akt">
+    android:background="@color/colorMEGETLysGrå"
+    tools:context=".aktiviteter.Overholdt_Giv_Feedback_akt"
+    tools:layout_editor_absoluteY="25dp">
 
-    <LinearLayout
-        android:id="@+id/fragment_feedback_container"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
+    <TextView
+        android:id="@+id/feedback_nummer_txtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="2 af 5"
+        android:textAlignment="center"
+        android:textColor="@color/colorGrøn"
+        android:textSize="40sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/feedback_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/feedback_frameLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/feedback_nummer_txtView" />
+
+    <FrameLayout
+        android:id="@+id/feedback_frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/feedback_tilbage_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginEnd="16dp"
+            android:text="Tilbage" />
+
+        <Button
+            android:id="@+id/feedback_videre_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginStart="16dp"
+            android:text="Videre" />
+    </FrameLayout>
+
+
 </android.support.constraint.ConstraintLayout>

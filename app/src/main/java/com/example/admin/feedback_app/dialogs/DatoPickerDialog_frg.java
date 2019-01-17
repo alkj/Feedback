@@ -2,15 +2,12 @@ package com.example.admin.feedback_app.dialogs;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
-import android.text.format.DateFormat;
 import android.widget.DatePicker;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
 import com.example.admin.feedback_app.R;
 
@@ -49,6 +46,6 @@ public class DatoPickerDialog_frg extends DialogFragment implements DatePickerDi
 
         String s = String.format(getString(R.string.dato_format), d, m, år);
 
-        ((TextView) getActivity().findViewById(R.id.opretmoeder_dato_txt)).setText(s);
+        ((TextView) getActivity().findViewById(R.id.dato)).setText(s);
     }
 }

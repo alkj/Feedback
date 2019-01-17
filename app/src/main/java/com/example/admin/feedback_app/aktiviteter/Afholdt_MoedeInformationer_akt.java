@@ -1,13 +1,16 @@
 package com.example.admin.feedback_app.aktiviteter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.R;
 
-public class Afholdt_MoedeInformationer_akt extends AppCompatActivity {
+public class Afholdt_MoedeInformationer_akt extends AppCompatActivity implements View.OnClickListener {
 
     private Møde
             møde;
@@ -15,10 +18,15 @@ public class Afholdt_MoedeInformationer_akt extends AppCompatActivity {
     private TextView
             moedeNavn, moedeFormaal, moedeSted, tidStart, tidSlut, aktuelTidStart, aktuelTidSlut, inviterede, fremmoedte, moedeID;
 
+    private Button tilbage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_afholdt__moede_informationer_akt);
+
+        tilbage = findViewById(R.id.afholdtMoedeInfoTilbage);
+        tilbage.setOnClickListener(this);
 
         moedeNavn = findViewById(R.id.tvMødeInfoMødeNavn);
         //moedeNavn.setText(møde.getNavn());
@@ -30,7 +38,7 @@ public class Afholdt_MoedeInformationer_akt extends AppCompatActivity {
         //moedeSted.setText(møde.getSted());
 
         moedeID = findViewById(R.id.tvMødeInfoMødeID);
-        //moedeID.setText(møde.getMødeID());
+        //moedeID.setText(møde.getMødeIDtildeltager());
 
         tidStart = findViewById(R.id.tvMødeInfoPlanlagtStarttid);
         //tidStart.setText(møde.getStartTid());
@@ -45,12 +53,15 @@ public class Afholdt_MoedeInformationer_akt extends AppCompatActivity {
         inviterede = findViewById(R.id.tvMødeInfoInviterede);
 
         fremmoedte = findViewById(R.id.tvMødeInfoFremmødte);
-
-
-
-
     }
 
+    @Override
+    public void onClick(View view) {
+        if (view == tilbage) {
+            Intent i = new Intent(this, AfholdtMeode_akt.class);
+            startActivity(i);
+        }
+    }
 
     @Override
     public void onBackPressed() {

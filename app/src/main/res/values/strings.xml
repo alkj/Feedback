@@ -17,7 +17,7 @@
 
     <!-- Strings til menuen 'aktionbar_bund' -->
     <string name="moder">Møder</string>
-    <string name="hjem">Hjem</string>
+    <string name="opretmoede">Opret Møde</string>
     <string name="profil">Profil</string>
     <string name="title_activity_navigation_akt">Navigation_akt</string>
     <string name="ikke_afholdt">Ikke Afholdte</string>
@@ -34,4 +34,16 @@
     <string name="spørgsmål_til_feedback2">Hvad syntes du om PowerPoint præsentationen?</string>
     <string name="spørgsmål_til_feedback3">Holdt i jer til emnen under hele mødet?</string>
     <string name="spørgsmål_til_feedback4">Er du tilfreds med mødeholder?</string>
+
+
+    <!-- Strings til feedback -->
+    <string name="anuller_feedback">Hvis du trykker OK anulleres feedback\'en.</string>
+    <string name="mangler_smiley">OBS! Du mangler at vælge et svar!</string>
+    <string name="ok">OK</string>
+    <string name="feedback_side_format">%d af %d</string>
+    <string name="videre">Videre</string>
+    <string name="uddyb_hint">Uddyb gerne</string>
+    <string name="afslut">Afslut</string>
+
+
 </resources>

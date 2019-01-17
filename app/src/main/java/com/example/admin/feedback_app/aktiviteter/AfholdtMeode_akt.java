@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.admin.feedback_app.FeedbackTilFirebase;
 import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
@@ -23,6 +24,8 @@ import java.util.ArrayList;
 public class AfholdtMeode_akt extends AppCompatActivity implements View.OnClickListener {
 
     private Møde møde;
+
+    private FeedbackTilFirebase feedback;
 
     private TextView moedeNavn, moedeID;
 
@@ -62,44 +65,56 @@ public class AfholdtMeode_akt extends AppCompatActivity implements View.OnClickL
         }
 
         moedeNavn.setText(møde.getNavn());
-        moedeID.setText(møde.getMødeID());
+        moedeID.setText(møde.getFormål());
 
         pieChart = findViewById(R.id.pieChartStart);
 
         pieChart.setDrawEntryLabels(false);
         pieChart.setUsePercentValues(true);
-
         pieChart.getDescription().setEnabled(false);
         pieChart.setExtraOffsets(5,10,5,5);
 
+        Legend legend = pieChart.getLegend();
+        legend.setTextColor(Color.WHITE);
+        legend.setTextSize(10f);
+        legend.setFormSize(10f);
+        legend.setForm(Legend.LegendForm.CIRCLE);
 
+        /*
+        IValueFormatter percentFormatter = pieChart.getDefaultValueFormatter();
+        percentFormatter.getFormattedValue();
+        */
         pieChart.setDragDecelerationFrictionCoef(0.95f);
 
         pieChart.setDrawHoleEnabled(true);
         pieChart.setHoleRadius(50f);
         pieChart.setHoleColor(R.color.colorMørkegrå);
         pieChart.setTransparentCircleColor(Color.WHITE);
-        pieChart.setTransparentCircleRadius(61f);
+        pieChart.setTransparentCircleRadius(50f);
 
-        pieChart.setCenterText("Feedback for mødet som helhed i %");
+        pieChart.setCenterText("Feedback i %");
         pieChart.setCenterTextColor(Color.WHITE);
         pieChart.setCenterTextSize(14);
 
-        ArrayList<PieEntry> yValues = new ArrayList<PieEntry>(){};
-        yValues.add(new PieEntry(50f, "Meget Tilfreds"));
-        yValues.add(new PieEntry(30f, "Tilfreds"));
-        yValues.add(new PieEntry(10f, "Utilfreds"));
-        yValues.add(new PieEntry(10f, "Meget Utilfreds"));
 
-        PieDataSet dataset = new PieDataSet(yValues, "feedback");
+        /*
+        float smiley1 = feedback.getIntSpørgsmål1();
+        float smiley2 = feedback.getIntSpørgsmål2();
+        float smiley3 = feedback.getIntSpørgsmål3();
+        float smiley4 = feedback.getIntSpørgsmål4();
+        */
+
+        ArrayList<PieEntry> yVaerdier = new ArrayList<PieEntry>(){};
+        yVaerdier.add(new PieEntry(50f, "Meget Tilfreds"));
+        yVaerdier.add(new PieEntry(30f, "Tilfreds"));
+        yVaerdier.add(new PieEntry(10f, "Utilfreds"));
+        yVaerdier.add(new PieEntry(10f, "Meget Utilfreds"));
+
+        PieDataSet dataset = new PieDataSet(yVaerdier, "feedback");
         dataset.setSliceSpace(4f);
         dataset.setSelectionShift(8f);
         dataset.setValueTextColor(Color.WHITE);
         dataset.setLabel("");
-
-        Legend legend = pieChart.getLegend();
-        legend.setTextColor(Color.WHITE);
-        legend.setFormSize(14f);
 
         int[] colors = {
                 getColor(R.color.colorMegetGlad),
@@ -110,7 +125,7 @@ public class AfholdtMeode_akt extends AppCompatActivity implements View.OnClickL
         dataset.setColors(colors);
 
         PieData data = new PieData(dataset);
-        data.setValueTextSize(16f);
+        data.setValueTextSize(10f);
         data.setValueTypeface(Typeface.DEFAULT_BOLD);
         data.setValueTextColor(Color.WHITE);
 
@@ -126,7 +141,8 @@ public class AfholdtMeode_akt extends AppCompatActivity implements View.OnClickL
             startActivity(intent);
         }
         else if (view == overordnet_knap) {
-
+            Intent intent = new Intent (this, AfholdtOverordnet_akt.class);
+            startActivity(intent);
         }
         else if (view == dagsorden_Knap) {
 

@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/virk_id_editTxt" />
 
     <EditText
-        android:id="@+id/oprebrhgfguger_tlf_editpikTxt"
+        android:id="@+id/tidSlut"
         android:layout_width="0dp"
         android:layout_height="47dp"
         android:layout_marginStart="60dp"
@@ -54,10 +54,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/opretbruger_efternavn_editTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/tidStart" />
 
     <EditText
-        android:id="@+id/opretbruger_fornavn_editTxt"
+        android:id="@+id/dato"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -107,7 +107,7 @@
         app:layout_constraintTop_toBottomOf="@+id/opretbruger_password_editTxt" />
 
     <EditText
-        android:id="@+id/opretbruger_efternavn_editTxt"
+        android:id="@+id/tidStart"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -128,7 +128,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/opretbruger_fornavn_editTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/dato" />
 
     <EditText
         android:id="@+id/virk_id_editTxt"
@@ -152,7 +152,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/oprebrhgfguger_tlf_editpikTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/tidSlut" />
 
     <EditText
         android:id="@+id/opretbruger_password_editTxt"

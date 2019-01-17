@@ -2,6 +2,7 @@ package com.example.admin.feedback_app.aktiviteter;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
@@ -17,6 +18,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class OpretBruger_akt extends BaseActivity implements View.OnClickListener {
 
@@ -32,6 +35,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
 
     private Mødeholder mødeholder;
     private FirebaseAuth firebaseAuth;
+    private String detHentedeVirkID;
 
 
     @Override
@@ -50,9 +54,9 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         opret_btn.setOnClickListener(this);
 
         //Input felter
-        fornavn_editTxt = findViewById(R.id.opretbruger_fornavn_editTxt);
-        efternavn_editTxt = findViewById(R.id.opretbruger_efternavn_editTxt);
-        tlfnr_editTxt = findViewById(R.id.oprebrhgfguger_tlf_editpikTxt);
+        fornavn_editTxt = findViewById(R.id.dato);
+        efternavn_editTxt = findViewById(R.id.tidStart);
+        tlfnr_editTxt = findViewById(R.id.tidSlut);
         virk_id_editTxt = findViewById(R.id.virk_id_editTxt);
         email_editTxt = findViewById(R.id.opretbruger_mail_editTxt);
         password_editTxt = findViewById(R.id.opretbruger_password_editTxt);
@@ -64,6 +68,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
     private void skabBrugerkonto(final String email, final String password) {
         Log.d(TAG, "skabBrugerkonto:" + email);
         if (!validering()) {
+            hideProgressDialog();
             return;
         }
 
@@ -75,7 +80,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                 virk_id_editTxt.getText().toString(),
                 tlfnr_editTxt.getText().toString());
 
-        showProgressDialog();
+       updateProgressDialog("Opretter bruger");
 
         firebaseAuth.createUserWithEmailAndPassword(mødeholder.getEmail(), mødeholder.getPassword())
                 .addOnCompleteListener(new UserCreatedListener());
@@ -160,10 +165,47 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
             //Luk og gå tilbage til login aktiviteten
             finish();
         } else if (view == opret_btn) {
-            skabBrugerkonto(email_editTxt.getText().toString(), password_editTxt.getText().toString());
+            //vis brugeren at der arbejdes
+            showProgressDialog();
+            updateProgressDialog("Tjekker virksomheds-ID");
+
+            //henter virksomhedsID hvis det findes
+            hentVirksomhedsID();
+            //her tjekkes det om det indtastede ID var korrekt og så afgøres det om det skal gå videre
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    if (tjekVirksomhedsID()){
+                        skabBrugerkonto(email_editTxt.getText().toString(), password_editTxt.getText().toString());
+                    }
+                    else {
+                        hideProgressDialog();
+                        Toast.makeText(getApplicationContext(), "Din virksomhed er ikke registreret", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            }, 2000);
 
             //TODO lav toast der giver besked hvis emailen allerede er oprettet
         }
+    }
+
+    private boolean tjekVirksomhedsID() {
+        if (virk_id_editTxt.getText().toString().equals(detHentedeVirkID)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    private void hentVirksomhedsID() {
+        FirebaseFirestore.getInstance().collection("Virksomheder")
+                .whereEqualTo("VirksomhedsID", virk_id_editTxt.getText().toString())
+                .get()
+                .addOnCompleteListener(new hentVirkIDListener());
     }
 
 
@@ -190,12 +232,12 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                                 if (task.isSuccessful()) {
 
                                     Toast.makeText(context,
-                                            "Verification email sent to " + firebaseAuth.getCurrentUser().getEmail(),
+                                            "Verificering email sendt til: " + firebaseAuth.getCurrentUser().getEmail(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
 
                                     Toast.makeText(context,
-                                            "Failed to send verification email.",
+                                            "Verificering email fejlede",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -208,6 +250,26 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                 Toast.makeText(context, "Fejl", Toast.LENGTH_SHORT).show();
 
             hideProgressDialog();
+
+        }
+    }
+
+    class hentVirkIDListener implements OnCompleteListener<QuerySnapshot> {
+
+        @Override
+        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+            if (task.isSuccessful()) {
+                for (QueryDocumentSnapshot document : task.getResult()) {
+                    detHentedeVirkID = document.get("VirksomhedsID").toString();
+                }
+
+
+                //næsteSide();
+            } else {
+                Log.d("debug, det er lrt", "hvorfor fejler den aldrig");
+                //hent enheder i set
+
+            }
 
         }
     }
