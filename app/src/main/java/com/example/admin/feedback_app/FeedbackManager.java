@@ -1,5 +1,8 @@
 package com.example.admin.feedback_app;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 public class FeedbackManager {
 
     private static final FeedbackManager INSTANCE = new FeedbackManager();
@@ -35,6 +38,10 @@ public class FeedbackManager {
         }
 
         return null;
+    }
+
+    public Svar[] hentAltFeedback(){
+        return feedback;
     }
 
     public boolean erFeedbackUdfyldt(int i){
