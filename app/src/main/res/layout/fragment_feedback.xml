@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/feedback_fragmentet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorMEGETLysGrå"
-    tools:context=".aktiviteter.Overholdt_Giv_Feedback_akt"
-    tools:layout_editor_absoluteY="25dp">
+    android:background="@color/colorMEGETLysGrå">
 
 
     <TextView
@@ -30,13 +27,11 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:gravity="center"
+        android:layout_marginEnd="32dp"
         android:orientation="horizontal"
-        android:paddingLeft="30dp"
-        android:paddingTop="200dp"
-        android:paddingRight="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +45,9 @@
             android:layout_weight="1"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:src="@drawable/meget_sur" />
+            android:src="@drawable/meget_sur"
+            android:tint="@color/colorLysegrå"
+            android:tintMode="multiply" />
 
 
         <ImageView
@@ -86,12 +83,21 @@
 
     <EditText
         android:id="@+id/feedback_udybning_editTxt"
-        android:layout_width="248dp"
-        android:layout_height="112dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Uddyb her"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="@android:drawable/edit_text"
+        android:gravity="top|left"
+        android:hint="@string/uddyb_hint"
+        android:inputType="textMultiLine"
+        android:lines="8"
+        android:minLines="6"
+        android:maxLines="10"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />

@@ -1,6 +1,7 @@
 package com.example.admin.feedback_app.fragmenter;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -12,13 +13,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.aktiviteter.Overholdt_Giv_Feedback_akt;
 
 
-public class Feedback_frg extends Fragment {
+public class Feedback_frg extends Fragment implements View.OnClickListener {
 
     private static String TAG = "Feedback fragment";
 
-    private Button knapVidere, knapTilbage;
+    private Button[] knapperHumoer;
     private EditText editTextuddybning;
     private TextView textViewSpørgsmål, textViewIndeks;
 
@@ -62,11 +64,23 @@ public class Feedback_frg extends Fragment {
         View view = inflater.inflate(R.layout.fragment_feedback, container, false);
 
 
+        //TextView
         editTextuddybning = view.findViewById(R.id.feedback_udybning_editTxt);
         textViewSpørgsmål = view.findViewById(R.id.feedback_spørgsmål_txtView);
 
         textViewSpørgsmål.setText(spørgsmålTilFragment);
 
+        //Knapper
+        knapperHumoer = new Button[]{
+                view.findViewById(R.id.imageBMegetSur),
+                view.findViewById(R.id.imageBSur),
+                view.findViewById(R.id.imageBTilfreds),
+                view.findViewById(R.id.imageBMegetTilfreds)
+        };
+
+        for (Button knap : knapperHumoer){
+            knap.setOnClickListener(this);
+        }
 
         //TODO: smiley knapper
         /*knapVidere.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +111,11 @@ public class Feedback_frg extends Fragment {
     public void onDetach() {
         super.onDetach();
         onFragmentInteractionListener = null;
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 
 

@@ -34,4 +34,5 @@
     <string name="spørgsmål_til_feedback2">Hvad syntes du om PowerPoint præsentationen?</string>
     <string name="spørgsmål_til_feedback3">Holdt i jer til emnen under hele mødet?</string>
     <string name="spørgsmål_til_feedback4">Er du tilfreds med mødeholder?</string>
+    <string name="uddyb_hint">Uddyb gerne</string>
 </resources>

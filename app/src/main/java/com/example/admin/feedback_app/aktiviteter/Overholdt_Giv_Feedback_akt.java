@@ -71,10 +71,12 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Fee
         }
         else if (pos >= NUM_PAGES - 1){
             knapVidere.setText("Afslut");
+            knapVidere.setBackgroundResource(R.drawable.knap_groen);
         }
         else {
             knapTilbage.setVisibility(View.VISIBLE);
             knapVidere.setText("Videre");
+            knapVidere.setBackground(null);
         }
     }
 
@@ -103,6 +105,9 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Fee
         else if (view == knapVidere){
             if (viewPager.getCurrentItem() + 1 < NUM_PAGES){
                 viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+            }
+            else {
+                //TODO: afslut feedback
             }
         }
     }
