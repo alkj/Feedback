@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.Svar;
 import com.example.admin.feedback_app.fragmenter.Feedback_frg;
 
 /**
@@ -22,8 +23,6 @@ import com.example.admin.feedback_app.fragmenter.Feedback_frg;
  */
 public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Feedback_frg.OnFragmentInteractionListener, View.OnClickListener {
 
-    private Fragment fragmentFeedback;
-
     private Button knapVidere, knapTilbage;
     private TextView tekstNummer;
     private String TAG = "feedbackfragmentet";
@@ -31,6 +30,8 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Fee
     private static final int NUM_PAGES = 5; //Fast indtil videre
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
+
+    private Svar[] feedback = new Svar[NUM_PAGES];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,17 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Fee
     }
 
     private void updateView(int pos){
+        if (feedback[pos] == null)
+            feedback[pos] = new Svar();
+
+        if (pos > 0){
+            if (feedback[pos-1].getSmiley() <= 0){
+                viewPager.setCurrentItem(pos - 1);
+                //TODO give besked om at der mangler at vælges smiley
+                return;
+            }
+        }
+
         tekstNummer.setText(pos + 1 + " af " + NUM_PAGES);
 
         if (pos <= 0){
@@ -71,12 +83,12 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Fee
         }
         else if (pos >= NUM_PAGES - 1){
             knapVidere.setText("Afslut");
-            knapVidere.setBackgroundResource(R.drawable.knap_groen);
+            //knapVidere.setBackgroundColor(getColor(R.color.colorGrøn)); TODO mangler knapper
         }
         else {
             knapTilbage.setVisibility(View.VISIBLE);
             knapVidere.setText("Videre");
-            knapVidere.setBackground(null);
+            //knapVidere.setBackgroundColor(til orgiginal); TODO mangler knapper
         }
     }
 
@@ -90,11 +102,6 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Fee
             // Otherwise, select the previous step.
             viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);
         }
-    }
-
-    @Override
-    public void onFragmentInteraction(int smiley, String tekstUddybning) {
-        Log.d("FRAGMENT", "Int: " + smiley + " and " + tekstUddybning);
     }
 
     @Override
@@ -112,6 +119,22 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Fee
         }
     }
 
+    @Override
+    public void onSmileyClick(int i, int smiley) {
+        if (feedback[i] == null)
+            feedback[i] = new Svar();
+        feedback[i].setSmiley(smiley);
+        Log.d(TAG, " hey hey heeee y");
+    }
+
+    @Override
+    public void onTextCompleted(int i, String text) {
+        if (feedback[i] == null)
+            feedback[i] = new Svar();
+        feedback[i].setTekst(text);
+        Log.d(TAG, text);
+    }
+
     /**
      * A simple pager adapter that represents 5 ScreenSlidePageFragment objects, in
      * sequence.
@@ -123,7 +146,7 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Fee
 
         @Override
         public Fragment getItem(int position) {
-            return Feedback_frg.newInstance("Spørgsmål " + position + 1);
+            return Feedback_frg.newInstance(position,"Spørgsmål " + position + 1);
         }
 
         @Override
