@@ -29,7 +29,7 @@ public class SkiftPassword_frg extends Fragment implements View.OnClickListener 
 
     private EditText editTextGammeltPassword, editTextNytPassword1, editTextNytPassword2;
     private TextView textViewBrugernavn;
-    private Button buttonAnnuller, buttonSkiftPassword;
+    private Button buttonSkiftPassword;
 
 
     @Override
@@ -44,20 +44,18 @@ public class SkiftPassword_frg extends Fragment implements View.OnClickListener 
         editTextNytPassword1 = rod.findViewById(R.id.skift_password_password1_editText);
         editTextNytPassword2 = rod.findViewById(R.id.skift_password_password2_editText);
         textViewBrugernavn = rod.findViewById(R.id.skift_password_brugernavn_textView);
-        buttonAnnuller = rod.findViewById(R.id.skift_password_annuller_button);
         buttonSkiftPassword = rod.findViewById(R.id.skift_password_gem_button);
 
         buttonSkiftPassword.setOnClickListener(this);
-        buttonAnnuller.setOnClickListener(this);
+
+        textViewBrugernavn.setText(personData.getMødeholder().getEmail());
 
         return rod;
     }
 
     @Override
     public void onClick(View v) {
-        if (v == buttonAnnuller) {
-            getActivity().getSupportFragmentManager().popBackStack();
-        } else if (v == buttonSkiftPassword) {
+        if (v == buttonSkiftPassword) {
             String gammeltPassword, nytPassword1, nytPassword2;
             gammeltPassword = editTextGammeltPassword.getText().toString();
             nytPassword1 = editTextNytPassword1.getText().toString();

@@ -73,7 +73,7 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
             Log.d(TAG, "onClick: rediger");
 
             RedigerProfilOplysninger_frg rediger = new RedigerProfilOplysninger_frg();
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.navigation_fragment_container, rediger).addToBackStack(null).commit();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.navigation_fragment_container, rediger).commit();
 
         }
 
@@ -83,7 +83,7 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
             Log.d(TAG, "onClick: skift password");
 
             SkiftPassword_frg skiftPassword = new SkiftPassword_frg();
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.navigation_fragment_container, skiftPassword).addToBackStack(null).commit();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.navigation_fragment_container, skiftPassword).commit();
 
         }
 

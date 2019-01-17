@@ -31,18 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
         app:layout_constraintVertical_bias="0.347" />
 
-    <Button
-        android:id="@+id/rediger_profil_annuller_button"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="#828282"
-        android:text="Annuller"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textColor="@color/colorHvid"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/rediger_profil_titel_textview_dont_edit"

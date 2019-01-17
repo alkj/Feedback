@@ -28,7 +28,7 @@ public class RedigerProfilOplysninger_frg extends Fragment implements View.OnCli
     private FirebaseAuth firebaseAuth;
 
     private EditText editTextFornavn, editTextEfternavn, editTextVirkid, editTextTlf;
-    private Button buttonAnuller, buttonGem;
+    private Button buttonGem;
 
 
 
@@ -45,11 +45,9 @@ public class RedigerProfilOplysninger_frg extends Fragment implements View.OnCli
          editTextVirkid = rod.findViewById(R.id.rediger_profil_virksomheds_id_editTxt);
          editTextTlf = rod.findViewById(R.id.rediger_profil_tlf_editText);
 
-         buttonAnuller = rod.findViewById(R.id.rediger_profil_annuller_button);
          buttonGem = rod.findViewById(R.id.rediger_profil_gem_ændringer_button);
 
          buttonGem.setOnClickListener(this);
-         buttonAnuller.setOnClickListener(this);
 
          editTextFornavn.setText(personData.getMødeholder().getFornavn());
          editTextEfternavn.setText(personData.getMødeholder().getEfternavn());
@@ -62,9 +60,8 @@ public class RedigerProfilOplysninger_frg extends Fragment implements View.OnCli
 
     @Override
     public void onClick(View v) {
-        if (v==buttonAnuller){
-            getActivity().getSupportFragmentManager().popBackStack();
-        } else if (v==buttonGem){
+            if (v==buttonGem){
+
             if (editTextFornavn.getText().toString()!=personData.getMødeholder().getFornavn().toString() //dette 'if' virker ikke. det er ligemeget om man ændre noget eller ej.
                     ||editTextEfternavn.getText().toString()!=personData.getMødeholder().getEfternavn().toString()
                     ||editTextVirkid.getText().toString()!=personData.getMødeholder().getVirk_id().toString()
