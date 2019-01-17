@@ -1,5 +1,6 @@
 package com.example.admin.feedback_app.aktiviteter;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.admin.feedback_app.FeedbackManager;
 import com.example.admin.feedback_app.R;
 import com.example.admin.feedback_app.Svar;
 import com.example.admin.feedback_app.fragmenter.Feedback_frg;
@@ -21,7 +23,7 @@ import com.example.admin.feedback_app.fragmenter.Feedback_frg;
  * https://developer.android.com/training/animation/screen-slide#java
  *
  */
-public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Feedback_frg.OnFragmentInteractionListener, View.OnClickListener {
+public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements View.OnClickListener {
 
     private Button knapVidere, knapTilbage;
     private TextView tekstNummer;
@@ -31,7 +33,7 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Fee
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
 
-    private Svar[] feedback = new Svar[NUM_PAGES];
+    private FeedbackManager feedbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,9 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Fee
 
         String datoString = getIntent().getStringExtra("MØDEID");
         String stedString = getIntent().getStringExtra("MØDEIDdel");
+
+        feedbackManager = FeedbackManager.getInstance();
+        feedbackManager.startFeedback(NUM_PAGES);
 
         // Instantiate a ViewPager and a PagerAdapter.
         viewPager = findViewById(R.id.feedback_pager);
@@ -65,13 +70,10 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Fee
     }
 
     private void updateView(int pos){
-        if (feedback[pos] == null)
-            feedback[pos] = new Svar();
-
         if (pos > 0){
-            if (feedback[pos-1].getSmiley() <= 0){
+            if (!feedbackManager.erFeedbackUdfyldt(pos -1)){
                 viewPager.setCurrentItem(pos - 1);
-                //TODO give besked om at der mangler at vælges smiley
+                //TODO give besked om at der mangler at vælges smiley + ryste animation
                 return;
             }
         }
@@ -97,7 +99,7 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Fee
         if (viewPager.getCurrentItem() == 0) {
             // If the user is currently looking at the first step, allow the system to handle the
             // Back button. This calls finish() on this activity and pops the back stack.
-            super.onBackPressed();
+            super.onBackPressed(); //TODO pop-up dialog
         } else {
             // Otherwise, select the previous step.
             viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);
@@ -114,25 +116,10 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Fee
                 viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
             }
             else {
-                //TODO: afslut feedback
+                Intent intent = new Intent(this, TakForFeedback.class);
+                startActivity(intent);
             }
         }
-    }
-
-    @Override
-    public void onSmileyClick(int i, int smiley) {
-        if (feedback[i] == null)
-            feedback[i] = new Svar();
-        feedback[i].setSmiley(smiley);
-        Log.d(TAG, " hey hey heeee y");
-    }
-
-    @Override
-    public void onTextCompleted(int i, String text) {
-        if (feedback[i] == null)
-            feedback[i] = new Svar();
-        feedback[i].setTekst(text);
-        Log.d(TAG, text);
     }
 
     /**
@@ -146,7 +133,7 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Fee
 
         @Override
         public Fragment getItem(int position) {
-            return Feedback_frg.newInstance(position,"Spørgsmål " + position + 1);
+            return Feedback_frg.newInstance(position,"Spørgsmål " + ++position);
         }
 
         @Override

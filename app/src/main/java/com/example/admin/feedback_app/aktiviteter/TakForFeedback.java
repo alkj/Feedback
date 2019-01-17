@@ -21,7 +21,8 @@ public class TakForFeedback extends AppCompatActivity {
 
 
 
-        timer = new Timer();
+
+        /*timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -30,7 +31,7 @@ public class TakForFeedback extends AppCompatActivity {
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
-        },2000);
+        },2000);*/
 
     }
 }

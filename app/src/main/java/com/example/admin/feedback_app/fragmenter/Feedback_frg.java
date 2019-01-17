@@ -15,7 +15,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.admin.feedback_app.FeedbackManager;
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.Svar;
 import com.example.admin.feedback_app.aktiviteter.Overholdt_Giv_Feedback_akt;
 
 
@@ -34,8 +36,8 @@ public class Feedback_frg extends Fragment implements View.OnClickListener {
     private String spørgsmålTilFragment;
     private int nummer;
     private final float ALPHA_VALGT = 1f, ALPHA_IKKE_VALGT = 0.5f;
-
-    public OnFragmentInteractionListener onFragmentInteractionListener;
+    private FeedbackManager feedbackManager;
+    private Svar svar;
 
     public Feedback_frg() {
         // Required empty public constructor
@@ -64,6 +66,7 @@ public class Feedback_frg extends Fragment implements View.OnClickListener {
         if (getArguments() != null) {
             spørgsmålTilFragment = getArguments().getString(SPØRGSMÅL_TEKST);
             nummer = getArguments().getInt(NUMMER);
+
         }
     }
 
@@ -74,6 +77,7 @@ public class Feedback_frg extends Fragment implements View.OnClickListener {
 
         //EditText
         editTextuddybning = view.findViewById(R.id.feedback_udybning_editTxt);
+        editTextuddybning.setVisibility(View.GONE);
         editTextuddybning.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -87,7 +91,8 @@ public class Feedback_frg extends Fragment implements View.OnClickListener {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                onFragmentInteractionListener.onTextCompleted(nummer, editTextuddybning.getText().toString());
+                svar.setTekst(editTextuddybning.getText().toString());
+                feedbackManager.indsætFeedback(nummer, svar);
             }
         });
 
@@ -108,26 +113,19 @@ public class Feedback_frg extends Fragment implements View.OnClickListener {
             knap.setOnClickListener(this);
         }
 
-        return view;
-    }
-
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        Log.d(TAG, "COnnection that shit");
-        if (context instanceof OnFragmentInteractionListener) {
-            onFragmentInteractionListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+        //Feedback
+        feedbackManager = FeedbackManager.getInstance();
+        if (feedbackManager.erFeedbackUdfyldt(nummer)){
+            svar = feedbackManager.hentFeedback(nummer);
+            knapperHumoer[svar.getSmiley()-1].setAlpha(ALPHA_VALGT);
+            editTextuddybning.setVisibility(View.VISIBLE);
+            editTextuddybning.setText(svar.getTekst());
         }
-    }
+        else {
+            svar = new Svar();
+        }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        onFragmentInteractionListener = null;
+        return view;
     }
 
     @Override
@@ -136,13 +134,11 @@ public class Feedback_frg extends Fragment implements View.OnClickListener {
             knapperHumoer[i].setAlpha(ALPHA_IKKE_VALGT);
             if (view == knapperHumoer[i]){
                 knapperHumoer[i].setAlpha(ALPHA_VALGT);
-                onFragmentInteractionListener.onSmileyClick(nummer,i+1);
+                svar.setSmiley(i+1);
+                feedbackManager.indsætFeedback(nummer, svar);
             }
+            editTextuddybning.setVisibility(View.VISIBLE);
         }
     }
 
-    public interface OnFragmentInteractionListener {
-        void onSmileyClick(int i, int smiley);
-        void onTextCompleted(int i, String text);
-    }
 }
