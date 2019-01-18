@@ -18,11 +18,22 @@
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
             android:fontFamily="@font/open_sans_semibold"
-            android:text="TextView"
-            android:textAlignment="center"
+            android:text="Navn"
+            android:textAlignment="viewStart"
             android:textColor="@color/colorMørkegrå"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/list_moedeID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="MødeID"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorMørkegrå"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/list_moededato"
@@ -30,8 +41,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
             android:fontFamily="@font/open_sans_semibold"
-            android:text="TextView"
-            android:textAlignment="center"
+            android:text="Dato"
+            android:textAlignment="viewStart"
             android:textColor="@color/colorMørkegrå"
             android:textSize="12sp" />
     </LinearLayout>

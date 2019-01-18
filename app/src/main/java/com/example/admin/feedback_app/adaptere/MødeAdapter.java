@@ -36,6 +36,8 @@ public class MødeAdapter extends ArrayAdapter<Møde> {
         if (møde != null){
             TextView mødenavn = view.findViewById(R.id.list_moednavn);
             TextView mødedato = view.findViewById(R.id.list_moededato);
+            TextView mødeID = view.findViewById(R.id.list_moedeID);
+
             HorizontalStackedBarChart barChart = view.findViewById(R.id.list_chart);
 
             if (møde.isAfholdt()){
@@ -60,7 +62,13 @@ public class MødeAdapter extends ArrayAdapter<Møde> {
 
 
             mødenavn.setText(møde.getNavn());
-            mødedato.setText(møde.getDato());
+            mødeID.setText(møde.getDato());
+            mødedato.setText("");
+
+            if (!møde.isAfholdt()){
+                mødeID.setText("Møde-ID:  " + møde.getMødeIDtildeltager());
+                mødedato.setText(møde.getDato());
+            }
         }
 
         return view;
