@@ -3,13 +3,16 @@ package com.example.admin.feedback_app.fragmenter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.aktiviteter.OpretBruger_akt;
 
 
 public class OpretMoede_1_frg extends Fragment{
@@ -31,7 +34,9 @@ public class OpretMoede_1_frg extends Fragment{
         videre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validering())
+                if(!validering()){
+                    return;
+                }
                 smødeNavn = mødeNavn.getText().toString();
                 smødeFormål = mødeFormål.getText().toString();
                 ssted = sted.getText().toString();
@@ -60,12 +65,21 @@ public class OpretMoede_1_frg extends Fragment{
 
 
     private boolean validering(){
-        boolean ret = true;
+        boolean valid = true;
 
-        //TODO lav validering
-
-
-        return ret;
+        if (TextUtils.isEmpty(this.mødeFormål.getText().toString())) {
+            this.mødeFormål.setError("Indtast formål");
+            valid = false;
+        }
+        if (TextUtils.isEmpty(this.mødeNavn.getText().toString())) {
+            this.mødeNavn.setError("Indtast navn");
+            valid = false;
+        }
+        if (TextUtils.isEmpty(this.sted.getText().toString())) {
+            this.sted.setError("Indtast sted");
+            valid = false;
+        }
+        return valid;
     }
 
 

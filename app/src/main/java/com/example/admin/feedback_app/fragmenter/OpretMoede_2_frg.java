@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +34,6 @@ public class OpretMoede_2_frg extends Fragment implements View.OnClickListener {
     private String mødenavnS, mødeformålS, stedS;
     private TextView starttid_txt, sluttid_txt;
     private TextView dato_txt;
-    private  EditText mødeNavn, mødeFormål, sted, dagsorden;
     private Button opretMoede_knap;
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFirestore;
@@ -85,6 +85,11 @@ public class OpretMoede_2_frg extends Fragment implements View.OnClickListener {
                 dialog_dato.show(getActivity().getSupportFragmentManager(), "datoPicker");
                 break;
             case R.id.videreBTN:
+
+                if(!validering()){
+                    return;
+                }
+
                 //Log.d(TAG, "Opret møde knappen er trykket");
                 String uniqueID = UUID.randomUUID().toString();
                 //Log.d(TAG, "ID er: " + uniqueID);
@@ -101,7 +106,7 @@ public class OpretMoede_2_frg extends Fragment implements View.OnClickListener {
                 møde.setMødeID(uniqueID);
                 møde.setIgang(false);
                 PersonData.getInstance().tilføjMøde(møde);
-                //møde.setDagsorden(dagsorden.getText().toString());
+
 
 
                 mFirestore.collection("Møder").document(uniqueID).set(møde).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -157,6 +162,23 @@ public class OpretMoede_2_frg extends Fragment implements View.OnClickListener {
         } else {
             return randomInt - 1;
         }
+    }
+    private boolean validering(){
+        boolean valid = true;
+
+        if (TextUtils.isEmpty(this.dato_txt.getText().toString())) {
+            this.dato_txt.setError("Indtast mødets dato");
+            valid = false;
+        }
+        if (TextUtils.isEmpty(this.starttid_txt.getText().toString())) {
+            this.starttid_txt.setError("Indtast mødets start tidspunkt");
+            valid = false;
+        }
+        if (TextUtils.isEmpty(this.sluttid_txt.getText().toString())) {
+            this.sluttid_txt.setError("Indtast mødets slut tidspunkt");
+            valid = false;
+        }
+        return valid;
     }
 
 }
