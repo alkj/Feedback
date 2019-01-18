@@ -35,7 +35,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <EditText
-        android:textSize="15dp"
         android:id="@+id/tidStart"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -43,26 +42,26 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="60dp"
         android:allowUndo="true"
-        android:maxLines="3"
         android:autofillHints="DBDBDB"
-        android:inputType="textMultiLine"
         android:clickable="false"
         android:drawablePadding="10dp"
         android:ems="10"
         android:fadingEdge="horizontal|vertical"
         android:fontFamily="@font/open_sans_semibold"
         android:hint="Mødets Formål"
+        android:inputType="textMultiLine"
+        android:maxLines="3"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@color/colorMEGETLysGrå"
         android:textColorHint="@color/colorHvid"
+        android:textSize="15dp"
         app:backgroundTint="@color/colorLysegrå"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tidSlut" />
+        app:layout_constraintTop_toBottomOf="@+id/dato" />
 
     <EditText
-        android:textSize="15dp"
         android:id="@+id/tidSlut"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -82,11 +81,12 @@
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@color/colorMEGETLysGrå"
         android:textColorHint="@color/colorHvid"
+        android:textSize="15dp"
         app:backgroundTint="@color/colorLysegrå"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dato" />
+        app:layout_constraintTop_toBottomOf="@+id/tidStart" />
 
     <TextView
         android:id="@+id/textView8"
@@ -138,19 +138,19 @@
         android:layout_width="173dp"
         android:layout_height="54dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="8dp"
         android:autofillHints="DBDBDB"
         android:background="@drawable/knap_lysegraa"
         android:fontFamily="sans-serif"
         android:text="Videre"
-        android:textColor="#FBF7FF"
 
+        android:textColor="#FBF7FF"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tidStart" />
+        app:layout_constraintTop_toBottomOf="@+id/tidSlut" />
 
 
 </android.support.constraint.ConstraintLayout>
