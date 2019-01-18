@@ -4,20 +4,15 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.admin.feedback_app.R;
 
-/**
- * @author  Nils DAvid Rasamoel
- * Dum dialog som konstant loader
- */
 public class ProgressDialog extends AlertDialog {
 
-    private TextView progressTxt;
-    private ProgressBar progressBar;
+    private TextView textView;
     private CharSequence msg;
+    private int count = 0;
     private Runnable anim;
     private boolean running;
 
@@ -33,9 +28,7 @@ public class ProgressDialog extends AlertDialog {
         setContentView(R.layout.progressdialog_layout);
         setCanceledOnTouchOutside(false);
 
-        progressTxt = findViewById(R.id.progress_txt);
-        progressBar = findViewById(R.id.progress_bar);
-        progressBar.setProgress(1);
+        textView = findViewById(R.id.progress_txt);
 
         init();
     }
@@ -46,15 +39,31 @@ public class ProgressDialog extends AlertDialog {
             public void run() {
                 while (running) {
 
-                    progressTxt.post(new Runnable() {
+                    final String extra;
+                    switch (++count) {
+                        case 1:
+                            extra = ".";
+                            break;
+                        case 2:
+                            extra = "..";
+                            break;
+                        case 3:
+                            extra = "...";
+                            break;
+                        default:
+                            count = 0;
+                            extra = "";
+                    }
+
+                    textView.post(new Runnable() {
                         @Override
                         public void run() {
-                            progressTxt.setText(msg);
+                            textView.setText(msg + extra);
                         }
                     });
 
                     try {
-                        Thread.sleep(200);
+                        Thread.sleep(800);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -62,7 +71,6 @@ public class ProgressDialog extends AlertDialog {
                 return;
             }
         };
-
     }
 
     @Override
