@@ -14,7 +14,7 @@ public class beforeGivFeedback_akt extends AppCompatActivity {
 
     private Button givFeed;
 
-    private TextView sted, dato;
+    private TextView sted, dato, navn;
 
 
     @Override
@@ -22,14 +22,18 @@ public class beforeGivFeedback_akt extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_before_giv_feedback_akt);
 
+        navn = findViewById(R.id.navnTV);
         sted = findViewById(R.id.stedTV);
         dato = findViewById(R.id.datoTV);
 
+        String navnString = getIntent().getStringExtra("NAVN");
         String datoString = getIntent().getStringExtra("DATO");
         String stedString = getIntent().getStringExtra("STED");
 
+        navn.setText(navnString);
         dato.setText(datoString);
         sted.setText(stedString);
+
 
         givFeed = findViewById(R.id.buttonStartFeed);
         givFeed.setOnClickListener(new View.OnClickListener() {
