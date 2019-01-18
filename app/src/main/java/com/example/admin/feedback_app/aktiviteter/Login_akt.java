@@ -1,5 +1,6 @@
 package com.example.admin.feedback_app.aktiviteter;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,6 +8,7 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -60,6 +62,25 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         //Input felter
         email_editTxt = findViewById(R.id.login_brugernavn_editTxt);
         password_editTxt = findViewById(R.id.login_password_editTxt);
+
+        email_editTxt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+            }
+        });
+
+        password_editTxt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+            }
+        });
+
 
         if (DEBUG) {
             test_checkBox.setVisibility(View.VISIBLE);
@@ -275,5 +296,12 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
 
         }
     }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+
 
 }

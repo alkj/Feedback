@@ -1,5 +1,6 @@
 package com.example.admin.feedback_app.aktiviteter;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -59,6 +61,16 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
         feedback_btn = (Button)findViewById(R.id.startskaerm_feedback_btn);
 
         mødeId_editTxt = (EditText)findViewById(R.id.startskærm_editTxt);
+
+        mødeId_editTxt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+            }
+        });
+
 
         login_btn.setOnClickListener(this);
         feedback_btn.setOnClickListener(this);
@@ -207,4 +219,10 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
 
         }
     }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
 }
