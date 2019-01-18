@@ -1,5 +1,8 @@
 package com.example.admin.feedback_app.aktiviteter;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
@@ -11,6 +14,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +40,8 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Vie
     private PagerAdapter pagerAdapter;
 
     private FeedbackManager feedbackManager;
+
+    private ObjectAnimator rystAnim, tilbageAnim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +74,15 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Vie
         //Tekst
         tekstNummer = findViewById(R.id.feedback_nummer_txtView);
         updateView(viewPager.getCurrentItem());
+
+        //Animationer
+        rystAnim = ObjectAnimator.ofFloat(viewPager, "translationX", -20, 20);
+        rystAnim.setDuration(50);
+        rystAnim.setRepeatCount(6);
+        rystAnim.setRepeatMode(ValueAnimator.REVERSE);
+
+        tilbageAnim = ObjectAnimator.ofFloat(viewPager, "translationX", 20, 0);
+        tilbageAnim.setDuration(25);
     }
 
     private void updateView(int pos){
@@ -95,8 +111,12 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Vie
     }
 
     private void manglerSvar(){
-        //TODO ryst animation
-        Toast.makeText(this, R.string.mangler_smiley, Toast.LENGTH_LONG).show();
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.play(rystAnim);
+        animatorSet.play(tilbageAnim).after(rystAnim);
+        animatorSet.start();
+
+        Toast.makeText(this, R.string.mangler_smiley, Toast.LENGTH_SHORT).show();
     }
 
     @Override
