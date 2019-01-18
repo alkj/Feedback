@@ -116,7 +116,7 @@ public class OpretMoede_2_frg extends Fragment implements View.OnClickListener {
                             Toast.makeText(getContext(),
                                     "Møde oprettet",
                                     Toast.LENGTH_SHORT).show();
-                            getActivity().getSupportFragmentManager().popBackStackImmediate();
+                            getActivity().getSupportFragmentManager().popBackStack();
 
 
                         }
