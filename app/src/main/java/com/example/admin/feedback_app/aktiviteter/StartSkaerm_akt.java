@@ -141,6 +141,7 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
                     Intent intent = new Intent(getApplicationContext(), beforeGivFeedback_akt.class);
                     intent.putExtra("MØDEID", mødet.getMødeID());
                     intent.putExtra("MØDEIDdel",mødet.getMødeIDtildeltager());
+                    intent.putExtra("NAVN", mødet.getNavn());
                     intent.putExtra("DATO",mødet.getDato());
                     intent.putExtra("STED",mødet.getSted());
                     startActivity(intent);
@@ -170,9 +171,11 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
                     String mødeIDtildeltager = document.get("mødeIDtildeltager").toString();
                     String sted = document.get("sted").toString();
                     String dato = document.get("dato").toString();
+                    String navn = document.get("navn").toString();
 
                     mødet.setMødeID(mødeID);
                     mødet.setMødeIDtildeltager(mødeIDtildeltager);
+                    mødet.setNavn(navn);
                     mødet.setSted(sted);
                     mødet.setDato(dato);
 
