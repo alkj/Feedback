@@ -1,17 +1,22 @@
 package com.example.admin.feedback_app.aktiviteter;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.admin.feedback_app.FeedbackManager;
+import com.example.admin.feedback_app.FeedbackTilFirebase;
+import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.NetworkManager;
+import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
-import com.example.admin.feedback_app.Svar;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -20,6 +25,7 @@ public class TakForFeedback extends BaseActivity {
 
     Timer timer;
     private TextView tekst_besked;
+    private final String TAG = "TakForFeedback";
 
 
 
@@ -32,16 +38,14 @@ public class TakForFeedback extends BaseActivity {
         if (NetworkManager.harInternet(this)){
             tekst_besked.setVisibility(View.INVISIBLE);
             showProgressDialog();
-            updateProgressDialog("Fake loader");
+            indsendFeedback();
         }
         else {
             tekst_besked.setText("No internet :O");
             //TODO: hvis ingen internet
         }
 
-
-
-        timer = new Timer();
+        /*timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -63,15 +67,54 @@ public class TakForFeedback extends BaseActivity {
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
-        }, 3500);
+        }, 3500);*/
 
     }
 
     private void indsendFeedback(){
+        updateProgressDialog("Indsender feedback");
         FeedbackManager fm = FeedbackManager.getInstance();
-        Svar[] feedback = fm.hentAltFeedback();
+        FeedbackTilFirebase feedback = fm.hentFeedbackTilFire();
+        fm.clear();
 
-        //TODO send feedback
+        FirebaseFirestore.getInstance()
+                .collection("Feedback")
+                .add(feedback)
+                .addOnCompleteListener(new OprettetListener());
+    }
+
+    private void feedbackLykkedes(){
+        Log.d(TAG, "Feedback er uploaded");
+        tekst_besked.post(new Runnable() {
+            @Override
+            public void run() {
+                tekst_besked.setVisibility(View.VISIBLE);
+            }
+        });
+
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(TakForFeedback.this,StartSkaerm_akt.class);
+                startActivity(intent);
+                finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        }, 2000);
+    }
+
+    class OprettetListener implements OnCompleteListener<DocumentReference> {
+
+        @Override
+        public void onComplete(@NonNull Task<DocumentReference> task) {
+            hideProgressDialog();
+            if(task.isSuccessful()){
+                feedbackLykkedes();
+            }
+            else {
+                Log.w(TAG, "Feedback blev ikke oprettet!", task.getException());
+            }
+        }
     }
 
 }

@@ -10,7 +10,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,7 +17,6 @@ import android.widget.Toast;
 
 import com.example.admin.feedback_app.FeedbackManager;
 import com.example.admin.feedback_app.R;
-import com.example.admin.feedback_app.Svar;
 import com.example.admin.feedback_app.fragmenter.Feedback_frg;
 
 /**
@@ -43,11 +41,10 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overholdt__giv__feedback);
 
-        String datoString = getIntent().getStringExtra("MØDEID");
-        String stedString = getIntent().getStringExtra("MØDEIDdel");
+        String mødeID = getIntent().getStringExtra("MØDEID");
 
         feedbackManager = FeedbackManager.getInstance();
-        feedbackManager.startFeedback(NUM_PAGES);
+        feedbackManager.startFeedback(NUM_PAGES, mødeID);
 
         // Instantiate a ViewPager and a PagerAdapter.
         viewPager = findViewById(R.id.feedback_pager);

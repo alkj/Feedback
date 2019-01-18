@@ -1,7 +1,5 @@
 package com.example.admin.feedback_app.fragmenter;
 
-import android.content.Context;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -10,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,7 +15,6 @@ import android.widget.TextView;
 import com.example.admin.feedback_app.FeedbackManager;
 import com.example.admin.feedback_app.R;
 import com.example.admin.feedback_app.Svar;
-import com.example.admin.feedback_app.aktiviteter.Overholdt_Giv_Feedback_akt;
 
 
 public class Feedback_frg extends Fragment implements View.OnClickListener {
