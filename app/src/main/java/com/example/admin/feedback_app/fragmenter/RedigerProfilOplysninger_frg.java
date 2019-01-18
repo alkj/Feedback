@@ -84,4 +84,7 @@ public class RedigerProfilOplysninger_frg extends Fragment implements View.OnCli
             }
         }
     }
+
+
+
 }

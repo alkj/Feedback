@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Profil_frg extends Fragment implements View.OnClickListener {
 
-    private static String TAG = "profil fragment i navigations aktivitet";
+    private static final String TAG = "profilfragment";
 
     private Button logUd, skiftPassword, rediger;
     private TextView fornavn, efternavn, telefonnummer;
@@ -37,15 +37,16 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
         mødeholder = PersonData.getInstance().getMødeholder();
 
 
+
+
         logUd = v.findViewById(R.id.profil_logUd_button);
         skiftPassword = v.findViewById(R.id.profil_skiftPassword_button);
         rediger = v.findViewById(R.id.profil_rediger_button);
 
-        fornavn = v.findViewById(R.id.aendre_fornavn_editTxt);
-        efternavn = v.findViewById(R.id.aendre_efternavn_editTxt);
-        telefonnummer = v.findViewById(R.id.aendre_tlf_editTxt);
-
-        virksomhedsID = v.findViewById(R.id.aendre_virksomhedsid_textView);
+        fornavn = v.findViewById(R.id.profil_fornavn_textView);
+        efternavn = v.findViewById(R.id.profil_efternavn_textView);
+        telefonnummer = v.findViewById(R.id.profil_tlf_textView);
+        virksomhedsID = v.findViewById(R.id.profil_virksomhedsid_textView);
 
 
         logUd.setOnClickListener(this);
@@ -56,6 +57,10 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
         efternavn.setText(mødeholder.getEfternavn());
         telefonnummer.setText(mødeholder.getTlf());
         virksomhedsID.setText(mødeholder.getVirk_id());
+
+
+
+
 
         return v;
     }
@@ -93,10 +98,14 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
 
+
+
         fornavn.setText(mødeholder.getFornavn());
         efternavn.setText(mødeholder.getEfternavn());
         telefonnummer.setText(mødeholder.getTlf());
         virksomhedsID.setText(mødeholder.getVirk_id());
+
+
 
 
         super.onResume();
