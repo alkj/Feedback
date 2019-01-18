@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.admin.feedback_app.Mødeholder;
@@ -36,6 +38,8 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
     private Mødeholder mødeholder;
     private FirebaseAuth firebaseAuth;
     private String detHentedeVirkID;
+    private ImageView password1, password2;
+    private Boolean passwordStatus = true, getPasswordStatus2 = true;
 
 
     @Override
@@ -61,6 +65,12 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         email_editTxt = findViewById(R.id.opretbruger_mail_editTxt);
         password_editTxt = findViewById(R.id.opretbruger_password_editTxt);
         password2_editTxt = findViewById(R.id.opretbruger_password2_editTxt);
+
+        //ImageView
+        password1 = findViewById(R.id.imViewPassword1Synlig);
+        password2 = findViewById(R.id.imViewPassword2Synlig);
+        password1.setOnClickListener(this);
+        password2.setOnClickListener(this);
 
 
     }
@@ -187,9 +197,37 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
 
                 }
             }, 2000);
-
             //TODO lav toast der giver besked hvis emailen allerede er oprettet
         }
+        else if (view == password1) {
+            if (passwordStatus) {
+                password_editTxt.setTransformationMethod(null);
+                passwordStatus = false;
+                password1.setImageResource(R.drawable.ic_visibility_on_green_24dp);
+                password_editTxt.setSelection(password_editTxt.length());
+            }
+            else {
+                password_editTxt.setTransformationMethod(new PasswordTransformationMethod());
+                passwordStatus = true;
+                password1.setImageResource(R.drawable.ic_visibility_off_grey_24dp);
+                password_editTxt.setSelection(password_editTxt.length());
+            }
+        }
+        else if (view == password2) {
+            if (passwordStatus) {
+                password2_editTxt.setTransformationMethod(null);
+                passwordStatus = false;
+                password2.setImageResource(R.drawable.ic_visibility_on_green_24dp);
+                password2_editTxt.setSelection(password2_editTxt.length());
+            }
+            else {
+                password2_editTxt.setTransformationMethod(new PasswordTransformationMethod());
+                passwordStatus = true;
+                password2.setImageResource(R.drawable.ic_visibility_off_grey_24dp);
+                password2_editTxt.setSelection(password2_editTxt.length());
+            }
+        }
+
     }
 
     private boolean tjekVirksomhedsID() {

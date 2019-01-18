@@ -1,15 +1,15 @@
 package com.example.admin.feedback_app.fragmenter;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +30,8 @@ public class SkiftPassword_frg extends Fragment implements View.OnClickListener 
     private EditText editTextGammeltPassword, editTextNytPassword1, editTextNytPassword2;
     private TextView textViewBrugernavn;
     private Button buttonSkiftPassword;
+    private ImageView gammelPassword, nyPassword1, nyPassword2;
+    private Boolean passwordStatusGammel = true, passwordStatusNyl = true, passwordStatusNy2 = true;
 
 
     @Override
@@ -41,11 +43,17 @@ public class SkiftPassword_frg extends Fragment implements View.OnClickListener 
         firebaseAuth = FirebaseAuth.getInstance();
 
         editTextGammeltPassword = rod.findViewById(R.id.skift_password_gammeltpassword_editText);
+        gammelPassword = rod.findViewById(R.id.imViewGammelPasswordSynlig);
         editTextNytPassword1 = rod.findViewById(R.id.skift_password_password1_editText);
+        nyPassword1 = rod.findViewById(R.id.imViewNyPassword1Synlig);
+        nyPassword2 = rod.findViewById(R.id.imViewNyPassword2Synlig);
         editTextNytPassword2 = rod.findViewById(R.id.skift_password_password2_editText);
         textViewBrugernavn = rod.findViewById(R.id.skift_password_brugernavn_textView);
         buttonSkiftPassword = rod.findViewById(R.id.skift_password_gem_button);
 
+        gammelPassword.setOnClickListener(this);
+        nyPassword1.setOnClickListener(this);
+        nyPassword2.setOnClickListener(this);
         buttonSkiftPassword.setOnClickListener(this);
 
         textViewBrugernavn.setText(personData.getMødeholder().getEmail());
@@ -76,6 +84,48 @@ public class SkiftPassword_frg extends Fragment implements View.OnClickListener 
                 Log.d(TAG, "onClick: password set in firebase");
                 this.getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.navigation_fragment_container, new Profil_frg()).commit();
                 Toast.makeText(this.getActivity(), "Password ændret", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else if (v == gammelPassword) {
+            if (passwordStatusGammel) {
+                editTextGammeltPassword.setTransformationMethod(null);
+                passwordStatusGammel = false;
+                gammelPassword.setImageResource(R.drawable.ic_visibility_on_green_24dp);
+                editTextGammeltPassword.setSelection(editTextGammeltPassword.length());
+            }
+            else {
+                editTextGammeltPassword.setTransformationMethod(new PasswordTransformationMethod());
+                passwordStatusGammel = true;
+                gammelPassword.setImageResource(R.drawable.ic_visibility_off_grey_24dp);
+                editTextGammeltPassword.setSelection(editTextGammeltPassword.length());
+            }
+        }
+        else if (v == nyPassword1) {
+            if (passwordStatusNyl) {
+                editTextNytPassword1.setTransformationMethod(null);
+                passwordStatusNyl = false;
+                nyPassword1.setImageResource(R.drawable.ic_visibility_on_green_24dp);
+                editTextNytPassword1.setSelection(editTextNytPassword1.length());
+            }
+            else {
+                editTextNytPassword1.setTransformationMethod(new PasswordTransformationMethod());
+                passwordStatusNyl = true;
+                nyPassword1.setImageResource(R.drawable.ic_visibility_off_grey_24dp);
+                editTextNytPassword1.setSelection(editTextNytPassword1.length());
+            }
+        }
+        else if (v == nyPassword2) {
+            if (passwordStatusNy2) {
+                editTextNytPassword2.setTransformationMethod(null);
+                passwordStatusNy2 = false;
+                nyPassword2.setImageResource(R.drawable.ic_visibility_on_green_24dp);
+                editTextNytPassword2.setSelection(editTextNytPassword2.length());
+            }
+            else {
+                editTextNytPassword2.setTransformationMethod(new PasswordTransformationMethod());
+                passwordStatusNy2 = true;
+                nyPassword2.setImageResource(R.drawable.ic_visibility_off_grey_24dp);
+                editTextNytPassword2.setSelection(editTextNytPassword2.length());
             }
         }
 

@@ -61,11 +61,11 @@ public class RedigerProfilOplysninger_frg extends Fragment implements View.OnCli
     @Override
     public void onClick(View v) {
             if (v==buttonGem){
-
-            if (editTextFornavn.getText().toString()!=personData.getMødeholder().getFornavn().toString() //dette 'if' virker ikke. det er ligemeget om man ændre noget eller ej.
-                    ||editTextEfternavn.getText().toString()!=personData.getMødeholder().getEfternavn().toString()
-                    ||editTextVirkid.getText().toString()!=personData.getMødeholder().getVirk_id().toString()
-                    ||editTextTlf.getText().toString()!=personData.getMødeholder().getTlf().toString()){
+                //tjekker om der er lavet ændringer, før det bliver sendt til firebase.
+            if (!editTextFornavn.getText().toString().equals(personData.getMødeholder().getFornavn())
+                    ||!editTextEfternavn.getText().toString().equals(personData.getMødeholder().getEfternavn().toString())
+                    ||!editTextVirkid.getText().toString().equals(personData.getMødeholder().getVirk_id().toString())
+                    ||!editTextTlf.getText().toString().equals(personData.getMødeholder().getTlf().toString())){
 
                 personData.getMødeholder().setFornavn(editTextFornavn.getText().toString());
                 personData.getMødeholder().setEfternavn(editTextEfternavn.getText().toString());
@@ -76,7 +76,7 @@ public class RedigerProfilOplysninger_frg extends Fragment implements View.OnCli
                 firebaseFirestore.collection("Mødeholder").document(firebaseAuth.getUid()).set(personData.getMødeholder());
                 Log.d(TAG, "onClick: data er blevet sendt.");
                 Toast.makeText(this.getActivity(), "information gemt", Toast.LENGTH_SHORT).show();
-                getActivity().getSupportFragmentManager().popBackStack();
+                this.getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.navigation_fragment_container, new Profil_frg()).commit();
 
             } else {
                 Toast.makeText(this.getActivity(), "ingen ændringer fundet", Toast.LENGTH_SHORT).show();
@@ -84,4 +84,7 @@ public class RedigerProfilOplysninger_frg extends Fragment implements View.OnCli
             }
         }
     }
+
+
+
 }
