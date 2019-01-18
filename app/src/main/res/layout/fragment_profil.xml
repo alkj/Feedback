@@ -118,7 +118,7 @@
     <LinearLayout
         android:id="@+id/Profil_buttons_layout"
         android:layout_width="275dp"
-        android:layout_height="189dp"
+        android:layout_height="183dp"
         android:layout_marginStart="68dp"
         android:layout_marginEnd="68dp"
         android:layout_marginBottom="25dp"
@@ -130,8 +130,10 @@
         <Button
             android:id="@+id/profil_rediger_button"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="35dp"
             android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@color/colorMEGETLysGrå"
             android:gravity="center"
             android:text="Rediger profil"
             tools:layout_editor_absoluteX="80dp"
@@ -140,8 +142,10 @@
         <Button
             android:id="@+id/profil_skiftPassword_button"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="35dp"
             android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@color/colorMEGETLysGrå"
             android:gravity="center"
             android:text="Skift Password"
             tools:layout_editor_absoluteX="80dp"
@@ -149,19 +153,20 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="25dp" />
+            android:layout_height="10dp" />
 
         <Button
             android:id="@+id/profil_logUd_button"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="35dp"
             android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="#FC6363"
             android:gravity="center"
             android:text="Log ud"
             tools:layout_editor_absoluteX="80dp"
-            tools:layout_editor_absoluteY="562dp"
-            android:background="#FF4747"
-            />
+            tools:layout_editor_absoluteY="562dp" />
+
 
     </LinearLayout>
 
