@@ -1,0 +1,69 @@
+package com.example.admin.feedback_app.fragmenter;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.aktiviteter.IkkeAfholdtMoede_akt;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+public class MoedeStartet_frg extends Fragment implements View.OnClickListener {
+
+    private TextView
+            moedeID, moedeNavn, moedeFormaal, inviterede, fremmoedte, planlagtStarttid, planlagtSluttid, aktuelStarttid, forloebtTid;
+
+    private Button afslutMoede;
+
+    IkkeAfholdtMoede_akt ikkeAfholdtMoede_akt;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_moede_startet_frg, container, false);
+
+        moedeID = view.findViewById(R.id.tvMødeIDStartetMøde);
+        moedeNavn = view.findViewById(R.id.tvMødeStartetMødeNavn);
+        moedeFormaal = view.findViewById(R.id.tvMødeFormaal);
+        inviterede = view.findViewById(R.id.tvMødeStartetInviterede);
+        fremmoedte = view.findViewById(R.id.tvMødeStartetFremmødte);
+        planlagtStarttid = view.findViewById(R.id.tvMødeStartetPlanlagtStarttid);
+        planlagtSluttid = view.findViewById(R.id.tvMødeStartetPlanlagtSluttid);
+        aktuelStarttid = view.findViewById(R.id.tvMødeStartetAktuelStartTid);
+        forloebtTid = view.findViewById(R.id.tvMødeStartetForløbtTid);
+        
+
+        afslutMoede = view.findViewById(R.id.mødeStartet_Afslut_knap);
+        afslutMoede.setOnClickListener(this);
+
+        return view;
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        if (view == afslutMoede) {
+            // TODO: gemme 'aktuel sluttid' i firebase
+            getCurrentTime();
+            // TODO: afslut fragmentet og afslut aktivitet
+            // TODO: gør mødestatus til 'Afsholdt' i firebase
+
+
+        }
+    }
+
+    public String getCurrentTime() {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat mdformat = new SimpleDateFormat("HH:mm");
+        String strDato = "aktuel tid: " + mdformat.format(calendar.getTime());
+        return strDato;
+    }
+
+}

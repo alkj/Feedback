@@ -5,16 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorMørkegrå"
-    tools:context=".aktiviteter.IkkeAfholdtMoede_akt">
+    tools:context=".fragmenter.MoedeStartet_frg">
+
 
     <TextView
-        android:id="@+id/tv1010n"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:text="Mødeoplysninger"
+        android:text="Møde startet"
         android:textAllCaps="true"
         android:textColor="@color/colorHvid"
         android:textSize="30sp"
@@ -24,16 +25,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="0dp"
+        android:id="@+id/linearLayout7"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv1010n">
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <TextView
             android:id="@+id/tv00030"
@@ -48,7 +49,7 @@
             tools:layout_editor_absoluteY="5dp" />
 
         <com.romainpiel.shimmer.ShimmerTextView
-            android:id="@+id/tvMødeID"
+            android:id="@+id/tvMødeIDStartetMøde"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="3dp"
@@ -67,18 +68,18 @@
         android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="30dp"
         android:orientation="vertical"
         android:paddingTop="3dp"
         android:paddingBottom="3dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
         <TextView
-            android:id="@+id/tvasd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Mødenavn"
@@ -88,7 +89,7 @@
             tools:layout_editor_absoluteY="306dp" />
 
         <TextView
-            android:id="@+id/tvMødeNavn"
+            android:id="@+id/tvMødeStartetMødeNavn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="3dp"
@@ -99,7 +100,6 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tv000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Møde formål"
@@ -109,49 +109,7 @@
             tools:layout_editor_absoluteY="198dp" />
 
         <TextView
-            android:id="@+id/tvMødeFormaal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="3dp"
-            android:paddingBottom="20dp"
-            android:text="x"
-            android:textColor="@color/colorHvid"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tv0000"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Mødested"
-            android:textColor="@color/colorHvid"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="83dp"
-            tools:layout_editor_absoluteY="198dp" />
-
-        <TextView
-            android:id="@+id/tvMødeSted"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="3dp"
-            android:paddingBottom="20dp"
-            android:text="x"
-            android:textColor="@color/colorHvid"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tv00033"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Møde Dato"
-            android:textColor="@color/colorHvid"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="83dp"
-            tools:layout_editor_absoluteY="198dp" />
-
-        <TextView
-            android:id="@+id/tvMødeDato"
+            android:id="@+id/tvMødestartetMødeFormaal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="3dp"
@@ -163,69 +121,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tv00000"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="Planlagt Starttid"
-                android:textColor="@color/colorHvid"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tv000000"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="Planlagt Sluttid"
-                android:textColor="@color/colorHvid"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:paddingBottom="20dp">
-
-            <TextView
-                android:id="@+id/tvPlanlagtStarttid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="xx"
-                android:textColor="@color/colorHvid"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-
-            <TextView
-                android:id="@+id/tvPlanlagtSluttid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="xx"
-                android:textColor="@color/colorHvid"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv000000000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -235,7 +134,6 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/tv0000000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -248,11 +146,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp">
 
             <TextView
-                android:id="@+id/tvInviterede"
+                android:id="@+id/tvMødeStartetInviterede"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -263,7 +162,120 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvFremmødte"
+                android:id="@+id/tvMødeStartetFremmødte"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="xx:xx"
+                android:textColor="@color/colorHvid"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Planlagt Starttid"
+                android:textColor="@color/colorHvid"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Planlagt Sluttid"
+                android:textColor="@color/colorHvid"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:id="@+id/tvMødeStartetPlanlagtStarttid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="xx"
+                android:textColor="@color/colorHvid"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/tvMødeStartetPlanlagtSluttid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="xx"
+                android:textColor="@color/colorHvid"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Aktuel Starttid"
+                android:textColor="@color/colorHvid"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Forløbt Tid"
+                android:textColor="@color/colorHvid"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:id="@+id/tvMødeStartetAktuelStartTid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="xx:xx"
+                android:textColor="@color/colorHvid"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/tvMødeStartetForløbtTid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -277,55 +289,21 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="0dp"
+    <Button
+        android:id="@+id/mødeStartet_Afslut_knap"
+        android:layout_width="166dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/knap_tryk_effekt_1"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="Afslut møde"
+        android:textColor="@color/colorHvid"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:background="@drawable/knap_tryk_effekt_1"
-            android:fontFamily="@font/open_sans_bold"
-            android:textColor="@color/colorHvid"
-            android:text="Rediger"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/ikkeAfholdtStart_knap"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:autofillHints="DBDBDB"
-            android:background="@drawable/knap_tryk_effekt_1"
-            android:fontFamily="@font/open_sans_bold"
-            android:textColor="@color/colorHvid"
-            android:text="Start møde"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:background="@drawable/knap_tryk_effekt_1"
-            android:fontFamily="@font/open_sans_bold"
-            android:textColor="@color/colorHvid"
-            android:text="Inviter"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <android.support.v4.app.FragmentTabHost
-        android:id="@+id/containerMødeStart"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v4.app.FragmentTabHost>
 
 </android.support.constraint.ConstraintLayout>

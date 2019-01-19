@@ -1,6 +1,10 @@
 package com.example.admin.feedback_app.aktiviteter;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +13,7 @@ import android.widget.TextView;
 import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.fragmenter.MoedeStartet_frg;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
@@ -82,7 +87,30 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View view) {
         if (view == startMoede) {
+            // TODO: gemme 'aktuel starttid' i firebase
             getCurrentTime();
+
+            final AlertDialog.Builder builder = new AlertDialog.Builder(IkkeAfholdtMoede_akt.this);
+            builder.setMessage("Er du sikker på at du vil starte mødet?");
+            builder.setCancelable(true);
+            builder.setNegativeButton("Nej", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            builder.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.containerMødeStart,new MoedeStartet_frg());
+                    fragmentTransaction.commit();
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+
         }
     }
 
