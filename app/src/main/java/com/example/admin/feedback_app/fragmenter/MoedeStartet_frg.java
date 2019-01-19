@@ -48,7 +48,7 @@ public class MoedeStartet_frg extends Fragment implements View.OnClickListener {
         // TODO: gemme 'aktuel starttid' i firabase
         aktuelStarttid.setText(getCurrentTime());
 
-
+/*
         ID = this.getArguments().getString("Møde ID");
         navn = this.getArguments().getString("Møde Navn");
         formaal = this.getArguments().getString("Møde Formål");
@@ -64,7 +64,7 @@ public class MoedeStartet_frg extends Fragment implements View.OnClickListener {
         inviterede.setText(antalInviterede);
         planlagtStarttid.setText(startTid);
         planlagtSluttid.setText(slutTid);
-
+*/
         afslutMoede = view.findViewById(R.id.mødeStartet_Afslut_knap);
         afslutMoede.setOnClickListener(this);
 

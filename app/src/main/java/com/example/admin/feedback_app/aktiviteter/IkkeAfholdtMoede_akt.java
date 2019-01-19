@@ -99,7 +99,7 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
             builder.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    sendData();
+                   // sendData();
 
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
