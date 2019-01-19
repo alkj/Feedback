@@ -115,7 +115,34 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteX="56dp"
-            tools:layout_editor_absoluteY="167dp" />
+            tools:layout_editor_absoluteY="167dp"
+            android:transitionName="efternavn"/>
+
+        <EditText
+            android:id="@+id/rediger_profil_tlf_editText"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:allowUndo="true"
+            android:autofillHints="DBDBDB"
+            android:clickable="false"
+            android:drawableLeft="@drawable/icon_phone"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:fadingEdge="horizontal|vertical"
+            android:hint="Telefon"
+            android:textSize="14dp"
+            android:inputType="number"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/colorMEGETLysGrå"
+            android:textColorHint="@color/colorHvid"
+            app:backgroundTint="@color/colorLysegrå"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteX="80dp"
+            tools:layout_editor_absoluteY="406dp" />
+
+
 
         <EditText
             android:id="@+id/rediger_profil_virksomheds_id_editTxt"
@@ -141,29 +168,6 @@
             tools:layout_editor_absoluteX="46dp"
             tools:layout_editor_absoluteY="257dp" />
 
-        <EditText
-            android:id="@+id/rediger_profil_tlf_editText"
-            android:layout_width="match_parent"
-            android:layout_height="47dp"
-            android:allowUndo="true"
-            android:autofillHints="DBDBDB"
-            android:clickable="false"
-            android:drawableLeft="@drawable/icon_phone"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:fadingEdge="horizontal|vertical"
-            android:hint="Telefon"
-            android:textSize="14dp"
-            android:inputType="number"
-            android:textAppearance="@style/TextAppearance.AppCompat"
-            android:textColor="@color/colorMEGETLysGrå"
-            android:textColorHint="@color/colorHvid"
-            app:backgroundTint="@color/colorLysegrå"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteX="80dp"
-            tools:layout_editor_absoluteY="406dp" />
     </LinearLayout>
 
 

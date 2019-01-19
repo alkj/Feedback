@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,8 +32,6 @@ public class RedigerProfilOplysninger_frg extends Fragment implements View.OnCli
     private Button buttonGem;
 
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rod = inflater.inflate(R.layout.fragment_rediger_profil_oplysninger, container, false);
@@ -40,32 +39,38 @@ public class RedigerProfilOplysninger_frg extends Fragment implements View.OnCli
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
 
-         editTextFornavn = rod.findViewById(R.id.rediger_profil_fornavn_editText);
-         editTextEfternavn = rod.findViewById(R.id.rediger_profil_efternavn_editTxt);
-         editTextVirkid = rod.findViewById(R.id.rediger_profil_virksomheds_id_editTxt);
-         editTextTlf = rod.findViewById(R.id.rediger_profil_tlf_editText);
-
-         buttonGem = rod.findViewById(R.id.rediger_profil_gem_ændringer_button);
-
-         buttonGem.setOnClickListener(this);
-
-         editTextFornavn.setText(personData.getMødeholder().getFornavn());
-         editTextEfternavn.setText(personData.getMødeholder().getEfternavn());
-         editTextVirkid.setText(personData.getMødeholder().getVirk_id());
-         editTextTlf.setText(personData.getMødeholder().getTlf());
+        editTextFornavn = rod.findViewById(R.id.rediger_profil_fornavn_editText);
+        editTextEfternavn = rod.findViewById(R.id.rediger_profil_efternavn_editTxt);
+        editTextVirkid = rod.findViewById(R.id.rediger_profil_virksomheds_id_editTxt);
+        editTextTlf = rod.findViewById(R.id.rediger_profil_tlf_editText);
 
 
-         return rod;
+        buttonGem = rod.findViewById(R.id.rediger_profil_gem_ændringer_button);
+
+        buttonGem.setOnClickListener(this);
+
+        editTextFornavn.setText(personData.getMødeholder().getFornavn());
+        editTextEfternavn.setText(personData.getMødeholder().getEfternavn());
+        editTextTlf.setText(personData.getMødeholder().getTlf());
+        editTextVirkid.setText(personData.getMødeholder().getVirk_id());
+
+        ViewCompat.setTransitionName(editTextFornavn, "fornavn");
+        ViewCompat.setTransitionName(editTextEfternavn, "efternavn");
+        ViewCompat.setTransitionName(editTextTlf, "telefonnummer");
+        ViewCompat.setTransitionName(editTextVirkid, "virksomhedsid");
+        ViewCompat.setTransitionName(buttonGem, "rediger");
+
+        return rod;
     }
 
     @Override
     public void onClick(View v) {
-            if (v==buttonGem){
-                //tjekker om der er lavet ændringer, før det bliver sendt til firebase.
+        if (v == buttonGem) {
+            //tjekker om der er lavet ændringer, før det bliver sendt til firebase.
             if (!editTextFornavn.getText().toString().equals(personData.getMødeholder().getFornavn())
-                    ||!editTextEfternavn.getText().toString().equals(personData.getMødeholder().getEfternavn().toString())
-                    ||!editTextVirkid.getText().toString().equals(personData.getMødeholder().getVirk_id().toString())
-                    ||!editTextTlf.getText().toString().equals(personData.getMødeholder().getTlf().toString())){
+                    || !editTextEfternavn.getText().toString().equals(personData.getMødeholder().getEfternavn().toString())
+                    || !editTextVirkid.getText().toString().equals(personData.getMødeholder().getVirk_id().toString())
+                    || !editTextTlf.getText().toString().equals(personData.getMødeholder().getTlf().toString())) {
 
                 personData.getMødeholder().setFornavn(editTextFornavn.getText().toString());
                 personData.getMødeholder().setEfternavn(editTextEfternavn.getText().toString());
@@ -84,7 +89,6 @@ public class RedigerProfilOplysninger_frg extends Fragment implements View.OnCli
             }
         }
     }
-
 
 
 }
