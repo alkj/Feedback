@@ -145,7 +145,8 @@ public class AfholdtMeode_akt extends AppCompatActivity implements View.OnClickL
 
         }
         else if (view == kommentarer_knap) {
-
+            Intent intent = new Intent(this, Kommentarer_akt.class);
+            startActivity(intent);
         }
     }
 
