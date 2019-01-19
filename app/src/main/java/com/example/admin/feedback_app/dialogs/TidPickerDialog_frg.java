@@ -16,10 +16,15 @@ import java.util.Calendar;
 import java.util.Objects;
 
 public class TidPickerDialog_frg extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+    public static final String VIEW_ID = "View_ID";
+    private int textViewId;
 
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+
+        if (getArguments() != null)
+            textViewId = getArguments().getInt(VIEW_ID);
 
         final Calendar kalender = Calendar.getInstance();
 
@@ -47,10 +52,8 @@ public class TidPickerDialog_frg extends DialogFragment implements TimePickerDia
             m = Integer.toString(minutter);
 
         String s = String.format(getString(R.string.tid_format), t, m);
-        String s2 = String.format("%s:%s", t, m);
 
-        ((TextView) Objects.requireNonNull(getActivity()).findViewById(R.id.tidStart)).setText(s);
-        ((TextView) Objects.requireNonNull(getActivity()).findViewById(R.id.tidSlut)).setText(s2);
+        ((TextView) Objects.requireNonNull(getActivity()).findViewById(textViewId)).setText(s);
 
     }
 }

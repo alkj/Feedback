@@ -37,6 +37,7 @@ public class OpretMoede_2_frg extends Fragment implements View.OnClickListener {
     private Button opretMoede_knap;
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFirestore;
+    private DialogFragment dialog_starttid, dialog_sluttid;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -64,6 +65,16 @@ public class OpretMoede_2_frg extends Fragment implements View.OnClickListener {
         dato_txt = v.findViewById(R.id.dato);
         dato_txt.setOnClickListener(this);
 
+        Bundle bundle = new Bundle();
+        bundle.putInt(TidPickerDialog_frg.VIEW_ID, R.id.tidStart);
+        dialog_starttid = new TidPickerDialog_frg();
+        dialog_starttid.setArguments(bundle);
+
+        bundle = new Bundle();
+        bundle.putInt(TidPickerDialog_frg.VIEW_ID, R.id.tidSlut);
+        dialog_sluttid = new TidPickerDialog_frg();
+        dialog_sluttid.setArguments(bundle);
+
 
         return v;
     }
@@ -73,12 +84,10 @@ public class OpretMoede_2_frg extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tidStart:
-                DialogFragment dialog_starttid = new TidPickerDialog_frg();
-                dialog_starttid.show(getActivity().getSupportFragmentManager(), "tidPicker");
+                dialog_starttid.show(getActivity().getSupportFragmentManager(), "tidStartPicker");
                 break;
             case R.id.tidSlut:
-                DialogFragment dialog_slutrid = new TidPickerDialog_frg();
-                dialog_slutrid.show(getActivity().getSupportFragmentManager(), "tidPicker");
+                dialog_sluttid.show(getActivity().getSupportFragmentManager(), "tidSlutPicker");
                 break;
             case R.id.dato:
                 DialogFragment dialog_dato = new DatoPickerDialog_frg();
