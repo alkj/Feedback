@@ -180,26 +180,6 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
-                android:id="@+id/AfholdtDagsorden_knap"
-                android:layout_width="240dp"
-                android:layout_height="51dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="20dp"
-                android:autofillHints="DBDBDB"
-                android:background="@drawable/knap_groen"
-                android:fontFamily="@font/open_sans_bold"
-                android:text="Dagsorden"
-                android:textColor="@color/colorHvid"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.505"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <Button
                 android:id="@+id/AfholdtKommentarer_knap"
                 android:layout_width="240dp"
                 android:layout_height="51dp"

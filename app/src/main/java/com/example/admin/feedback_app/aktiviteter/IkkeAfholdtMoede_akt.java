@@ -1,7 +1,7 @@
 package com.example.admin.feedback_app.aktiviteter;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
+import com.romainpiel.shimmer.Shimmer;
+import com.romainpiel.shimmer.ShimmerTextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -18,8 +20,11 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
     private Møde
             møde;
 
+    private ShimmerTextView moedeID;
+    private Shimmer shimmer;
+
     private TextView
-            moedeNavn, moedeFormaal, moedeSted, tidStart, tidSlut, inviterede, fremmoedte, moedeID, moedeDato;
+            moedeNavn, moedeFormaal, moedeSted, tidStart, tidSlut, inviterede, fremmoedte, moedeDato;
 
     private Button
             inviter, startMoede, rediger;
@@ -29,14 +34,14 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ikke_afholdt_moede_akt);
 
-        inviter = findViewById(R.id.ikkeAfholdtInviter_knap);
-        inviter.setOnClickListener(this);
+        //inviter = findViewById(R.id.ikkeAfholdtInviter_knap);
+        //inviter.setOnClickListener(this);
 
         startMoede = findViewById(R.id.ikkeAfholdtStart_knap);
         startMoede.setOnClickListener(this);
 
-        rediger = findViewById(R.id.ikkeAfholdt_redigerKnap);
-        rediger.setOnClickListener(this);
+        //rediger = findViewById(R.id.ikkeAfholdt_redigerKnap);
+        //rediger.setOnClickListener(this);
 
         moedeNavn = findViewById(R.id.tvMødeNavn);
         moedeFormaal = findViewById(R.id.tvMødeFormaal);
@@ -66,6 +71,11 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
         tidSlut.setText(møde.getSlutTid());
         //inviterede.setText(møde.getAntalInviterede);
         //fremmoedte.setText(møde.getFremmoedte);
+
+        shimmer = new Shimmer();
+        shimmer.start(moedeID);
+        shimmer.setDirection(Shimmer.ANIMATION_DIRECTION_LTR);
+
     }
 
 

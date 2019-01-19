@@ -9,10 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.admin.feedback_app.R;
-import com.example.admin.feedback_app.aktiviteter.OpretBruger_akt;
 
 
 public class OpretMoede_1_frg extends Fragment{
