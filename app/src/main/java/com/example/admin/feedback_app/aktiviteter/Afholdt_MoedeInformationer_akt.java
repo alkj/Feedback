@@ -1,6 +1,5 @@
 package com.example.admin.feedback_app.aktiviteter;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -58,8 +57,7 @@ public class Afholdt_MoedeInformationer_akt extends AppCompatActivity implements
     @Override
     public void onClick(View view) {
         if (view == tilbage) {
-            Intent i = new Intent(this, AfholdtMeode_akt.class);
-            startActivity(i);
+            finish();
         }
     }
 

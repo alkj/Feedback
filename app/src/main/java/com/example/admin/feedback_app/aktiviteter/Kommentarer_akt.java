@@ -48,4 +48,10 @@ public class Kommentarer_akt extends AppCompatActivity {
 
         return map;
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

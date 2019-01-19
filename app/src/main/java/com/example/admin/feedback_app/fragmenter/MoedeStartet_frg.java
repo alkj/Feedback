@@ -17,7 +17,10 @@ import java.util.Calendar;
 public class MoedeStartet_frg extends Fragment implements View.OnClickListener {
 
     private TextView
-            moedeID, moedeNavn, moedeFormaal, inviterede, fremmoedte, planlagtStarttid, planlagtSluttid, aktuelStarttid, forloebtTid;
+            moedeID, moedeNavn, moedeFormaal, inviterede, fremmoedte,
+            planlagtStarttid, planlagtSluttid, aktuelStarttid, forloebtTid;
+
+    private String aktuelSluttid;
 
     private String
             ID, navn, formaal, antalInviterede, startTid, slutTid;
@@ -45,23 +48,23 @@ public class MoedeStartet_frg extends Fragment implements View.OnClickListener {
         // TODO: gemme 'aktuel starttid' i firabase
         aktuelStarttid.setText(getCurrentTime());
 
-        /*
+
         ID = this.getArguments().getString("Møde ID");
         navn = this.getArguments().getString("Møde Navn");
         formaal = this.getArguments().getString("Møde Formål");
         antalInviterede = this.getArguments().getString("Inviterede");
         startTid = this.getArguments().getString("Planlagt Starttid");
         slutTid = this.getArguments().getString("Planlagt Sluttid");
-        */
 
-        /*
+
+
         moedeID.setText(ID);
         moedeNavn.setText(navn);
         moedeFormaal.setText(formaal);
         inviterede.setText(antalInviterede);
         planlagtStarttid.setText(startTid);
         planlagtSluttid.setText(slutTid);
-        */
+
         afslutMoede = view.findViewById(R.id.mødeStartet_Afslut_knap);
         afslutMoede.setOnClickListener(this);
 
@@ -73,10 +76,10 @@ public class MoedeStartet_frg extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         if (view == afslutMoede) {
             // TODO: gemme 'aktuel sluttid' i firebase
-            getCurrentTime();
+            aktuelSluttid = getCurrentTime();
             // TODO: afslut fragmentet og afslut aktivitet
             // TODO: gør mødestatus til 'Afsholdt' i firebase
-
+            getActivity().finish();
 
         }
     }
@@ -84,7 +87,7 @@ public class MoedeStartet_frg extends Fragment implements View.OnClickListener {
     public String getCurrentTime() {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat mdformat = new SimpleDateFormat("HH:mm");
-        String strDato = "aktuel tid: " + mdformat.format(calendar.getTime());
+        String strDato = mdformat.format(calendar.getTime());
         return strDato;
     }
 

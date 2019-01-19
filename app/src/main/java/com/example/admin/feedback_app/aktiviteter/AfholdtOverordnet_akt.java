@@ -1,6 +1,5 @@
 package com.example.admin.feedback_app.aktiviteter;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -96,11 +95,15 @@ public class AfholdtOverordnet_akt extends AppCompatActivity implements View.OnC
 
         //Arrayliste som indeholder entries (data) til bare charten
         ArrayList<BarEntry> values = new ArrayList<>();
-        values.add(new BarEntry(1f, new float[] {30, 20, 10, 5}));
-        values.add(new BarEntry(2f, new float[] {50, 10, 0, 11}));
-        values.add(new BarEntry(3f, new float[] {2, 7, 4, 21}));
-        values.add(new BarEntry(4f, new float[] {4, 4, 0, 0}));
+        values.add(new BarEntry(1f, new float[] {10, 2, 1, 1}));
+        values.add(new BarEntry(2f, new float[] {0, 0, 10,4}));
+        values.add(new BarEntry(3f, new float[] {2, 7, 4, 1}));
+        values.add(new BarEntry(4f, new float[] {2, 4, 6, 2}));
         values.add(new BarEntry(5f, feedbackArray));
+        values.add(new BarEntry(6f, new float[] {5, 5, 1, 3}));
+        values.add(new BarEntry(7f, new float[] {1, 8, 2, 1}));
+        values.add(new BarEntry(8f, new float[] {14, 0, 0, 0}));
+
 
         BarDataSet dataSet;
 
@@ -148,8 +151,13 @@ public class AfholdtOverordnet_akt extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View view) {
         if (view == tilbage) {
-            Intent i = new Intent(this, AfholdtMeode_akt.class);
-            startActivity(i);
+            finish();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

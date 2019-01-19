@@ -15,7 +15,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="30dp"
         android:autofillHints="DBDBDB"
         android:background="@color/colorLysegrå"
         android:fontFamily="@font/open_sans_bold"
@@ -34,9 +34,9 @@
         style="@android:style/Widget.Material.ScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="8dp"
         android:clipToPadding="true"
         android:fadeScrollbars="false"
@@ -47,7 +47,6 @@
         android:scrollbarSize="8dp"
         app:layout_constraintBottom_toTopOf="@+id/ikkeAfholdtStart_knap"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv1010n">
 
@@ -64,8 +63,7 @@
                 android:layout_height="wrap_content"
                 android:text="Mødenavn"
                 android:textColor="@color/colorHvid"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textSize="16sp"
                 tools:layout_editor_absoluteX="216dp"
                 tools:layout_editor_absoluteY="306dp" />
 
@@ -76,7 +74,8 @@
                 android:paddingTop="3dp"
                 android:paddingBottom="20dp"
                 android:text="x"
-                android:textColor="@color/colorHvid" />
+                android:textColor="@color/colorHvid"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv000"
@@ -84,8 +83,7 @@
                 android:layout_height="wrap_content"
                 android:text="Møde formål"
                 android:textColor="@color/colorHvid"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textSize="16sp"
                 tools:layout_editor_absoluteX="83dp"
                 tools:layout_editor_absoluteY="198dp" />
 
@@ -96,7 +94,8 @@
                 android:paddingTop="3dp"
                 android:paddingBottom="20dp"
                 android:text="x"
-                android:textColor="@color/colorHvid" />
+                android:textColor="@color/colorHvid"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv0000"
@@ -104,8 +103,7 @@
                 android:layout_height="wrap_content"
                 android:text="Mødested"
                 android:textColor="@color/colorHvid"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textSize="16sp"
                 tools:layout_editor_absoluteX="83dp"
                 tools:layout_editor_absoluteY="198dp" />
 
@@ -116,7 +114,8 @@
                 android:paddingTop="3dp"
                 android:paddingBottom="20dp"
                 android:text="x"
-                android:textColor="@color/colorHvid" />
+                android:textColor="@color/colorHvid"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv00030"
@@ -124,8 +123,7 @@
                 android:layout_height="wrap_content"
                 android:text="Møde ID"
                 android:textColor="@color/colorHvid"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textSize="16sp"
                 tools:layout_editor_absoluteX="83dp"
                 tools:layout_editor_absoluteY="198dp" />
 
@@ -136,7 +134,8 @@
                 android:paddingTop="3dp"
                 android:paddingBottom="20dp"
                 android:text="x"
-                android:textColor="@color/colorHvid" />
+                android:textColor="@color/colorHvid"
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -151,8 +150,7 @@
                     android:gravity="left"
                     android:text="Planlagt Starttid"
                     android:textColor="@color/colorHvid"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv000000"
@@ -162,8 +160,7 @@
                     android:gravity="left"
                     android:text="Planlagt Sluttid"
                     android:textColor="@color/colorHvid"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -180,7 +177,8 @@
                     android:layout_weight="1"
                     android:gravity="left"
                     android:text="xx"
-                    android:textColor="@color/colorHvid" />
+                    android:textColor="@color/colorHvid"
+                    android:textSize="16sp" />
 
 
                 <TextView
@@ -190,7 +188,8 @@
                     android:layout_weight="1"
                     android:gravity="left"
                     android:text="xx"
-                    android:textColor="@color/colorHvid" />
+                    android:textColor="@color/colorHvid"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -207,8 +206,7 @@
                     android:gravity="left"
                     android:text="Aktuel Starttid"
                     android:textColor="@color/colorHvid"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv00001200"
@@ -218,8 +216,7 @@
                     android:gravity="left"
                     android:text="Aktuel Sluttid"
                     android:textColor="@color/colorHvid"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -236,7 +233,8 @@
                     android:layout_weight="1"
                     android:gravity="left"
                     android:text="xx"
-                    android:textColor="@color/colorHvid" />
+                    android:textColor="@color/colorHvid"
+                    android:textSize="16sp" />
 
 
                 <TextView
@@ -246,7 +244,8 @@
                     android:layout_weight="1"
                     android:gravity="left"
                     android:text="x"
-                    android:textColor="@color/colorHvid" />
+                    android:textColor="@color/colorHvid"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -263,8 +262,7 @@
                     android:gravity="left"
                     android:text="Inviterede"
                     android:textColor="@color/colorHvid"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv0000000"
@@ -274,8 +272,7 @@
                     android:gravity="left"
                     android:text="Fremmødte"
                     android:textColor="@color/colorHvid"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -290,8 +287,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="left"
-                    android:text="Indsæt antal inviterede"
-                    android:textColor="@color/colorHvid" />
+                    android:text="x"
+                    android:textColor="@color/colorHvid"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tvMødeInfoFremmødte"
@@ -299,8 +297,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="left"
-                    android:text="Indsæt antal deltagere"
-                    android:textColor="@color/colorHvid" />
+                    android:text="x"
+                    android:textColor="@color/colorHvid"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
