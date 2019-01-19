@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.TextView;
 
 import com.example.admin.feedback_app.R;
@@ -18,12 +19,14 @@ public class MoedeStartet_frg extends Fragment implements View.OnClickListener {
 
     private TextView
             moedeID, moedeNavn, moedeFormaal, inviterede, fremmoedte,
-            planlagtStarttid, planlagtSluttid, aktuelStarttid, forloebtTid;
+            planlagtStarttid, planlagtSluttid, aktuelStarttid;
 
     private String aktuelSluttid;
 
     private String
             ID, navn, formaal, antalInviterede, startTid, slutTid;
+
+    private Chronometer forloebtTid;
 
     private Button afslutMoede;
 
@@ -47,6 +50,7 @@ public class MoedeStartet_frg extends Fragment implements View.OnClickListener {
 
         // TODO: gemme 'aktuel starttid' i firabase
         aktuelStarttid.setText(getCurrentTime());
+        forloebtTid.start();
 
 /*
         ID = this.getArguments().getString("Møde ID");
