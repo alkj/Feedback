@@ -257,7 +257,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="xx:xx"
+                android:text="x"
                 android:textColor="@color/colorHvid"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -268,7 +268,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="xx:xx"
+                android:text="x"
                 android:textColor="@color/colorHvid"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -326,6 +326,7 @@
     <android.support.v4.app.FragmentTabHost
         android:id="@+id/containerMødeStart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v4.app.FragmentTabHost>
+        android:layout_height="match_parent"/>
+
 
 </android.support.constraint.ConstraintLayout>

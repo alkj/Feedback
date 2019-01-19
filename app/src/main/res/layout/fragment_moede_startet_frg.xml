@@ -156,7 +156,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="xx:xx"
+                android:text="x"
                 android:textColor="@color/colorHvid"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -167,7 +167,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="xx:xx"
+                android:text="x"
                 android:textColor="@color/colorHvid"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -212,7 +212,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="xx"
+                android:text="xx:xx"
                 android:textColor="@color/colorHvid"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -224,7 +224,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="xx"
+                android:text="xx:xx"
                 android:textColor="@color/colorHvid"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -268,7 +268,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="xx:xx"
+                android:text="x"
                 android:textColor="@color/colorHvid"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -296,7 +296,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/knap_tryk_effekt_1"
+        android:background="@drawable/knap_groen_tryk_effekt"
         android:fontFamily="@font/open_sans_bold"
         android:text="Afslut møde"
         android:textColor="@color/colorHvid"

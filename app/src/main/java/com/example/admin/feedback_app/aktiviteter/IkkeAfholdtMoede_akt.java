@@ -87,9 +87,6 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View view) {
         if (view == startMoede) {
-            // TODO: gemme 'aktuel starttid' i firebase
-            getCurrentTime();
-
             final AlertDialog.Builder builder = new AlertDialog.Builder(IkkeAfholdtMoede_akt.this);
             builder.setMessage("Er du sikker på at du vil starte mødet?");
             builder.setCancelable(true);
@@ -102,16 +99,36 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
             builder.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    sendData();
+
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.containerMødeStart,new MoedeStartet_frg());
                     fragmentTransaction.commit();
+
+
+
+
                 }
             });
             AlertDialog dialog = builder.create();
             dialog.show();
 
         }
+    }
+
+    private void sendData() {
+        Bundle bundle = new Bundle();
+        bundle.putString("Møde ID", moedeID.getText().toString());
+        bundle.putString("Møde Navn", moedeNavn.getText().toString());
+        bundle.putString("Møde Formål", moedeFormaal.getText().toString());
+        bundle.putString("Inviterede", inviterede.getText().toString());
+        bundle.putString("Planlagt Starttid", tidStart.getText().toString());
+        bundle.putString("Planlagt Sluttid", tidSlut.getText().toString());
+
+        MoedeStartet_frg moedeStartet_frg = new MoedeStartet_frg();
+        moedeStartet_frg.setArguments(bundle);
+
     }
 
 

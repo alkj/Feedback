@@ -19,6 +19,9 @@ public class MoedeStartet_frg extends Fragment implements View.OnClickListener {
     private TextView
             moedeID, moedeNavn, moedeFormaal, inviterede, fremmoedte, planlagtStarttid, planlagtSluttid, aktuelStarttid, forloebtTid;
 
+    private String
+            ID, navn, formaal, antalInviterede, startTid, slutTid;
+
     private Button afslutMoede;
 
     IkkeAfholdtMoede_akt ikkeAfholdtMoede_akt;
@@ -38,8 +41,27 @@ public class MoedeStartet_frg extends Fragment implements View.OnClickListener {
         planlagtSluttid = view.findViewById(R.id.tvMødeStartetPlanlagtSluttid);
         aktuelStarttid = view.findViewById(R.id.tvMødeStartetAktuelStartTid);
         forloebtTid = view.findViewById(R.id.tvMødeStartetForløbtTid);
-        
 
+        // TODO: gemme 'aktuel starttid' i firabase
+        aktuelStarttid.setText(getCurrentTime());
+
+        /*
+        ID = this.getArguments().getString("Møde ID");
+        navn = this.getArguments().getString("Møde Navn");
+        formaal = this.getArguments().getString("Møde Formål");
+        antalInviterede = this.getArguments().getString("Inviterede");
+        startTid = this.getArguments().getString("Planlagt Starttid");
+        slutTid = this.getArguments().getString("Planlagt Sluttid");
+        */
+
+        /*
+        moedeID.setText(ID);
+        moedeNavn.setText(navn);
+        moedeFormaal.setText(formaal);
+        inviterede.setText(antalInviterede);
+        planlagtStarttid.setText(startTid);
+        planlagtSluttid.setText(slutTid);
+        */
         afslutMoede = view.findViewById(R.id.mødeStartet_Afslut_knap);
         afslutMoede.setOnClickListener(this);
 
