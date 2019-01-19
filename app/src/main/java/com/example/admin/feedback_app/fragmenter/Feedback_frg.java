@@ -3,11 +3,13 @@ package com.example.admin.feedback_app.fragmenter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -73,6 +75,8 @@ public class Feedback_frg extends Fragment implements View.OnClickListener {
 
         //EditText
         editTextuddybning = view.findViewById(R.id.feedback_udybning_editTxt);
+        editTextuddybning.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        editTextuddybning.setRawInputType(InputType.TYPE_CLASS_TEXT);
         editTextuddybning.setVisibility(View.GONE);
         editTextuddybning.addTextChangedListener(new TextWatcher() {
             @Override
