@@ -40,7 +40,7 @@ public class Kommentarer_akt extends AppCompatActivity {
             int antal = new Random().nextInt(6);
 
             for(int i = 0; i <= antal; i++){
-                undergrouper.add("Svar " + (i+1));
+                undergrouper.add("Kommentar " + (i+1));
             }
 
             map.put(s,undergrouper);
