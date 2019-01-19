@@ -20,7 +20,7 @@
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.654"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,23 +53,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="3dp"
-            android:paddingBottom="20dp"
+            android:paddingBottom="10dp"
             android:text="x"
             android:textAlignment="center"
             android:textColor="@color/colorMegetGlad"
             android:textSize="30sp"
             android:textStyle="bold"
+            app:reflectionColor="@color/shimmerFarveGrøn"
             tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="110dp"
-            app:reflectionColor="@color/shimmerFarveGrøn"/>
+            tools:layout_editor_absoluteY="110dp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="30dp"
         android:orientation="vertical"
         android:paddingTop="3dp"
@@ -84,8 +84,7 @@
             android:layout_height="wrap_content"
             android:text="Mødenavn"
             android:textColor="@color/colorHvid"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:textSize="16sp"
             tools:layout_editor_absoluteX="216dp"
             tools:layout_editor_absoluteY="306dp" />
 
@@ -96,7 +95,9 @@
             android:paddingTop="3dp"
             android:paddingBottom="20dp"
             android:text="x"
-            android:textColor="@color/colorHvid" />
+            android:textColor="@color/colorHvid"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv000"
@@ -104,8 +105,7 @@
             android:layout_height="wrap_content"
             android:text="Møde formål"
             android:textColor="@color/colorHvid"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:textSize="16sp"
             tools:layout_editor_absoluteX="83dp"
             tools:layout_editor_absoluteY="198dp" />
 
@@ -116,7 +116,9 @@
             android:paddingTop="3dp"
             android:paddingBottom="20dp"
             android:text="x"
-            android:textColor="@color/colorHvid" />
+            android:textColor="@color/colorHvid"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv0000"
@@ -124,8 +126,7 @@
             android:layout_height="wrap_content"
             android:text="Mødested"
             android:textColor="@color/colorHvid"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:textSize="16sp"
             tools:layout_editor_absoluteX="83dp"
             tools:layout_editor_absoluteY="198dp" />
 
@@ -136,7 +137,9 @@
             android:paddingTop="3dp"
             android:paddingBottom="20dp"
             android:text="x"
-            android:textColor="@color/colorHvid" />
+            android:textColor="@color/colorHvid"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv00033"
@@ -144,8 +147,7 @@
             android:layout_height="wrap_content"
             android:text="Møde Dato"
             android:textColor="@color/colorHvid"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:textSize="16sp"
             tools:layout_editor_absoluteX="83dp"
             tools:layout_editor_absoluteY="198dp" />
 
@@ -156,7 +158,9 @@
             android:paddingTop="3dp"
             android:paddingBottom="20dp"
             android:text="x"
-            android:textColor="@color/colorHvid" />
+            android:textColor="@color/colorHvid"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -171,8 +175,7 @@
                 android:gravity="left"
                 android:text="Planlagt Starttid"
                 android:textColor="@color/colorHvid"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv000000"
@@ -182,8 +185,7 @@
                 android:gravity="left"
                 android:text="Planlagt Sluttid"
                 android:textColor="@color/colorHvid"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -200,7 +202,9 @@
                 android:layout_weight="1"
                 android:gravity="left"
                 android:text="xx"
-                android:textColor="@color/colorHvid" />
+                android:textColor="@color/colorHvid"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
 
             <TextView
@@ -209,8 +213,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="Møde sluttid"
-                android:textColor="@color/colorHvid" />
+                android:text="xx"
+                android:textColor="@color/colorHvid"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -227,8 +233,7 @@
                 android:gravity="left"
                 android:text="Inviterede"
                 android:textColor="@color/colorHvid"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv0000000"
@@ -238,8 +243,7 @@
                 android:gravity="left"
                 android:text="Fremmødte"
                 android:textColor="@color/colorHvid"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -254,8 +258,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="Indsæt antal inviterede"
-                android:textColor="@color/colorHvid" />
+                android:text="xx:xx"
+                android:textColor="@color/colorHvid"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvFremmødte"
@@ -263,33 +269,59 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:text="Indsæt antal deltagere"
-                android:textColor="@color/colorHvid" />
+                android:text="xx:xx"
+                android:textColor="@color/colorHvid"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/ikkeAfholdtStart_knap"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="28dp"
-        android:autofillHints="DBDBDB"
-        android:background="@drawable/knap_groen"
-        android:fontFamily="@font/open_sans_bold"
-        android:gravity="center"
-        android:text="Start møde"
-        android:textColor="@color/colorHvid"
-        android:textSize="20sp"
-        android:textStyle="bold"
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@drawable/knap_tryk_effekt_1"
+            android:fontFamily="@font/open_sans_bold"
+            android:textColor="@color/colorHvid"
+            android:text="Rediger"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/ikkeAfholdtStart_knap"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:autofillHints="DBDBDB"
+            android:background="@drawable/knap_tryk_effekt_1"
+            android:fontFamily="@font/open_sans_bold"
+            android:textColor="@color/colorHvid"
+            android:text="Start møde"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@drawable/knap_tryk_effekt_1"
+            android:fontFamily="@font/open_sans_bold"
+            android:textColor="@color/colorHvid"
+            android:text="Inviter"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

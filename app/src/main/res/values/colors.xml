@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#92FF00</color>
+    <color name="colorAccent">#7AAD33</color>
     <color name="colorGrøn">#8cc63f</color>
     <color name="colorMørkegrå">#303030</color>
     <color name="colorLysegrå">#898989</color>
@@ -13,4 +13,5 @@
     <color name="colorGlad">#A8C449</color>
     <color name="colorMegetGlad">#56B94D</color>
     <color name="shimmerFarveGrøn">#FF92FF00</color>
+    <color name="mørkeGrøn">#59910D</color>
 </resources>

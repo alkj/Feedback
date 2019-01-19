@@ -32,7 +32,8 @@
         <TextView
             android:id="@+id/profil_fornavn_textView"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:allowUndo="true"
             android:autofillHints="DBDBDB"
             android:clickable="false"
@@ -44,7 +45,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@color/colorMEGETLysGrå"
             android:textColorHint="@color/colorHvid"
-            android:textSize="14dp"
+            android:textSize="16sp"
             app:backgroundTint="@color/colorLysegrå"
             tools:layout_editor_absoluteX="60dp"
             tools:layout_editor_absoluteY="110dp" />
@@ -52,7 +53,8 @@
         <TextView
             android:id="@+id/profil_efternavn_textView"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:allowUndo="true"
             android:autofillHints="DBDBDB"
             android:clickable="false"
@@ -64,17 +66,18 @@
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@color/colorMEGETLysGrå"
             android:textColorHint="@color/colorHvid"
-            android:textSize="14dp"
+            android:textSize="16sp"
+            android:transitionName="efternavn"
             app:backgroundTint="@color/colorLysegrå"
             tools:layout_editor_absoluteX="60dp"
-            tools:layout_editor_absoluteY="154dp"
-            android:transitionName="efternavn"/>
+            tools:layout_editor_absoluteY="154dp" />
 
 
         <TextView
             android:id="@+id/profil_tlf_textView"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:allowUndo="true"
             android:autofillHints="DBDBDB"
             android:clickable="false"
@@ -87,7 +90,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@color/colorMEGETLysGrå"
             android:textColorHint="@color/colorHvid"
-            android:textSize="14dp"
+            android:textSize="16sp"
             app:backgroundTint="@color/colorLysegrå"
             tools:layout_editor_absoluteX="60dp"
             tools:layout_editor_absoluteY="198dp"
@@ -96,7 +99,7 @@
         <TextView
             android:id="@+id/profil_virksomhedsid_textView"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:allowUndo="true"
             android:autofillHints="DBDBDB"
             android:clickable="false"
@@ -108,7 +111,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@color/colorMEGETLysGrå"
             android:textColorHint="@color/colorHvid"
-            android:textSize="14dp"
+            android:textSize="16sp"
             app:backgroundTint="@color/colorLysegrå"
             tools:layout_editor_absoluteX="60dp"
             tools:layout_editor_absoluteY="243dp" />
@@ -162,7 +165,7 @@
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:background="#FC6363"
+            android:background="#DA2C2C"
             android:gravity="center"
             android:text="Log ud"
             tools:layout_editor_absoluteX="80dp"

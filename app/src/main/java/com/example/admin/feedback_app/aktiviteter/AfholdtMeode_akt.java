@@ -45,7 +45,6 @@ public class AfholdtMeode_akt extends AppCompatActivity implements View.OnClickL
         overordnet_knap = findViewById(R.id.AfholdtOverordnetStatistik_knap);
         overordnet_knap.setOnClickListener(this);
 
-
         kommentarer_knap = findViewById(R.id.AfholdtKommentarer_knap);
         kommentarer_knap.setOnClickListener(this);
 
