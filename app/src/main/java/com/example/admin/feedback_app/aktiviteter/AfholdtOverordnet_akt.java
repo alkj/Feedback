@@ -49,7 +49,7 @@ public class AfholdtOverordnet_akt extends AppCompatActivity implements View.OnC
         chart.setGridBackgroundColor(R.color.colorMørkegrå);
         chart.setDrawBarShadow(false);
 
-        chart.setDrawValueAboveBar(false);
+        chart.setDrawValueAboveBar(true);
         chart.setHighlightFullBarEnabled(false);
 
 
