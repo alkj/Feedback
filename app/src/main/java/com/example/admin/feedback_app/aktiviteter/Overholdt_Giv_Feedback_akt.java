@@ -14,13 +14,12 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.feedback_app.FeedbackManager;
+import com.example.admin.feedback_app.FeedbackSpørgsmål;
 import com.example.admin.feedback_app.R;
 import com.example.admin.feedback_app.fragmenter.Feedback_frg;
 
@@ -70,6 +69,8 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Vie
         knapTilbage = findViewById(R.id.feedback_tilbage_btn);
         knapVidere.setOnClickListener(this);
         knapTilbage.setOnClickListener(this);
+        knapVidere.setBackgroundResource(R.drawable.knap_hvid_tryk_effekt);
+        knapTilbage.setBackgroundResource(R.drawable.knap_hvid_tryk_effekt);
 
         //Tekst
         tekstNummer = findViewById(R.id.feedback_nummer_txtView);
@@ -101,12 +102,12 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Vie
         }
         else if (pos >= NUM_PAGES - 1){
             knapVidere.setText(R.string.afslut);
-            //knapVidere.setBackgroundColor(getColor(R.color.colorGrøn)); TODO mangler knapper
+            knapVidere.setBackgroundResource(R.drawable.knap_groen_tryk_effekt);
         }
         else {
             knapTilbage.setVisibility(View.VISIBLE);
             knapVidere.setText(R.string.videre);
-            //knapVidere.setBackgroundColor(til orgiginal); TODO mangler knapper
+            knapVidere.setBackgroundResource(R.drawable.knap_hvid_tryk_effekt);
         }
     }
 
@@ -171,7 +172,7 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Vie
 
         @Override
         public Fragment getItem(int position) {
-            return Feedback_frg.newInstance(position,"Spørgsmål " + ++position);
+            return Feedback_frg.newInstance(position, FeedbackSpørgsmål.SPØRGSMÅL[position]);
         }
 
         @Override
