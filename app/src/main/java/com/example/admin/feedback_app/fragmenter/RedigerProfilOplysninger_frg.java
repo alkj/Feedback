@@ -54,11 +54,7 @@ public class RedigerProfilOplysninger_frg extends Fragment implements View.OnCli
         editTextTlf.setText(personData.getMødeholder().getTlf());
         editTextVirkid.setText(personData.getMødeholder().getVirk_id());
 
-        ViewCompat.setTransitionName(editTextFornavn, "fornavn");
-        ViewCompat.setTransitionName(editTextEfternavn, "efternavn");
-        ViewCompat.setTransitionName(editTextTlf, "telefonnummer");
-        ViewCompat.setTransitionName(editTextVirkid, "virksomhedsid");
-        ViewCompat.setTransitionName(buttonGem, "rediger");
+
 
         return rod;
     }

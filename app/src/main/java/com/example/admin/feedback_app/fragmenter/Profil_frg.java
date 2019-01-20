@@ -66,11 +66,11 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
         telefonnummer.setText(mødeholder.getTlf());
         virksomhedsID.setText(mødeholder.getVirk_id());
 
-        ViewCompat.setTransitionName(fornavn, "fornavn");
-        ViewCompat.setTransitionName(efternavn, "efternavn");
-        ViewCompat.setTransitionName(telefonnummer, "telefonnummer");
-        ViewCompat.setTransitionName(virksomhedsID, "virksomhedsid");
-        ViewCompat.setTransitionName(redigerButton, "redigerButton");
+  //      ViewCompat.setTransitionName(fornavn, "fornavn");
+  //      ViewCompat.setTransitionName(efternavn, "efternavn");
+  //      ViewCompat.setTransitionName(telefonnummer, "telefonnummer");
+  //      ViewCompat.setTransitionName(virksomhedsID, "virksomhedsid");
+  //      ViewCompat.setTransitionName(redigerButton, "redigerButton");
 
 
 
@@ -91,13 +91,8 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
 
             RedigerProfilOplysninger_frg redigerFrag = new RedigerProfilOplysninger_frg();
             redigerFrag.setEnterTransition(new AutoTransition().setDuration(100));
-            redigerFrag.setSharedElementEnterTransition(new AutoTransition().setDuration(200));
 
             getActivity().getSupportFragmentManager().beginTransaction()
-                    .addSharedElement(fornavn, "fornavn")
-                    .addSharedElement(efternavn, "efternavn")
-                    .addSharedElement(telefonnummer, "telefonnummer")
-                    .addSharedElement(virksomhedsID, "virksomhedsid")
                     .replace(R.id.navigation_fragment_container, redigerFrag).commit();
 
         }
@@ -108,15 +103,9 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
             Log.d(TAG, "onClick: skift password");
 
             SkiftPassword_frg skiftPasswordFrag = new SkiftPassword_frg();
-
             skiftPasswordFrag.setEnterTransition(new AutoTransition().setDuration(100));
-            skiftPasswordFrag.setSharedElementEnterTransition(new AutoTransition().setDuration(150));
 
             getActivity().getSupportFragmentManager().beginTransaction()
-                    .addSharedElement(fornavn, "fornavn")
-                    .addSharedElement(efternavn, "efternavn")
-                    .addSharedElement(telefonnummer, "telefonnummer")
-                    .addSharedElement(virksomhedsID, "virksomhedsid")
                     .replace(R.id.navigation_fragment_container, skiftPasswordFrag).commit();
 
 

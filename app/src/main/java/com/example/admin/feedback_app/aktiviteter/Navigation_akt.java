@@ -7,6 +7,10 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.AutoTransition;
+import android.transition.SidePropagation;
+import android.transition.Slide;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -43,6 +47,8 @@ public class Navigation_akt extends AppCompatActivity implements BottomNavigatio
 
     private boolean indlæsFragment(Fragment fragment) {
         if (fragment != null) {
+
+            fragment.setEnterTransition(new AutoTransition().setDuration(100));
 
             getSupportFragmentManager()
                     .beginTransaction()
