@@ -100,7 +100,6 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:autofillHints="DBDBDB"
-        android:background="@drawable/knap_groen"
         android:fontFamily="sans-serif"
         android:text="Start Feedback"
         android:textColor="#FBF7FF"

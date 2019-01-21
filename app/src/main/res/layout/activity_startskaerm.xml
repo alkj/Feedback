@@ -4,87 +4,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorMørkegrå"
+    android:background="@drawable/baggrund_start"
     android:clickable="true"
     android:focusableInTouchMode="true"
     tools:context=".aktiviteter.StartSkaerm_akt"
     tools:layout_editor_absoluteY="25dp">
 
     <Button
-        android:id="@+id/startskaerm_feedback_btn"
-        android:layout_width="210dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:autofillHints="DBDBDB"
-        android:background="@drawable/knap_groen"
-        android:fontFamily="@font/open_sans_bold"
-        android:text="giv feedback"
-        android:textColor="@color/colorHvid"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startskærm_editTxt"
-        app:layout_constraintVertical_bias="0.218" />
-
-    <EditText
-        android:id="@+id/startskærm_editTxt"
-        android:layout_width="210dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="52dp"
-        android:allowUndo="true"
-        android:autofillHints="DBDBDB"
-        android:background="#DBDBDB"
-        android:ems="10"
-        android:fontFamily="@font/open_sans_semibold"
-        android:hint="Indtast møde-ID her..."
-        android:inputType="textPersonName"
-        android:paddingStart="8dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startskaerm_imgView" />
-
-    <Button
         android:id="@+id/startskaerm_login_btn"
-        android:layout_width="103dp"
-        android:layout_height="37dp"
-        android:background="@drawable/knap_lysegraa"
+        style="@style/knapGrøn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Login"
-        android:textColor="#FBF7FF"
-        android:textSize="18dp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/startskaerm_imgView"
-        android:layout_width="188dp"
-        android:layout_height="92dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="8dp"
         android:contentDescription="Spinoff Logo"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startskaerm_txtView"
         app:srcCompat="@drawable/spinoff_logo" />
 
     <TextView
         android:id="@+id/startskaerm_txtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
-        android:fontFamily="@font/open_sans_bold"
-        android:text="Feedback til Møder"
-        android:textAllCaps="false"
-        android:textColor="@color/colorMEGETLysGrå"
-        android:textSize="35sp"
-        android:textStyle="bold"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/overskrift_startskærm"
+        android:textAppearance="@style/overskrift"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/startskaerm_imgView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.94">
+
+        <EditText
+            android:id="@+id/startskærm_editTxt"
+            style="@style/inputHvid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:allowUndo="true"
+            android:autofillHints="DBDBDB"
+            android:ems="10"
+            android:hint="Indtast møde-ID her..."
+            android:inputType="textPersonName"
+            android:paddingStart="14dp"
+            android:paddingBottom="14dp"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/startskaerm_feedback_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="24dp" />
+
+        <Button
+            android:id="@+id/startskaerm_feedback_btn"
+            style="@style/knapGrøn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/giv_feedback"
+            app:layout_constraintBottom_toTopOf="@+id/startskaerm_imgView"
+            app:layout_constraintEnd_toEndOf="@+id/startskærm_editTxt"
+            app:layout_constraintStart_toStartOf="@+id/startskærm_editTxt" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

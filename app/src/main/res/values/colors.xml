@@ -2,12 +2,12 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#7AAD33</color>
-    <color name="colorGrøn">#8cc63f</color>
-    <color name="colorMørkegrå">#303030</color>
-    <color name="colorLysegrå">#898989</color>
+    <color name="colorGrøn">#70AD47</color>
+    <color name="colorMørkegrå">#404040</color>
+    <color name="colorLysegrå">#AFABAB</color>
     <color name="colorHvid">#FFFFFF</color>
-    <color name="colorMEGETLysGrå">#E1E1E1</color>
+    <color name="colorMEGETLysGrå">#F2F2F2</color>
+    <color name="colorSort">#242424</color>
     <color name="colorMegetSur">#ED4740</color>
     <color name="colorSur">#F68844</color>
     <color name="colorGlad">#A8C449</color>

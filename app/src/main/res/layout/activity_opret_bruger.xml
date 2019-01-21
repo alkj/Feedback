@@ -227,7 +227,6 @@
         android:layout_marginTop="64dp"
         android:layout_marginEnd="8dp"
         android:autofillHints="DBDBDB"
-        android:background="@drawable/knap_groen"
         android:fontFamily="@font/open_sans_bold"
         android:text="Opret bruger"
         android:textColor="#FBF7FF"
