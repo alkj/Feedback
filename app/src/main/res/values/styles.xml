@@ -17,13 +17,26 @@
     </style>
 
     <!-- Knap temaer. -->
-    <style name="knapGrøn" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/knap_groen</item>
+    <style name="Knap" parent="Widget.AppCompat.Button">
         <item name="android:padding">8dp</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/colorHvid</item>
         <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Knap.Grøn" parent="Knap">
+        <item name="android:background">@drawable/knap_groen</item>
+        <item name="android:textColor">@color/colorHvid</item>
+    </style>
+
+    <style name="Knap.Hvid" parent="Knap">
+        <item name="android:background">@drawable/knap_hvid</item>
+        <item name="android:textColor">@color/colorSort</item>
+    </style>
+
+    <style name="Knap.Lysegrå" parent="Knap">
+        <item name="android:background">@drawable/knap_lysegraa</item>
+        <item name="android:textColor">@color/colorHvid</item>
     </style>
 
     <!-- EditText temaer. -->

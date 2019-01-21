@@ -12,7 +12,7 @@
 
     <Button
         android:id="@+id/startskaerm_login_btn"
-        style="@style/knapGrøn"
+        style="@style/Knap.Grøn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
@@ -86,7 +86,7 @@
 
         <Button
             android:id="@+id/startskaerm_feedback_btn"
-            style="@style/knapGrøn"
+            style="@style/Knap.Grøn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/giv_feedback"
