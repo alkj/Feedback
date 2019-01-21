@@ -106,6 +106,7 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
             skiftPasswordFrag.setEnterTransition(new AutoTransition().setDuration(100));
 
             getActivity().getSupportFragmentManager().beginTransaction()
+                    //.addToBackStack(null)
                     .replace(R.id.navigation_fragment_container, skiftPasswordFrag).commit();
 
 
@@ -118,17 +119,10 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
 
     @Override
     public void onResume() {
-
-
-
         fornavn.setText(mødeholder.getFornavn());
         efternavn.setText(mødeholder.getEfternavn());
         telefonnummer.setText(mødeholder.getTlf());
         virksomhedsID.setText(mødeholder.getVirk_id());
-
-
-
-
         super.onResume();
     }
 }

@@ -25,9 +25,9 @@ public class OpretMoede_1_frg extends Fragment{
 
 
         videre = v.findViewById(R.id.videreBTN);
-        mødeNavn = v.findViewById(R.id.dato);
-        mødeFormål = v.findViewById(R.id.tidStart);
-        sted = v.findViewById(R.id.tidSlut);
+        mødeNavn = v.findViewById(R.id.mødeNavn);
+        mødeFormål = v.findViewById(R.id.mødeFormål);
+        sted = v.findViewById(R.id.mødeSted);
 
         videre.setOnClickListener(new View.OnClickListener() {
             @Override

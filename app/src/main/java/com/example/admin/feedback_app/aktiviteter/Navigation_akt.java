@@ -51,9 +51,11 @@ public class Navigation_akt extends AppCompatActivity implements BottomNavigatio
             fragment.setEnterTransition(new AutoTransition().setDuration(100));
 
             getSupportFragmentManager()
+
                     .beginTransaction()
                     .replace(R.id.navigation_fragment_container, fragment)
                     .commit();
+
 
             return true;
         }
