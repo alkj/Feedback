@@ -47,6 +47,7 @@
     <string name="Kommentarer">Kommentarer</string>
     <string name="giv_feedback">Giv feedback</string>
     <string name="overskrift_startskærm">Møde Feedback</string>
+    <string name="overskrift_loginskærm">Mødeleder</string>
 
 
 </resources>

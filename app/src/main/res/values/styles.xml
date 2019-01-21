@@ -40,17 +40,24 @@
     </style>
 
     <!-- EditText temaer. -->
-    <style name="inputHvid" parent="Widget.AppCompat.EditText">
-        <item name="android:background">@color/colorHvid</item>
-        <item name="android:padding">8dp</item>
+    <style name="Input" parent="Widget.AppCompat.EditText">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Input.Hvid" parent="Input">
+        <item name="android:background">@color/colorHvid</item>
         <item name="android:textColor">@color/colorSort</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:padding">11dp</item>
     </style>
 
     <!-- Text temeaer. -->
-    <style name="overskrift" parent="TextAppearance.AppCompat">
+    <style name="Tekst" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="Tekst.Overskrift" parent="Tekst">
         <item name="android:textSize">36sp</item>
         <item name="android:textAllCaps">true</item>
     </style>

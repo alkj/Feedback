@@ -5,10 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#353535"
-    android:gravity="center"
-    android:orientation="vertical"
     android:clickable="true"
     android:focusableInTouchMode="true"
+    android:gravity="bottom|center"
+    android:orientation="vertical"
+    android:paddingLeft="64dp"
+    android:paddingRight="64dp"
+    android:paddingBottom="48dp"
     tools:context=".aktiviteter.Login_akt">
 
     <TextView
@@ -20,94 +23,49 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:allowUndo="false"
-        android:text="Er du mødeleder?"
-        android:textAllCaps="true"
-        android:textColor="@android:color/background_light"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.141" />
+        android:text="@string/overskrift_loginskærm"
+        android:textAppearance="@style/Tekst.Overskrift"
+        android:textColor="@color/colorHvid" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="32dp" />
 
-    <TextView
-        android:id="@+id/login_txtView2"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/login_brugernavn_editTxt"
+        style="@style/Input.Hvid"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Login"
-        android:textAllCaps="true"
-        android:textColor="@android:color/background_light"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.307" />
-
-    <EditText
-        android:id="@+id/login_brugernavn_editTxt"
-        android:layout_width="244dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:allowUndo="true"
-        android:autoText="true"
-        android:autofillHints="DBDBDB"
-        android:background="#DBDBDB"
         android:clickable="false"
         android:ems="10"
         android:fadingEdge="horizontal|vertical"
         android:hint="E-mail"
-        android:inputType="textEmailAddress"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.43" />
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/login_password_editTxt"
-        android:layout_width="244dp"
-        android:layout_height="51dp"
+        style="@style/Input.Hvid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:allowUndo="true"
-        android:autofillHints="DBDBDB"
-        android:background="#DBDBDB"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textPersonName"
-        android:password="true"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.572" />
+        android:inputType="textPassword" />
 
     <CheckBox
         android:id="@+id/login_checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
+        android:layout_marginBottom="16dp"
         android:text="Test Bruger"
         android:visibility="gone"
         tools:layout_editor_absoluteX="158dp"
@@ -115,45 +73,28 @@
 
     <Button
         android:id="@+id/login_login_btn"
-        android:layout_width="173dp"
-        android:layout_height="54dp"
+        style="@style/Knap.Grøn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:autofillHints="DBDBDB"
-        android:fontFamily="sans-serif"
-        android:text="Login"
-        android:textColor="#FBF7FF"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
+        android:text="Login" />
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.742" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="48dp" />
 
     <Button
         android:id="@+id/login_nyBruger_btn"
-        android:layout_width="171dp"
-        android:layout_height="54dp"
+        style="@style/Knap.Lysegrå"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:autofillHints="DBDBDB"
-        android:fontFamily="sans-serif"
-        android:text="Ny bruger"
-        android:textColor="#FBF7FF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.897" />
+        android:layout_marginBottom="16dp"
+        android:text="Ny bruger" />
 
 </LinearLayout>
