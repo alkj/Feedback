@@ -221,32 +221,15 @@
 
     <Button
         android:id="@+id/opretbruger_opret_btn"
-        android:layout_width="144dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="8dp"
+        style="@style/Knap.Grøn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:layout_marginEnd="8dp"
-        android:autofillHints="DBDBDB"
-        android:fontFamily="@font/open_sans_bold"
-        android:text="Opret bruger"
-        android:textColor="#FBF7FF"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/opret_bruger"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout5"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout5"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
-
-    <Button
-        android:id="@+id/opretbruger_tilbage_btn"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:background="#828282"
-        android:text="Annuller"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textColor="@color/colorHvid"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/opretbruger_txtView1"

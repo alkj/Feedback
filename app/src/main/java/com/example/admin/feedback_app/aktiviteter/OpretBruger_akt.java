@@ -33,7 +33,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
 
     private static final String TAG = "opretBruger";
 
-    private Button tilbage_btn, opret_btn;
+    private Button opret_btn;
     private EditText fornavn_editTxt, efternavn_editTxt, email_editTxt,
             tlfnr_editTxt, password_editTxt, password2_editTxt, virk_id_editTxt;
 
@@ -53,10 +53,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         firebaseAuth = FirebaseAuth.getInstance();
 
         //Knapper
-        tilbage_btn = findViewById(R.id.opretbruger_tilbage_btn);
         opret_btn = findViewById(R.id.opretbruger_opret_btn);
-
-        tilbage_btn.setOnClickListener(this);
         opret_btn.setOnClickListener(this);
 
         //Input felter
@@ -238,10 +235,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        if (view == tilbage_btn) {
-            //Luk og gå tilbage til login aktiviteten
-            finish();
-        } else if (view == opret_btn) {
+        if (view == opret_btn) {
             //vis brugeren at der arbejdes
             showProgressDialog();
             updateProgressDialog("Tjekker virksomheds-ID");
