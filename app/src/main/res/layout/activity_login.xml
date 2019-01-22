@@ -1,100 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#353535"
     android:clickable="true"
     android:focusableInTouchMode="true"
     android:gravity="bottom|center"
-    android:orientation="vertical"
-    android:paddingLeft="64dp"
-    android:paddingRight="64dp"
-    android:paddingBottom="48dp"
-    tools:context=".aktiviteter.Login_akt">
+    tools:context=".aktiviteter.Login_akt"
+    tools:layout_editor_absoluteY="25dp">
 
     <TextView
         android:id="@+id/login_txtView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="76dp"
         android:allowUndo="false"
+        android:fontFamily="@font/open_sans_bold"
         android:text="@string/overskrift_loginskærm"
+        android:textAllCaps="false"
         android:textAppearance="@style/Tekst.Overskrift"
-        android:textColor="@color/colorHvid" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="32dp" />
+        android:textColor="@color/colorHvid"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/login_brugernavn_editTxt"
         style="@style/Input.Hvid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="275dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="52dp"
         android:allowUndo="true"
         android:clickable="false"
         android:ems="10"
         android:fadingEdge="horizontal|vertical"
+        android:fontFamily="@font/open_sans_semibold"
         android:hint="E-mail"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_txtView1" />
 
     <EditText
         android:id="@+id/login_password_editTxt"
         style="@style/Input.Hvid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="275dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
         android:allowUndo="true"
         android:ems="10"
+        android:fontFamily="@font/open_sans_semibold"
         android:hint="Password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_brugernavn_editTxt" />
 
     <CheckBox
         android:id="@+id/login_checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:text="Test Bruger"
         android:visibility="gone"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="530dp" />
+        app:layout_constraintBottom_toTopOf="@+id/login_brugernavn_editTxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_txtView1" />
 
     <Button
         android:id="@+id/login_login_btn"
         style="@style/Knap.Grøn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        android:text="Login" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="48dp" />
+        android:layout_width="275dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="28dp"
+        android:text="Login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_password_editTxt" />
 
     <Button
         android:id="@+id/login_nyBruger_btn"
         style="@style/Knap.Lysegrå"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        android:text="Ny bruger" />
+        android:layout_width="275dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="8dp"
+        android:text="Ny Bruger"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_login_btn"
+        app:layout_constraintVertical_bias="0.0" />
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -12,14 +12,13 @@
 
     <LinearLayout
         android:id="@+id/linearLayout5"
-        android:background="#0AFFFFFF"
-        android:layout_width="274dp"
+        android:layout_width="275dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="20dp"
+        android:background="#0AFFFFFF"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/opretbruger_txtView1">
 
@@ -27,9 +26,9 @@
             android:id="@+id/dato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="34dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
             android:allowUndo="true"
             android:autofillHints="DBDBDB"
             android:clickable="false"
@@ -52,9 +51,9 @@
             android:id="@+id/tidStart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="34dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
             android:allowUndo="true"
             android:autofillHints="DBDBDB"
             android:clickable="false"
@@ -77,9 +76,9 @@
             android:id="@+id/tidSlut"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="34dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
             android:allowUndo="true"
             android:autofillHints="DBDBDB"
             android:clickable="false"
@@ -102,8 +101,8 @@
             android:id="@+id/opretbruger_mail_editTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="34dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="34dp"
             android:layout_marginBottom="10dp"
             android:allowUndo="true"
 
@@ -128,10 +127,10 @@
             android:id="@+id/virk_id_editTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="34dp"
             android:layout_marginBottom="10dp"
             android:allowUndo="true"
-            android:layout_marginLeft="10dp"
             android:autofillHints="DBDBDB"
             android:clickable="false"
             android:drawableLeft="@drawable/icon_virk_id"
@@ -158,11 +157,11 @@
                 android:id="@+id/opretbruger_password_editTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:allowUndo="true"
                 android:autofillHints="DBDBDB"
-                android:layout_marginLeft="10dp"
                 android:clickable="false"
                 android:drawableStart="@drawable/icon_password"
                 android:drawablePadding="10dp"
@@ -183,9 +182,9 @@
             <ImageView
                 android:id="@+id/imViewPassword1Synlig"
                 android:layout_width="match_parent"
-                android:layout_marginRight="10dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="10"
+                android:layout_marginRight="10dp"
+                android:layout_weight="7"
                 app:srcCompat="@drawable/ic_visibility_off_grey_24dp" />
         </LinearLayout>
 
@@ -198,10 +197,10 @@
                 android:id="@+id/opretbruger_password2_editTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:allowUndo="true"
-                android:layout_marginLeft="10dp"
                 android:autofillHints="DBDBDB"
                 android:clickable="false"
                 android:drawableLeft="@drawable/icon_password"
@@ -223,9 +222,9 @@
             <ImageView
                 android:id="@+id/imViewPassword2Synlig"
                 android:layout_width="match_parent"
-                android:layout_marginRight="10dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="10"
+                android:layout_marginRight="10dp"
+                android:layout_weight="7"
                 app:srcCompat="@drawable/ic_visibility_off_grey_24dp" />
         </LinearLayout>
 
@@ -236,17 +235,14 @@
         style="@style/Knap.Grøn"
         android:layout_width="275dp"
         android:layout_height="60dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/opret_bruger"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
-        app:layout_constraintVertical_bias="0.272" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/opretbruger_txtView1"
