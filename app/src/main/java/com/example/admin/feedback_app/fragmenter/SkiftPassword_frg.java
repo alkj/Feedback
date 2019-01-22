@@ -29,7 +29,6 @@ public class SkiftPassword_frg extends Fragment implements View.OnClickListener 
     private PersonData personData;
 
     private EditText editTextGammeltPassword, editTextNytPassword1, editTextNytPassword2;
-    private TextView textViewBrugernavn;
     private Button buttonSkiftPassword;
     private ImageView gammelPassword, nyPassword1, nyPassword2;
     private Boolean passwordStatusGammel = true, passwordStatusNyl = true, passwordStatusNy2 = true;
@@ -49,15 +48,12 @@ public class SkiftPassword_frg extends Fragment implements View.OnClickListener 
         nyPassword1 = rod.findViewById(R.id.imViewNyPassword1Synlig);
         nyPassword2 = rod.findViewById(R.id.imViewNyPassword2Synlig);
         editTextNytPassword2 = rod.findViewById(R.id.skift_password_password2_editText);
-        textViewBrugernavn = rod.findViewById(R.id.skift_password_brugernavn_textView);
         buttonSkiftPassword = rod.findViewById(R.id.skift_password_gem_button);
 
         gammelPassword.setOnClickListener(this);
         nyPassword1.setOnClickListener(this);
         nyPassword2.setOnClickListener(this);
         buttonSkiftPassword.setOnClickListener(this);
-
-        textViewBrugernavn.setText(personData.getMødeholder().getEmail());
 
         return rod;
     }

@@ -5,31 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#353535"
-    tools:context=".fragmenter.RedigerProfilOplysninger_frg">
+    tools:context=".fragmenter.RedigerProfilOplysninger_frg"
+    tools:layout_editor_absoluteY="25dp">
 
     <!-- TODO: Update blank fragment layout -->
 
     <Button
         android:id="@+id/rediger_profil_gem_ændringer_button"
-        android:layout_width="144dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        style="@style/Knap.Lysegrå"
+        android:layout_width="275dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
         android:autofillHints="DBDBDB"
-        android:fontFamily="@font/open_sans_bold"
-        android:text="Gem ændringer"
-        android:textColor="#FBF7FF"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Gem Ændringer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-        app:layout_constraintVertical_bias="0.347" />
-
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
 
     <TextView
@@ -37,36 +29,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:fontFamily="@font/open_sans_bold"
-        android:text="Redigér profil"
+        android:text="Redigér Profil"
         android:textAlignment="center"
-        android:textAllCaps="true"
+        android:textAllCaps="false"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.372" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="270dp"
-        android:layout_height="247dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/rediger_profil_titel_textview_dont_edit">
 
         <EditText
             android:id="@+id/rediger_profil_fornavn_editText"
@@ -80,11 +65,11 @@
             android:ems="10"
             android:fadingEdge="horizontal|vertical"
             android:hint="Fornavn"
-            android:textSize="14dp"
             android:inputType="textPersonName"
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@color/colorMEGETLysGrå"
             android:textColorHint="@color/colorHvid"
+            android:textSize="14dp"
             app:backgroundTint="@color/colorLysegrå"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -101,7 +86,6 @@
             android:clickable="false"
             android:drawableLeft="@drawable/icon_name"
             android:drawablePadding="10dp"
-            android:textSize="14dp"
             android:ems="10"
             android:fadingEdge="horizontal|vertical"
             android:hint="Efternavn"
@@ -109,13 +93,14 @@
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@color/colorMEGETLysGrå"
             android:textColorHint="@color/colorHvid"
+            android:textSize="14dp"
+            android:transitionName="efternavn"
             app:backgroundTint="@color/colorLysegrå"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteX="56dp"
-            tools:layout_editor_absoluteY="167dp"
-            android:transitionName="efternavn"/>
+            tools:layout_editor_absoluteY="167dp" />
 
         <EditText
             android:id="@+id/rediger_profil_tlf_editText"
@@ -129,11 +114,11 @@
             android:ems="10"
             android:fadingEdge="horizontal|vertical"
             android:hint="Telefon"
-            android:textSize="14dp"
             android:inputType="number"
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@color/colorMEGETLysGrå"
             android:textColorHint="@color/colorHvid"
+            android:textSize="14dp"
             app:backgroundTint="@color/colorLysegrå"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -141,31 +126,6 @@
             tools:layout_editor_absoluteX="80dp"
             tools:layout_editor_absoluteY="406dp" />
 
-
-
-        <EditText
-            android:id="@+id/rediger_profil_virksomheds_id_editTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:allowUndo="true"
-            android:autofillHints="DBDBDB"
-            android:clickable="false"
-            android:drawableLeft="@drawable/icon_virk_id"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:fadingEdge="horizontal|vertical"
-            android:hint="Virksomheds ID"
-            android:textSize="14dp"
-            android:inputType="textPersonName"
-            android:textAppearance="@style/TextAppearance.AppCompat"
-            android:textColor="@color/colorMEGETLysGrå"
-            android:textColorHint="@color/colorHvid"
-            app:backgroundTint="@color/colorLysegrå"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteX="46dp"
-            tools:layout_editor_absoluteY="257dp" />
 
     </LinearLayout>
 

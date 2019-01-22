@@ -73,7 +73,6 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
   //      ViewCompat.setTransitionName(redigerButton, "redigerButton");
 
 
-
         return v;
     }
 
@@ -93,6 +92,7 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
             redigerFrag.setEnterTransition(new AutoTransition().setDuration(100));
 
             getActivity().getSupportFragmentManager().beginTransaction()
+                    .addToBackStack(null)
                     .replace(R.id.navigation_fragment_container, redigerFrag).commit();
 
         }
@@ -106,7 +106,7 @@ public class Profil_frg extends Fragment implements View.OnClickListener {
             skiftPasswordFrag.setEnterTransition(new AutoTransition().setDuration(100));
 
             getActivity().getSupportFragmentManager().beginTransaction()
-                    //.addToBackStack(null)
+                    .addToBackStack(null)
                     .replace(R.id.navigation_fragment_container, skiftPasswordFrag).commit();
 
 
