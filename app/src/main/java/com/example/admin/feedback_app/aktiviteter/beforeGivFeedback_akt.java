@@ -13,7 +13,7 @@ public class beforeGivFeedback_akt extends AppCompatActivity {
 
     private Button givFeed;
 
-    private TextView sted, dato, navn;
+    private TextView sted, dato, navn, mødeHolderNavn, formål, tidStart, tidSlut;
 
 
     @Override
@@ -25,14 +25,25 @@ public class beforeGivFeedback_akt extends AppCompatActivity {
         sted = findViewById(R.id.stedTV);
         dato = findViewById(R.id.datoTV);
 
+        formål = findViewById(R.id.formål);
+        tidStart = findViewById(R.id.tidStart);
+        tidSlut = findViewById(R.id.tidSlut);
+
         String navnString = getIntent().getStringExtra("NAVN");
         String datoString = getIntent().getStringExtra("DATO");
         String stedString = getIntent().getStringExtra("STED");
+        //String mødeHolderNavnString = getIntent().getStringExtra("MØDEHOLDERNAVN");
+        String formålString = getIntent().getStringExtra("FORMÅL");
+        String tidStartString = getIntent().getStringExtra("TIDSTART");
+        String tidSlutString = getIntent().getStringExtra("TIDSLUT");
 
         navn.setText(navnString);
         dato.setText(datoString);
         sted.setText(stedString);
-
+        //mødeHolderNavn.setText(mødeHolderNavnString);
+        formål.setText(formålString);
+        tidStart.setText(tidStartString);
+        tidSlut.setText(tidSlutString);
 
         givFeed = findViewById(R.id.buttonStartFeed);
         givFeed.setOnClickListener(new View.OnClickListener() {

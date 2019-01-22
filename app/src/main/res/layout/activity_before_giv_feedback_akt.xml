@@ -11,12 +11,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
+        android:layout_marginBottom="76dp"
         android:fontFamily="@font/open_sans_bold"
         android:text="Mødenavn"
         android:textAlignment="center"
         android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/tidStart"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,39 +25,69 @@
         android:id="@+id/stedTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="12dp"
         android:fontFamily="@font/open_sans_semibold"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/navnTV" />
+        app:layout_constraintBottom_toTopOf="@+id/formål"
+        app:layout_constraintEnd_toEndOf="@+id/datoTV"
+        app:layout_constraintTop_toBottomOf="@+id/datoTV" />
 
     <TextView
         android:id="@+id/datoTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="51dp"
         android:fontFamily="@font/open_sans_semibold"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/stedTV"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tidStart" />
+
+    <TextView
+        android:id="@+id/formål"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="62dp"
+        android:layout_marginBottom="34dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/tidSlut"
+        app:layout_constraintStart_toStartOf="@+id/stedTV"
         app:layout_constraintTop_toBottomOf="@+id/stedTV" />
+
+    <TextView
+        android:id="@+id/tidSlut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="93dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonStartFeed"
+        app:layout_constraintEnd_toEndOf="@+id/formål"
+        app:layout_constraintTop_toBottomOf="@+id/formål" />
+
+    <TextView
+        android:id="@+id/tidStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/datoTV"
+        app:layout_constraintEnd_toStartOf="@+id/datoTV"
+        app:layout_constraintStart_toStartOf="@+id/datoTV"
+        app:layout_constraintTop_toBottomOf="@+id/navnTV" />
 
     <Button
         android:id="@+id/buttonStartFeed"
         style="@style/Knap.Grøn"
         android:layout_width="200dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="149dp"
         android:autofillHints="DBDBDB"
         android:fontFamily="@font/open_sans_semibold"
         android:text="Start Feedback"
@@ -65,8 +96,5 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datoTV"
-        app:layout_constraintVertical_bias="0.295" />
+        app:layout_constraintTop_toBottomOf="@+id/tidSlut" />
 </android.support.constraint.ConstraintLayout>

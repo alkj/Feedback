@@ -156,6 +156,9 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
                     intent.putExtra("NAVN", mødet.getNavn());
                     intent.putExtra("DATO",mødet.getDato());
                     intent.putExtra("STED",mødet.getSted());
+                    intent.putExtra("FORMÅL",mødet.getFormål());
+                    intent.putExtra("TIDSTART",mødet.getStartTid());
+                    intent.putExtra("TIDSLUT",mødet.getSlutTid());
                     startActivity(intent);
 
                 }
@@ -184,12 +187,18 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
                     String sted = document.get("sted").toString();
                     String dato = document.get("dato").toString();
                     String navn = document.get("navn").toString();
+                    String formål = document.get("formål").toString();
+                    String tidStart = document.get("startTid").toString();
+                    String tidSlut = document.get("slutTid").toString();
 
                     mødet.setMødeID(mødeID);
                     mødet.setMødeIDtildeltager(mødeIDtildeltager);
                     mødet.setNavn(navn);
                     mødet.setSted(sted);
                     mødet.setDato(dato);
+                    mødet.setFormål(formål);
+                    mødet.setStartTid(tidStart);
+                    mødet.setSlutTid(tidSlut);
 
                     Log.d("debug, hvad bliver", "Mødeid'et bliver: " + mødeID);
 
