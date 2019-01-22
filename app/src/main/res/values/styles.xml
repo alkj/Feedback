@@ -54,12 +54,12 @@
 
     <!-- Text temeaer. -->
     <style name="Tekst" parent="TextAppearance.AppCompat">
-        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
     </style>
 
     <style name="Tekst.Overskrift" parent="Tekst">
-        <item name="android:textSize">36sp</item>
-        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
     </style>
 
 </resources>

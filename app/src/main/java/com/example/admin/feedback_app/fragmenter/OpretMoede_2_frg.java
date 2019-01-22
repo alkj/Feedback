@@ -17,7 +17,6 @@ import android.widget.Toast;
 import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
-import com.example.admin.feedback_app.aktiviteter.OpretMoede_akt;
 import com.example.admin.feedback_app.dialogs.DatoPickerDialog_frg;
 import com.example.admin.feedback_app.dialogs.TidPickerDialog_frg;
 import com.google.android.gms.tasks.OnCompleteListener;

@@ -25,7 +25,7 @@
                 android:layout_margin="12dp"
                 android:text="TextView"
                 android:textAppearance="@style/Tekst"
-                android:textSize="16sp" />
+                android:textSize="12sp" />
         </FrameLayout>
 
         <com.example.admin.feedback_app.views.HorizontalStackedBarChart

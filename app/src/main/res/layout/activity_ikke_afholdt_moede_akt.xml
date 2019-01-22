@@ -8,68 +8,106 @@
     tools:context=".aktiviteter.IkkeAfholdtMoede_akt">
 
     <TextView
-        android:id="@+id/tv1010n"
+        android:id="@+id/tvMødeNavn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="8dp"
-        android:text="Mødeoplysninger"
-        android:textAllCaps="true"
-        android:textColor="@color/colorHvid"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:text="@string/mode_navn"
+        android:textAlignment="center"
+        android:textAppearance="@style/Tekst.Overskrift"
+        android:textColor="@color/colorMEGETLysGrå"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="30dp"
-        android:orientation="vertical"
+        android:layout_width="275dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:background="#0AFFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv1010n">
-
-        <TextView
-            android:id="@+id/tv00030"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Møde ID"
-            android:textAlignment="center"
-            android:textColor="@color/colorHvid"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="17dp"
-            tools:layout_editor_absoluteY="5dp" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMødeNavn">
 
         <com.romainpiel.shimmer.ShimmerTextView
             android:id="@+id/tvMødeID"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="3dp"
-            android:paddingBottom="10dp"
-            android:text="x"
-            android:textAlignment="center"
-            android:textColor="@color/colorMegetGlad"
-            android:textSize="30sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="13dp"
+            android:text="4444"
+            android:textAppearance="@style/Tekst.Overskrift"
+            android:textColor="@color/colorGrøn"
+            android:textSize="24sp"
             android:textStyle="bold"
-            app:reflectionColor="@color/shimmerFarveGrøn"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="110dp" />
-    </LinearLayout>
+            app:layout_constraintStart_toEndOf="@+id/status"
+            app:layout_constraintTop_toTopOf="parent"
+            app:reflectionColor="@color/shimmerFarveGrøn" />
 
-    <LinearLayout
+        <TextView
+            android:id="@+id/statuss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Status:"
+            android:textAlignment="center"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorMEGETLysGrå"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="Møde ID:"
+            android:textAlignment="center"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorMEGETLysGrå"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.romainpiel.shimmer.ShimmerTextView
+            android:id="@+id/statusPåMøde"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="16dp"
+            android:text="Ikke i gang "
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorLysegrå"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/statuss"
+            app:reflectionColor="@color/shimmerFarveGrøn" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_delete_forever" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+
         android:id="@+id/linearLayout6"
-        android:layout_width="match_parent"
+        android:layout_width="275dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="24dp"
+        android:background="#0AFFFFFF"
         android:orientation="vertical"
         android:paddingTop="3dp"
         android:paddingBottom="3dp"
@@ -77,252 +115,128 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
-        <TextView
-            android:id="@+id/tvasd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Mødenavn"
-            android:textColor="@color/colorHvid"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="216dp"
-            tools:layout_editor_absoluteY="306dp" />
-
-        <TextView
-            android:id="@+id/tvMødeNavn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="3dp"
-            android:paddingBottom="20dp"
-            android:text="x"
-            android:textColor="@color/colorHvid"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_mode_edit" />
 
         <TextView
             android:id="@+id/tv000"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Møde formål"
-            android:textColor="@color/colorHvid"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="83dp"
-            tools:layout_editor_absoluteY="198dp" />
-
-        <TextView
-            android:id="@+id/tvMødeFormaal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="3dp"
-            android:paddingBottom="20dp"
-            android:text="x"
-            android:textColor="@color/colorHvid"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:text="Formål"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorMEGETLysGrå"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv0000"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mødested"
-            android:textColor="@color/colorHvid"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="83dp"
-            tools:layout_editor_absoluteY="198dp" />
-
-        <TextView
-            android:id="@+id/tvMødeSted"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="3dp"
-            android:paddingBottom="20dp"
-            android:text="x"
-            android:textColor="@color/colorHvid"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:layout_marginStart="12dp"
+            android:text="Sted"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorMEGETLysGrå"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMødeFormaal" />
 
         <TextView
             android:id="@+id/tv00033"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Møde Dato"
-            android:textColor="@color/colorHvid"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="83dp"
-            tools:layout_editor_absoluteY="198dp" />
+            android:layout_marginStart="12dp"
+            android:text="Dato"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorMEGETLysGrå"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMødested" />
+
 
         <TextView
-            android:id="@+id/tvMødeDato"
-            android:layout_width="match_parent"
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="3dp"
-            android:paddingBottom="20dp"
-            android:text="x"
-            android:textColor="@color/colorHvid"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv00000"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="Planlagt Starttid"
-                android:textColor="@color/colorHvid"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tv000000"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="Planlagt Sluttid"
-                android:textColor="@color/colorHvid"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:paddingBottom="20dp">
-
-            <TextView
-                android:id="@+id/tvPlanlagtStarttid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="xx"
-                android:textColor="@color/colorHvid"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+            android:layout_marginStart="12dp"
+            android:text="Tidspunkt"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorMEGETLysGrå"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMødested2" />
 
 
-            <TextView
-                android:id="@+id/tvPlanlagtSluttid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="xx"
-                android:textColor="@color/colorHvid"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tvMødeFormaal"
+            android:layout_width="198dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="Fomålet med mødet er at danse tango og spille fidbold indtil janus ikke kan stå på benenen"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorLysegrå"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv000" />
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tvMødested"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="Roskilde"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorLysegrå"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv0000" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tvMødested2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="1-2-2019"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorLysegrå"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv00033" />
 
-            <TextView
-                android:id="@+id/tv000000000"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="Inviterede"
-                android:textColor="@color/colorHvid"
-                android:textSize="16sp" />
+        <TextView
+            android:id="@+id/tvMødested3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="8dp"
+            android:text="12:00-13:00"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorLysegrå"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv" />
 
-            <TextView
-                android:id="@+id/tv0000000"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="Fremmødte"
-                android:textColor="@color/colorHvid"
-                android:textSize="16sp" />
 
-        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvInviterede"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="x"
-                android:textColor="@color/colorHvid"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvFremmødte"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:text="x"
-                android:textColor="@color/colorHvid"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/button3"
+        style="@style/Knap.Grøn"
+        android:layout_width="275dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="Start Møde"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/open_sans_bold"
-            android:textColor="@color/colorHvid"
-            android:text="Rediger"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/ikkeAfholdtStart_knap"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:autofillHints="DBDBDB"
-            android:fontFamily="@font/open_sans_bold"
-            android:textColor="@color/colorHvid"
-            android:text="Start møde"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/open_sans_bold"
-            android:textColor="@color/colorHvid"
-            android:text="Inviter"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <android.support.v4.app.FragmentTabHost
-        android:id="@+id/containerMødeStart"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
 </android.support.constraint.ConstraintLayout>

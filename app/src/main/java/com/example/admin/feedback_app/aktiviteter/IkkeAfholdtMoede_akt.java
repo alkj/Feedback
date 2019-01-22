@@ -20,7 +20,7 @@ import com.romainpiel.shimmer.ShimmerTextView;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnClickListener {
+public class IkkeAfholdtMoede_akt extends AppCompatActivity  {
 
     private Møde
             møde;
@@ -42,21 +42,22 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
         //inviter = findViewById(R.id.ikkeAfholdtInviter_knap);
         //inviter.setOnClickListener(this);
 
-        startMoede = findViewById(R.id.ikkeAfholdtStart_knap);
-        startMoede.setOnClickListener(this);
+        //startMoede = findViewById(R.id.ikkeAfholdtStart_knap);
+        //startMoede.setOnClickListener(this);
 
         //rediger = findViewById(R.id.ikkeAfholdt_redigerKnap);
         //rediger.setOnClickListener(this);
 
+
         moedeNavn = findViewById(R.id.tvMødeNavn);
         moedeFormaal = findViewById(R.id.tvMødeFormaal);
-        moedeSted = findViewById(R.id.tvMødeSted);
+        //moedeSted = findViewById(R.id.tvMødeSted);
         moedeID = findViewById(R.id.tvMødeID);
-        moedeDato = findViewById(R.id.tvMødeDato);
-        tidStart = findViewById(R.id.tvPlanlagtStarttid);
-        tidSlut = findViewById(R.id.tvPlanlagtSluttid);
-        inviterede = findViewById(R.id.tvInviterede);
-        fremmoedte = findViewById(R.id.tvFremmødte);
+        //moedeDato = findViewById(R.id.tvMødeDato);
+        //tidStart = findViewById(R.id.tvPlanlagtStarttid);
+        //tidSlut = findViewById(R.id.tvPlanlagtSluttid);
+        //inviterede = findViewById(R.id.tvInviterede);
+        //fremmoedte = findViewById(R.id.tvFremmødte);
 
         //TODO: håndtere at mødet ikke findes
         if (savedInstanceState == null) {
@@ -67,15 +68,7 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
             }
         }
 
-        moedeNavn.setText(møde.getNavn());
-        moedeFormaal.setText(møde.getFormål());
-        moedeSted.setText(møde.getSted());
-        moedeID.setText(møde.getMødeIDtildeltager());
-        moedeDato.setText(møde.getDato());
-        tidStart.setText(møde.getStartTid());
-        tidSlut.setText(møde.getSlutTid());
-        //inviterede.setText(møde.getAntalInviterede);
-        //fremmoedte.setText(møde.getFremmoedte);
+
 
         shimmer = new Shimmer();
         shimmer.start(moedeID);
@@ -84,6 +77,7 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
     }
 
 
+    /**
     @Override
     public void onClick(View view) {
         if (view == startMoede) {
@@ -101,10 +95,10 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
                 public void onClick(DialogInterface dialog, int which) {
                    // sendData();
 
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerMødeStart,new MoedeStartet_frg());
-                    fragmentTransaction.commit();
+                   // FragmentManager fragmentManager = getSupportFragmentManager();
+                   // FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                   // fragmentTransaction.replace(R.id.containerMødeStart,new MoedeStartet_frg());
+                   // fragmentTransaction.commit();
 
 
 
@@ -130,6 +124,7 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements View.OnCl
         moedeStartet_frg.setArguments(bundle);
 
     }
+    */
 
 
     public String getCurrentTime() {
