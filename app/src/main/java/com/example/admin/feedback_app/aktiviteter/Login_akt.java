@@ -14,9 +14,11 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.admin.feedback_app.FeedbackManager;
 import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.Svar;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -26,6 +28,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Login_akt extends BaseActivity implements View.OnClickListener {
 
@@ -40,6 +45,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
     private EditText email_editTxt, password_editTxt;
     private FirebaseAuth firebaseAuth;
     private PersonData personData;
+    private int taskCount = 0;
 
     private final boolean DEBUG = true;
     private final String TEST_EMAIL = "nicolaidam96@gmail.com", TEST_PASSWORD = "123456";
@@ -180,9 +186,28 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         docRef.get().addOnCompleteListener(new HentBrugerListener());
     }
 
+    private void hentFeedbackFraFire(){
+
+    }
+
     public void næsteSide() {
         //Stop loading efter firebase er færdig med at give svar
         hideProgressDialog();
+
+        String mødeid = "01ef82c7-4291-42c0-8f38-4d59de2d2e20", log = new String();
+        for (List<Svar> person : PersonData.getInstance().getFeedbackTilMøde(mødeid)){
+            log += "Person [";
+            for (Svar svar : person){
+                log += "{ smiley = ";
+                log += svar.getSmiley();
+                log += ", tekst = ";
+                log += svar.getTekst();
+                log += " }";
+            }
+            log += " ]\n";
+        }
+
+        Log.i(TAG, log);
 
         //Giver lige en besked
         Toast.makeText(this,
@@ -279,6 +304,11 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                     
                     personData.tilføjMøde(mødeObj);
 
+                    FirebaseFirestore.getInstance()
+                            .collection("Feedback")
+                            .whereEqualTo("mødeId", mødeObj.getMødeID())
+                            .get().addOnCompleteListener(new HentFeedbackListener(mødeObj.getMødeID()));
+
                     Log.d(TAG, "navn fra firebase: " + document.get("navn").toString());
                     Log.d(TAG, "mødelistens navn: " + mødeObj.getNavn());
                     Log.d(TAG, document.getId() + " => " + document.getData());
@@ -289,11 +319,44 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
 
 
 
-                næsteSide();
+                //næsteSide();
             } else {
                 Log.d(TAG, "Error getting documents: ", task.getException());
             }
 
+        }
+    }
+
+    class HentFeedbackListener implements OnCompleteListener<QuerySnapshot>{
+
+        private String mødeid;
+
+        public HentFeedbackListener(String mødeid){
+            this.mødeid = mødeid;
+            taskCount++;
+        }
+
+        @Override
+        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+            if (task.isSuccessful()){
+                List<List<Svar>> feedback = new ArrayList<>();
+
+                for (QueryDocumentSnapshot document : task.getResult()){
+                    List<Svar> svar = FeedbackManager.stringTilFeedback(
+                            document.get("svar").toString()
+                    );
+
+                    feedback.add(svar);
+                }
+
+                PersonData.getInstance().tilføjFeedback(mødeid, feedback);
+
+                taskCount--;
+
+                if (taskCount <= 0){
+                    næsteSide();
+                }
+            }
         }
     }
 

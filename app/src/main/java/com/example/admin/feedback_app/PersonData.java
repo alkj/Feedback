@@ -3,6 +3,7 @@ package com.example.admin.feedback_app;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +16,7 @@ public class PersonData {
 
     Mødeholder mødeholder;
     ArrayList<Møde> møderne;
-    Map<Integer, List<List<Svar>>> feedback;
+    Map<String, List<List<Svar>>> feedback;
 
     private PersonData() {
     }
@@ -35,11 +36,14 @@ public class PersonData {
         møderne.add(møde);
     }
 
-    public void tilføjFeedback(int mødeid, List<List<Svar>> list){
+    public void tilføjFeedback(String mødeid, List<List<Svar>> list){
+        if (feedback == null)
+            feedback = new HashMap<>();
         feedback.put(mødeid, list);
     }
 
-    public List<List<Svar>> getFeedbackTilMøde(int mødeid){
+    public List<List<Svar>> getFeedbackTilMøde(String mødeid){
+        Log.i("login", (feedback == null)+ "");
         return feedback.get(mødeid);
     }
 

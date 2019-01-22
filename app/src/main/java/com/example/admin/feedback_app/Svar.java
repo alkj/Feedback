@@ -19,9 +19,4 @@ public class Svar {
     public void setTekst(String tekst) {
         this.tekst = tekst;
     }
-
-    @Override
-    public String toString() {
-        return FeedbackManager.DEF_SVAR + FeedbackManager.DEF_OPEN + FeedbackManager.DEF_SMILEY + smiley + FeedbackManager.DEF_NEXT + FeedbackManager.DEF_TEKST + tekst + FeedbackManager.DEF_CLOSE;
-    }
 }
