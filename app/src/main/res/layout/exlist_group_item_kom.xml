@@ -2,18 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorMEGETLysGrå"
-    android:orientation="vertical"
-    android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft">
+    android:background="@color/colorMørkegrå"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/exlist_group_txtView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="TextView"
-        android:textAlignment="viewStart"
-        android:textColor="@color/colorMørkegrå"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:layout_marginBottom="8dp"
+        android:background="#6F6F6F"
+        android:orientation="vertical"
+        android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorMEGETLysGrå">
+
+            <TextView
+                android:id="@+id/exlist_group_txtView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:text="TextView"
+                android:textAppearance="@style/Tekst"
+                android:textSize="16sp" />
+        </FrameLayout>
+
+        <com.example.admin.feedback_app.views.HorizontalStackedBarChart
+            android:id="@+id/exlist_group_bar"
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+    </LinearLayout>
+
 </LinearLayout>

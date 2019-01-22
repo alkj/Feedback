@@ -8,20 +8,29 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.views.HorizontalStackedBarChart;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 public class SpørgsmålAdapter extends BaseExpandableListAdapter {
 
     private Context context;
     private List<String> groupList;
     private HashMap<String, List<String>> childMap;
+    private int[] colors;
 
     public SpørgsmålAdapter(Context context, List<String> groupList, HashMap<String, List<String>> childMap) {
         this.context = context;
         this.groupList = groupList;
         this.childMap = childMap;
+        this.colors = new int[] {
+                context.getColor(R.color.colorMegetSur),
+                context.getColor(R.color.colorSur),
+                context.getColor(R.color.colorGlad),
+                context.getColor(R.color.colorMegetGlad)
+        };
     }
 
     @Override
@@ -83,6 +92,18 @@ public class SpørgsmålAdapter extends BaseExpandableListAdapter {
 
         ((TextView)convertView.findViewById(R.id.exlist_group_txtView))
                 .setText(tekst);
+
+        HorizontalStackedBarChart barChart = convertView.findViewById(R.id.exlist_group_bar);
+
+        barChart.setColors(colors);
+
+        Random random = new Random();
+        barChart.setValues(new int[] {
+                random.nextInt(10)+1,
+                random.nextInt(10)+1,
+                random.nextInt(10)+1,
+                random.nextInt(10)+1
+        });
 
         return convertView;
     }
