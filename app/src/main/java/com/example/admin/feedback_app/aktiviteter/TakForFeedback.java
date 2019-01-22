@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.admin.feedback_app.FeedbackManager;
 import com.example.admin.feedback_app.FeedbackTilFirebase;
 import com.example.admin.feedback_app.NetworkManager;
@@ -23,12 +24,14 @@ public class TakForFeedback extends BaseActivity {
     private TextView tekst_besked;
     private final String TAG = "TakForFeedback";
 
+    private LottieAnimationView animationView;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tak_for_feedback);
+            setContentView(R.layout.activity_tak_for_feedback);
         tekst_besked = findViewById(R.id.tak_besked_txtView);
 
         if (NetworkManager.harInternet(this)){
@@ -40,6 +43,10 @@ public class TakForFeedback extends BaseActivity {
             tekst_besked.setText("No internet :O");
             //TODO: hvis ingen internet
         }
+
+        animationView = findViewById(R.id.animation_view);
+        //animationView.startAnimation();
+
     }
 
     private void indsendFeedback(){
@@ -69,7 +76,7 @@ public class TakForFeedback extends BaseActivity {
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
-        }, 1500);
+        }, 3800);
     }
 
     class OprettetListener implements OnCompleteListener<DocumentReference> {
