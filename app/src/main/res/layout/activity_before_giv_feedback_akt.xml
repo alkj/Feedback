@@ -86,15 +86,14 @@
         style="@style/Knap.Grøn"
         android:layout_width="200dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="75dp"
-        android:layout_marginBottom="149dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="84dp"
         android:autofillHints="DBDBDB"
         android:fontFamily="@font/open_sans_semibold"
         android:text="Start Feedback"
         android:textColor="#FBF7FF"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tidSlut" />
 </android.support.constraint.ConstraintLayout>
