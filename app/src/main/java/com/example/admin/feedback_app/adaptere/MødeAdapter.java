@@ -8,7 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.admin.feedback_app.Møde;
+import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.Svar;
 import com.example.admin.feedback_app.views.HorizontalStackedBarChart;
 
 import java.util.List;
@@ -16,6 +18,7 @@ import java.util.Random;
 
 public class MødeAdapter extends ArrayAdapter<Møde> {
     private final int layoutId;
+    private int antal_1, antal_2, antal_3, antal_4;
 
 
     public MødeAdapter(Context context, int resource, List<Møde> objects) {
@@ -41,6 +44,28 @@ public class MødeAdapter extends ArrayAdapter<Møde> {
             HorizontalStackedBarChart barChart = view.findViewById(R.id.list_chart);
 
             if (møde.isAfholdt()){
+                /*løber igennem alle svarene fra samtlige deltager og sørger for at tælle op af hvor mange af
+                de forskellige smileys der er givet 
+                 */
+
+                for (List<Svar> person : PersonData.getInstance().getFeedbackTilMøde(møde.getMødeID())){
+                    for (Svar svar : person){
+                        if (svar.getSmiley()==1){
+                            antal_1++;
+                        }
+                        else if (svar.getSmiley()==2){
+                            antal_2++;
+                        }
+                        else if (svar.getSmiley()==3){
+                            antal_3++;
+                        }
+                        else if (svar.getSmiley()==4){
+                            antal_4++;
+                        }
+
+                    }
+
+                }
                 int[] colors = {
                         getContext().getColor(R.color.colorMegetSur),
                         getContext().getColor(R.color.colorSur),
@@ -51,10 +76,10 @@ public class MødeAdapter extends ArrayAdapter<Møde> {
 
                 Random random = new Random();
                 barChart.setValues(new int[] {
-                        random.nextInt(10)+1,
-                        random.nextInt(10)+1,
-                        random.nextInt(10)+1,
-                        random.nextInt(10)+1
+                        antal_1,
+                        antal_2,
+                        antal_3,
+                        antal_4
                 });
             }
             else

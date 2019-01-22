@@ -304,10 +304,12 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                     
                     personData.tilføjMøde(mødeObj);
 
-                    FirebaseFirestore.getInstance()
-                            .collection("Feedback")
-                            .whereEqualTo("mødeId", mødeObj.getMødeID())
-                            .get().addOnCompleteListener(new HentFeedbackListener(mødeObj.getMødeID()));
+                    if (mødeObj.isAfholdt()) {
+                        FirebaseFirestore.getInstance()
+                                .collection("Feedback")
+                                .whereEqualTo("mødeId", mødeObj.getMødeID())
+                                .get().addOnCompleteListener(new HentFeedbackListener(mødeObj.getMødeID()));
+                    }
 
                     Log.d(TAG, "navn fra firebase: " + document.get("navn").toString());
                     Log.d(TAG, "mødelistens navn: " + mødeObj.getNavn());
