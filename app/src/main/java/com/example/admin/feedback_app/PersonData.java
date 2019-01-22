@@ -4,6 +4,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class PersonData {
     private static final PersonData ourInstance = new PersonData();
@@ -14,6 +15,7 @@ public class PersonData {
 
     Mødeholder mødeholder;
     ArrayList<Møde> møderne;
+    Map<Integer, List<List<Svar>>> feedback;
 
     private PersonData() {
     }
@@ -31,6 +33,14 @@ public class PersonData {
             møderne = new ArrayList<>();
 
         møderne.add(møde);
+    }
+
+    public void tilføjFeedback(int mødeid, List<List<Svar>> list){
+        feedback.put(mødeid, list);
+    }
+
+    public List<List<Svar>> getFeedbackTilMøde(int mødeid){
+        return feedback.get(mødeid);
     }
 
     public ArrayList<Møde> getMøderne() {
