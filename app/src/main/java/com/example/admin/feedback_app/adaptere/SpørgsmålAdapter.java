@@ -61,6 +61,10 @@ public class SpørgsmålAdapter extends BaseExpandableListAdapter {
         ((TextView)convertView.findViewById(R.id.exlist_child_txtView))
                 .setText(tekst);
 
+        View farve = convertView.findViewById(R.id.exlist_child_farve);
+
+        farve.setBackgroundColor(colors[new Random().nextInt(colors.length)]);
+
         return convertView;
     }
 

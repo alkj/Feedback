@@ -4,17 +4,24 @@
     android:layout_height="match_parent"
     android:background="@color/colorMørkegrå"
     android:orientation="vertical"
-    android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft">
+    android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+    android:paddingBottom="8dp">
 
     <TextView
         android:id="@+id/exlist_child_txtView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@android:drawable/edit_text"
+        android:background="@color/colorMEGETLysGrå"
+        android:padding="6dp"
         android:text="TextView"
-        android:textAlignment="viewStart"
-        android:textColor="@color/colorMørkegrå"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textAppearance="@style/Tekst"
+        android:textSize="14sp" />
+
+    <FrameLayout
+        android:id="@+id/exlist_child_farve"
+        android:layout_width="match_parent"
+        android:layout_height="6dp">
+
+    </FrameLayout>
+
 </LinearLayout>
