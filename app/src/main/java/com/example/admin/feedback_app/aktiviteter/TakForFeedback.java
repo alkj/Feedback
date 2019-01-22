@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.romainpiel.shimmer.Shimmer;
+import com.romainpiel.shimmer.ShimmerTextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,6 +28,8 @@ public class TakForFeedback extends BaseActivity {
 
     private LottieAnimationView animationView;
 
+    private ShimmerTextView takforFeedback;
+    private Shimmer shimmer;
 
 
     @Override
@@ -46,6 +50,11 @@ public class TakForFeedback extends BaseActivity {
 
         animationView = findViewById(R.id.animation_view);
         //animationView.startAnimation();
+
+
+        takforFeedback = findViewById(R.id.tak_besked_txtView);
+        shimmer = new Shimmer();
+        shimmer.start(takforFeedback);
 
     }
 
@@ -76,7 +85,7 @@ public class TakForFeedback extends BaseActivity {
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
-        }, 3800);
+        }, 4600);
     }
 
     class OprettetListener implements OnCompleteListener<DocumentReference> {

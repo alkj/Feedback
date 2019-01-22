@@ -8,7 +8,7 @@
     tools:context=".aktiviteter.TakForFeedback">
 
 
-    <TextView
+    <com.romainpiel.shimmer.ShimmerTextView
         android:id="@+id/tak_besked_txtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,6 +20,7 @@
         android:textColor="@color/mørkeGrøn"
         android:textAllCaps="true"
         android:textSize="30sp"
+        app:reflectionColor="@color/shimmerFarveGrøn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +34,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="260dp"
         app:layout_constraintBottom_toBottomOf="parent"
