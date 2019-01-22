@@ -46,19 +46,23 @@
 
         <Button
             android:id="@+id/feedback_tilbage_btn"
+            style="@style/Knap.Lysegrå"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginEnd="16dp"
-            android:text="Tilbage" />
+            android:text="Tilbage"
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/feedback_videre_btn"
+            style="@style/Knap.Grøn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginStart="16dp"
-            android:text="Videre" />
+            android:text="Videre"
+            android:textSize="14sp" />
     </FrameLayout>
 
 

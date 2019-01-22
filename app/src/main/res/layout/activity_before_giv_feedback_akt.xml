@@ -7,92 +7,50 @@
     tools:context=".aktiviteter.beforeGivFeedback_akt">
 
     <TextView
-        android:id="@+id/dagsordenTitelTV"
+        android:id="@+id/navnTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:fontFamily="@font/open_sans_bold"
         android:text="Mødenavn"
         android:textAlignment="center"
-        android:textSize="36sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/stedTitelTV"
+        android:id="@+id/stedTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/open_sans_bold"
-        android:text="Sted"
-        android:textAlignment="center"
-        android:textSize="36sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/navnTV" />
 
     <TextView
-        android:id="@+id/datoTitelTV"
+        android:id="@+id/datoTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/open_sans_bold"
-        android:text="Dato"
-        android:textAlignment="center"
-        android:textSize="36sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stedTV" />
 
-    <TextView
-        android:id="@+id/navnTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="@font/open_sans_semibold"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dagsordenTitelTV" />
-
-    <TextView
-        android:id="@+id/stedTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="@font/open_sans_semibold"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stedTitelTV" />
-
-    <TextView
-        android:id="@+id/datoTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="@font/open_sans_semibold"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datoTitelTV" />
-
     <Button
         android:id="@+id/buttonStartFeed"
+        style="@style/Knap.Grøn"
         android:layout_width="200dp"
         android:layout_height="54dp"
         android:layout_marginStart="8dp"
@@ -100,7 +58,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:autofillHints="DBDBDB"
-        android:fontFamily="sans-serif"
+        android:fontFamily="@font/open_sans_semibold"
         android:text="Start Feedback"
         android:textColor="#FBF7FF"
         android:textSize="20sp"

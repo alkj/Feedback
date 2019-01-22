@@ -23,8 +23,8 @@
 
     <ImageView
         android:id="@+id/startskaerm_imgView"
-        android:layout_width="256dp"
-        android:layout_height="64dp"
+        android:layout_width="275dp"
+        android:layout_height="70dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="Spinoff Logo"
