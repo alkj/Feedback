@@ -28,7 +28,7 @@ public class RedigerProfilOplysninger_frg extends Fragment implements View.OnCli
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth firebaseAuth;
 
-    private EditText editTextFornavn, editTextEfternavn, editTextVirkid, editTextTlf;
+    private EditText editTextFornavn, editTextEfternavn, editTextTlf;
     private Button buttonGem;
 
 
@@ -41,7 +41,6 @@ public class RedigerProfilOplysninger_frg extends Fragment implements View.OnCli
 
         editTextFornavn = rod.findViewById(R.id.rediger_profil_fornavn_editText);
         editTextEfternavn = rod.findViewById(R.id.rediger_profil_efternavn_editTxt);
-        editTextVirkid = rod.findViewById(R.id.rediger_profil_virksomheds_id_editTxt);
         editTextTlf = rod.findViewById(R.id.rediger_profil_tlf_editText);
 
 
@@ -52,7 +51,6 @@ public class RedigerProfilOplysninger_frg extends Fragment implements View.OnCli
         editTextFornavn.setText(personData.getMødeholder().getFornavn());
         editTextEfternavn.setText(personData.getMødeholder().getEfternavn());
         editTextTlf.setText(personData.getMødeholder().getTlf());
-        editTextVirkid.setText(personData.getMødeholder().getVirk_id());
 
 
 
@@ -65,12 +63,10 @@ public class RedigerProfilOplysninger_frg extends Fragment implements View.OnCli
             //tjekker om der er lavet ændringer, før det bliver sendt til firebase.
             if (!editTextFornavn.getText().toString().equals(personData.getMødeholder().getFornavn())
                     || !editTextEfternavn.getText().toString().equals(personData.getMødeholder().getEfternavn().toString())
-                    || !editTextVirkid.getText().toString().equals(personData.getMødeholder().getVirk_id().toString())
                     || !editTextTlf.getText().toString().equals(personData.getMødeholder().getTlf().toString())) {
 
                 personData.getMødeholder().setFornavn(editTextFornavn.getText().toString());
                 personData.getMødeholder().setEfternavn(editTextEfternavn.getText().toString());
-                personData.getMødeholder().setVirk_id(editTextVirkid.getText().toString());
                 personData.getMødeholder().setTlf(editTextTlf.getText().toString());
 
                 Log.d(TAG, "onClick: data klar til at blive sendt til firebase");

@@ -13,7 +13,7 @@
     <Button
         android:id="@+id/rediger_profil_gem_ændringer_button"
         style="@style/Knap.Lysegrå"
-        android:layout_width="200dp"
+        android:layout_width="275dp"
         android:layout_height="60dp"
         android:layout_marginTop="40dp"
         android:autofillHints="DBDBDB"
@@ -126,30 +126,6 @@
             tools:layout_editor_absoluteX="80dp"
             tools:layout_editor_absoluteY="406dp" />
 
-
-        <EditText
-            android:id="@+id/rediger_profil_virksomheds_id_editTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:allowUndo="true"
-            android:autofillHints="DBDBDB"
-            android:clickable="false"
-            android:drawableLeft="@drawable/icon_virk_id"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:fadingEdge="horizontal|vertical"
-            android:hint="Virksomheds ID"
-            android:inputType="textPersonName"
-            android:textAppearance="@style/TextAppearance.AppCompat"
-            android:textColor="@color/colorMEGETLysGrå"
-            android:textColorHint="@color/colorHvid"
-            android:textSize="14dp"
-            app:backgroundTint="@color/colorLysegrå"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteX="46dp"
-            tools:layout_editor_absoluteY="257dp" />
 
     </LinearLayout>
 
