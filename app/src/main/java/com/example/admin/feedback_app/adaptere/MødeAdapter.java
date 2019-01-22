@@ -65,6 +65,7 @@ public class MødeAdapter extends ArrayAdapter<Møde> {
             mødeID.setText(møde.getDato());
             mødedato.setText("");
 
+            //sætter nogle ting anderledes iforhold til hvis mødet er afholdt
             if (!møde.isAfholdt()){
                 mødeID.setText("Møde-ID:  " + møde.getMødeIDtildeltager());
                 mødedato.setText(møde.getDato());
