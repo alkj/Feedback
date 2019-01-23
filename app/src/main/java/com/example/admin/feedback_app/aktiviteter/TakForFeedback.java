@@ -15,21 +15,19 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.romainpiel.shimmer.Shimmer;
-import com.romainpiel.shimmer.ShimmerTextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class TakForFeedback extends BaseActivity {
 
-    private TextView tekst_besked;
+    private TextView tekst_besked, takforFeedback;
     private final String TAG = "TakForFeedback";
 
     private LottieAnimationView animationView;
 
-    private ShimmerTextView takforFeedback;
-    private Shimmer shimmer;
+    //private ShimmerTextView takforFeedback;
+    //private Shimmer shimmer;
 
 
     @Override
@@ -40,7 +38,7 @@ public class TakForFeedback extends BaseActivity {
 
         if (NetworkManager.harInternet(this)){
             tekst_besked.setVisibility(View.INVISIBLE);
-            showProgressDialog();
+            //showProgressDialog();
             indsendFeedback();
         }
         else {
@@ -49,12 +47,19 @@ public class TakForFeedback extends BaseActivity {
         }
 
         animationView = findViewById(R.id.animation_view);
+        animationView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        }, 3000);
         //animationView.startAnimation();
 
-
+/*
         takforFeedback = findViewById(R.id.tak_besked_txtView);
         shimmer = new Shimmer();
         shimmer.start(takforFeedback);
+*/
 
     }
 
@@ -85,7 +90,7 @@ public class TakForFeedback extends BaseActivity {
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
-        }, 4600);
+        }, 2200);
     }
 
     class OprettetListener implements OnCompleteListener<DocumentReference> {
