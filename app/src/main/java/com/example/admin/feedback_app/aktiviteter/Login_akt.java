@@ -361,7 +361,8 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                     feedback.add(svarListe);
                 }
 
-                PersonData.getInstance().tilføjFeedback(mødeid, feedback);
+                if (feedback.size() > 0)
+                    PersonData.getInstance().tilføjFeedback(mødeid, feedback);
 
                 taskCount--;
 
