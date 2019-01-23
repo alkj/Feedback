@@ -47,12 +47,13 @@ public class TakForFeedback extends BaseActivity {
         }
 
         animationView = findViewById(R.id.animation_view);
-        animationView.postDelayed(new Runnable() {
+       /* animationView.postDelayed(new Runnable() {
             @Override
             public void run() {
 
             }
         }, 3000);
+        */
         //animationView.startAnimation();
 
 /*

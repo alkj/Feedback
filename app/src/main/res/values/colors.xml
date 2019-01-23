@@ -15,5 +15,6 @@
     <color name="shimmerFarveGrå">#F1F5EF</color>
     <color name="mørkeGrøn">#59910D</color>
     <color name="colorSort">#242424</color>
+    <color name="menuBarSort">#292626</color>
 
 </resources>
