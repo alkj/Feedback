@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
-import com.example.admin.feedback_app.adaptere.MødeAdapter;
+import com.example.admin.feedback_app.adaptere.IkkeAfholdtMødeAdapter;
 import com.example.admin.feedback_app.aktiviteter.IkkeAfholdtMoede_akt;
 
 
@@ -40,7 +40,7 @@ public class IkkeAfholdt_frg extends Fragment implements AdapterView.OnItemClick
 
     private void indlæsListView(){
         //Få mødenavne vist i et listview
-        MødeAdapter listviewAdapter = new MødeAdapter(getActivity(),
+        IkkeAfholdtMødeAdapter listviewAdapter = new IkkeAfholdtMødeAdapter(getActivity(),
                 R.layout.list_row_item_moede,
                 PersonData.getInstance().getIkkeAfholdteMøder());
         listView.setAdapter(listviewAdapter);

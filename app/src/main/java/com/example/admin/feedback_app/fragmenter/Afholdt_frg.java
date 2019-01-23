@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
-import com.example.admin.feedback_app.adaptere.MødeAdapter;
+import com.example.admin.feedback_app.adaptere.AfholdtMødeAdapter;
 import com.example.admin.feedback_app.aktiviteter.AfholdtMeode_akt;
 
 
@@ -39,8 +39,7 @@ public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickList
 
     private void indlæsListView(){
         //Få mødenavne vist i et listview
-        MødeAdapter listviewAdapter = new MødeAdapter(getActivity(),
-                R.layout.list_row_item_moede,
+        AfholdtMødeAdapter listviewAdapter = new AfholdtMødeAdapter(getActivity(),
                 PersonData.getInstance().getAfholdteMøder());
         listView.setAdapter(listviewAdapter);
         listView.setOnItemClickListener(this);
@@ -51,6 +50,7 @@ public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickList
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(getContext(), AfholdtMeode_akt.class);
         intent.putExtra("INDEKS", position);
+
 
         startActivity(intent);
     }

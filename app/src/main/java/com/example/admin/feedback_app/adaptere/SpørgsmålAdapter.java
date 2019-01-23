@@ -45,11 +45,13 @@ public class SpørgsmålAdapter extends BaseExpandableListAdapter {
 
         for (int i = 0; i < groupList.size() ; i++){
             List<Svar> svar = new ArrayList<>();
-            for (List<Svar> person : feedback) {
-                Svar nsvar = person.get(i);
-                if (nsvar.getTekst() != null && nsvar.getTekst().length() > 0)
-                    svar.add(nsvar);
+            if (feedback != null) {
+                for (List<Svar> person : feedback) {
+                    Svar nsvar = person.get(i);
+                    if (nsvar.getTekst() != null && nsvar.getTekst().length() > 0)
+                        svar.add(nsvar);
 
+                }
             }
             map.put(groupList.get(i),svar);
 
@@ -126,19 +128,18 @@ public class SpørgsmålAdapter extends BaseExpandableListAdapter {
 
         barChart.setColors(colors);
         int antal_1 = 0, antal_2 = 0, antal_3 = 0, antal_4 = 0;
-        for (List<Svar> person : childListe ){
-            Svar svar = person.get(groupPosition);
-            if (svar.getSmiley()==1){
-                antal_1++;
-            }
-            else if (svar.getSmiley()==2){
-                antal_2++;
-            }
-            else if (svar.getSmiley()==3){
-                antal_3++;
-            }
-            else if (svar.getSmiley()==4){
-                antal_4++;
+        if (childListe != null) {
+            for (List<Svar> person : childListe) {
+                Svar svar = person.get(groupPosition);
+                if (svar.getSmiley() == 1) {
+                    antal_1++;
+                } else if (svar.getSmiley() == 2) {
+                    antal_2++;
+                } else if (svar.getSmiley() == 3) {
+                    antal_3++;
+                } else if (svar.getSmiley() == 4) {
+                    antal_4++;
+                }
             }
         }
 
