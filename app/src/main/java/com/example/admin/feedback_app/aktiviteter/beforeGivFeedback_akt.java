@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.admin.feedback_app.R;
 import com.romainpiel.shimmer.Shimmer;
@@ -39,6 +40,7 @@ public class beforeGivFeedback_akt extends AppCompatActivity {
         String formålString = getIntent().getStringExtra("FORMÅL");
         String tidStartString = getIntent().getStringExtra("TIDSTART");
         String tidSlutString = getIntent().getStringExtra("TIDSLUT");
+        final boolean igang = getIntent().getBooleanExtra("igang",false);
 
         navn.setText(navnString);
         dato.setText(datoString);
@@ -52,12 +54,17 @@ public class beforeGivFeedback_akt extends AppCompatActivity {
         givFeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(igang) {
 
-                Intent intent = new Intent(getApplicationContext(), Overholdt_Giv_Feedback_akt.class);
-                intent.putExtra("MØDEID", getIntent().getStringExtra("MØDEID"));
-                intent.putExtra("MØDEIDdel",getIntent().getStringExtra("MØDEIDdel"));
-                startActivity(intent);
-                finish();
+                    Intent intent = new Intent(getApplicationContext(), Overholdt_Giv_Feedback_akt.class);
+                    intent.putExtra("MØDEID", getIntent().getStringExtra("MØDEID"));
+                    intent.putExtra("MØDEIDdel", getIntent().getStringExtra("MØDEIDdel"));
+                    startActivity(intent);
+                    finish();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Dette møde er ikke i gang", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });

@@ -159,6 +159,8 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
                     intent.putExtra("FORMÅL",mødet.getFormål());
                     intent.putExtra("TIDSTART",mødet.getStartTid());
                     intent.putExtra("TIDSLUT",mødet.getSlutTid());
+                    intent.putExtra("igang",mødet.getIgang());
+
                     startActivity(intent);
 
                 }
@@ -190,6 +192,7 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
                     String formål = document.get("formål").toString();
                     String tidStart = document.get("startTid").toString();
                     String tidSlut = document.get("slutTid").toString();
+                    Boolean igang = document.getBoolean("igang");
 
                     mødet.setMødeID(mødeID);
                     mødet.setMødeIDtildeltager(mødeIDtildeltager);
@@ -199,6 +202,7 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
                     mødet.setFormål(formål);
                     mødet.setStartTid(tidStart);
                     mødet.setSlutTid(tidSlut);
+                    mødet.setIgang(igang);
 
                     Log.d("debug, hvad bliver", "Mødeid'et bliver: " + mødeID);
 
