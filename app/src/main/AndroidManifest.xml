@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".aktiviteter.ikke_afholdt_moede_rediger_akt"></activity>
         <activity
             android:name=".aktiviteter.StartSkaerm_akt"
             android:screenOrientation="portrait"
