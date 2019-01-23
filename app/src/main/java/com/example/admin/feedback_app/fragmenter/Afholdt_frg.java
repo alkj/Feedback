@@ -2,8 +2,11 @@ package com.example.admin.feedback_app.fragmenter;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,16 +14,32 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.Svar;
 import com.example.admin.feedback_app.adaptere.AfholdtMødeAdapter;
 import com.example.admin.feedback_app.aktiviteter.AfholdtMeode_akt;
+import com.example.admin.feedback_app.aktiviteter.Login_akt;
+import com.example.admin.feedback_app.aktiviteter.beforeGivFeedback_akt;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickListener {
     private static final String TAG = "Afholdt";
     private ListView listView;
     private SwipeRefreshLayout refreshLayout;
+    private FirebaseAuth firebaseAuth;
+    private int taskCount = 0;
 
 
     @Override
@@ -36,12 +55,13 @@ public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickList
             @Override
             public void onRefresh() {
                 //Here you can update your data from internet or from local SQLite data
-                Toast.makeText(getContext(), "Du refreshede ", Toast.LENGTH_SHORT).show();
-                refreshLayout.setRefreshing(false);
-
-            }
+                //Toast.makeText(getContext(), "Du refreshede ", Toast.LENGTH_SHORT).show();
+                PersonData.getInstance().rydmøder();
+                hentMøderFraFire();
+                            }
         });
 
+        firebaseAuth = FirebaseAuth.getInstance();
 
         return v;
     }
@@ -58,6 +78,8 @@ public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickList
                 PersonData.getInstance().getAfholdteMøder());
         listView.setAdapter(listviewAdapter);
         listView.setOnItemClickListener(this);
+        refreshLayout.setRefreshing(false);
+
 
     }
 
@@ -69,4 +91,108 @@ public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickList
 
         startActivity(intent);
     }
+
+    private void hentMøderFraFire() {
+        //updateProgressDialog("Henter møderne");
+        FirebaseFirestore.getInstance().collection("Møder")
+                .whereEqualTo("mødeholderID", firebaseAuth.getCurrentUser().getUid())
+                .get()
+                .addOnCompleteListener(new HeentMøderListener());
+    }
+
+    class HeentMøderListener implements OnCompleteListener<QuerySnapshot> {
+
+        @Override
+        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+            if (task.isSuccessful()) {
+                Log.d("TAG", "Inde i task.succes");
+                if (task.getResult().isEmpty()){
+                    //næsteSide();
+                    return;
+                }
+                for (QueryDocumentSnapshot document : task.getResult()) {
+                    Log.d("TAG", "Inde i for-loopet");
+                    Møde mødeObj = new Møde(
+                            document.get("navn").toString(),
+                            document.get("formål").toString(),
+                            document.get("dato").toString(),
+                            document.get("startTid").toString(),
+                            document.get("slutTid").toString(),
+                            document.get("sted").toString(),
+                            document.get("mødeholderID").toString(),
+                            document.getBoolean("afholdt")
+
+                    );
+                    mødeObj.setIgang(document.getBoolean("igang"));
+                    mødeObj.setMødeIDtildeltager(document.get("mødeIDtildeltager").toString());
+                    mødeObj.setMødeID(document.get("mødeID").toString());
+
+                    PersonData.getInstance().tilføjMøde(mødeObj);
+
+                    if (mødeObj.isAfholdt()) {
+                        FirebaseFirestore.getInstance()
+                                .collection("Feedback")
+                                .whereEqualTo("mødeId", mødeObj.getMødeID())
+                                .get().addOnCompleteListener(new HeentFeedbackListener(mødeObj.getMødeID()));
+                    }
+
+                    Log.d(TAG, "navn fra firebase: " + document.get("navn").toString());
+                    Log.d(TAG, "mødelistens navn: " + mødeObj.getNavn());
+                    Log.d(TAG, document.getId() + " => " + document.getData());
+                }
+
+
+                PersonData.getInstance().sorterMøderne();
+
+
+
+                //næsteSide();
+            } else {
+                Log.d(TAG, "Error getting documents: ", task.getException());
+            }
+
+        }
+        class HeentFeedbackListener implements OnCompleteListener<QuerySnapshot>{
+
+            private String mødeid;
+
+            public HeentFeedbackListener(String mødeid){
+                this.mødeid = mødeid;
+                taskCount++;
+            }
+
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()){
+                    List<List<Svar>> feedback = new ArrayList<>();
+
+                    for (QueryDocumentSnapshot document : task.getResult()){
+                        Map<String, Object> map = document.getData();
+                        List<Svar> svarListe = new ArrayList<>();
+
+                        for (Map.Entry<String, Object> entry : map.entrySet()) {
+                            if (entry.getKey().equals("svar")) {
+                                List<Object> person = (List<Object>) entry.getValue();
+                                for (Object obj : person){
+                                    svarListe.add(Svar.getSvar(obj.toString()));
+                                }
+                            }
+                        }
+
+                        feedback.add(svarListe);
+                    }
+
+                    if (feedback.size() > 0)
+                        PersonData.getInstance().tilføjFeedback(mødeid, feedback);
+
+                    taskCount--;
+
+                    if (taskCount <= 0){
+                        indlæsListView();
+                    }
+                }
+            }
+        }
+    }
+
 }

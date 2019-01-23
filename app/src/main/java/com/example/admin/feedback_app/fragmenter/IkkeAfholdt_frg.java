@@ -3,6 +3,7 @@ package com.example.admin.feedback_app.fragmenter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.example.admin.feedback_app.aktiviteter.IkkeAfholdtMoede_akt;
 public class IkkeAfholdt_frg extends Fragment implements AdapterView.OnItemClickListener {
     private static final String TAG = "ikkeAfholdt";
     private ListView listView;
+    private SwipeRefreshLayout refreshLayout;
 
 
 
@@ -27,6 +29,10 @@ public class IkkeAfholdt_frg extends Fragment implements AdapterView.OnItemClick
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_moedeliste, container, false);
         listView = v.findViewById(R.id.moedeliste_listView);
+        refreshLayout = v.findViewById(R.id.pullToRefresh);
+        //setting an setOnRefreshListener on the SwipeDownLayout
+        refreshLayout.setEnabled(false);
+
 
         return v;
     }

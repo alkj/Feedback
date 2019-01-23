@@ -151,4 +151,8 @@ public class PersonData {
         mødeholder = null;
         møderne = null;
     }
+    public void rydmøder(){
+        møderne = null;
+    }
 }
+
