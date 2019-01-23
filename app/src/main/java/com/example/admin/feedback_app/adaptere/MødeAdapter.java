@@ -44,43 +44,62 @@ public class MødeAdapter extends ArrayAdapter<Møde> {
             HorizontalStackedBarChart barChart = view.findViewById(R.id.list_chart);
 
             if (møde.isAfholdt()){
+
                 /*løber igennem alle svarene fra samtlige deltager og sørger for at tælle op af hvor mange af
                 de forskellige smileys der er givet 
                  */
 
-                for (List<Svar> person : PersonData.getInstance().getFeedbackTilMøde(møde.getMødeID())){
-                    for (Svar svar : person){
-                        if (svar.getSmiley()==1){
-                            antal_1++;
-                        }
-                        else if (svar.getSmiley()==2){
-                            antal_2++;
-                        }
-                        else if (svar.getSmiley()==3){
-                            antal_3++;
-                        }
-                        else if (svar.getSmiley()==4){
-                            antal_4++;
+                List<List<Svar>> listmedsvar = PersonData.getInstance().getFeedbackTilMøde(møde.getMødeID());
+                if (listmedsvar==null){
+                    int[] colors = {
+                            getContext().getColor(R.color.colorMegetSur),
+                            getContext().getColor(R.color.colorSur),
+                            getContext().getColor(R.color.colorGlad),
+                            getContext().getColor(R.color.colorMegetGlad)
+                    };
+                    barChart.setColors(colors);
+
+
+                    barChart.setValues(new int[] {
+                            0,
+                            0,
+                            0,
+                            0
+                    });
+
+                }else {
+                    for (List<Svar> person : listmedsvar) {
+                        for (Svar svar : person) {
+                            if (svar.getSmiley() == 1) {
+                                antal_1++;
+                            } else if (svar.getSmiley() == 2) {
+                                antal_2++;
+                            } else if (svar.getSmiley() == 3) {
+                                antal_3++;
+                            } else if (svar.getSmiley() == 4) {
+                                antal_4++;
+                            }
+
                         }
 
                     }
 
-                }
-                int[] colors = {
-                        getContext().getColor(R.color.colorMegetSur),
-                        getContext().getColor(R.color.colorSur),
-                        getContext().getColor(R.color.colorGlad),
-                        getContext().getColor(R.color.colorMegetGlad)
-                };
-                barChart.setColors(colors);
+                    int[] colors = {
+                            getContext().getColor(R.color.colorMegetSur),
+                            getContext().getColor(R.color.colorSur),
+                            getContext().getColor(R.color.colorGlad),
+                            getContext().getColor(R.color.colorMegetGlad)
+                    };
+                    barChart.setColors(colors);
 
-                Random random = new Random();
-                barChart.setValues(new int[] {
-                        antal_1,
-                        antal_2,
-                        antal_3,
-                        antal_4
-                });
+                    Random random = new Random();
+                    barChart.setValues(new int[]{
+                            antal_1,
+                            antal_2,
+                            antal_3,
+                            antal_4
+                    });
+                }
             }
             else
                 barChart.setVisibility(View.GONE);
@@ -97,5 +116,17 @@ public class MødeAdapter extends ArrayAdapter<Møde> {
         }
 
         return view;
+    }
+
+    @Override
+    public int getViewTypeCount() {
+
+        return getCount();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+
+        return position;
     }
 }

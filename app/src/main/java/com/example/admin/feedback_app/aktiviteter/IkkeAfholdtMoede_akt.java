@@ -188,6 +188,8 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements OnClickLi
 
                     Toast.makeText(getApplicationContext(), "Dit møde er nu aflsuttet", Toast.LENGTH_SHORT).show();
 
+
+
                     finish();
 
                 }
