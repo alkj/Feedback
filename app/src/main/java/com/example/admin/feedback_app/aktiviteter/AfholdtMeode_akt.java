@@ -31,6 +31,8 @@ import java.util.Random;
 public class AfholdtMeode_akt extends AppCompatActivity {
 
     private TextView mødenavn;
+    private Møde møde;
+
 
 
     @Override
@@ -38,6 +40,14 @@ public class AfholdtMeode_akt extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_afholdt_meode_akt);
 
+        if (savedInstanceState == null){
+            Bundle bundle = getIntent().getExtras();
+            if (bundle != null){
+                int indeks = bundle.getInt("INDEKS");
+                møde = PersonData.getInstance().getAfholdteMøder().get(indeks);
+
+            }
+        }
         mødenavn = findViewById(R.id.afholdt_mødenavn);
 
 
@@ -45,7 +55,7 @@ public class AfholdtMeode_akt extends AppCompatActivity {
 
         List<String> grouper = Arrays.asList(FeedbackSpørgsmål.SPØRGSMÅL);
 
-        SpørgsmålAdapter adapter = new SpørgsmålAdapter(this, grouper, hentDummyData(grouper));
+        SpørgsmålAdapter adapter = new SpørgsmålAdapter(this, grouper, PersonData.getInstance().getFeedbackTilMøde(møde.getMødeID()));
 
         listView.setAdapter(adapter);
 
