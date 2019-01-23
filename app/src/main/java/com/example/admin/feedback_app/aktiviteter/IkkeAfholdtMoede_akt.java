@@ -41,6 +41,7 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements OnClickLi
     private Chronometer forloebtTid;
 
     FirebaseFirestore firebaseFirestore;
+    private int indeks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +80,7 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements OnClickLi
         if (savedInstanceState == null) {
             Bundle bundle = getIntent().getExtras();
             if(bundle != null){
-                int indeks = bundle.getInt("INDEKS");
+                indeks = bundle.getInt("INDEKS");
                 møde = PersonData.getInstance().getIkkeAfholdteMøder().get(indeks);
             }
         }
@@ -99,15 +100,6 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements OnClickLi
 
 
     }
-
-/**
-
-    private void sendData() {
-
-
-
-    }
-    */
 
 
     public String getCurrentTime() {
