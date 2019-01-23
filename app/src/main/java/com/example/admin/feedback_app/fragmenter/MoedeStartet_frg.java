@@ -40,7 +40,7 @@ public class MoedeStartet_frg extends Fragment implements View.OnClickListener {
 
         moedeID = view.findViewById(R.id.tvMødeIDStartetMøde);
         moedeNavn = view.findViewById(R.id.tvMødeStartetMødeNavn);
-        moedeFormaal = view.findViewById(R.id.tvMødeFormaal);
+        moedeFormaal = view.findViewById(R.id.tvFormål);
         inviterede = view.findViewById(R.id.tvMødeStartetInviterede);
         fremmoedte = view.findViewById(R.id.tvMødeStartetFremmødte);
         planlagtStarttid = view.findViewById(R.id.tvMødeStartetPlanlagtStarttid);
