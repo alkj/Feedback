@@ -51,6 +51,6 @@ public class Svar {
 
     @Override
     public String toString() {
-        return "{"+TEKST+tekst+KOMMA+smiley+"}";
+        return "{"+TEKST+tekst+KOMMA+SMILEY+smiley+"}";
     }
 }
