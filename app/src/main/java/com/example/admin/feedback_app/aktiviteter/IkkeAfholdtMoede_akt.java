@@ -3,10 +3,8 @@ package com.example.admin.feedback_app.aktiviteter;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -15,15 +13,11 @@ import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
 import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
-import com.example.admin.feedback_app.fragmenter.MoedeStartet_frg;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
@@ -40,7 +34,7 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements OnClickLi
 
     private TextView navn, formaal, sted, tidspunkt, dato, status, mødeID, startTidspunkt;
 
-    private Button startMoede;
+    private Button startMoede, afslutMoede;
 
     private ImageView slet, rediger;
 
@@ -57,6 +51,9 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements OnClickLi
 
         moedeID = findViewById(R.id.tvMødeID);
 
+        slet = findViewById(R.id.imageViewSkraldespand);
+        rediger = findViewById(R.id.imageViewBlyant);
+
         navn = findViewById(R.id.tvNavn);
         formaal = findViewById(R.id.tvFormål);
         sted = findViewById(R.id.tvSted);
@@ -70,9 +67,11 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements OnClickLi
         forloebtTid = findViewById(R.id.tvTimer);
         forloebtTid.stop();
 
-        startMoede = findViewById(R.id.button3);
+        startMoede = findViewById(R.id.buttonStartMøde);
         startMoede.setOnClickListener(this);
-
+        afslutMoede = findViewById(R.id.buttonAfslutMøde);
+        afslutMoede.setVisibility(View.INVISIBLE);
+        afslutMoede.setOnClickListener(this);
 
 
 
@@ -152,11 +151,14 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements OnClickLi
                         startTidspunkt.setText(getCurrentTime());
                         møde.setStartTid(getCurrentTime());
 
-                        startMoede.setText("Afslut Møde");
-                        startMoede.setBackgroundColor(ContextCompat.getColor(IkkeAfholdtMoede_akt.this,R.color.colorMegetSur));
+                        startMoede.setVisibility(View.INVISIBLE);
+                        afslutMoede.setVisibility(View.VISIBLE);
 
                         status.setText("I gang");
                         status.setTextColor(ContextCompat.getColor(IkkeAfholdtMoede_akt.this,R.color.colorMegetGlad));
+
+                        rediger.setVisibility(View.INVISIBLE);
+                        slet.setVisibility(View.INVISIBLE);
 
                         møde.setIgang(true);
 
@@ -168,7 +170,7 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements OnClickLi
                 dialog.show();
             }
         }
-        else if(startMoede.getText().equals("Afslut Møde")) {
+        else if(v == afslutMoede) {
             Log.i("hej","else kommer igennem");
             final AlertDialog.Builder builder = new AlertDialog.Builder(IkkeAfholdtMoede_akt.this);
             builder.setMessage("Er du sikker på at du vil afslutte mødet?");

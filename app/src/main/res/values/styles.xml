@@ -39,6 +39,11 @@
         <item name="android:textColor">@color/colorHvid</item>
     </style>
 
+    <style name="Knap.Rød" parent="Knap">
+        <item name="android:background">@drawable/knap_roed</item>
+        <item name="android:textColor">@color/colorHvid</item>
+    </style>
+
     <!-- EditText temaer. -->
     <style name="Input" parent="Widget.AppCompat.EditText">
         <item name="android:fontFamily">sans-serif</item>
