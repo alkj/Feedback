@@ -95,7 +95,7 @@
             android:id="@+id/tvStatus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
+            android:layout_marginStart="30dp"
             android:text="Ikke i gang "
             android:textAppearance="@style/Tekst"
             android:textColor="@color/colorLysegrå"
@@ -107,17 +107,19 @@
             android:id="@+id/tvTimer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:layout_weight="1"
             android:gravity="left"
             android:textAppearance="@style/Tekst"
             android:textColor="@color/colorLysegrå"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/statuss"
             app:layout_constraintTop_toBottomOf="@+id/tvStatus" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageViewSkraldespand"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="16dp"
@@ -168,7 +170,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvTidspunkt" />
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/imageViewBlyant"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="16dp"
@@ -276,7 +278,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonStartMøde"
         style="@style/Knap.Grøn"
         android:layout_width="275dp"
         android:layout_height="60dp"
@@ -284,6 +286,20 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:text="Start Møde"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+
+    <Button
+        android:id="@+id/buttonAfslutMøde"
+        style="@style/Knap.Rød"
+        android:layout_width="275dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="Afslut møde"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
