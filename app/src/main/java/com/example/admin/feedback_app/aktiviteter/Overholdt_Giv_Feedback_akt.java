@@ -3,8 +3,13 @@ package com.example.admin.feedback_app.aktiviteter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Rect;
+import android.os.Build;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -13,14 +18,18 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.feedback_app.FeedbackManager;
 import com.example.admin.feedback_app.FeedbackSpørgsmål;
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.VibratorManager;
 import com.example.admin.feedback_app.fragmenter.Feedback_frg;
 
 /**
@@ -117,6 +126,8 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Vie
         animatorSet.play(tilbageAnim).after(rystAnim);
         animatorSet.start();
 
+        VibratorManager.vibrerMønster(this,VibratorManager.FEJL_VIB,-1);
+
         Toast.makeText(this, R.string.mangler_smiley, Toast.LENGTH_SHORT).show();
     }
 
@@ -181,5 +192,24 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Vie
         }
     }
 
+    /**
+     * Taget fra: https://stackoverflow.com/a/36889384
+     */
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if ( v instanceof EditText) {
+                Rect outRect = new Rect();
+                v.getGlobalVisibleRect(outRect);
+                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+            }
+        }
+        return super.dispatchTouchEvent(event);
+    }
 
 }

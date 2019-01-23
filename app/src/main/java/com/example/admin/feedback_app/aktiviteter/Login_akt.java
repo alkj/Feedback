@@ -18,6 +18,7 @@ import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
 import com.example.admin.feedback_app.Svar;
+import com.example.admin.feedback_app.VibratorManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -137,6 +138,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         Log.d(TAG, "signIn:" + email);
 
         if (!validering(email, password)) {
+            VibratorManager.vibrerMønster(this,VibratorManager.FEJL_VIB,-1);
             return;
         }
 

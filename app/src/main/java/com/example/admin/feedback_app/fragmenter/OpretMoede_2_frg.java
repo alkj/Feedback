@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.VibratorManager;
 import com.example.admin.feedback_app.dialogs.DatoPickerDialog_frg;
 import com.example.admin.feedback_app.dialogs.TidPickerDialog_frg;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -95,6 +96,7 @@ public class OpretMoede_2_frg extends Fragment implements View.OnClickListener {
             case R.id.videreBTN:
 
                 if(!validering()){
+                    VibratorManager.vibrerMønster(getContext(),VibratorManager.FEJL_VIB,-1);
                     return;
                 }
 

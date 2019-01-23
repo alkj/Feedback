@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.VibratorManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -107,6 +108,8 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
 
             //hvis edittext er tom
             if(mødeId_editTxt.length()==0){
+                VibratorManager.vibrerMønster(this,VibratorManager.FEJL_VIB,-1);
+                mødeId_editTxt.setError("Indtast ID");
                 Toast.makeText(this, "Indtast ID", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -117,7 +120,7 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
                 for (String s : gg) {
 
                     if (s.equals(mødeID)) {
-                        Toast.makeText(this, "Du har allerede givet feedback", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Du har allerede givet feedback", Toast.LENGTH_SHORT).show();
                         Log.i("hej", "mødeID er lig med et brygt et");
                         return;
                     }
@@ -141,6 +144,8 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
 
                 if (mødet.getMødeIDtildeltager()==null) {
                     hideProgressDialog();
+                    VibratorManager.vibrerMønster(getApplicationContext(),VibratorManager.FEJL_VIB,-1);
+                    mødeId_editTxt.setError("Forkert møde-ID");
                     Toast.makeText(getApplicationContext(), "Forkert møde-ID ", Toast.LENGTH_SHORT).show();
                 }
 

@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.admin.feedback_app.R;
+import com.example.admin.feedback_app.VibratorManager;
 
 
 public class OpretMoede_1_frg extends Fragment{
@@ -33,6 +34,7 @@ public class OpretMoede_1_frg extends Fragment{
             @Override
             public void onClick(View v) {
                 if(!validering()){
+                    VibratorManager.vibrerMønster(getContext(),VibratorManager.FEJL_VIB,-1);
                     return;
                 }
                 smødeNavn = mødeNavn.getText().toString();
