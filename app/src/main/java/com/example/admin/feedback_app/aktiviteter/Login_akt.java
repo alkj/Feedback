@@ -196,20 +196,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         //Stop loading efter firebase er færdig med at give svar
         hideProgressDialog();
 
-        String mødeid = "01ef82c7-4291-42c0-8f38-4d59de2d2e20", log = new String();
-        for (List<Svar> person : PersonData.getInstance().getFeedbackTilMøde(mødeid)){
-            log += "Person [";
-            for (Svar svar : person){
-                log += "{ smiley = ";
-                log += svar.getSmiley();
-                log += ", tekst = ";
-                log += svar.getTekst();
-                log += " }";
-            }
-            log += " ]\n";
-        }
-
-        Log.i(TAG, log);
+        
 
         //Giver lige en besked
         Toast.makeText(this,
@@ -288,7 +275,13 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         @Override
         public void onComplete(@NonNull Task<QuerySnapshot> task) {
             if (task.isSuccessful()) {
+                Log.d("TAG", "Inde i task.succes");
+                if (task.getResult().isEmpty()){
+                    næsteSide();
+                    return;
+                }
                 for (QueryDocumentSnapshot document : task.getResult()) {
+                    Log.d("TAG", "Inde i for-loopet");
                     Møde mødeObj = new Møde(
                             document.get("navn").toString(),
                             document.get("formål").toString(),

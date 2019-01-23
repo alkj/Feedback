@@ -35,7 +35,10 @@ public class IkkeAfholdt_frg extends Fragment implements AdapterView.OnItemClick
     public void onResume(){
         super.onResume();
 
-        indlæsListView();
+        if (!PersonData.getInstance().getIkkeAfholdteMøder().isEmpty()) {
+
+            indlæsListView();
+        }
     }
 
     private void indlæsListView(){

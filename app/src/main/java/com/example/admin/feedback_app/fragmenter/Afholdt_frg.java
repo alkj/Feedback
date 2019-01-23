@@ -33,7 +33,6 @@ public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickList
     @Override
     public void onResume(){
         super.onResume();
-
         indlæsListView();
     }
 
