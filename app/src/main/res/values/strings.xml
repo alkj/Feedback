@@ -51,4 +51,11 @@
     <string name="opret_bruger">Opret bruger</string>
 
 
+    <!-- Strings til feedback mødedeltager -->
+    <string name="dato_underline"><u>Dato</u></string>
+    <string name="Mødetid_underline"><u>Møde tid</u></string>
+    <string name="mødested_underline"><u>Mødested</u></string>
+    <string name="formål_underline"><u>Møde formål</u></string>
+    <string name="streg">-</string>
+
 </resources>

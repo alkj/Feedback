@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.admin.feedback_app.FeedbackManager;
 import com.example.admin.feedback_app.FeedbackTilFirebase;
 import com.example.admin.feedback_app.NetworkManager;
@@ -20,26 +21,46 @@ import java.util.TimerTask;
 
 public class TakForFeedback extends BaseActivity {
 
-    private TextView tekst_besked;
+    private TextView tekst_besked, takforFeedback;
     private final String TAG = "TakForFeedback";
 
+    private LottieAnimationView animationView;
+
+    //private ShimmerTextView takforFeedback;
+    //private Shimmer shimmer;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tak_for_feedback);
+            setContentView(R.layout.activity_tak_for_feedback);
         tekst_besked = findViewById(R.id.tak_besked_txtView);
 
         if (NetworkManager.harInternet(this)){
             tekst_besked.setVisibility(View.INVISIBLE);
-            showProgressDialog();
+            //showProgressDialog();
             indsendFeedback();
         }
         else {
             tekst_besked.setText("No internet :O");
             //TODO: hvis ingen internet
         }
+
+        animationView = findViewById(R.id.animation_view);
+        animationView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        }, 3000);
+        //animationView.startAnimation();
+
+/*
+        takforFeedback = findViewById(R.id.tak_besked_txtView);
+        shimmer = new Shimmer();
+        shimmer.start(takforFeedback);
+*/
+
     }
 
     private void indsendFeedback(){
@@ -69,7 +90,7 @@ public class TakForFeedback extends BaseActivity {
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
-        }, 1500);
+        }, 2200);
     }
 
     class OprettetListener implements OnCompleteListener<DocumentReference> {

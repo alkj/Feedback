@@ -4,17 +4,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.admin.feedback_app.R;
+import com.romainpiel.shimmer.Shimmer;
+import com.romainpiel.shimmer.ShimmerButton;
 
 public class beforeGivFeedback_akt extends AppCompatActivity {
 
-    private Button givFeed;
+    //private Button givFeed;
 
     private TextView sted, dato, navn, mødeHolderNavn, formål, tidStart, tidSlut;
 
+    private ShimmerButton givFeed;
+    private Shimmer shimmer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,9 @@ public class beforeGivFeedback_akt extends AppCompatActivity {
 
             }
         });
+
+        shimmer = new Shimmer();
+        shimmer.start(givFeed);
 
     }
 
