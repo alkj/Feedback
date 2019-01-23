@@ -11,19 +11,20 @@ import android.widget.Toast;
 import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ikke_afholdt_moede_rediger_akt extends AppCompatActivity implements View.OnClickListener {
 
     private TextView navn, sted, formål, dato, startTid, slutTid;
 
-    private String navnString, stedString, formålString, datoString, tidStartString, tidSlutString;
+    private String navnString, stedString, formålString, datoString, tidStartString, tidSlutString, mødeIDString, mødeIDTilDeltagerString;
 
     private Button button;
 
     private int indeks;
 
-    private Møde møde;
+    private Møde møde = new Møde();
 
     FirebaseFirestore firebaseFirestore;
 
@@ -55,6 +56,17 @@ public class ikke_afholdt_moede_rediger_akt extends AppCompatActivity implements
         datoString = getIntent().getStringExtra("DATO");
         tidStartString = getIntent().getStringExtra("TIDSTART");
         tidSlutString = getIntent().getStringExtra("TIDSLUT");
+        mødeIDString = getIntent().getStringExtra("MØDEID");
+        mødeIDTilDeltagerString = getIntent().getStringExtra("MØDEIDTILDELTAGER");
+
+        møde.setNavn(navnString);
+        møde.setSted(stedString);
+        møde.setFormål(formålString);
+        møde.setDato(datoString);
+        møde.setStartTid(tidStartString);
+        møde.setSlutTid(tidSlutString);
+        møde.setMødeID(mødeIDString);
+        møde.setMødeIDtildeltager(mødeIDTilDeltagerString);
 
         navn.setText(navnString);
         sted.setText(stedString);
@@ -62,6 +74,7 @@ public class ikke_afholdt_moede_rediger_akt extends AppCompatActivity implements
         dato.setText(datoString);
         startTid.setText(tidStartString);
         slutTid.setText(tidSlutString);
+
 
         indeks = getIntent().getIntExtra("INDEKS",0);
 
@@ -83,7 +96,9 @@ public class ikke_afholdt_moede_rediger_akt extends AppCompatActivity implements
             else {
                 //Læg ændringer op i firebase og i mødeobjekt med pågældende indeks
 
-                //opdaterer mødeobjekt
+                Log.d("TAG", "onClick: mødet bliver ændret nu " + indeks);
+                PersonData pd = PersonData.getInstance();
+                pd.getIkkeAfholdteMøder().remove(indeks);
 
                 møde.setNavn(navn.getText().toString());
                 møde.setSted(sted.getText().toString());
@@ -91,10 +106,18 @@ public class ikke_afholdt_moede_rediger_akt extends AppCompatActivity implements
                 møde.setDato(dato.getText().toString());
                 møde.setStartTid(startTid.getText().toString());
                 møde.setSlutTid(slutTid.getText().toString());
-                //personData skal opdateres
+                møde.setMødeID(mødeIDString);
+                møde.setMødeholderID(FirebaseAuth.getInstance().getUid());
+                møde.setMødeIDtildeltager(mødeIDTilDeltagerString);
 
-                //firebaseFirestore.collection("Møder").document(personData.getMøde);
+                PersonData.getInstance().getIkkeAfholdteMøder().get(indeks).setNavn(navn.getText().toString());
+                PersonData.getInstance().getIkkeAfholdteMøder().get(indeks).setSted(sted.getText().toString());
+                PersonData.getInstance().getIkkeAfholdteMøder().get(indeks).setFormål(formål.getText().toString());
+                PersonData.getInstance().getIkkeAfholdteMøder().get(indeks).setDato(dato.getText().toString());
+                PersonData.getInstance().getIkkeAfholdteMøder().get(indeks).setStartTid(startTid.getText().toString());
+                PersonData.getInstance().getIkkeAfholdteMøder().get(indeks).setSlutTid(slutTid.getText().toString());
 
+                firebaseFirestore.collection("Møder").document(mødeIDString).set(møde);
 
                 finish();
             }

@@ -129,6 +129,9 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements OnClickLi
             intent.putExtra("TIDSTART",møde.getStartTid());
             intent.putExtra("TIDSLUT",møde.getSlutTid());
             intent.putExtra("INDEKS",indeks);
+            intent.putExtra("MØDEID", møde.getMødeID());
+            intent.putExtra("MØDEIDTILDELTAGER", møde.getMødeIDtildeltager());
+            intent.putExtra("INDEKS", indeks);
             startActivity(intent);
         }
 
@@ -214,5 +217,31 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements OnClickLi
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        Bundle bundle = getIntent().getExtras();
+
+        if(bundle != null){
+            indeks = bundle.getInt("INDEKS");
+            møde = PersonData.getInstance().getIkkeAfholdteMøder().get(indeks);
+        }
+
+        navn.setText(møde.getNavn());
+        formaal.setText(møde.getFormål());
+        sted.setText(møde.getSted());
+        tidspunkt.setText(møde.getStartTid()+" - "+møde.getSlutTid());
+        dato.setText(møde.getDato());
+        status.setText("Ikke i gang");
+        mødeID.setText(møde.getMødeIDtildeltager());
+
+        shimmer = new Shimmer();
+        shimmer.start(moedeID);
+        shimmer.setDirection(Shimmer.ANIMATION_DIRECTION_LTR);
+
+
+
+
+    }
 }
