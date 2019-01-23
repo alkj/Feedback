@@ -35,16 +35,12 @@ public class IkkeAfholdt_frg extends Fragment implements AdapterView.OnItemClick
     public void onResume(){
         super.onResume();
 
-        if (!PersonData.getInstance().getIkkeAfholdteMøder().isEmpty()) {
-
-            indlæsListView();
-        }
+        indlæsListView();
     }
 
     private void indlæsListView(){
         //Få mødenavne vist i et listview
         IkkeAfholdtMødeAdapter listviewAdapter = new IkkeAfholdtMødeAdapter(getActivity(),
-                R.layout.list_row_item_moede,
                 PersonData.getInstance().getIkkeAfholdteMøder());
         listView.setAdapter(listviewAdapter);
         listView.setOnItemClickListener(this);

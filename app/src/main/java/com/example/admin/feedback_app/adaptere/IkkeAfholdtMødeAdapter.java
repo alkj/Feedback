@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.admin.feedback_app.Møde;
@@ -14,53 +14,58 @@ import com.example.admin.feedback_app.Svar;
 import com.example.admin.feedback_app.views.HorizontalStackedBarChart;
 
 import java.util.List;
-import java.util.Random;
 
-public class IkkeAfholdtMødeAdapter extends ArrayAdapter<Møde> {
-    private final int layoutId;
+public class IkkeAfholdtMødeAdapter extends BaseAdapter {
+    private final int[] colors;
+    private Context context;
+    private List<Møde> mødeList;
 
-    public IkkeAfholdtMødeAdapter(Context context, int resource, List<Møde> objects) {
-        super(context, resource, objects);
-        layoutId = resource;
+    public IkkeAfholdtMødeAdapter(Context context, List<Møde> mødeList){
+        this.context = context;
+        this.mødeList = mødeList;
+        this.colors = new int[] {
+                context.getColor(R.color.colorMegetSur),
+                context.getColor(R.color.colorSur),
+                context.getColor(R.color.colorGlad),
+                context.getColor(R.color.colorMegetGlad)
+        };
     }
 
     @Override
-    public View getView(int position, View view, ViewGroup parent) {
+    public int getCount() {
+        return mødeList.size();
+    }
 
-        if (view == null) {
-            LayoutInflater inflater = LayoutInflater.from(getContext());
-            view = inflater.inflate(layoutId, null);
+    @Override
+    public Object getItem(int i) {
+        return mødeList.get(i);
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return i;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        Møde møde = (Møde) getItem(i);
+
+        if (view == null){
+            LayoutInflater inflater = (LayoutInflater) context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.list_row_item_moede, null);
         }
 
-        Møde møde = getItem(position);
+        TextView tv_mødenavn = view.findViewById(R.id.list_moednavn);
+        TextView tv_mødedato = view.findViewById(R.id.list_moededato);
+        TextView tv_mødeID = view.findViewById(R.id.list_moedeID);
 
-        TextView mødenavn = view.findViewById(R.id.list_moednavn);
-        TextView mødedato = view.findViewById(R.id.list_moededato);
-        TextView mødeID = view.findViewById(R.id.list_moedeID);
+        view.findViewById(R.id.list_chart).setVisibility(View.GONE);
 
-        HorizontalStackedBarChart barChart = view.findViewById(R.id.list_chart);
-
-        barChart.setVisibility(View.GONE);
-
-        mødenavn.setText(møde.getNavn());
-        mødeID.setText(møde.getDato());
-        mødedato.setText("");
-
-        mødeID.setText("Møde-ID:  " + møde.getMødeIDtildeltager());
-        mødedato.setText(møde.getDato());
+        tv_mødenavn.setText(møde.getNavn());
+        tv_mødeID.setText("Møde-ID:  " + møde.getMødeIDtildeltager());
+        tv_mødedato.setText(møde.getDato());
 
         return view;
-    }
-
-    @Override
-    public int getViewTypeCount() {
-
-        return getCount();
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-
-        return position;
     }
 }
