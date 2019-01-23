@@ -30,7 +30,9 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Login_akt extends BaseActivity implements View.OnClickListener {
 
@@ -344,11 +346,19 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                 List<List<Svar>> feedback = new ArrayList<>();
 
                 for (QueryDocumentSnapshot document : task.getResult()){
-                    List<Svar> svar = FeedbackManager.stringTilFeedback(
-                            document.get("svar").toString()
-                    );
+                    Map<String, Object> map = document.getData();
+                    List<Svar> svarListe = new ArrayList<>();
 
-                    feedback.add(svar);
+                    for (Map.Entry<String, Object> entry : map.entrySet()) {
+                        if (entry.getKey().equals("svar")) {
+                            List<Object> person = (List<Object>) entry.getValue();
+                            for (Object obj : person){
+                                svarListe.add(Svar.getSvar(obj.toString()));
+                            }
+                        }
+                    }
+
+                    feedback.add(svarListe);
                 }
 
                 PersonData.getInstance().tilføjFeedback(mødeid, feedback);
