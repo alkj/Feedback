@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -192,7 +191,7 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements OnClickLi
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
 
-                    møde.setIgang(false);
+                    //møde.setIgang(false);
                     møde.setAfholdt(true);
                     møde.setStartTid(møde.getStartTid());
                     møde.setSlutTid(getCurrentTime());

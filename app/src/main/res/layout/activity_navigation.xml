@@ -48,7 +48,7 @@
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation_bar"
-        android:layout_width="384dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/colorGrøn"
         app:itemIconTint="@drawable/selector_navigationbar_item"

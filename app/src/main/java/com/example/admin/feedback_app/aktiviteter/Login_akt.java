@@ -14,7 +14,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.admin.feedback_app.FeedbackManager;
 import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
@@ -30,7 +29,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -312,7 +310,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                 }
 
 
-                //personData.sorterMøderne();
+                personData.sorterMøderne();
 
 
 
