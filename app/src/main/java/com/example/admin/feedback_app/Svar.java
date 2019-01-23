@@ -1,5 +1,7 @@
 package com.example.admin.feedback_app;
 
+import android.util.Log;
+
 public class Svar {
     private int smiley;
     private String tekst = "";
@@ -13,11 +15,21 @@ public class Svar {
 
             String[] sArray = s.split(KOMMA);
 
-            if (!sArray[0].contains(NULL))
-                svar.setTekst(sArray[0].replace(TEKST, ""));
-            svar.setSmiley(Integer.parseInt(sArray[1].replace(SMILEY, "")));
+            for(String s1 : sArray){
+                if (s1.contains(TEKST)) {
+                    if (!s1.contains(NULL)){
+                        //Log.d("TAG", "Var tekst: " + s1.replace(TEKST, ""));
+                        svar.setTekst(s1.replace(TEKST, ""));
+                    }
+                }
+                else {
+                    //Log.d("TAG", "Var smiley: " + Integer.parseInt(s1.replace(SMILEY, "")));
+                    svar.setSmiley(Integer.parseInt(s1.replace(SMILEY, "")));
+                }
+            }
         }
 
+        //Log.d("TAG", svar.toString());
         return svar;
     }
 
