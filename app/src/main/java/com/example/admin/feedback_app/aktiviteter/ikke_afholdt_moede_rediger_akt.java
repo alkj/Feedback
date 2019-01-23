@@ -74,7 +74,8 @@ public class ikke_afholdt_moede_rediger_akt extends AppCompatActivity implements
     public void onClick(View v) {
         if(v==button){
             //Hvis det ikke er sket nogen ændring
-            if(navn.getText().toString().equals(navnString)&& sted.equals(stedString)&& formål.equals(formålString)&&dato.equals(datoString)&&startTid.equals(tidStartString)&&slutTid.equals(tidSlutString)){
+            if(navn.getText().toString().equals(navnString)&& sted.getText().toString().equals(stedString)&& formål.getText().toString().equals(formålString)&&
+                    dato.getText().toString().equals(datoString)&&startTid.getText().toString().equals(tidStartString)&&slutTid.getText().toString().equals(tidSlutString)){
                 Toast.makeText(getApplicationContext(), "Ingen ændring blev foretaget", Toast.LENGTH_SHORT).show();
              finish();
 
