@@ -8,7 +8,7 @@
     tools:context=".aktiviteter.IkkeAfholdtMoede_akt">
 
     <TextView
-        android:id="@+id/tvMødeNavn"
+        android:id="@+id/tvNavn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -33,14 +33,29 @@
         android:background="#0AFFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMødeNavn">
+        app:layout_constraintTop_toBottomOf="@+id/tvNavn">
+
+        <TextView
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Timer:"
+            android:textAlignment="center"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorMEGETLysGrå"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statuss" />
 
         <com.romainpiel.shimmer.ShimmerTextView
             android:id="@+id/tvMødeID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
             android:text="4444"
             android:textAppearance="@style/Tekst.Overskrift"
             android:textColor="@color/colorGrøn"
@@ -55,20 +70,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="4dp"
             android:text="Status:"
             android:textAlignment="center"
             android:textAppearance="@style/Tekst"
             android:textColor="@color/colorMEGETLysGrå"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/status" />
 
         <TextView
             android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:text="Møde ID:"
             android:textAlignment="center"
             android:textAppearance="@style/Tekst"
@@ -77,17 +92,29 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.romainpiel.shimmer.ShimmerTextView
-            android:id="@+id/statusPåMøde"
+            android:id="@+id/tvStatus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="28dp"
             android:text="Ikke i gang "
             android:textAppearance="@style/Tekst"
             android:textColor="@color/colorLysegrå"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/statuss"
+            app:layout_constraintTop_toTopOf="@+id/statuss"
             app:reflectionColor="@color/shimmerFarveGrøn" />
+
+        <Chronometer
+            android:id="@+id/tvTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorLysegrå"
+            app:layout_constraintStart_toEndOf="@+id/statuss"
+            app:layout_constraintTop_toBottomOf="@+id/tvStatus" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -114,6 +141,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <TextView
+            android:id="@+id/tvStartTidspunkt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="8dp"
+            android:text="12:00-13:00"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorLysegrå"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv2" />
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="Aktuelt Starttidspunkt"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorMEGETLysGrå"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTidspunkt" />
 
         <ImageView
             android:id="@+id/imageView6"
@@ -146,7 +198,7 @@
             android:textAppearance="@style/Tekst"
             android:textColor="@color/colorMEGETLysGrå"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvMødeFormaal" />
+            app:layout_constraintTop_toBottomOf="@+id/tvFormål" />
 
         <TextView
             android:id="@+id/tv00033"
@@ -157,7 +209,7 @@
             android:textAppearance="@style/Tekst"
             android:textColor="@color/colorMEGETLysGrå"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvMødested" />
+            app:layout_constraintTop_toBottomOf="@+id/tvSted" />
 
 
         <TextView
@@ -165,15 +217,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:text="Tidspunkt"
+            android:text="Planlagt Tidspunkt"
             android:textAppearance="@style/Tekst"
             android:textColor="@color/colorMEGETLysGrå"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvMødested2" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDato" />
 
 
         <TextView
-            android:id="@+id/tvMødeFormaal"
+            android:id="@+id/tvFormål"
             android:layout_width="198dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -185,7 +237,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv000" />
 
         <TextView
-            android:id="@+id/tvMødested"
+            android:id="@+id/tvSted"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -197,7 +249,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv0000" />
 
         <TextView
-            android:id="@+id/tvMødested2"
+            android:id="@+id/tvDato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -209,16 +261,14 @@
             app:layout_constraintTop_toBottomOf="@+id/tv00033" />
 
         <TextView
-            android:id="@+id/tvMødested3"
+            android:id="@+id/tvTidspunkt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginBottom="8dp"
             android:text="12:00-13:00"
             android:textAppearance="@style/Tekst"
             android:textColor="@color/colorLysegrå"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv" />
 

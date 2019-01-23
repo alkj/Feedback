@@ -2,62 +2,79 @@ package com.example.admin.feedback_app.aktiviteter;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Chronometer;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.support.v7.app.AlertDialog;
+import android.widget.Toast;
 
 import com.example.admin.feedback_app.Møde;
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
 import com.example.admin.feedback_app.fragmenter.MoedeStartet_frg;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class IkkeAfholdtMoede_akt extends AppCompatActivity  {
+public class IkkeAfholdtMoede_akt extends AppCompatActivity implements OnClickListener {
 
-    private Møde
-            møde;
+    private Møde møde;
 
     private ShimmerTextView moedeID;
     private Shimmer shimmer;
 
-    private TextView
-            moedeNavn, moedeFormaal, moedeSted, tidStart, tidSlut, inviterede, fremmoedte, moedeDato;
+    private TextView navn, formaal, sted, tidspunkt, dato, status, mødeID, startTidspunkt;
 
-    private Button
-            inviter, startMoede, rediger;
+    private Button startMoede;
+
+    private ImageView slet, rediger;
+
+    private Chronometer forloebtTid;
+
+    FirebaseFirestore firebaseFirestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ikke_afholdt_moede_akt);
 
-        //inviter = findViewById(R.id.ikkeAfholdtInviter_knap);
-        //inviter.setOnClickListener(this);
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
-        //startMoede = findViewById(R.id.ikkeAfholdtStart_knap);
-        //startMoede.setOnClickListener(this);
-
-        //rediger = findViewById(R.id.ikkeAfholdt_redigerKnap);
-        //rediger.setOnClickListener(this);
-
-
-        moedeNavn = findViewById(R.id.tvMødeNavn);
-        moedeFormaal = findViewById(R.id.tvMødeFormaal);
-        //moedeSted = findViewById(R.id.tvMødeSted);
         moedeID = findViewById(R.id.tvMødeID);
-        //moedeDato = findViewById(R.id.tvMødeDato);
-        //tidStart = findViewById(R.id.tvPlanlagtStarttid);
-        //tidSlut = findViewById(R.id.tvPlanlagtSluttid);
-        //inviterede = findViewById(R.id.tvInviterede);
-        //fremmoedte = findViewById(R.id.tvFremmødte);
+
+        navn = findViewById(R.id.tvNavn);
+        formaal = findViewById(R.id.tvFormål);
+        sted = findViewById(R.id.tvSted);
+        tidspunkt = findViewById(R.id.tvTidspunkt);
+        dato = findViewById(R.id.tvDato);
+        status = findViewById(R.id.tvStatus);
+        mødeID = findViewById(R.id.tvMødeID);
+        startTidspunkt = findViewById(R.id.tvStartTidspunkt);
+        startTidspunkt.setText("");
+
+        forloebtTid = findViewById(R.id.tvTimer);
+        forloebtTid.stop();
+
+        startMoede = findViewById(R.id.button3);
+        startMoede.setOnClickListener(this);
+
+
+
 
         //TODO: håndtere at mødet ikke findes
         if (savedInstanceState == null) {
@@ -68,21 +85,93 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity  {
             }
         }
 
-
+        navn.setText(møde.getNavn());
+        formaal.setText(møde.getFormål());
+        sted.setText(møde.getSted());
+        tidspunkt.setText(møde.getStartTid()+" - "+møde.getSlutTid());
+        dato.setText(møde.getDato());
+        status.setText("Ikke i gang");
+        mødeID.setText(møde.getMødeIDtildeltager());
 
         shimmer = new Shimmer();
         shimmer.start(moedeID);
         shimmer.setDirection(Shimmer.ANIMATION_DIRECTION_LTR);
 
+
+
+    }
+
+/**
+
+    private void sendData() {
+
+
+
+    }
+    */
+
+
+    public String getCurrentTime() {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat mdformat = new SimpleDateFormat("HH:mm");
+        String strDato = mdformat.format(calendar.getTime());
+        return strDato;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 
 
-    /**
     @Override
-    public void onClick(View view) {
-        if (view == startMoede) {
+    public void onClick(View v) {
+        if (v == startMoede) {
+
+            if (startMoede.getText().equals("Start Møde")) {
+
+                Log.i("hej", "onClick: start møde klik");
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(IkkeAfholdtMoede_akt.this);
+                builder.setMessage("Er du sikker på at du vil starte mødet?");
+                builder.setCancelable(true);
+                builder.setNegativeButton("Nej", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                builder.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        forloebtTid.start();
+                        forloebtTid.setBase(SystemClock.elapsedRealtime());
+
+                        startTidspunkt.setText(getCurrentTime());
+                        møde.setStartTid(getCurrentTime());
+
+                        startMoede.setText("Afslut Møde");
+                        startMoede.setBackgroundColor(ContextCompat.getColor(IkkeAfholdtMoede_akt.this,R.color.colorMegetSur));
+
+                        status.setText("I gang");
+                        status.setTextColor(ContextCompat.getColor(IkkeAfholdtMoede_akt.this,R.color.colorMegetGlad));
+
+                        møde.setIgang(true);
+
+                        firebaseFirestore.collection("Møder").document(møde.getMødeID()).set(møde);
+
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        }
+        else if(startMoede.getText().equals("Afslut Møde")) {
+            Log.i("hej","else kommer igennem");
             final AlertDialog.Builder builder = new AlertDialog.Builder(IkkeAfholdtMoede_akt.this);
-            builder.setMessage("Er du sikker på at du vil starte mødet?");
+            builder.setMessage("Er du sikker på at du vil afslutte mødet?");
             builder.setCancelable(true);
             builder.setNegativeButton("Nej", new DialogInterface.OnClickListener() {
                 @Override
@@ -93,50 +182,27 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity  {
             builder.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                   // sendData();
 
-                   // FragmentManager fragmentManager = getSupportFragmentManager();
-                   // FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                   // fragmentTransaction.replace(R.id.containerMødeStart,new MoedeStartet_frg());
-                   // fragmentTransaction.commit();
+                    møde.setIgang(false);
+                    møde.setAfholdt(true);
+                    møde.setStartTid(møde.getStartTid());
+                    møde.setSlutTid(getCurrentTime());
 
+                    //møde objekt op til fgire
 
+                    firebaseFirestore.collection("Møder").document(møde.getMødeID()).set(møde);
 
+                    Toast.makeText(getApplicationContext(), "Dit møde er nu aflsuttet", Toast.LENGTH_SHORT).show();
+
+                    finish();
 
                 }
             });
             AlertDialog dialog = builder.create();
             dialog.show();
-
         }
-    }
-
-    private void sendData() {
-        Bundle bundle = new Bundle();
-        bundle.putString("Møde ID", moedeID.getText().toString());
-        bundle.putString("Møde Navn", moedeNavn.getText().toString());
-        bundle.putString("Møde Formål", moedeFormaal.getText().toString());
-        bundle.putString("Inviterede", inviterede.getText().toString());
-        bundle.putString("Planlagt Starttid", tidStart.getText().toString());
-        bundle.putString("Planlagt Sluttid", tidSlut.getText().toString());
-
-        MoedeStartet_frg moedeStartet_frg = new MoedeStartet_frg();
-        moedeStartet_frg.setArguments(bundle);
 
     }
-    */
 
 
-    public String getCurrentTime() {
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat mdformat = new SimpleDateFormat("HH:mm");
-        String strDato = "aktuel tid: " + mdformat.format(calendar.getTime());
-        return strDato;
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }
 }
