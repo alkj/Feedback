@@ -43,7 +43,9 @@ public class PersonData {
     }
 
     public List<List<Svar>> getFeedbackTilMøde(String mødeid){
-        Log.i("login", (feedback == null)+ "");
+        if (feedback != null){
+            return null;
+        }
         return feedback.get(mødeid);
     }
 
