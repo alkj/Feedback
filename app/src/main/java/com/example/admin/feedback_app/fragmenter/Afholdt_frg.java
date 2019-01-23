@@ -3,11 +3,13 @@ package com.example.admin.feedback_app.fragmenter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.admin.feedback_app.PersonData;
 import com.example.admin.feedback_app.R;
@@ -18,6 +20,7 @@ import com.example.admin.feedback_app.aktiviteter.AfholdtMeode_akt;
 public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickListener {
     private static final String TAG = "Afholdt";
     private ListView listView;
+    private SwipeRefreshLayout refreshLayout;
 
 
     @Override
@@ -26,6 +29,19 @@ public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickList
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_moedeliste, container, false);
         listView = v.findViewById(R.id.moedeliste_listView);
+        refreshLayout = v.findViewById(R.id.pullToRefresh);
+        //setting an setOnRefreshListener on the SwipeDownLayout
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+
+            @Override
+            public void onRefresh() {
+                //Here you can update your data from internet or from local SQLite data
+                Toast.makeText(getContext(), "Du refreshede ", Toast.LENGTH_SHORT).show();
+                refreshLayout.setRefreshing(false);
+
+            }
+        });
+
 
         return v;
     }
