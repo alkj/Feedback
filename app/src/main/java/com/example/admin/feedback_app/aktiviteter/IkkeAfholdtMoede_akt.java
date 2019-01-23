@@ -1,8 +1,10 @@
 package com.example.admin.feedback_app.aktiviteter;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -54,6 +56,7 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements OnClickLi
 
         slet = findViewById(R.id.imageViewSkraldespand);
         rediger = findViewById(R.id.imageViewBlyant);
+        rediger.setOnClickListener(this);
 
         navn = findViewById(R.id.tvNavn);
         formaal = findViewById(R.id.tvFormål);
@@ -118,6 +121,18 @@ public class IkkeAfholdtMoede_akt extends AppCompatActivity implements OnClickLi
 
     @Override
     public void onClick(View v) {
+        if(v == rediger){
+            Intent intent = new Intent(this, ikke_afholdt_moede_rediger_akt.class);
+            intent.putExtra("NAVN", møde.getNavn());
+            intent.putExtra("STED",møde.getSted());
+            intent.putExtra("FORMÅL", møde.getFormål());
+            intent.putExtra("DATO",møde.getDato());
+            intent.putExtra("TIDSTART",møde.getStartTid());
+            intent.putExtra("TIDSLUT",møde.getSlutTid());
+            intent.putExtra("INDEKS",indeks);
+            startActivity(intent);
+        }
+
         if (v == startMoede) {
 
             if (startMoede.getText().equals("Start Møde")) {
