@@ -67,8 +67,7 @@ public class IkkeAfholdtMoede_akt extends BaseActivity implements OnClickListene
         startTidspunkt = findViewById(R.id.tvStartTidspunkt);
         startTidspunkt.setText("");
 
-        forloebtTid = findViewById(R.id.tvTimer);
-        forloebtTid.stop();
+
 
         startMoede = findViewById(R.id.buttonStartMøde);
         startMoede.setOnClickListener(this);
@@ -94,6 +93,12 @@ public class IkkeAfholdtMoede_akt extends BaseActivity implements OnClickListene
         dato.setText(møde.getDato());
         status.setText("Ikke i gang");
         mødeID.setText(møde.getMødeIDtildeltager());
+
+        if (!møde.getIgang()){
+            forloebtTid = findViewById(R.id.tvTimer);
+            forloebtTid.stop();
+        }
+
 
         shimmer = new Shimmer();
         shimmer.start(moedeID);
@@ -199,6 +204,7 @@ public class IkkeAfholdtMoede_akt extends BaseActivity implements OnClickListene
                     møde.setStartTid(møde.getStartTid());
                     møde.setSlutTid(getCurrentTime());
 
+
                     //møde objekt op til fgire
 
                     firebaseFirestore.collection("Møder").document(møde.getMødeID()).set(møde);
@@ -233,8 +239,27 @@ public class IkkeAfholdtMoede_akt extends BaseActivity implements OnClickListene
         sted.setText(møde.getSted());
         tidspunkt.setText(møde.getStartTid()+" - "+møde.getSlutTid());
         dato.setText(møde.getDato());
-        status.setText("Ikke i gang");
+
         mødeID.setText(møde.getMødeIDtildeltager());
+
+        if (møde.getIgang()){
+            status.setText("Mødet er i gang");
+            startMoede.setVisibility(View.INVISIBLE);
+            afslutMoede.setVisibility(View.VISIBLE);
+            rediger.setVisibility(View.INVISIBLE);
+            slet.setVisibility(View.INVISIBLE);
+
+            Log.i("TAG", "onResume: tiden er getCurrentTime() " + getCurrentTime().toString());
+            Log.i("TAG", "onResume: tiden er SystemClock.elapsedRealtime() " + SystemClock.elapsedRealtime());
+
+            //startTidspunkt.setText(møde.getStartTid());
+
+
+        } else {
+            status.setText("Mødet er ikke i gang");
+        }
+
+
 
         shimmer = new Shimmer();
         shimmer.start(moedeID);
