@@ -1,8 +1,13 @@
 package com.example.admin.feedback_app.aktiviteter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.admin.feedback_app.FeedbackSpørgsmål;
@@ -17,10 +22,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-public class AfholdtMeode_akt extends BaseActivity {
+public class AfholdtMeode_akt extends BaseActivity implements View.OnClickListener {
 
     private TextView mødenavn, dato;
     private Møde møde;
+    private ImageView buttonInfo;
 
 
 
@@ -42,6 +48,9 @@ public class AfholdtMeode_akt extends BaseActivity {
 
         dato = findViewById(R.id.tvDato_Afholdt);
         dato.setText(møde.getDato());
+
+        buttonInfo = findViewById(R.id.afholdt_info_imageView);
+        buttonInfo.setOnClickListener(this);
 
 
         ExpandableListView listView = findViewById(R.id.afhold_kommentarer);
@@ -71,4 +80,22 @@ public class AfholdtMeode_akt extends BaseActivity {
         return map;
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v==buttonInfo){
+
+            Intent intent = new Intent(getApplicationContext(), AfholdtMoedeInfo_akt.class);
+            intent.putExtra("MODENAVN", møde.getNavn());
+            intent.putExtra("MODEID", møde.getMødeIDtildeltager());
+            intent.putExtra("FORMAL", møde.getFormål());
+            intent.putExtra("STED", møde.getSted());
+            intent.putExtra("DATO", møde.getDato().toString());
+            intent.putExtra("PLANLAGTTIDSTART", møde.getStartTid());
+            intent.putExtra("PLANLAGTTIDSLUT", møde.getSlutTid());
+
+            startActivity(intent);
+
+        }
+
+    }
 }
