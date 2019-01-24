@@ -128,7 +128,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new LoginListener());
     }
 
-    public boolean validering(String email, String password) {
+    private boolean validering(String email, String password) {
         //TODO: lav en valideringsklasse til email da det bruges flere steder
         boolean valid = true;
 
@@ -148,6 +148,10 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         return valid;
     }
 
+    /*
+    Metode der henter alle brugerens møder fra firebase, og som så tilføjer en completeListener. Som så
+    Smider det videre til at hente mødets feedback hvis det er afholdt
+     */
     private void hentMøderFraFire() {
         updateProgressDialog("Henter møderne");
         FirebaseFirestore.getInstance().collection("Møder")
@@ -155,7 +159,9 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                 .get()
                 .addOnCompleteListener(new HentMøderListener());
     }
-
+    /*
+    Henter brugeren fra firebase, og når det er gjort sender den automatisk videre til hent møder
+     */
     private void hentBrugerFraFire() {
         updateProgressDialog("Henter bruger oplysninger");
         DocumentReference docRef = FirebaseFirestore.getInstance()
@@ -163,11 +169,11 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         docRef.get().addOnCompleteListener(new HentBrugerListener());
     }
 
-    private void hentFeedbackFraFire(){
 
-    }
-
-    public void næsteSide() {
+    /*
+    Sørger for at sende det videre til næste side/aktivitet når alt er klaret
+     */
+    private void næsteSide() {
         //Stop loading efter firebase er færdig med at give svar
         hideProgressDialog();
 
@@ -270,6 +276,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
 
                 }
 
+                //Sorterer møderne så de ligger i sorteret rækkefølge ud fra dato
                 personData.sorterMøderne();
 
                 if (taskCount <= 0)
