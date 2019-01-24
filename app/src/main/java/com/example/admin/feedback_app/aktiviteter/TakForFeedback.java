@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.example.admin.feedback_app.FeedbackManager;
 import com.example.admin.feedback_app.FeedbackTilFirebase;
 import com.example.admin.feedback_app.NetworkManager;
@@ -24,7 +23,7 @@ public class TakForFeedback extends BaseActivity {
     private TextView tekst_besked, takforFeedback;
     private final String TAG = "TakForFeedback";
 
-    private LottieAnimationView animationView;
+    //private LottieAnimationView animationView;
 
     //private ShimmerTextView takforFeedback;
     //private Shimmer shimmer;
@@ -46,7 +45,7 @@ public class TakForFeedback extends BaseActivity {
             //TODO: hvis ingen internet
         }
 
-        animationView = findViewById(R.id.animation_view);
+        //animationView = findViewById(R.id.animation_view);
        /* animationView.postDelayed(new Runnable() {
             @Override
             public void run() {
