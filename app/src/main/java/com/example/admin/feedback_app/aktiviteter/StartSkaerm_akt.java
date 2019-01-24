@@ -116,8 +116,9 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
                     }
                 }
             }
+            showProgressDialog();
+            updateProgressDialog("Henter møde");
             hentMøderFraFirebase(mødeID);
-            checkOmIdPasserMedMødeID();
         }
     }
 
@@ -125,43 +126,33 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
 
         showProgressDialog();
         updateProgressDialog("Henter møde");
-
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-
-                if (mødet.getMødeIDtildeltager()==null) {
-                    hideProgressDialog();
-                    VibratorManager.vibrerMønster(getApplicationContext(),VibratorManager.FEJL_VIB,-1);
-                    mødeId_editTxt.setError("Forkert møde-ID");
-                    Toast.makeText(getApplicationContext(), "Forkert møde-ID ", Toast.LENGTH_SHORT).show();
-                }
+        if (mødet.getMødeIDtildeltager()==null) {
+            hideProgressDialog();
+            VibratorManager.vibrerMønster(getApplicationContext(),VibratorManager.FEJL_VIB,-1);
+            mødeId_editTxt.setError("Forkert møde-ID");
+            Toast.makeText(getApplicationContext(), "Forkert møde-ID ", Toast.LENGTH_SHORT).show();
+        }
 
 
-                else {
+        else {
 
-                    hideProgressDialog();
+            hideProgressDialog();
 
-                    //Starter feedback aktiviteten
-                    Intent intent = new Intent(getApplicationContext(), beforeGivFeedback_akt.class);
-                    intent.putExtra("MØDEID", mødet.getMødeID());
-                    intent.putExtra("MØDEIDdel",mødet.getMødeIDtildeltager());
-                    intent.putExtra("NAVN", mødet.getNavn());
-                    intent.putExtra("DATO",mødet.getDato());
-                    intent.putExtra("STED",mødet.getSted());
-                    intent.putExtra("FORMÅL",mødet.getFormål());
-                    intent.putExtra("TIDSTART",mødet.getStartTid());
-                    intent.putExtra("TIDSLUT",mødet.getSlutTid());
-                    intent.putExtra("igang",mødet.getIgang());
+            //Starter feedback aktiviteten
+            Intent intent = new Intent(getApplicationContext(), beforeGivFeedback_akt.class);
+            intent.putExtra("MØDEID", mødet.getMødeID());
+            intent.putExtra("MØDEIDdel", mødet.getMødeIDtildeltager());
+            intent.putExtra("NAVN", mødet.getNavn());
+            intent.putExtra("DATO", mødet.getDato());
+            intent.putExtra("STED", mødet.getSted());
+            intent.putExtra("FORMÅL", mødet.getFormål());
+            intent.putExtra("TIDSTART", mødet.getStartTid());
+            intent.putExtra("TIDSLUT", mødet.getSlutTid());
+            intent.putExtra("igang", mødet.getIgang());
 
-                    startActivity(intent);
+            startActivity(intent);
+        }
 
-                }
-
-            }
-        }, 3000);
     }
 
     private void hentMøderFraFirebase(String mødeID) {
@@ -203,11 +194,13 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
 
                 }
 
+                checkOmIdPasserMedMødeID();
 
-                //næsteSide();
+
+
             } else {
-                Log.d("debug, det er lrt", "hvorfor fejler den aldrig");
-                //hent enheder i set
+                Log.d("debug, det er lrt", "FEJLER !");
+
 
             }
 
