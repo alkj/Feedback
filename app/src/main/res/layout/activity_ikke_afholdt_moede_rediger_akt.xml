@@ -137,7 +137,7 @@
             android:ems="10"
             android:fadingEdge="horizontal|vertical"
             android:hint="Formål"
-            android:inputType="number"
+            android:inputType="textPersonName"
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@color/colorMEGETLysGrå"
             android:textColorHint="@color/colorHvid"
