@@ -1,17 +1,201 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="UTF-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragmenter.Profil_frg">
+    android:background="@color/colorMørkegrå"
+    tools:context=".fragmenter.Profil_frg"
+    tools:layout_editor_absoluteY="25dp">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="PROFIL"
+        android:id="@+id/din "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="Profil"
         android:textAlignment="center"
+        android:textAllCaps="false"
         android:textColor="@color/colorHvid"
-        android:textStyle="bold" />
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+
+    -
+
+    <LinearLayout
+        android:id="@+id/Profil_textViewContainer_layout"
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="#0AFFFFFF"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/din ">
+
+        <TextView
+            android:id="@+id/profil_fornavn_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:allowUndo="true"
+            android:autofillHints="DBDBDB"
+            android:clickable="false"
+            android:drawableLeft="@drawable/icon_name"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:fadingEdge="horizontal|vertical"
+            android:text="Johnny"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/colorMEGETLysGrå"
+            android:textColorHint="@color/colorHvid"
+            android:textSize="16sp"
+            app:backgroundTint="@color/colorLysegrå"
+            tools:layout_editor_absoluteX="60dp"
+            tools:layout_editor_absoluteY="110dp" />
+
+        <TextView
+            android:id="@+id/profil_efternavn_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:allowUndo="true"
+            android:autofillHints="DBDBDB"
+            android:clickable="false"
+            android:drawableLeft="@drawable/icon_name"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:fadingEdge="horizontal|vertical"
+            android:text="Hansen"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/colorMEGETLysGrå"
+            android:textColorHint="@color/colorHvid"
+            android:textSize="16sp"
+            android:transitionName="efternavn"
+            app:backgroundTint="@color/colorLysegrå"
+            tools:layout_editor_absoluteX="60dp"
+            tools:layout_editor_absoluteY="154dp" />
+
+        <TextView
+            android:id="@+id/profil_tlf_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:allowUndo="true"
+            android:autofillHints="DBDBDB"
+            android:clickable="false"
+            android:drawableLeft="@drawable/icon_phone"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:fadingEdge="horizontal|vertical"
+            android:hint="Telefon"
+            android:inputType="number"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/colorMEGETLysGrå"
+            android:textColorHint="@color/colorHvid"
+            android:textSize="16sp"
+            app:backgroundTint="@color/colorLysegrå"
+            tools:layout_editor_absoluteX="60dp"
+            tools:layout_editor_absoluteY="198dp"
+            tools:text="88888888" />
+
+        <TextView
+            android:id="@+id/profil_virksomhedsid_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:allowUndo="true"
+            android:autofillHints="DBDBDB"
+            android:clickable="false"
+            android:drawableLeft="@drawable/icon_virk_id"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:fadingEdge="horizontal|vertical"
+            android:text="Virksomheds ID"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/colorMEGETLysGrå"
+            android:textColorHint="@color/colorHvid"
+            android:textSize="16sp"
+            app:backgroundTint="@color/colorLysegrå"
+            tools:layout_editor_absoluteX="60dp"
+            tools:layout_editor_absoluteY="243dp" />
+
+    </LinearLayout>
+
+
+    -
+
+    <LinearLayout
+        android:id="@+id/Profil_buttons_layout"
+        android:layout_width="292dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Profil_textViewContainer_layout">
+
+        <Button
+            android:id="@+id/profil_rediger_button"
+            style="@style/Knap.Hvid"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="Rediger profil"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            tools:layout_editor_absoluteX="80dp"
+            tools:layout_editor_absoluteY="504dp" />
+
+        <Button
+            android:id="@+id/profil_skiftPassword_button"
+            style="@style/Knap.Hvid"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="Skift Password"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            tools:layout_editor_absoluteX="80dp"
+            tools:layout_editor_absoluteY="562dp" />
+
+        <Button
+            android:id="@+id/profil_logUd_button"
+            style="@style/Knap.Hvid"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="Log ud"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            tools:layout_editor_absoluteX="80dp"
+            tools:layout_editor_absoluteY="562dp" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

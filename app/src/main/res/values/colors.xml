@@ -2,10 +2,19 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="colorGrøn">#8cc63f</color>
-    <color name="colorMørkegrå">#303030</color>
-    <color name="colorLysegrå">#898989</color>
-    <color name="colorHvid">#ffffff</color>
-    <color name="colorMEGETLysGrå">#e1e1e1</color>
+    <color name="colorGrøn">#70AD47</color>
+    <color name="colorMørkegrå">#2F2F2F</color>
+    <color name="colorLysegrå">#AFABAB</color>
+    <color name="colorHvid">#FFFFFF</color>
+    <color name="colorMEGETLysGrå">#F2F2F2</color>
+    <color name="colorMegetSur">#ED4740</color>
+    <color name="colorSur">#F68844</color>
+    <color name="colorGlad">#A8C449</color>
+    <color name="colorMegetGlad">#56B94D</color>
+    <color name="shimmerFarveGrøn">#FF92FF00</color>
+    <color name="shimmerFarveGrå">#F1F5EF</color>
+    <color name="mørkeGrøn">#59910D</color>
+    <color name="colorSort">#242424</color>
+    <color name="menuBarSort">#292626</color>
+
 </resources>

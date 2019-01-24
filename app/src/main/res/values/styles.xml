@@ -3,9 +3,68 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorMørkegrå</item>
+        <item name="colorPrimaryDark">@color/colorSort</item>
+        <item name="colorAccent">@color/colorGrøn</item>
+    </style>
+
+    <style name="DialogThemeGray" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorMørkegrå</item>
+    </style>
+
+    <style name="DialogThemeGreen" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorGrøn</item>
+    </style>
+
+    <!-- Knap temaer. -->
+    <style name="Knap" parent="Widget.AppCompat.Button">
+        <item name="android:padding">8dp</item>
+        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Knap.Grøn" parent="Knap">
+        <item name="android:background">@drawable/knap_groen</item>
+        <item name="android:textColor">@color/colorHvid</item>
+    </style>
+
+    <style name="Knap.Hvid" parent="Knap">
+        <item name="android:background">@drawable/knap_hvid</item>
+        <item name="android:textColor">@color/colorSort</item>
+    </style>
+
+    <style name="Knap.Lysegrå" parent="Knap">
+        <item name="android:background">@drawable/knap_lysegraa</item>
+        <item name="android:textColor">@color/colorHvid</item>
+    </style>
+
+    <style name="Knap.Rød" parent="Knap">
+        <item name="android:background">@drawable/knap_roed</item>
+        <item name="android:textColor">@color/colorHvid</item>
+    </style>
+
+    <!-- EditText temaer. -->
+    <style name="Input" parent="Widget.AppCompat.EditText">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Input.Hvid" parent="Input">
+        <item name="android:background">@color/colorHvid</item>
+        <item name="android:textColor">@color/colorSort</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:padding">11dp</item>
+    </style>
+
+    <!-- Text temeaer. -->
+    <style name="Tekst" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+    </style>
+
+    <style name="Tekst.Overskrift" parent="Tekst">
+        <item name="android:textSize">30sp</item>
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
     </style>
 
 </resources>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorMørkegrå"
+    tools:context=".aktiviteter.AfholdtMoedeInfo_akt">
+
+    <TextView
+        android:id="@+id/afholdtMoedeInfo_moedeNavn_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/mode_navn"
+        android:textAlignment="center"
+        android:textAppearance="@style/Tekst.Overskrift"
+        android:textColor="@color/colorMEGETLysGrå"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/afholdtMoedeInfo_linearLayoutTop"
+        android:layout_width="275dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:background="#0AFFFFFF"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/afholdtMoedeInfo_moedeNavn_textView">
+
+
+        <TextView
+            android:id="@+id/afholdtMoedeInfo_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Møde ID"
+            android:textAlignment="center"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorMEGETLysGrå"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/afholdtMoedeInfo_MoedeID_TextView"
+            android:layout_width="198dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="7777"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorLysegrå"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:id="@+id/afholdtMoedeInfo_linearLayout2"
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="8dp"
+        android:background="#0AFFFFFF"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/afholdtMoedeInfo_linearLayoutTop">
+
+        <TextView
+            android:id="@+id/afholdtMoedeInfo_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Formål"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorMEGETLysGrå"
+            tools:layout_editor_absoluteX="12dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+
+        <TextView
+            android:id="@+id/afholdtMoedeInfo_formaal_textView"
+            android:layout_width="198dp"
+            android:layout_height="wrap_content"
+            android:text="Fomålet med mødet er at danse tango og spille fidbold indtil janus ikke kan stå på benenen"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorLysegrå"
+            android:textSize="12sp"
+            tools:layout_editor_absoluteX="12dp"
+            tools:layout_editor_absoluteY="41dp" />
+
+        <TextView
+            android:id="@+id/afholdtMoedeInfo_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sted"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorMEGETLysGrå"
+            tools:layout_editor_absoluteX="12dp"
+            tools:layout_editor_absoluteY="98dp" />
+
+        <TextView
+            android:id="@+id/afholdtMoedeInfo_sted_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Roskilde"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorLysegrå"
+            android:textSize="12sp"
+            tools:layout_editor_absoluteX="12dp"
+            tools:layout_editor_absoluteY="120dp" />
+
+
+        <TextView
+            android:id="@+id/afholdtMoedeInfo_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dato"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorMEGETLysGrå"
+            tools:layout_editor_absoluteX="12dp"
+            tools:layout_editor_absoluteY="142dp" />
+
+
+        <TextView
+            android:id="@+id/afholdtMoedeInfo_dato_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1-2-2019"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorLysegrå"
+            android:textSize="12sp"
+            tools:layout_editor_absoluteX="12dp"
+            tools:layout_editor_absoluteY="167dp" />
+
+
+        <TextView
+            android:id="@+id/afholdtMoedeInfo_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Planlagt Tidspunkt"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorMEGETLysGrå"
+            tools:layout_editor_absoluteX="12dp"
+            tools:layout_editor_absoluteY="189dp" />
+
+
+        <TextView
+            android:id="@+id/afholdtMoedeInfo_planlagtTidspunkt_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12:00-13:00"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorLysegrå"
+            android:textSize="12sp"
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="167dp" />
+
+
+        <TextView
+            android:id="@+id/afholdtMoedeInfo1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aktuelt Tidspunkt"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorMEGETLysGrå"
+            tools:layout_editor_absoluteX="12dp"
+            tools:layout_editor_absoluteY="214dp" />
+
+        <TextView
+            android:id="@+id/afholdtMoedeInfo_AktueltTidspunkt_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12:00-13:00"
+            android:textAppearance="@style/Tekst"
+            android:textColor="@color/colorLysegrå"
+            android:textSize="12sp"
+            tools:layout_editor_absoluteX="12dp"
+            tools:layout_editor_absoluteY="233dp" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="30dp" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/afholdtMoedeInfo_afslut_button"
+        style="@style/Knap.Lysegrå"
+        android:layout_width="275dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="40dp"
+        android:text="Tilbage"
+        app:layout_constraintBottom_toTopOf="@+id/barrier"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top" />
+
+
+</android.support.constraint.ConstraintLayout>

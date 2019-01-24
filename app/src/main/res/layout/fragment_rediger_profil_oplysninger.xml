@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#353535"
+    tools:context=".fragmenter.RedigerProfilOplysninger_frg"
+    tools:layout_editor_absoluteY="25dp">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <Button
+        android:id="@+id/rediger_profil_gem_ændringer_button"
+        style="@style/Knap.Lysegrå"
+        android:layout_width="275dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:autofillHints="DBDBDB"
+        android:text="Gem Ændringer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+
+    <TextView
+        android:id="@+id/rediger_profil_titel_textview_dont_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="Redigér Profil"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_light"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rediger_profil_titel_textview_dont_edit">
+
+        <EditText
+            android:id="@+id/rediger_profil_fornavn_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:allowUndo="true"
+            android:autofillHints="DBDBDB"
+            android:clickable="false"
+            android:drawableLeft="@drawable/icon_name"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:fadingEdge="horizontal|vertical"
+            android:hint="Fornavn"
+            android:inputType="textPersonName"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/colorMEGETLysGrå"
+            android:textColorHint="@color/colorHvid"
+            android:textSize="14dp"
+            app:backgroundTint="@color/colorLysegrå"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteX="33dp"
+            tools:layout_editor_absoluteY="137dp" />
+
+        <EditText
+            android:id="@+id/rediger_profil_efternavn_editTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:allowUndo="true"
+            android:autofillHints="DBDBDB"
+            android:clickable="false"
+            android:drawableLeft="@drawable/icon_name"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:fadingEdge="horizontal|vertical"
+            android:hint="Efternavn"
+            android:inputType="textPersonName"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/colorMEGETLysGrå"
+            android:textColorHint="@color/colorHvid"
+            android:textSize="14dp"
+            android:transitionName="efternavn"
+            app:backgroundTint="@color/colorLysegrå"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="167dp" />
+
+        <EditText
+            android:id="@+id/rediger_profil_tlf_editText"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:allowUndo="true"
+            android:autofillHints="DBDBDB"
+            android:clickable="false"
+            android:drawableLeft="@drawable/icon_phone"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:fadingEdge="horizontal|vertical"
+            android:hint="Telefon"
+            android:inputType="number"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/colorMEGETLysGrå"
+            android:textColorHint="@color/colorHvid"
+            android:textSize="14dp"
+            app:backgroundTint="@color/colorLysegrå"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteX="80dp"
+            tools:layout_editor_absoluteY="406dp" />
+
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

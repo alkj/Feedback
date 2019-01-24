@@ -1,26 +1,61 @@
 <resources>
-    <string name="app_name">Gruppe 76Z</string>
+    <string name="app_name">grp 76Z Feedback til Møder</string>
     <!-- Strings til fragmentet 'opret møde' -->
     <string name="oplysninger">Oplysninger</string>
     <string name="mode_navn">Møde navn</string>
     <string name="mode_formal">Møde formål</string>
-    <string name="dato">dato</string>
-    <string name="tid">tid</string>
-    <string name="sted">sted</string>
-    <string name="dagsorden">dagsorden</string>
+    <string name="dato">Dato</string>
+    <string name="starttid">Start tid</string>
+    <string name="sluttid">Slut tid</string>
+    <string name="sted">Sted</string>
+    <string name="dagsorden">Dagsorden</string>
     <string name="tilbage">Tilbage</string>
     <string name="opret_Mode">Opret møde</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="moedeoversigt">Møder</string>
+    <string name="indtast_moede_oplysninger">Indtast Møde Oplysninger</string>
 
 
     <!-- Strings til menuen 'aktionbar_bund' -->
     <string name="moder">Møder</string>
-    <string name="hjem">Hjem</string>
+    <string name="opretmoede">Opret Møde</string>
     <string name="profil">Profil</string>
     <string name="title_activity_navigation_akt">Navigation_akt</string>
-    <string name="ikke_afholdt">ikke Afholdt</string>
-    <string name="afholdt">Afholdt</string>
+    <string name="ikke_afholdt">Ikke Afholdte</string>
+    <string name="afholdt">Afholdte</string>
     <string name="anuller">Anuller</string>
     <string name="annuller">Annuller</string>
+
+    <!-- Strings til tid og dato picker fragmenter -->
+    <string name="tid_format">%s:%s</string>
+    <string name="dato_format">%s-%s-%d</string>
+
+    <!-- Strings til spørgsmålene under feedback -->
+    <string name="spørgsmål_til_feedback1">Blev tidsplanen overholdt?</string>
+    <string name="spørgsmål_til_feedback2">Hvad syntes du om PowerPoint præsentationen?</string>
+    <string name="spørgsmål_til_feedback3">Holdt i jer til emnen under hele mødet?</string>
+    <string name="spørgsmål_til_feedback4">Er du tilfreds med mødeholder?</string>
+
+
+    <!-- Strings til feedback -->
+    <string name="anuller_feedback">Hvis du trykker OK anulleres feedback\'en.</string>
+    <string name="mangler_smiley">OBS! Du mangler at vælge et svar!</string>
+    <string name="ok">OK</string>
+    <string name="feedback_side_format">%d af %d</string>
+    <string name="videre">Videre</string>
+    <string name="uddyb_hint">Uddyb gerne</string>
+    <string name="afslut">Afslut</string>
+    <string name="Kommentarer">Kommentarer</string>
+    <string name="giv_feedback">Giv feedback</string>
+    <string name="overskrift_startskærm">Møde Feedback</string>
+    <string name="overskrift_loginskærm">Mødeleder</string>
+    <string name="opret_bruger">Opret bruger</string>
+
+
+    <!-- Strings til feedback mødedeltager -->
+    <string name="dato_underline"><u>Dato</u></string>
+    <string name="Mødetid_underline"><u>Møde tid</u></string>
+    <string name="mødested_underline"><u>Mødested</u></string>
+    <string name="formål_underline"><u>Møde formål</u></string>
+    <string name="streg">-</string>
+
 </resources>
