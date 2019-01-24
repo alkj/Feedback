@@ -265,7 +265,15 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                     mødeObj.setIgang(document.getBoolean("igang"));
                     mødeObj.setMødeIDtildeltager(document.get("mødeIDtildeltager").toString());
                     mødeObj.setMødeID(document.get("mødeID").toString());
-                    
+
+                    try {
+                        mødeObj.setFaktiskStartTid(document.get("faktiskStartTid").toString());
+                    } catch (Exception e){
+                        mødeObj.setFaktiskStartTid("ikke startet");
+                        Log.d(TAG, "onComplete: info ikke gemt i firebase");
+                    }
+
+
                     personData.tilføjMøde(mødeObj);
 
                     if (mødeObj.isAfholdt()) { //TODO: fejl
