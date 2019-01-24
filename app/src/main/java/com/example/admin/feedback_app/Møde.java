@@ -27,7 +27,6 @@ public class Møde {
         this.sted = sted;
         this.mødeholderID = mødeholderID;
         this.afholdt = afholdt;
-        //this.dagsorden = dagsorden;
     }
 
     public void setNavn(String navn) {
