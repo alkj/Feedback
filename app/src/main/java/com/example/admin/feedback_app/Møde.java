@@ -15,6 +15,16 @@ public class Møde {
     private boolean igang;
     private String dagsorden;
 
+    public String getFaktiskStartTid() {
+        return FaktiskStartTid;
+    }
+
+    public void setFaktiskStartTid(String faktiskStartTid) {
+        FaktiskStartTid = faktiskStartTid;
+    }
+
+    private String FaktiskStartTid;
+
     public Møde(){
     }
 

@@ -163,7 +163,7 @@ public class IkkeAfholdtMoede_akt extends BaseActivity implements OnClickListene
                         forloebtTid.setBase(SystemClock.elapsedRealtime());
 
                         startTidspunkt.setText(getCurrentTime());
-                        møde.setStartTid(getCurrentTime());
+                        møde.setFaktiskStartTid(getCurrentTime());
 
                         startMoede.setVisibility(View.INVISIBLE);
                         afslutMoede.setVisibility(View.VISIBLE);
@@ -252,7 +252,9 @@ public class IkkeAfholdtMoede_akt extends BaseActivity implements OnClickListene
             Log.i("TAG", "onResume: tiden er getCurrentTime() " + getCurrentTime().toString());
             Log.i("TAG", "onResume: tiden er SystemClock.elapsedRealtime() " + SystemClock.elapsedRealtime());
 
-            //startTidspunkt.setText(møde.getStartTid());
+            if (møde.getFaktiskStartTid()!=null){
+                startTidspunkt.setText(møde.getFaktiskStartTid());
+            }
 
 
         } else {
