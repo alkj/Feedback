@@ -25,12 +25,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+
 public class OpretBruger_akt extends BaseActivity implements View.OnClickListener {
 
     /**
      * Inspiration fået fra firebase's egen hjemmeside: https://firebase.google.com/docs/auth/android/password-auth
      */
-
     private static final String TAG = "opretBruger";
 
     private Button opret_btn;
@@ -81,18 +81,9 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
             return;
         }
 
-        mødeholder = new Mødeholder(
-                fornavn_editTxt.getText().toString(),
-                efternavn_editTxt.getText().toString(),
-                email_editTxt.getText().toString(),
-                password_editTxt.getText().toString(),
-                virk_id_editTxt.getText().toString(),
-                tlfnr_editTxt.getText().toString());
+        hentVirksomhedsID();
 
-       updateProgressDialog("Opretter bruger");
 
-        firebaseAuth.createUserWithEmailAndPassword(mødeholder.getEmail(), mødeholder.getPassword())
-                .addOnCompleteListener(new UserCreatedListener());
     }
 
 
@@ -173,26 +164,9 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         if (view == opret_btn) {
             //vis brugeren at der arbejdes
             showProgressDialog();
-            updateProgressDialog("Tjekker virksomheds-ID");
 
-            //henter virksomhedsID hvis det findes
-            hentVirksomhedsID();
-            //her tjekkes det om det indtastede ID var korrekt og så afgøres det om det skal gå videre
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
+            skabBrugerkonto(email_editTxt.getText().toString(), password_editTxt.getText().toString());
 
-                @Override
-                public void run() {
-                    if (tjekVirksomhedsID()){
-                        skabBrugerkonto(email_editTxt.getText().toString(), password_editTxt.getText().toString());
-                    }
-                    else {
-                        hideProgressDialog();
-                        Toast.makeText(getApplicationContext(), "Din virksomhed er ikke registreret", Toast.LENGTH_SHORT).show();
-                    }
-
-                }
-            }, 2000);
             //TODO lav toast der giver besked hvis emailen allerede er oprettet
         }
         else if (view == password1) {
@@ -226,6 +200,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
 
     }
 
+
     private boolean tjekVirksomhedsID() {
         if (virk_id_editTxt.getText().toString().equals(detHentedeVirkID)) {
             return true;
@@ -235,7 +210,12 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         }
     }
 
+    /*
+    Sørger for at hente virksomhedsID ned (hvis det findes)
+     */
     private void hentVirksomhedsID() {
+        updateProgressDialog("tjekker virksomheds-ID");
+
         FirebaseFirestore.getInstance().collection("Virksomheder")
                 .whereEqualTo("VirksomhedsID", virk_id_editTxt.getText().toString())
                 .get()
@@ -297,11 +277,30 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                     detHentedeVirkID = document.get("VirksomhedsID").toString();
                 }
 
+                //Her tjekkes om ID'et er korrekt og brugeren kan så oprettes
+                if(tjekVirksomhedsID()) {
 
-                //næsteSide();
+                    mødeholder = new Mødeholder(
+                            fornavn_editTxt.getText().toString(),
+                            efternavn_editTxt.getText().toString(),
+                            email_editTxt.getText().toString(),
+                            password_editTxt.getText().toString(),
+                            virk_id_editTxt.getText().toString(),
+                            tlfnr_editTxt.getText().toString());
+
+                    updateProgressDialog("Opretter bruger");
+
+                    firebaseAuth.createUserWithEmailAndPassword(mødeholder.getEmail(), mødeholder.getPassword())
+                            .addOnCompleteListener(new UserCreatedListener());
+                }
+                else {
+                    hideProgressDialog();
+                    Toast.makeText(getApplicationContext(), "Ugyldigt virksomhedsID", Toast.LENGTH_SHORT).show();
+
+                }
             } else {
-                Log.d("debug, det er lrt", "hvorfor fejler den aldrig");
-                //hent enheder i set
+                Log.d("debug, det er lrt", "FEJL");
+
 
             }
 
