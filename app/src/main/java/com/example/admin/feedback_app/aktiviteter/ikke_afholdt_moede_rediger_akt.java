@@ -50,6 +50,7 @@ public class ikke_afholdt_moede_rediger_akt extends BaseActivity implements View
         button = findViewById(R.id.rediger_profil_gem_ændringer_button);
         button.setOnClickListener(this);
 
+        //Får informationer fra forrige aktivitet
         navnString = getIntent().getStringExtra("NAVN");
         stedString = getIntent().getStringExtra("STED");
         formålString = getIntent().getStringExtra("FORMÅL");
@@ -110,6 +111,7 @@ public class ikke_afholdt_moede_rediger_akt extends BaseActivity implements View
                 møde.setMødeholderID(FirebaseAuth.getInstance().getUid());
                 møde.setMødeIDtildeltager(mødeIDTilDeltagerString);
 
+                //ændrer data i personData (lokalt)
                 PersonData.getInstance().getIkkeAfholdteMøder().get(indeks).setNavn(navn.getText().toString());
                 PersonData.getInstance().getIkkeAfholdteMøder().get(indeks).setSted(sted.getText().toString());
                 PersonData.getInstance().getIkkeAfholdteMøder().get(indeks).setFormål(formål.getText().toString());
@@ -117,6 +119,7 @@ public class ikke_afholdt_moede_rediger_akt extends BaseActivity implements View
                 PersonData.getInstance().getIkkeAfholdteMøder().get(indeks).setStartTid(startTid.getText().toString());
                 PersonData.getInstance().getIkkeAfholdteMøder().get(indeks).setSlutTid(slutTid.getText().toString());
 
+                //Smider mødet på firebase med det samme ID, og dermed erstatter det der ligger i forvejen
                 firebaseFirestore.collection("Møder").document(mødeIDString).set(møde);
 
                 finish();
