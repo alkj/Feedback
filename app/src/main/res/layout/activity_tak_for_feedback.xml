@@ -10,21 +10,21 @@
 
     <com.romainpiel.shimmer.ShimmerTextView
         android:id="@+id/tak_besked_txtView"
+        style="@style/Tekst.Overskrift"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="164dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/open_sans_semibold"
+        android:fontFamily="@font/open_sans_bold"
         android:text="Tak for din feedback!"
         android:textColor="@color/mørkeGrøn"
-        android:textAllCaps="true"
         android:textSize="30sp"
-        app:reflectionColor="@color/shimmerFarveGrøn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:reflectionColor="@color/shimmerFarveGrøn" />
 
 
     <com.airbnb.lottie.LottieAnimationView

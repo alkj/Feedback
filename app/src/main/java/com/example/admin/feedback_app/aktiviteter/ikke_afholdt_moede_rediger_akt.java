@@ -119,6 +119,8 @@ public class ikke_afholdt_moede_rediger_akt extends BaseActivity implements View
 
                 firebaseFirestore.collection("Møder").document(mødeIDString).set(møde);
 
+                Toast.makeText(getApplicationContext(), "Ændringer foretaget", Toast.LENGTH_SHORT).show();
+
                 finish();
             }
 
