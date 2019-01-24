@@ -70,25 +70,6 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         email_editTxt = findViewById(R.id.login_brugernavn_editTxt);
         password_editTxt = findViewById(R.id.login_password_editTxt);
 
-        email_editTxt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    hideKeyboard(v);
-                }
-            }
-        });
-
-        password_editTxt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    hideKeyboard(v);
-                }
-            }
-        });
-
-
         if (DEBUG) {
             test_checkBox.setVisibility(View.VISIBLE);
 
@@ -135,7 +116,6 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
     }
 
     private void login(String email, String password) {
-        Log.d(TAG, "signIn:" + email);
 
         if (!validering(email, password)) {
             VibratorManager.vibrerMønster(this,VibratorManager.FEJL_VIB,-1);
@@ -150,8 +130,6 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
 
     public boolean validering(String email, String password) {
         //TODO: lav en valideringsklasse til email da det bruges flere steder
-
-        Log.d(TAG, "valideringEmail: startes");
         boolean valid = true;
 
         //TODO evt lav check om emailen er valid og er af formen xxx@xxx.com
@@ -167,8 +145,6 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
             this.password_editTxt.setError("Indtast password");
             valid = false;
         }
-
-        Log.d(TAG, "valideringEmail: validering returneres");
         return valid;
     }
 
@@ -182,7 +158,6 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
 
     private void hentBrugerFraFire() {
         updateProgressDialog("Henter bruger oplysninger");
-        Log.d(TAG, "Gået ind i metoden som henter bruger fra Firestore");
         DocumentReference docRef = FirebaseFirestore.getInstance()
                 .collection("Mødeholder").document(firebaseAuth.getUid());
         docRef.get().addOnCompleteListener(new HentBrugerListener());
@@ -214,9 +189,6 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         public void onComplete(@NonNull Task<AuthResult> task) {
             if (task.isSuccessful()) {
                 //Login
-                Log.d(TAG, "signInWithEmail:success");
-
-
                 if(firebaseAuth.getCurrentUser().isEmailVerified()) {
                     hentBrugerFraFire();
                 }
@@ -229,8 +201,6 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                 }
             }
             else {
-                //Login fejlede!!
-                Log.w(TAG, "signInWithEmail:failure", task.getException());
 
                 //TODO: giv en bedre beskrivelse af årsagen til fejlen
                 //TODO: custom Toast feks. rød til fejl
@@ -250,7 +220,6 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    Log.d(TAG, "dokumentet eksitetrer, og tingene smides til logikken");
                     personData.setMødeholder(document.get("fornavn").toString(), document.get("efternavn").toString(),
                             document.get("email").toString(),
                             document.get("password").toString(),
@@ -258,12 +227,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                             document.get("tlf").toString()
                     );
 
-
-                    Log.d(TAG, "Værdier fra logik : " + personData.getMødeholder().getFornavn());
-
                 }
-
-                Log.d(TAG, "FÆRDIG med hentBrugerFraFire");
 
                 hentMøderFraFire();
             }
@@ -275,13 +239,11 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         @Override
         public void onComplete(@NonNull Task<QuerySnapshot> task) {
             if (task.isSuccessful()) {
-                Log.d("TAG", "Inde i task.succes");
                 if (task.getResult().isEmpty()){
                     næsteSide();
                     return;
                 }
                 for (QueryDocumentSnapshot document : task.getResult()) {
-                    Log.d("TAG", "Inde i for-loopet");
                     Møde mødeObj = new Møde(
                             document.get("navn").toString(),
                             document.get("formål").toString(),
@@ -299,24 +261,19 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                     
                     personData.tilføjMøde(mødeObj);
 
-                    if (mødeObj.isAfholdt()) {
+                    if (mødeObj.isAfholdt()) { //TODO: fejl
                         FirebaseFirestore.getInstance()
                                 .collection("Feedback")
                                 .whereEqualTo("mødeId", mødeObj.getMødeID())
                                 .get().addOnCompleteListener(new HentFeedbackListener(mødeObj.getMødeID()));
                     }
 
-                    Log.d(TAG, "navn fra firebase: " + document.get("navn").toString());
-                    Log.d(TAG, "mødelistens navn: " + mødeObj.getNavn());
-                    Log.d(TAG, document.getId() + " => " + document.getData());
                 }
-
 
                 personData.sorterMøderne();
 
-
-
-                //næsteSide();
+                if (taskCount <= 0)
+                    næsteSide();
             } else {
                 Log.d(TAG, "Error getting documents: ", task.getException());
             }
@@ -365,12 +322,4 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
             }
         }
     }
-
-    public void hideKeyboard(View view) {
-        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-    }
-
-
-
 }

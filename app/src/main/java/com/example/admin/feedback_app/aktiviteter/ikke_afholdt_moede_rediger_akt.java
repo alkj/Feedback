@@ -14,7 +14,7 @@ import com.example.admin.feedback_app.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class ikke_afholdt_moede_rediger_akt extends AppCompatActivity implements View.OnClickListener {
+public class ikke_afholdt_moede_rediger_akt extends BaseActivity implements View.OnClickListener {
 
     private TextView navn, sted, formål, dato, startTid, slutTid;
 

@@ -26,7 +26,7 @@ import com.romainpiel.shimmer.ShimmerTextView;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class IkkeAfholdtMoede_akt extends AppCompatActivity implements OnClickListener {
+public class IkkeAfholdtMoede_akt extends BaseActivity implements OnClickListener {
 
     private Møde møde;
 

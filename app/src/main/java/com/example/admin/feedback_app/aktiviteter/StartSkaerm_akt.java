@@ -63,16 +63,6 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
 
         mødeId_editTxt = (EditText)findViewById(R.id.startskærm_editTxt);
 
-        mødeId_editTxt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    hideKeyboard(v);
-                }
-            }
-        });
-
-
         login_btn.setOnClickListener(this);
         feedback_btn.setOnClickListener(this);
 
@@ -237,10 +227,4 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
 
         }
     }
-
-    public void hideKeyboard(View view) {
-        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-    }
-
 }

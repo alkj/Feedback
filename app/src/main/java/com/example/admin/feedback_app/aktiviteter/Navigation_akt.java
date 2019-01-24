@@ -27,7 +27,7 @@ import com.example.admin.feedback_app.fragmenter.Moedeoversigt_frg;
 import com.example.admin.feedback_app.fragmenter.Profil_frg;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Navigation_akt extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class Navigation_akt extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
 
     private static final String TAG = "loginSide";
@@ -128,26 +128,4 @@ public class Navigation_akt extends AppCompatActivity implements BottomNavigatio
         }
 
     }
-
-    /**
-     * Taget fra: https://stackoverflow.com/a/36889384
-     */
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            View v = getCurrentFocus();
-            if ( v instanceof EditText) {
-                Rect outRect = new Rect();
-                v.getGlobalVisibleRect(outRect);
-                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
-                    v.clearFocus();
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                }
-            }
-        }
-        return super.dispatchTouchEvent(event);
-    }
-
-
 }

@@ -11,7 +11,7 @@ import com.example.admin.feedback_app.R;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerButton;
 
-public class beforeGivFeedback_akt extends AppCompatActivity {
+public class beforeGivFeedback_akt extends BaseActivity {
 
     //private Button givFeed;
 

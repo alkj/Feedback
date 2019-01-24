@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-public class AfholdtMeode_akt extends AppCompatActivity {
+public class AfholdtMeode_akt extends BaseActivity {
 
     private TextView mødenavn, dato;
     private Møde møde;

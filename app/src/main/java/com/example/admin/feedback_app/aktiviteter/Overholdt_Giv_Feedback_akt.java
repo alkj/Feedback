@@ -37,7 +37,7 @@ import com.example.admin.feedback_app.fragmenter.Feedback_frg;
  * https://developer.android.com/training/animation/screen-slide#java
  *
  */
-public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements View.OnClickListener {
+public class Overholdt_Giv_Feedback_akt extends BaseActivity implements View.OnClickListener {
 
     private Button knapVidere, knapTilbage;
     private TextView tekstNummer;
@@ -191,25 +191,4 @@ public class Overholdt_Giv_Feedback_akt extends AppCompatActivity implements Vie
             return NUM_PAGES;
         }
     }
-
-    /**
-     * Taget fra: https://stackoverflow.com/a/36889384
-     */
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            View v = getCurrentFocus();
-            if ( v instanceof EditText) {
-                Rect outRect = new Rect();
-                v.getGlobalVisibleRect(outRect);
-                if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
-                    v.clearFocus();
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                }
-            }
-        }
-        return super.dispatchTouchEvent(event);
-    }
-
 }
