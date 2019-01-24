@@ -148,6 +148,10 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
         return valid;
     }
 
+    /*
+    Metode der henter alle brugerens møder fra firebase, og som så tilføjer en completeListener. Som så
+    Smider det videre til at hente mødets feedback hvis det er afholdt
+     */
     private void hentMøderFraFire() {
         updateProgressDialog("Henter møderne");
         FirebaseFirestore.getInstance().collection("Møder")
