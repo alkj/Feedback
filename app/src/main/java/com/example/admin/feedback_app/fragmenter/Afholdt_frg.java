@@ -58,7 +58,7 @@ public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickList
                 //Toast.makeText(getContext(), "Du refreshede ", Toast.LENGTH_SHORT).show();
                 PersonData.getInstance().rydmøder();
                 hentMøderFraFire();
-                            }
+            }
         });
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -67,12 +67,12 @@ public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickList
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         indlæsListView();
     }
 
-    private void indlæsListView(){
+    private void indlæsListView() {
         //Få mødenavne vist i et listview
         AfholdtMødeAdapter listviewAdapter = new AfholdtMødeAdapter(getActivity(),
                 PersonData.getInstance().getAfholdteMøder());
@@ -105,13 +105,12 @@ public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickList
         @Override
         public void onComplete(@NonNull Task<QuerySnapshot> task) {
             if (task.isSuccessful()) {
-                Log.d("TAG", "Inde i task.succes");
                 if (task.getResult().isEmpty()){
-                    //næsteSide();
+                    indlæsListView();
                     return;
                 }
+                taskCount += task.getResult().size();
                 for (QueryDocumentSnapshot document : task.getResult()) {
-                    Log.d("TAG", "Inde i for-loopet");
                     Møde mødeObj = new Møde(
                             document.get("navn").toString(),
                             document.get("formål").toString(),
@@ -129,51 +128,50 @@ public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickList
 
                     PersonData.getInstance().tilføjMøde(mødeObj);
 
-                    if (mødeObj.isAfholdt()) {
+                    if (mødeObj.isAfholdt()) { 
                         FirebaseFirestore.getInstance()
                                 .collection("Feedback")
                                 .whereEqualTo("mødeId", mødeObj.getMødeID())
                                 .get().addOnCompleteListener(new HeentFeedbackListener(mødeObj.getMødeID()));
                     }
 
-                    Log.d(TAG, "navn fra firebase: " + document.get("navn").toString());
-                    Log.d(TAG, "mødelistens navn: " + mødeObj.getNavn());
-                    Log.d(TAG, document.getId() + " => " + document.getData());
+                    taskCount--;
                 }
 
+                //Sorterer møderne så de ligger i sorteret rækkefølge ud fra dato
+                //personData.sorterMøderne();
 
-                PersonData.getInstance().sorterMøderne();
-
-
-
-                //næsteSide();
+                if (taskCount <= 0)
+                    indlæsListView();
             } else {
                 Log.d(TAG, "Error getting documents: ", task.getException());
             }
 
         }
-        class HeentFeedbackListener implements OnCompleteListener<QuerySnapshot>{
+    }
+
+        class HeentFeedbackListener implements OnCompleteListener<QuerySnapshot> {
 
             private String mødeid;
 
-            public HeentFeedbackListener(String mødeid){
+            public HeentFeedbackListener(String mødeid) {
                 this.mødeid = mødeid;
                 taskCount++;
             }
 
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     List<List<Svar>> feedback = new ArrayList<>();
 
-                    for (QueryDocumentSnapshot document : task.getResult()){
+                    for (QueryDocumentSnapshot document : task.getResult()) {
                         Map<String, Object> map = document.getData();
                         List<Svar> svarListe = new ArrayList<>();
 
                         for (Map.Entry<String, Object> entry : map.entrySet()) {
                             if (entry.getKey().equals("svar")) {
                                 List<Object> person = (List<Object>) entry.getValue();
-                                for (Object obj : person){
+                                for (Object obj : person) {
                                     svarListe.add(Svar.getSvar(obj.toString()));
                                 }
                             }
@@ -187,12 +185,12 @@ public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickList
 
                     taskCount--;
 
-                    if (taskCount <= 0){
+                    if (taskCount <= 0) {
                         indlæsListView();
                     }
                 }
             }
         }
-    }
+
 
 }
