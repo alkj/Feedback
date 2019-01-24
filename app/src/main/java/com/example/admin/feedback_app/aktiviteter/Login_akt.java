@@ -249,6 +249,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                     næsteSide();
                     return;
                 }
+                taskCount += task.getResult().size();
                 for (QueryDocumentSnapshot document : task.getResult()) {
                     Møde mødeObj = new Møde(
                             document.get("navn").toString(),
@@ -274,10 +275,11 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                                 .get().addOnCompleteListener(new HentFeedbackListener(mødeObj.getMødeID()));
                     }
 
+                    taskCount--;
                 }
 
                 //Sorterer møderne så de ligger i sorteret rækkefølge ud fra dato
-                personData.sorterMøderne();
+                //personData.sorterMøderne();
 
                 if (taskCount <= 0)
                     næsteSide();
