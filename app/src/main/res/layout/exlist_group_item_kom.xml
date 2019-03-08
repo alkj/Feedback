@@ -28,7 +28,7 @@
                 android:textSize="12sp" />
         </FrameLayout>
 
-        <com.example.admin.feedback_app.views.HorizontalStackedBarChart
+        <com.spinoff.apps.feedback_app.views.HorizontalStackedBarChart
             android:id="@+id/exlist_group_bar"
             android:layout_width="match_parent"
             android:layout_height="10dp" />

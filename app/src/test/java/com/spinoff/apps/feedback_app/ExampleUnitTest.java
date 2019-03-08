@@ -1,4 +1,4 @@
-package com.example.admin.feedback_app;
+package com.spinoff.apps.feedback_app;
 
 import org.junit.Test;
 
