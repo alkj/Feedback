@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.R;
 
 
 public class Moedeoversigt_frg extends Fragment implements View.OnClickListener {

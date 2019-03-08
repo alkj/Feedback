@@ -12,8 +12,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import dk.spinoff.apps.feedback_app.Mødeholder;
-import com.spinoff.apps.feedback_app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -21,6 +19,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import dk.spinoff.apps.feedback_app.Mødeholder;
+import dk.spinoff.apps.feedback_app.R;
 
 
 public class OpretBruger_akt extends BaseActivity implements View.OnClickListener {

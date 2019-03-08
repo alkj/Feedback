@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.widget.TextView;
 
-import com.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.R;
 
 public class ProgressDialog extends AlertDialog {
 

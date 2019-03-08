@@ -6,9 +6,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.spinoff.apps.feedback_app.R;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerButton;
+
+import dk.spinoff.apps.feedback_app.R;
 
 public class beforeGivFeedback_akt extends BaseActivity {
 

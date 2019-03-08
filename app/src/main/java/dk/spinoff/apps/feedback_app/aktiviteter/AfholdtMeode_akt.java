@@ -10,7 +10,7 @@ import android.widget.TextView;
 import dk.spinoff.apps.feedback_app.FeedbackSpørgsmål;
 import dk.spinoff.apps.feedback_app.Møde;
 import dk.spinoff.apps.feedback_app.PersonData;
-import com.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.R;
 import dk.spinoff.apps.feedback_app.adaptere.SpørgsmålAdapter;
 
 import java.util.ArrayList;

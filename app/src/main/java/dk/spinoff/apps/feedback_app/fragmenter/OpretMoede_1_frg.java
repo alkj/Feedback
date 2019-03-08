@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.R;
 import dk.spinoff.apps.feedback_app.VibratorManager;
 
 

@@ -7,13 +7,13 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
-import com.spinoff.apps.feedback_app.R;
-import dk.spinoff.apps.feedback_app.Svar;
-import dk.spinoff.apps.feedback_app.views.HorizontalStackedBarChart;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import dk.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.Svar;
+import dk.spinoff.apps.feedback_app.views.HorizontalStackedBarChart;
 
 public class SpørgsmålAdapter extends BaseExpandableListAdapter {
 

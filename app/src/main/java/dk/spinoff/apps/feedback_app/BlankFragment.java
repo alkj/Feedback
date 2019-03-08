@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.spinoff.apps.feedback_app.R;
-
 
 /**
  * A simple {@link Fragment} subclass.

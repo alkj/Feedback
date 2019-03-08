@@ -11,9 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import dk.spinoff.apps.feedback_app.Møde;
-import com.spinoff.apps.feedback_app.R;
-import dk.spinoff.apps.feedback_app.VibratorManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -23,6 +20,10 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Set;
+
+import dk.spinoff.apps.feedback_app.Møde;
+import dk.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.VibratorManager;
 
 
 

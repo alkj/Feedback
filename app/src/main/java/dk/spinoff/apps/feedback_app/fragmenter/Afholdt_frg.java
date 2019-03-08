@@ -12,12 +12,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import dk.spinoff.apps.feedback_app.Møde;
-import dk.spinoff.apps.feedback_app.PersonData;
-import com.spinoff.apps.feedback_app.R;
-import dk.spinoff.apps.feedback_app.Svar;
-import dk.spinoff.apps.feedback_app.adaptere.AfholdtMødeAdapter;
-import dk.spinoff.apps.feedback_app.aktiviteter.AfholdtMeode_akt;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,6 +22,13 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import dk.spinoff.apps.feedback_app.Møde;
+import dk.spinoff.apps.feedback_app.PersonData;
+import dk.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.Svar;
+import dk.spinoff.apps.feedback_app.adaptere.AfholdtMødeAdapter;
+import dk.spinoff.apps.feedback_app.aktiviteter.AfholdtMeode_akt;
 
 
 public class Afholdt_frg extends Fragment implements AdapterView.OnItemClickListener {

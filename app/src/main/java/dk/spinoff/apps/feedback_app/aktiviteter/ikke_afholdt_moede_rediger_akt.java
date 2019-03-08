@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import dk.spinoff.apps.feedback_app.Møde;
 import dk.spinoff.apps.feedback_app.PersonData;
-import com.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 

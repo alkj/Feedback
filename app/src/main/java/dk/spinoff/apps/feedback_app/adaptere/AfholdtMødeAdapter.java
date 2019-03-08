@@ -7,13 +7,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.List;
+
 import dk.spinoff.apps.feedback_app.Møde;
 import dk.spinoff.apps.feedback_app.PersonData;
-import com.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.R;
 import dk.spinoff.apps.feedback_app.Svar;
 import dk.spinoff.apps.feedback_app.views.HorizontalStackedBarChart;
-
-import java.util.List;
 
 public class AfholdtMødeAdapter extends BaseAdapter {
     private final int[] colors;

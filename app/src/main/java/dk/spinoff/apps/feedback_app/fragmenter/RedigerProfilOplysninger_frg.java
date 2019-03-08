@@ -10,10 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import dk.spinoff.apps.feedback_app.PersonData;
-import com.spinoff.apps.feedback_app.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import dk.spinoff.apps.feedback_app.PersonData;
+import dk.spinoff.apps.feedback_app.R;
 
 
 public class RedigerProfilOplysninger_frg extends Fragment implements View.OnClickListener {

@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import dk.spinoff.apps.feedback_app.FeedbackManager;
-import com.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.R;
 import dk.spinoff.apps.feedback_app.Svar;
 
 

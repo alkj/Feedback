@@ -10,10 +10,10 @@ import android.text.format.DateFormat;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.spinoff.apps.feedback_app.R;
-
 import java.util.Calendar;
 import java.util.Objects;
+
+import dk.spinoff.apps.feedback_app.R;
 
 public class TidPickerDialog_frg extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
     public static final String VIEW_ID = "View_ID";

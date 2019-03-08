@@ -10,10 +10,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import dk.spinoff.apps.feedback_app.Mødeholder;
 import dk.spinoff.apps.feedback_app.PersonData;
-import com.spinoff.apps.feedback_app.R;
-import com.google.firebase.auth.FirebaseAuth;
+import dk.spinoff.apps.feedback_app.R;
 
 
 public class Profil_frg extends Fragment implements View.OnClickListener {

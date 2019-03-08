@@ -7,10 +7,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import dk.spinoff.apps.feedback_app.Møde;
-import com.spinoff.apps.feedback_app.R;
-
 import java.util.List;
+
+import dk.spinoff.apps.feedback_app.Møde;
+import dk.spinoff.apps.feedback_app.R;
 
 public class IkkeAfholdtMødeAdapter extends BaseAdapter {
     private final int[] colors;

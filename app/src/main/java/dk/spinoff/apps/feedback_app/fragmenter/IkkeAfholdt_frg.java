@@ -11,7 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import dk.spinoff.apps.feedback_app.PersonData;
-import com.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.R;
 import dk.spinoff.apps.feedback_app.adaptere.IkkeAfholdtMødeAdapter;
 import dk.spinoff.apps.feedback_app.aktiviteter.IkkeAfholdtMoede_akt;
 

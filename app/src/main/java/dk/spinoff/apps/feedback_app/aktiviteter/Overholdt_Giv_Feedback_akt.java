@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import dk.spinoff.apps.feedback_app.FeedbackManager;
 import dk.spinoff.apps.feedback_app.FeedbackSpørgsmål;
-import com.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.R;
 import dk.spinoff.apps.feedback_app.VibratorManager;
 import dk.spinoff.apps.feedback_app.fragmenter.Feedback_frg;
 

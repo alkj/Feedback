@@ -9,11 +9,11 @@ import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
 
-import com.spinoff.apps.feedback_app.R;
-import dk.spinoff.apps.feedback_app.aktiviteter.IkkeAfholdtMoede_akt;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+import dk.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.aktiviteter.IkkeAfholdtMoede_akt;
 
 public class MoedeStartet_frg extends Fragment implements View.OnClickListener {
 

@@ -10,12 +10,13 @@ import android.transition.AutoTransition;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import dk.spinoff.apps.feedback_app.PersonData;
-import com.spinoff.apps.feedback_app.R;
-import dk.spinoff.apps.feedback_app.fragmenter.OpretMoede_1_frg;
-import dk.spinoff.apps.feedback_app.fragmenter.Moedeoversigt_frg;
-import dk.spinoff.apps.feedback_app.fragmenter.Profil_frg;
 import com.google.firebase.auth.FirebaseAuth;
+
+import dk.spinoff.apps.feedback_app.PersonData;
+import dk.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.fragmenter.Moedeoversigt_frg;
+import dk.spinoff.apps.feedback_app.fragmenter.OpretMoede_1_frg;
+import dk.spinoff.apps.feedback_app.fragmenter.Profil_frg;
 
 public class Navigation_akt extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 

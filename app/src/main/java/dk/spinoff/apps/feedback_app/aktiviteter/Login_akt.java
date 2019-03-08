@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import dk.spinoff.apps.feedback_app.Møde;
 import dk.spinoff.apps.feedback_app.PersonData;
-import com.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.R;
 import dk.spinoff.apps.feedback_app.Svar;
 import dk.spinoff.apps.feedback_app.VibratorManager;
 import com.google.android.gms.tasks.OnCompleteListener;

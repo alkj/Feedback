@@ -12,12 +12,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import dk.spinoff.apps.feedback_app.Møde;
-import dk.spinoff.apps.feedback_app.PersonData;
-import com.spinoff.apps.feedback_app.R;
-import dk.spinoff.apps.feedback_app.VibratorManager;
-import dk.spinoff.apps.feedback_app.dialogs.DatoPickerDialog_frg;
-import dk.spinoff.apps.feedback_app.dialogs.TidPickerDialog_frg;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,6 +19,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Random;
 import java.util.UUID;
+
+import dk.spinoff.apps.feedback_app.Møde;
+import dk.spinoff.apps.feedback_app.PersonData;
+import dk.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.VibratorManager;
+import dk.spinoff.apps.feedback_app.dialogs.DatoPickerDialog_frg;
+import dk.spinoff.apps.feedback_app.dialogs.TidPickerDialog_frg;
 
 
 public class OpretMoede_2_frg extends Fragment implements View.OnClickListener {

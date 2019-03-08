@@ -6,10 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import dk.spinoff.apps.feedback_app.FeedbackManager;
-import dk.spinoff.apps.feedback_app.FeedbackTilFirebase;
-import dk.spinoff.apps.feedback_app.NetworkManager;
-import com.spinoff.apps.feedback_app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
@@ -17,6 +13,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import dk.spinoff.apps.feedback_app.FeedbackManager;
+import dk.spinoff.apps.feedback_app.FeedbackTilFirebase;
+import dk.spinoff.apps.feedback_app.NetworkManager;
+import dk.spinoff.apps.feedback_app.R;
 
 public class TakForFeedback extends BaseActivity {
 

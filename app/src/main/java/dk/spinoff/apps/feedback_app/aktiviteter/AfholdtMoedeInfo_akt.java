@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import dk.spinoff.apps.feedback_app.Møde;
 import dk.spinoff.apps.feedback_app.PersonData;
-import com.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.R;
 
 public class AfholdtMoedeInfo_akt extends AppCompatActivity implements View.OnClickListener {
 
