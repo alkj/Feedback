@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorMørkegrå"
-    tools:context=".aktiviteter.Navigation_akt"
+    tools:context="dk.spinoff.apps.feedback_app.aktiviteter.Navigation_akt"
     tools:layout_editor_absoluteY="25dp">
 
     <LinearLayout

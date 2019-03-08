@@ -52,7 +52,7 @@
             android:textSize="10sp" />
     </LinearLayout>
 
-    <com.spinoff.apps.feedback_app.views.HorizontalStackedBarChart
+    <dk.spinoff.apps.feedback_app.views.HorizontalStackedBarChart
         android:id="@+id/list_chart"
         android:layout_width="match_parent"
         android:layout_height="7dp" />

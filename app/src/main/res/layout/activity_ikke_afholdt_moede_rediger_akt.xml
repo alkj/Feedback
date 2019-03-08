@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#353535"
-    tools:context=".aktiviteter.ikke_afholdt_moede_rediger_akt"
+    tools:context="dk.spinoff.apps.feedback_app.aktiviteter.ikke_afholdt_moede_rediger_akt"
     tools:layout_editor_absoluteY="25dp">
 
     <!-- TODO: Update blank fragment layout -->

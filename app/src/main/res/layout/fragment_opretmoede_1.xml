@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorMørkegrå"
-    tools:context=".fragmenter.OpretMoede_1_frg">
+    tools:context="dk.spinoff.apps.feedback_app.fragmenter.OpretMoede_1_frg">
 
 
     <LinearLayout

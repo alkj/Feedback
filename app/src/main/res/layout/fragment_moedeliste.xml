@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragmenter.IkkeAfholdt_frg">
+    tools:context="dk.spinoff.apps.feedback_app.fragmenter.IkkeAfholdt_frg">
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/pullToRefresh"

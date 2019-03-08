@@ -9,7 +9,7 @@
     android:clickable="true"
     android:focusableInTouchMode="true"
     android:gravity="bottom|center"
-    tools:context=".aktiviteter.Login_akt"
+    tools:context="dk.spinoff.apps.feedback_app.aktiviteter.Login_akt"
     tools:layout_editor_absoluteY="25dp">
 
     <TextView

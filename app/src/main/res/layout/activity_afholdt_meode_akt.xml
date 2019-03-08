@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorMørkegrå"
-    tools:context=".aktiviteter.AfholdtMeode_akt">
+    tools:context="dk.spinoff.apps.feedback_app.aktiviteter.AfholdtMeode_akt">
 
     <TextView
         android:id="@+id/tvDato_Afholdt"

@@ -7,7 +7,7 @@
     android:background="@color/colorMørkegrå"
     android:clickable="true"
     android:focusableInTouchMode="true"
-    tools:context=".aktiviteter.OpretBruger_akt"
+    tools:context="dk.spinoff.apps.feedback_app.aktiviteter.OpretBruger_akt"
     tools:layout_editor_absoluteY="25dp">
 
     <LinearLayout
