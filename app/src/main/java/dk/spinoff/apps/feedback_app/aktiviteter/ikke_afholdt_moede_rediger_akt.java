@@ -1,6 +1,7 @@
 package dk.spinoff.apps.feedback_app.aktiviteter;
 
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,9 @@ import android.widget.Toast;
 import dk.spinoff.apps.feedback_app.Møde;
 import dk.spinoff.apps.feedback_app.PersonData;
 import dk.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.dialogs.DatoPickerDialog_frg;
+import dk.spinoff.apps.feedback_app.dialogs.TidPickerDialog_frg;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -24,6 +28,8 @@ public class ikke_afholdt_moede_rediger_akt extends BaseActivity implements View
     private int indeks;
 
     private Møde møde = new Møde();
+
+    private DialogFragment dialog_starttid, dialog_sluttid, dialog_dato;
 
     FirebaseFirestore firebaseFirestore;
 
@@ -43,8 +49,11 @@ public class ikke_afholdt_moede_rediger_akt extends BaseActivity implements View
         sted = findViewById(R.id.redigerMødested);
         formål = findViewById(R.id.redigerMødeformål);
         dato = findViewById(R.id.redigerMødeDato);
+        dato.setOnClickListener(this);
         startTid = findViewById(R.id.redigerMødeStartTidspunkt);
+        startTid.setOnClickListener(this);
         slutTid = findViewById(R.id.redigerMødeSlutTidspunkt);
+        slutTid.setOnClickListener(this);
 
         button = findViewById(R.id.rediger_profil_gem_ændringer_button);
         button.setOnClickListener(this);
@@ -78,6 +87,21 @@ public class ikke_afholdt_moede_rediger_akt extends BaseActivity implements View
 
         indeks = getIntent().getIntExtra("INDEKS",0);
 
+        Bundle bundle = new Bundle();
+        bundle.putInt(TidPickerDialog_frg.VIEW_ID, R.id.redigerMødeStartTidspunkt);
+        dialog_starttid = new TidPickerDialog_frg();
+        dialog_starttid.setArguments(bundle);
+
+        bundle = new Bundle();
+        bundle.putInt(TidPickerDialog_frg.VIEW_ID, R.id.redigerMødeSlutTidspunkt);
+        dialog_sluttid = new TidPickerDialog_frg();
+        dialog_sluttid.setArguments(bundle);
+
+        bundle = new Bundle();
+        bundle.putInt(DatoPickerDialog_frg.VIEW_ID, R.id.redigerMødeDato);
+        dialog_dato = new DatoPickerDialog_frg();
+        dialog_dato.setArguments(bundle);
+
 
         Log.d("hej", "onCreate: "+indeks);
 
@@ -85,7 +109,16 @@ public class ikke_afholdt_moede_rediger_akt extends BaseActivity implements View
 
     @Override
     public void onClick(View v) {
-        if(v==button){
+        if (v == startTid){
+            dialog_starttid.show(getSupportFragmentManager(), "tidStartPicker");
+        }
+        else if (v == slutTid){
+            dialog_sluttid.show(getSupportFragmentManager(), "tidSlutPicker");
+        }
+        else if (v == dato){
+            dialog_dato.show(getSupportFragmentManager(), "datoPicker");
+        }
+        else if(v==button){
             //Hvis det ikke er sket nogen ændring
             if(navn.getText().toString().equals(navnString)&& sted.getText().toString().equals(stedString)&& formål.getText().toString().equals(formålString)&&
                     dato.getText().toString().equals(datoString)&&startTid.getText().toString().equals(tidStartString)&&slutTid.getText().toString().equals(tidSlutString)){

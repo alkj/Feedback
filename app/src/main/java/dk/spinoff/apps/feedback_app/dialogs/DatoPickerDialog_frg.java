@@ -14,10 +14,15 @@ import java.util.Calendar;
 import dk.spinoff.apps.feedback_app.R;
 
 public class DatoPickerDialog_frg extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+    public static final String VIEW_ID = "View_ID";
+    private int textViewId;
 
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+
+        if (getArguments() != null)
+            textViewId = getArguments().getInt(VIEW_ID);
 
         final Calendar kalender = Calendar.getInstance();
 
@@ -46,6 +51,6 @@ public class DatoPickerDialog_frg extends DialogFragment implements DatePickerDi
 
         String s = String.format(getString(R.string.dato_format), d, m, år);
 
-        ((TextView) getActivity().findViewById(R.id.dato)).setText(s);
+        ((TextView) getActivity().findViewById(textViewId)).setText(s);
     }
 }
