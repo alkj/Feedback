@@ -47,7 +47,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
     private PersonData personData;
     private int taskCount = 0;
 
-    private final boolean DEBUG = true;
+    private final boolean DEBUG = false;
     private final String TEST_EMAIL = "nicolaidam96@gmail.com", TEST_PASSWORD = "123456";
 
 

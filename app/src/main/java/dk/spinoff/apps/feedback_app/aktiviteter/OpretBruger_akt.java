@@ -8,6 +8,7 @@ import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -39,7 +40,8 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
     private FirebaseAuth firebaseAuth;
     private String detHentedeVirkID;
     private ImageView password1, password2;
-    private Boolean passwordStatus = true, getPasswordStatus2 = true;
+    private CheckBox politikCheckBox;
+    private Boolean passwordStatus = true, getPasswordStatus2 = true, accepteretPolitik = false;
 
 
     @Override
@@ -68,6 +70,10 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         password2 = findViewById(R.id.imViewPassword2Synlig);
         password1.setOnClickListener(this);
         password2.setOnClickListener(this);
+
+        //CheckBox
+        politikCheckBox = findViewById(R.id.checkBoxPolitik);
+        politikCheckBox.setOnClickListener(this);
 
 
     }
@@ -159,14 +165,22 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
 
     @Override
     public void onClick(View view) {
-        if (view == opret_btn) {
-            //vis brugeren at der arbejdes
-            showProgressDialog();
 
-            skabBrugerkonto(email_editTxt.getText().toString(), password_editTxt.getText().toString());
+       if (politikCheckBox.isChecked()) {
+           opret_btn.setVisibility(View.VISIBLE);
+       } else {
+           opret_btn.setVisibility(View.INVISIBLE);
+       }
+       if (view == opret_btn) {
+               //vis brugeren at der arbejdes
+               showProgressDialog();
 
-            //TODO lav toast der giver besked hvis emailen allerede er oprettet
-        }
+               skabBrugerkonto(email_editTxt.getText().toString(), password_editTxt.getText().toString());
+
+               //TODO lav toast der giver besked hvis emailen allerede er oprettet
+
+       }
+
         else if (view == password1) {
             if (passwordStatus) {
                 password_editTxt.setTransformationMethod(null);
