@@ -12,11 +12,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import dk.spinoff.apps.feedback_app.Møde;
-import dk.spinoff.apps.feedback_app.PersonData;
-import dk.spinoff.apps.feedback_app.R;
-import dk.spinoff.apps.feedback_app.Svar;
-import dk.spinoff.apps.feedback_app.VibratorManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -30,6 +25,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import dk.spinoff.apps.feedback_app.Møde;
+import dk.spinoff.apps.feedback_app.PersonData;
+import dk.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.Svar;
+import dk.spinoff.apps.feedback_app.VibratorManager;
 
 public class Login_akt extends BaseActivity implements View.OnClickListener {
 
@@ -266,6 +267,7 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
 
                     try {
                         mødeObj.setFaktiskStartTid(document.get("faktiskStartTid").toString());
+                        mødeObj.setFaktiskSlutTid(document.get("faktiskSlutTid").toString());
                     } catch (Exception e){
                         mødeObj.setFaktiskStartTid("ikke startet");
                         Log.d(TAG, "onComplete: info ikke gemt i firebase");

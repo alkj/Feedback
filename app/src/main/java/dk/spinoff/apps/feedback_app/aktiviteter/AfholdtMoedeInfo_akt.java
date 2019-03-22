@@ -47,7 +47,9 @@ public class AfholdtMoedeInfo_akt extends AppCompatActivity implements View.OnCl
         String slut = bundle.getString("PLANLAGTTIDSLUT");
         textViewPlanlagtTid.setText(start + " - " + slut);
 
-        textViewAktuelTid.setText("mangler implementation");
+        String aktStart = bundle.getString("AKTUELTIDSTART");
+        String aktSlut = bundle.getString("AKTUELTIDSLUT");
+        textViewAktuelTid.setText(aktStart + " - " + aktSlut);
 
         buttonTilbage.setOnClickListener(this);
 

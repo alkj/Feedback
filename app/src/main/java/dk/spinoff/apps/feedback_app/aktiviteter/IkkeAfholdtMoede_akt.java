@@ -15,15 +15,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import dk.spinoff.apps.feedback_app.Møde;
-import dk.spinoff.apps.feedback_app.PersonData;
-import dk.spinoff.apps.feedback_app.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+import dk.spinoff.apps.feedback_app.Møde;
+import dk.spinoff.apps.feedback_app.PersonData;
+import dk.spinoff.apps.feedback_app.R;
 
 public class IkkeAfholdtMoede_akt extends BaseActivity implements OnClickListener {
 
@@ -159,7 +160,7 @@ public class IkkeAfholdtMoede_akt extends BaseActivity implements OnClickListene
                     public void onClick(DialogInterface dialog, int which) {
 
                         forloebtTid.start();
-                        forloebtTid.setBase(SystemClock.elapsedRealtime());
+                        forloebtTid.setBase(SystemClock.currentThreadTimeMillis());
 
                         startTidspunkt.setText(getCurrentTime());
                         møde.setFaktiskStartTid(getCurrentTime());
@@ -201,7 +202,8 @@ public class IkkeAfholdtMoede_akt extends BaseActivity implements OnClickListene
                     //møde.setIgang(false);
                     møde.setAfholdt(true);
                     møde.setStartTid(møde.getStartTid());
-                    møde.setSlutTid(getCurrentTime());
+                    møde.setFaktiskSlutTid(getCurrentTime());
+
 
 
                     //møde objekt op til fgire

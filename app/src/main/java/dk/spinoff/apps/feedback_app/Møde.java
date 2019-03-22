@@ -14,16 +14,8 @@ public class Møde {
     private String mødeIDtildeltager;
     private boolean igang;
     private String dagsorden;
-
-    public String getFaktiskStartTid() {
-        return FaktiskStartTid;
-    }
-
-    public void setFaktiskStartTid(String faktiskStartTid) {
-        FaktiskStartTid = faktiskStartTid;
-    }
-
     private String FaktiskStartTid;
+    private String FaktiskSlutTid;
 
     public Møde(){
     }
@@ -38,6 +30,21 @@ public class Møde {
         this.mødeholderID = mødeholderID;
         this.afholdt = afholdt;
     }
+
+
+
+    public void setFaktiskStartTid(String faktiskStartTid) {
+        FaktiskStartTid = faktiskStartTid;
+    }
+
+    public String getFaktiskStartTid() {
+        return FaktiskStartTid;
+    }
+
+    public void setFaktiskSlutTid(String faktiskSlutTid) {FaktiskSlutTid = faktiskSlutTid;}
+
+    public String getFaktiskSlutTid() {return FaktiskSlutTid;}
+
 
     public void setNavn(String navn) {
         this.navn = navn;

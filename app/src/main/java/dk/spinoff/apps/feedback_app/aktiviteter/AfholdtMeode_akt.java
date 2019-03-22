@@ -7,17 +7,17 @@ import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import dk.spinoff.apps.feedback_app.FeedbackSpørgsmål;
-import dk.spinoff.apps.feedback_app.Møde;
-import dk.spinoff.apps.feedback_app.PersonData;
-import dk.spinoff.apps.feedback_app.R;
-import dk.spinoff.apps.feedback_app.adaptere.SpørgsmålAdapter;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+
+import dk.spinoff.apps.feedback_app.FeedbackSpørgsmål;
+import dk.spinoff.apps.feedback_app.Møde;
+import dk.spinoff.apps.feedback_app.PersonData;
+import dk.spinoff.apps.feedback_app.R;
+import dk.spinoff.apps.feedback_app.adaptere.SpørgsmålAdapter;
 
 public class AfholdtMeode_akt extends BaseActivity implements View.OnClickListener {
 
@@ -89,6 +89,8 @@ public class AfholdtMeode_akt extends BaseActivity implements View.OnClickListen
             intent.putExtra("DATO", møde.getDato().toString());
             intent.putExtra("PLANLAGTTIDSTART", møde.getStartTid());
             intent.putExtra("PLANLAGTTIDSLUT", møde.getSlutTid());
+            intent.putExtra("AKTUELTIDSTART", møde.getFaktiskStartTid());
+            intent.putExtra("AKTUELTIDSLUT", møde.getFaktiskSlutTid());
 
             startActivity(intent);
 
