@@ -160,7 +160,7 @@ public class IkkeAfholdtMoede_akt extends BaseActivity implements OnClickListene
                     public void onClick(DialogInterface dialog, int which) {
 
                         forloebtTid.start();
-                        forloebtTid.setBase(SystemClock.currentThreadTimeMillis());
+                        forloebtTid.setBase(SystemClock.elapsedRealtime());
 
                         startTidspunkt.setText(getCurrentTime());
                         møde.setFaktiskStartTid(getCurrentTime());
