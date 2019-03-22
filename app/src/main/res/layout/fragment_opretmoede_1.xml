@@ -12,8 +12,9 @@
 
     <LinearLayout
         android:id="@+id/john"
-        android:layout_width="275dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.7"
         android:layout_marginTop="16dp"
         android:background="#0AFFFFFF"
         android:orientation="vertical"
@@ -145,8 +146,10 @@
     <Button
         android:id="@+id/videreBTN"
         style="@style/Knap.Lysegrå"
-        android:layout_width="275dp"
-        android:layout_height="60dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.7"
+        app:layout_constraintHeight_percent="0.08"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"

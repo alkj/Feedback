@@ -11,7 +11,7 @@
     tools:layout_editor_absoluteY="25dp">
 
     <TextView
-        android:id="@+id/din "
+        android:id="@+id/textViewProfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -33,9 +33,9 @@
 
     <LinearLayout
         android:id="@+id/Profil_textViewContainer_layout"
-        android:layout_width="275dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:background="#0AFFFFFF"
         android:orientation="vertical"
         android:padding="10dp"
@@ -48,7 +48,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/din ">
+        app:layout_constraintTop_toBottomOf="@+id/textViewProfil"
+        app:layout_constraintWidth_percent="0.7">
 
         <TextView
             android:id="@+id/profil_fornavn_textView"
@@ -143,8 +144,9 @@
 
     <LinearLayout
         android:id="@+id/Profil_buttons_layout"
-        android:layout_width="292dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.7"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"

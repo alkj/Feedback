@@ -10,9 +10,9 @@
     <TextView
         android:id="@+id/feedback_spørgsmål_txtView"
 
-        android:layout_width="318dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-
+        app:layout_constraintWidth_percent="0.85"
         android:layout_marginTop="16dp"
         android:text="Hvad syntes du om PowerPoint præsentationen?"
         android:textAlignment="center"
@@ -27,6 +27,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.8"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"

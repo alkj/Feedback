@@ -13,8 +13,10 @@
     <Button
         android:id="@+id/rediger_profil_gem_ændringer_button"
         style="@style/Knap.Lysegrå"
-        android:layout_width="275dp"
-        android:layout_height="60dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.7"
+        app:layout_constraintHeight_percent="0.08"
         android:layout_marginTop="40dp"
         android:autofillHints="DBDBDB"
         android:text="Gem Ændringer"
@@ -44,8 +46,9 @@
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="275dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.7"
         android:layout_marginTop="60dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
