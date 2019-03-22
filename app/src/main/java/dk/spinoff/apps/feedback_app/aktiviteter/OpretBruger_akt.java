@@ -1,6 +1,8 @@
 package dk.spinoff.apps.feedback_app.aktiviteter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -11,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,7 +38,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
     private Button opret_btn;
     private EditText fornavn_editTxt, efternavn_editTxt, email_editTxt,
             tlfnr_editTxt, password_editTxt, password2_editTxt, virk_id_editTxt;
-
+    private TextView personDataPolitik;
     private Mødeholder mødeholder;
     private FirebaseAuth firebaseAuth;
     private String detHentedeVirkID;
@@ -70,6 +73,10 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
         password2 = findViewById(R.id.imViewPassword2Synlig);
         password1.setOnClickListener(this);
         password2.setOnClickListener(this);
+
+        //TextViews
+        personDataPolitik = findViewById(R.id.textViewPersondata);
+        personDataPolitik.setOnClickListener(this);
 
         //CheckBox
         politikCheckBox = findViewById(R.id.checkBoxPolitik);
@@ -180,8 +187,7 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                //TODO lav toast der giver besked hvis emailen allerede er oprettet
 
        }
-
-        else if (view == password1) {
+       else if (view == password1) {
             if (passwordStatus) {
                 password_editTxt.setTransformationMethod(null);
                 passwordStatus = false;
@@ -209,6 +215,10 @@ public class OpretBruger_akt extends BaseActivity implements View.OnClickListene
                 password2_editTxt.setSelection(password2_editTxt.length());
             }
         }
+        else if (view == personDataPolitik) {
+           Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://hopeful-swirles-f32841.netlify.com/privacy_policy.html?fbclid=IwAR3Mv6G63bVKzw6VnY-ZT4-WY2dhmMar17FNV-dLLRLENX9-_vOumzmgGxY"));
+           startActivity(intent);
+       }
 
     }
 
