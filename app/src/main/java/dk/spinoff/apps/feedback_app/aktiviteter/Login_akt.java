@@ -269,7 +269,6 @@ public class Login_akt extends BaseActivity implements View.OnClickListener {
                         mødeObj.setFaktiskStartTid(document.get("faktiskStartTid").toString());
                         mødeObj.setFaktiskSlutTid(document.get("faktiskSlutTid").toString());
                     } catch (Exception e){
-                        mødeObj.setFaktiskStartTid("ikke startet");
                         Log.d(TAG, "onComplete: info ikke gemt i firebase");
                     }
 
