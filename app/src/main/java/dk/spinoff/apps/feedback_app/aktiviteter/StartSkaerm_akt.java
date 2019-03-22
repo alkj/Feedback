@@ -136,19 +136,26 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
 
             hideProgressDialog();
 
-            //Starter feedback aktiviteten
-            Intent intent = new Intent(getApplicationContext(), beforeGivFeedback_akt.class);
-            intent.putExtra("MØDEID", mødet.getMødeID());
-            intent.putExtra("MØDEIDdel", mødet.getMødeIDtildeltager());
-            intent.putExtra("NAVN", mødet.getNavn());
-            intent.putExtra("DATO", mødet.getDato());
-            intent.putExtra("STED", mødet.getSted());
-            intent.putExtra("FORMÅL", mødet.getFormål());
-            intent.putExtra("TIDSTART", mødet.getStartTid());
-            intent.putExtra("TIDSLUT", mødet.getSlutTid());
-            intent.putExtra("igang", mødet.getIgang());
+            //Hvis mødet ikke er igang
+            if (!mødet.getIgang()) {
+                Toast.makeText(this, "Mødet er ikke startet, prøv igen senere", Toast.LENGTH_SHORT).show();
+            }
 
-            startActivity(intent);
+            //Starter feedback aktiviteten
+            if (mødet.getIgang()) {
+                Intent intent = new Intent(getApplicationContext(), beforeGivFeedback_akt.class);
+                intent.putExtra("MØDEID", mødet.getMødeID());
+                intent.putExtra("MØDEIDdel", mødet.getMødeIDtildeltager());
+                intent.putExtra("NAVN", mødet.getNavn());
+                intent.putExtra("DATO", mødet.getDato());
+                intent.putExtra("STED", mødet.getSted());
+                intent.putExtra("FORMÅL", mødet.getFormål());
+                intent.putExtra("TIDSTART", mødet.getStartTid());
+                intent.putExtra("TIDSLUT", mødet.getSlutTid());
+                intent.putExtra("igang", mødet.getIgang());
+
+                startActivity(intent);
+            }
         }
 
     }
