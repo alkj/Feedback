@@ -85,7 +85,7 @@ public class StartSkaerm_akt extends BaseActivity implements View.OnClickListene
     @Override
     public void onClick(View view) {
 
-        String mødeID = mødeId_editTxt.getText().toString();
+        String mødeID = mødeId_editTxt.getText().toString().toLowerCase();
 
         if (view == login_btn){
             //Starter login aktiviteteten
